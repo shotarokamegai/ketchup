@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Header from './components/header'
 import List from './components/list'
-import Arrow from './components/svg/arrow'
 import useSWR from 'swr'
-
+import Meta from './components/meta'
+import Content from './components/content'
+import styles from '../styles/Home.module.css'
+import { motion, useScroll, useSpring } from "framer-motion";
 
 function fetcher(...urls) {
   const f = url => fetch(url).then(r => r.json())
@@ -56,12 +57,12 @@ function returnClassName (i) {
 
 export default function Home() {
   const { data, isLoading, isError } = getDataFromWp()
-  const routes = [
-    { path: '/', name: 'Home', Element: '' },
-    // { path: '/works', name: 'Works', Element: Works },
-    { path: '/about', name: 'About', Element: '' },
-    { path: '/contact', name: 'Contact', Element: '' },
-  ]
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001
+    });
   let i = 0
   //エラー
   if (isError) return <div>failed to load</div>
@@ -69,64 +70,67 @@ export default function Home() {
   if (isLoading) return <div>loading...</div>
   //成功
   return(
-    <>
-    <Header routes={routes} />
-    <main id="home" className="main_">
-      <section id="top">
-          <div className="ruler flex space-between">
-              <div>
-                  <h1 className="logo">
-                      <Image layout="fill" src="/img/common/logo.svg" alt="Ketchup" />
-                  </h1>
+    <div className={styles.container}>
+      <Meta />
+      <Content>
+      <motion.div className="progress-bar" style={{ scaleX }} />
+        <main id="home" className="main_">
+          <section id="top">
+              <div className="ruler flex space-between">
+                  <div>
+                      <h1 className="logo">
+                          <Image layout='fill' objectFit="contain" src="/img/common/logo.svg" alt="Ketchup" />
+                      </h1>
+                  </div>
+                  <div>
+                      <h2 className="slogan roc">
+                          We know the internet and people in equal measure. 
+                      </h2>
+                  </div>
               </div>
-              <div>
-                  <h2 className="slogan roc">
-                      We know the internet and people in equal measure. 
-                  </h2>
-              </div>
-          </div>
-      </section>
-      <section className="works-wrapper">
-          <p className="vertical rocextrawideLight">
-              WORKS
-          </p>
-          <div className="inner">
-              {(data[0].length !== 0 && data[1].length !== 0) ?
-              <ul className="flex">
-                  {data[0].map((item, index) => {
-                      let datum = {
-                          thisCategories: ''
-                      };
-                      datum.index = index;
-                      datum.item = item;
-                      for (let i = 0; i < item.categories.length; i++) {
-                          for (let j = 0; j < data[1].length; j++) {
-                              if (item.categories[i] === data[1][j].id && data[1][j].name !== 'Works') {
-                                  datum.thisCategories += ` ${data[1][j].name} /` 
+          </section>
+          <section className="works-wrapper">
+              <p className="vertical rocextrawideLight">
+                  WORKS
+              </p>
+              <div className="inner">
+                  {(data[0].length !== 0 && data[1].length !== 0) ?
+                  <ul className="flex">
+                      {data[0].map((item, index) => {
+                          let datum = {
+                              thisCategories: ''
+                          };
+                          datum.index = index;
+                          datum.item = item;
+                          for (let i = 0; i < item.categories.length; i++) {
+                              for (let j = 0; j < data[1].length; j++) {
+                                  if (item.categories[i] === data[1][j].id && data[1][j].name !== 'Works') {
+                                      datum.thisCategories += ` ${data[1][j].name} /` 
+                                  }
                               }
                           }
-                      }
-                      datum.className = returnClassName(i);
-                      if (i === 5) {
-                          i = 0;
-                      } else {
-                          i++;
-                      }
-                      return(
-                        <List key={index} {...datum} />
-                      )
-                  })}
-              </ul>
-              :
-              <></>
-              }
-              {/* {maxPage === page && <div className="btn flex flex-sp space-between align-center" onClick={loadWorks}>
-                <span className="text rocextrawideLight">LOAD MORE</span>
-                <Arrow className="white" />
-              </div>} */}
-          </div>
-      </section>
-    </main>
-    </>
+                          datum.className = returnClassName(i);
+                          if (i === 5) {
+                              i = 0;
+                          } else {
+                              i++;
+                          }
+                          return(
+                            <List key={index} {...datum} />
+                          )
+                      })}
+                  </ul>
+                  :
+                  <></>
+                  }
+                  {/* {maxPage === page && <div className="btn flex flex-sp space-between align-center" onClick={loadWorks}>
+                    <span className="text rocextrawideLight">LOAD MORE</span>
+                    <Arrow className="white" />
+                  </div>} */}
+              </div>
+          </section>
+        </main>
+      </Content>
+    </div>
   )
 }

@@ -253,18 +253,21 @@ body {
             @for $i from 1 through 3 {
               &:nth-child(#{$i}) {
                 .ketchup {
-                  img {
+                  span {
                     animation: rotate
                       1s
                       cubic-bezier(0.4, 0, 0.2, 1)
                       #{($i - 1) *
-                      0.15}s;
+                      0.15}s
+                      forwards;
+                  }
+                  img {
+                    transform: translate3d(-50%, -50%, 0) scale(1) !important;
                   }
                 }
               }
             }
             .ketchup {
-              transform: translate3d(-50%, -50%, 0) scale(1);
             }
             span {
               transform: translate3d(0, -100%, 0);
@@ -321,13 +324,13 @@ body {
                   0.15}s;
               }
               .ketchup {
-                transition: transform
-                  0.5s
-                  cubic-bezier(0.4, 0, 0.2, 1)
-                  #{($i - 1) *
-                  0.15}s;
                 img {
                   // animation: rotate 5s linear infinite #{($i - 1) * 0.15}s;
+                  transition: transform
+                    0.5s
+                    cubic-bezier(0.4, 0, 0.2, 1)
+                    #{($i - 1) *
+                    0.15}s;
                 }
               }
             }
@@ -385,14 +388,31 @@ body {
           }
           .ketchup {
             @include center();
-            transform: translate3d(-50%, -50%, 0) scale(0);
+            // transform: translate3d(-50%, -50%, 0) scale(0);
+            height: vw(64.61);
             width: vw(70);
+            span {
+              overflow: visible !important;
+              transform: translate3d(-50%, -50%, 0) !important;
+            }
+            span,
             img {
-              @include center();
-              width: 100%;
-              max-width: initial;
-              // transform: translate3d(-50%, -50%, 0) scale(1);
-              z-index: -1;
+              position: absolute !important;
+              top: 50% !important;
+              left: 50% !important;
+              height: 100% !important;
+              width: 100% !important;
+            }
+            img {
+              width: vw(70) !important;
+              min-width: initial !important;
+              max-width: initial !important;
+              min-height: initial !important;
+              max-height: initial !important;
+              margin: initial !important;
+              transform: translate3d(-50%, -50%, 0) scale(0) !important;
+              transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+              z-index: -1 !important;
             }
           }
         }
@@ -431,7 +451,23 @@ body {
       }
       .ketchup {
         @include center();
+        height: vw(36.92);
         width: vw(40);
+        span {
+          position: relative !important;
+        }
+        span,
+        img {
+          width: 100% !important;
+          height: 100% !important;
+        }
+        img {
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          max-width: initial !important;
+          z-index: -1;
+        }
       }
       // div {
       //   position: absolute;
@@ -578,6 +614,12 @@ body {
                   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                   z-index: 1;
                 }
+                span,
+                img {
+                  position: relative !important;
+                  width: 100% !important;
+                  height: unset !important;
+                }
                 img {
                   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                 }
@@ -622,8 +664,15 @@ body {
               @include fitcenter();
               &:nth-child(1) {
                 .logo {
+                  position: relative;
                   margin: 0 auto vw(100);
                   width: vw(355);
+                  span,
+                  img {
+                    position: relative !important;
+                    width: 100% !important;
+                    height: unset !important;
+                  }
                 }
               }
               &:nth-child(2) {
@@ -959,9 +1008,11 @@ body {
               }
             }
             .ketchup {
-              animation: rotate 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-              img {
-                transform: translate3d(-50%, -50%, 0) scale(1);
+              span {
+                animation: rotate 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                img {
+                  transform: translate3d(-50%, -50%, 0) scale(1) !important;
+                }
               }
             }
           }
@@ -995,13 +1046,30 @@ body {
           }
           .ketchup {
             @include center();
+            height: rem(35.92) !important;
+            width: rem(40);
+            span {
+              overflow: visible !important;
+              transform: translate3d(-50%, -50%, 0) !important;
+            }
+            span,
             img {
-              @include center();
-              width: rem(40);
-              max-width: initial;
-              transform: translate3d(-50%, -50%, 0) scale(0);
-              z-index: -1;
+              position: absolute !important;
+              top: 50% !important;
+              left: 50% !important;
+              height: 100% !important;
+              width: 100% !important;
+            }
+            img {
+              width: rem(40) !important;
+              min-width: initial !important;
+              max-width: initial !important;
+              min-height: initial !important;
+              max-height: initial !important;
+              margin: initial !important;
+              transform: translate3d(-50%, -50%, 0) scale(0) !important;
               transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+              z-index: -1 !important;
             }
           }
         }
@@ -1127,6 +1195,12 @@ body {
                   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                   z-index: 1;
                 }
+                span,
+                img {
+                  position: relative !important;
+                  width: 100% !important;
+                  height: unset !important;
+                }
                 img {
                   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                 }
@@ -1172,8 +1246,15 @@ body {
               &:nth-child(1) {
                 width: 69.28571428571428%;
                 .logo {
+                  position: relative;
                   margin: 0 auto 0 0;
                   width: 90%;
+                  span,
+                  img {
+                    position: relative !important;
+                    width: 100% !important;
+                    height: unset !important;
+                  }
                 }
               }
               &:nth-child(2) {
