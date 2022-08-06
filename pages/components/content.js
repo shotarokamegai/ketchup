@@ -1,20 +1,11 @@
-import Header from './header'
-import Footer from './footer'
+import AnimatedPage from './AnimatedPage';
 
 export default function Content({ children }) {
-  const routes = [
-    { path: '/', name: 'Home', Element: '' },
-    // { path: '/works', name: 'Works', Element: Works },
-    { path: '/about', name: 'About', Element: '' },
-    { path: '/contact', name: 'Contact', Element: '' },
-  ]
   return (
-    <>
-    <Header routes={routes} />
+    <AnimatedPage>
     <div className="container">
       { children }
     </div>
-    <Footer />
-    </>
+    </AnimatedPage>
   )
 }

@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import List from './components/list'
 import useSWR from 'swr'
-import Meta from './components/meta'
 import Content from './components/content'
 import styles from '../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -65,13 +64,12 @@ export default function Home() {
     });
   let i = 0
   //エラー
-  if (isError) return <div>failed to load</div>
+  if (isError) return(null)
   //ロード中
-  if (isLoading) return <div>loading...</div>
+  if (isLoading) return(null)
   //成功
   return(
     <div className={styles.container}>
-      <Meta />
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="home" className="main_">

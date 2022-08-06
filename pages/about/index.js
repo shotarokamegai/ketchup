@@ -3,11 +3,6 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 import Content from '../components/content'
-import Meta from '../components/meta'
-
-const meta = {
-  title: 'ABOUT'
-}
 
 export default function About() {
   const { scrollYProgress } = useScroll();
@@ -18,7 +13,6 @@ export default function About() {
     });
   return (
     <div className={styles.container}>
-      <Meta {...meta} />
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="about" className="common main_">

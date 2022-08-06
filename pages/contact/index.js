@@ -6,11 +6,6 @@ import Arrow from '../components/svg/arrow'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 import Content from '../components/content'
-import Meta from '../components/meta'
-
-const meta = {
-  title: 'CONTACT'
-}
 
 export default function Contact() {
     const [company, setCompany] = useState('');
@@ -128,7 +123,6 @@ export default function Contact() {
     }, [])
     return (
         <div className={styles.container}>
-            <Meta {...meta} />
             <Content>
             <motion.div className="progress-bar" style={{ scaleX }} />
                 <main id="contact" className="common main_">
