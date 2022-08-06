@@ -1,0 +1,264 @@
+@keyframes inOut {
+  0% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes topAni {
+  0% {
+    transform: translate3d(0, -30%, 0);
+  }
+  100% {
+    transform: translate3d(0, -10%, 0);
+  }
+}
+
+@keyframes topAniIe {
+  0% {
+    transform: translate3d(0, -30%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes yura {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0) translateZ(0) scaleX(1) scaleY(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px) translateY(20px) translateZ(0) scaleX(1)
+      scaleY(1);
+  }
+}
+
+@keyframes down {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0) translateZ(0) scaleX(1) scaleY(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-5px) translateY(25px) translateZ(0) scaleX(1)
+      scaleY(1);
+  }
+}
+
+@keyframes sweatScale {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  80% {
+    opacity: 1;
+    transform: translate3d(3px, 0, 0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sweatLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    transform: translate3d(-12.5px, 0, 0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sweatRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    transform: translate3d(12.5px, 0, 0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes illustIn1 {
+  0% {
+    transform: translate3d(-50%, 0, 0) scaleX(0) scaleY(0);
+  }
+  80% {
+    transform: translate3d(-50%, 0, 0) scaleX(1.08) scaleY(1.03);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0) scaleX(1) scaleY(1);
+  }
+}
+
+@keyframes illustIn2 {
+  0% {
+    transform: translate3d(0, 0, 0) scaleX(0) scaleY(0);
+  }
+  80% {
+    transform: translate3d(0, 0, 0) scaleX(1.08) scaleY(1.03);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
+  }
+}
+
+@keyframes illustIn3 {
+  0% {
+    transform: translate3d(-50%, -50%, 0) scaleX(0) scaleY(0);
+  }
+  80% {
+    transform: translate3d(-50%, -50%, 0) scaleX(1.08) scaleY(1.03);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) scaleX(1) scaleY(1);
+  }
+}
+
+@keyframes scale-easeOutElastic {
+  0% {
+    transform: scale(0);
+  }
+  16% {
+    transform: scale(1.32);
+  }
+  28% {
+    transform: scale(0.83);
+  }
+  44% {
+    transform: scale(1.05);
+  }
+  59% {
+    transform: scale(0.98);
+  }
+  73% {
+    transform: scale(1.01);
+  }
+  88% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes up {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  70% {
+    transform: translate3d(0, -10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes out {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.8);
+  }
+}
+
+@keyframes outLogo {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  10% {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  65% {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+}
+
+@keyframes outInitial {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+}
+
+@keyframes menuUp {
+  0% {
+    top: 0;
+    transform: translate3d(-50%, 0, 0);
+  }
+  50% {
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  100% {
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0) rotate(-30deg);
+  }
+}
+
+@keyframes loadingText {
+  0% {
+    transform: translate3d(-100%, -50%, 0);
+  }
+  100% {
+    transform: translate3d(100%, -50%, 0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(-180deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+}

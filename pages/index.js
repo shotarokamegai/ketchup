@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Header from './components/header'
 import List from './components/list'
 import Arrow from './components/svg/arrow'
 import useSWR from 'swr'
-import styles from '../styles/Home.module.css'
 
 
 function fetcher(...urls) {
@@ -56,6 +56,12 @@ function returnClassName (i) {
 
 export default function Home() {
   const { data, isLoading, isError } = getDataFromWp()
+  const routes = [
+    { path: '/', name: 'Home', Element: '' },
+    // { path: '/works', name: 'Works', Element: Works },
+    { path: '/about', name: 'About', Element: '' },
+    { path: '/contact', name: 'Contact', Element: '' },
+  ]
   let i = 0
   //エラー
   if (isError) return <div>failed to load</div>
@@ -63,6 +69,8 @@ export default function Home() {
   if (isLoading) return <div>loading...</div>
   //成功
   return(
+    <>
+    <Header routes={routes} />
     <main id="home" className="main_">
       <section id="top">
           <div className="ruler flex space-between">
@@ -119,5 +127,6 @@ export default function Home() {
           </div>
       </section>
     </main>
+    </>
   )
 }
