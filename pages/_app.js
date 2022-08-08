@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Header from './components/header'
-import Footer from './components/footer'
 import Meta from './components/meta'
+import AnimatedPage from './components/AnimatedPage';
 import '../styles/scss/style.scss'
 
 const routes = [
@@ -17,6 +17,9 @@ const meta = {
 
 function MyApp({ Component, pageProps }) {
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
+  const pathname = router.pathname;
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -25,8 +28,9 @@ function MyApp({ Component, pageProps }) {
     <>
       <Meta {...meta} />
       <Header routes={routes} />
-      <Component {...pageProps} /> 
-      <Footer />
+      <AnimatedPage>
+        <Component {...pageProps} /> 
+      </AnimatedPage>
     </>
     : <div/>;
 }

@@ -1,16 +1,10 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import List from './components/list'
 import useSWR from 'swr'
 import Content from './components/content'
+import fetcher from './components/fetcher'
 import styles from '../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
-
-function fetcher(...urls) {
-  const f = url => fetch(url).then(r => r.json())
-  return Promise.all(urls.map(f))
-}
-
 
 function getDataFromWp() {
   const { data, error } = useSWR([

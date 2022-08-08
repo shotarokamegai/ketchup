@@ -1,15 +1,11 @@
-import {motion} from 'framer-motion'
-
-const animations = {
-  initial: {opacity:0},
-  animate: {opacity:1},
-  exit: {opacity:0}
-}
+import { AnimatePresence } from 'framer-motion'
 
 export default function AnimatedPage({children}) {
   return(
-    <motion.div variants={animations} initial="initial" animate="animate" exit="exit">
+    <AnimatePresence
+      exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}
+    >
       {children}
-    </motion.div>
+    </AnimatePresence>
   )
 } ;

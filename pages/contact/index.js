@@ -118,9 +118,6 @@ export default function Contact() {
 
         checkValue(name, value)
     }
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
     return (
         <div className={styles.container}>
             <Content>
