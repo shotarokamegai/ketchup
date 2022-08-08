@@ -34,9 +34,9 @@ export default function Contact() {
             checkValue(arry[i], document.getElementsByName(arry[i])[0].value);
         }
         if (tel !== '' && name !== '' && email !== '' && content !== '') {
-            const user_id = process.env.REACT_APP_PORTFOLIO_EMAILJS_USER_ID;
-            const service_id = process.env.REACT_APP_PORTFOLIO_EMAILJS_SERVICE_ID;
-            const template_id = process.env.REACT_APP_PORTFOLIO_EMAILJS_TEMPLATE_ID;
+            const user_id = process.env.NEXT_PUBLIC_PORTFOLIO_EMAILJS_USER_ID;
+            const service_id = process.env.NEXT_PUBLIC_PORTFOLIO_EMAILJS_SERVICE_ID;
+            const template_id = process.env.NEXT_PUBLIC_PORTFOLIO_EMAILJS_TEMPLATE_ID;
             init(user_id );
 
             const template_param = {
@@ -46,16 +46,16 @@ export default function Contact() {
                 email: email,
                 message: content
             };
-            // send(service_id,template_id,template_param).then(() => {
-            //     console.log("success to send email");
-            // })
+            send(service_id,template_id,template_param).then(() => {
+                console.log("success to send email");
+            })
 
             setSent(true);
 
-            window.scrollTo(0, document.getElementsByClassName('thank-you')[0].offsetTop);
+            window.scrollTo(0, 0);
 
             // alert('送信')
-            // axios
+            axios
             // .post("https://getform.io/f/5e54e38e-f647-4a27-b27a-ea140781df50", {
             //     message: "Hello, World",
             // })
