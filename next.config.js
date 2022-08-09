@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['ktcp.jp'],
+    domains: ['xs849487.xsrv.jp'],
   },
 }
 
