@@ -6,7 +6,7 @@ import fetcher from './components/fetcher'
 import styles from '../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 
-function getDataFromWp() {
+function GetDataFromWp() {
   const { data, error } = useSWR([
     `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed`,
     `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`
@@ -49,7 +49,7 @@ function returnClassName (i) {
 }
 
 export default function Home() {
-  const { data, isLoading, isError } = getDataFromWp()
+  const { data, isLoading, isError } = GetDataFromWp()
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
       stiffness: 100,

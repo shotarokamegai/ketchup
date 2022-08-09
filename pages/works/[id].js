@@ -9,7 +9,7 @@ import fetcher from '../components/fetcher'
 import Content from '../components/content'
 import styles from '../../styles/Home.module.css'
 
-function getDataFromWp(id) {
+function GetDataFromWp(id) {
   const { data, error } = useSWR([
     `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts/${id}?_embed`,
     `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&exclude=${id}`,
@@ -27,7 +27,7 @@ function getDataFromWp(id) {
 export default function Work() {
     const router = useRouter(); 
     const { id } = router.query;
-    const { data, isLoading, isError } = getDataFromWp(id)
+    const { data, isLoading, isError } = GetDataFromWp(id)
     
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -54,10 +54,6 @@ export default function Work() {
       )
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [id]);
-
     const setGallery = (imgs) => {
       let html = '';
       for (let i = 0; i < imgs.length; i++) {
@@ -80,6 +76,11 @@ export default function Work() {
       }
       return(html)
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+
     if (isError) return(null)
     //ロード中
     if (isLoading) return(null)
