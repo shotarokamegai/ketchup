@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import List from './components/list'
 import useSWR from 'swr'
+import axios from "axios"
 import Content from './components/content'
 import fetcher from './components/fetcher'
 import styles from '../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
+
 
 function GetDataFromWp() {
   const { data, error } = useSWR([
@@ -48,7 +50,7 @@ function returnClassName (i) {
   return className;
 }
 
-export default function Home() {
+export default function Home(props) {
   const { data, isLoading, isError } = GetDataFromWp()
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -86,7 +88,6 @@ export default function Home() {
                   WORKS
               </p>
               <div className="inner">
-                  {(data[0].length !== 0 && data[1].length !== 0) ?
                   <ul className="flex">
                       {data[0].map((item, index) => {
                           let datum = {
@@ -112,9 +113,6 @@ export default function Home() {
                           )
                       })}
                   </ul>
-                  :
-                  <></>
-                  }
                   {/* {maxPage === page && <div className="btn flex flex-sp space-between align-center" onClick={loadWorks}>
                     <span className="text rocextrawideLight">LOAD MORE</span>
                     <Arrow className="white" />
@@ -125,4 +123,18 @@ export default function Home() {
       </Content>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const res1 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed`)
+  const res2 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`)
+  const posts = await res1.data
+  const cats = await res2.data
+
+  return {
+    props: {
+      posts,
+      cats
+    },
+  }
 }
