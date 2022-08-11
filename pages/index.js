@@ -1,5 +1,8 @@
+import React, { useState } from "react";
+
 import Image from 'next/image'
 import List from './components/list'
+import Arrow from './components/svg/arrow'
 import useSWR from 'swr'
 import axios from "axios"
 import Content from './components/content'
@@ -7,20 +10,6 @@ import fetcher from './components/fetcher'
 import styles from '../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 
-
-function GetDataFromWp(page) {
-  const { data, error } = useSWR([
-    `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed?page=${page}`,
-    `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`
-  ],
-  fetcher,
-  )
-  return {
-    data: data ? data : [],
-    isLoading: !data && !error,
-    isError: error,
-  }
-}
 
 function returnClassName (i) {
   let className = '';
@@ -51,19 +40,39 @@ function returnClassName (i) {
 }
 
 export default function Home(props) {
-  const { data, isLoading, isError } = GetDataFromWp()
   const { scrollYProgress } = useScroll();
+  const [page, setPage] = useState(1);
+  const [posts, setPosts] = useState(props.posts)
+  const [maxPage, setMaxPage] = useState(0);
   const scaleX = useSpring(scrollYProgress, {
       stiffness: 100,
       damping: 30,
       restDelta: 0.001
     });
+
+  getPageNum()
+
+  function getPageNum() {
+    async function a() {
+       const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts`);
+       const num = Number(res.headers['x-wp-totalpages']);
+
+       setMaxPage(num)
+    }
+    a()
+  }
   let i = 0
-  //エラー
-  if (isError) return(null)
-  //ロード中
-  if (isLoading) return(null)
-  //成功
+
+  function GetDataFromWp() {
+    async function a() {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&page=${page+1}`);
+        setPage((page) => page+1)
+        setPosts((posts) => posts.concat(res.data))
+    }
+    a()
+  }
+
+
   return(
     <div className={styles.container}>
       <Content>
@@ -89,7 +98,7 @@ export default function Home(props) {
               </p>
               <div className="inner">
                   <ul className="flex">
-                      {props.posts.map((item, index) => {
+                      {posts.map((item, index) => {
                           let datum = {
                               thisCategories: ''
                           };
@@ -113,10 +122,10 @@ export default function Home(props) {
                           )
                       })}
                   </ul>
-                  {/* {maxPage === page && <div className="btn flex flex-sp space-between align-center" onClick={loadWorks}>
+                  {maxPage > page && <div className="btn flex flex-sp space-between align-center" onClick={GetDataFromWp}>
                     <span className="text rocextrawideLight">LOAD MORE</span>
                     <Arrow className="white" />
-                  </div>} */}
+                  </div>}
               </div>
           </section>
         </main>
