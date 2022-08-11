@@ -41,8 +41,8 @@ function returnClassName (i) {
 
 export default function Home(props) {
   const { scrollYProgress } = useScroll();
-  const [page, setPage] = useState(1);
-  const [posts, setPosts] = useState(props.posts)
+//   const [page, setPage] = useState(1);
+//   const [posts, setPosts] = useState(props.posts)
   const [maxPage, setMaxPage] = useState(0);
   const scaleX = useSpring(scrollYProgress, {
       stiffness: 100,
@@ -50,7 +50,7 @@ export default function Home(props) {
       restDelta: 0.001
     });
 
-  getPageNum()
+//   getPageNum()
 
   function getPageNum() {
     async function a() {
@@ -98,7 +98,7 @@ export default function Home(props) {
               </p>
               <div className="inner">
                   <ul className="flex">
-                      {posts.map((item, index) => {
+                      {/* {posts.map((item, index) => {
                           let datum = {
                               thisCategories: ''
                           };
@@ -120,12 +120,12 @@ export default function Home(props) {
                           return(
                             <List key={index} {...datum} />
                           )
-                      })}
+                      })} */}
                   </ul>
-                  {maxPage > page && <div className="btn flex flex-sp space-between align-center" onClick={GetDataFromWp}>
+                  {/* {maxPage > page && <div className="btn flex flex-sp space-between align-center" onClick={GetDataFromWp}>
                     <span className="text rocextrawideLight">LOAD MORE</span>
                     <Arrow className="white" />
-                  </div>}
+                  </div>} */}
               </div>
           </section>
         </main>
@@ -134,16 +134,16 @@ export default function Home(props) {
   )
 }
 
-export async function getStaticProps() {
-  const res1 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed`)
-  const res2 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`)
-  const posts = await res1.data
-  const cats = await res2.data
+// export async function getStaticProps() {
+//   const res1 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed`)
+//   const res2 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`)
+//   const posts = await res1.data
+//   const cats = await res2.data
 
-  return {
-    props: {
-      posts,
-      cats
-    },
-  }
-}
+//   return {
+//     props: {
+//       posts,
+//       cats
+//     },
+//   }
+// }
