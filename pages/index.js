@@ -8,9 +8,9 @@ import styles from '../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 
 
-function GetDataFromWp() {
+function GetDataFromWp(page) {
   const { data, error } = useSWR([
-    `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed`,
+    `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed?page=${page}`,
     `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`
   ],
   fetcher,
@@ -89,16 +89,16 @@ export default function Home(props) {
               </p>
               <div className="inner">
                   <ul className="flex">
-                      {data[0].map((item, index) => {
+                      {props.posts.map((item, index) => {
                           let datum = {
                               thisCategories: ''
                           };
                           datum.index = index;
                           datum.item = item;
                           for (let i = 0; i < item.categories.length; i++) {
-                              for (let j = 0; j < data[1].length; j++) {
-                                  if (item.categories[i] === data[1][j].id && data[1][j].name !== 'Works') {
-                                      datum.thisCategories += ` ${data[1][j].name} /` 
+                              for (let j = 0; j < props.cats.length; j++) {
+                                  if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
+                                      datum.thisCategories += ` ${props.cats[j].name} /` 
                                   }
                               }
                           }
