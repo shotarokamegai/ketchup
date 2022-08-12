@@ -50,6 +50,9 @@ function Home(props) {
       damping: 30,
       restDelta: 0.001
     });
+  let i = 0
+
+  console.log(posts)
 
   getPageNum()
 
@@ -62,7 +65,6 @@ function Home(props) {
     }
     a()
   }
-  let i = 0
 
   function GetDataFromWp() {
     async function a() {
@@ -139,13 +141,14 @@ function Home(props) {
 export async function getStaticProps() {
   const res1 = await fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed`)
   const res2 = await fetch(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`)
+  
   const posts = await res1.json()
   const cats = await res2.json()
  
   return {
     props: {
-      posts,
-      cats
+      posts: posts,
+      cats: cats
     }
   }
 }
