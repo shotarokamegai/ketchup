@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Meta from './components/meta'
 import fetch from 'node-fetch'
 
 import Image from 'next/image'
@@ -52,6 +53,10 @@ function Home(props) {
       damping: 30,
       restDelta: 0.001
     });
+  const meta = {
+    title: '',
+    description: ''
+  }
   let i = 0
 
   getPageNum()
@@ -71,6 +76,7 @@ function Home(props) {
 
   return(
     <div className={styles.container}>
+      <Meta {...meta} />
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="home" className="main_">

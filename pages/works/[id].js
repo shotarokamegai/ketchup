@@ -37,8 +37,10 @@ export default function Work(props) {
       damping: 30,
       restDelta: 0.001
     });
+
     const meta = {
-      title: props.post.title.rendered
+      title: props.post.title.rendered,
+      description: ''
     }
 
     let i = 0
@@ -90,100 +92,98 @@ export default function Work(props) {
     // //ロード中
     // if (isLoading) return(null)
     return (
-      <>
-        <Meta {...meta} />
-        <div className={styles.container}>
-        <Content>
-          <motion.div className="progress-bar" style={{ scaleX }} />
-          <main id="work" className={`common main_ show`}>
-          {/* <main id="work" className={`common main_ ${data.length !== 0 && 'show'}`}> */}
-            <section id="top">
-              <div className="ruler">
-                  <h3 className="section-title rocextrawide red">WORK</h3>
-              </div>
+      <div className={styles.container}>
+      <Meta {...meta} />
+      <Content>
+        <motion.div className="progress-bar" style={{ scaleX }} />
+        <main id="work" className={`common main_ show`}>
+        {/* <main id="work" className={`common main_ ${data.length !== 0 && 'show'}`}> */}
+          <section id="top">
+            <div className="ruler">
+                <h3 className="section-title rocextrawide red">WORK</h3>
+            </div>
+            <p className="vertical rocextrawideLight">
+              WORK
+            </p>
+            <div className="ruler">
+                <div className="keyv-wrap">
+                  <div className="img">
+                    <Image layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered} />
+                  </div>
+                </div>
+                <div className="detail flex space-between">
+                  <div>
+                    <h2 className="title futura bold" dangerouslySetInnerHTML={{__html: props.post.title.rendered}}></h2>
+                    <p className="text" dangerouslySetInnerHTML={{__html: props.post.content.rendered}}></p>
+                  </div>
+                  <div>
+                    <a className="flex pc align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
+                      <span className="text rocextrawide red">VIEW SITE</span>
+                      <Arrow />
+                    </a>
+                    { getCategories(props.cats) }
+                    <div className="client">
+                      <p className="futura bold">Client</p>
+                      <p className="futura">{props.post['acf']['client']}</p>
+                    </div>
+                    <a className="flex sp flex-sp align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
+                      <span className="text rocextrawide red">VIEW SITE</span>
+                      <Arrow />
+                    </a>
+                  </div>
+                </div>
+                <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}>
+                </div>
+            </div>
+          </section>
+          <section className="works-wrapper other-works-wrapper">
+            <div className="ruler">
+                <h3 className="section-title rocextrawide red">OTHER WORKS</h3>
+            </div>
               <p className="vertical rocextrawideLight">
-                WORK
+                OTHER WORKS
               </p>
-              <div className="ruler">
-                  <div className="keyv-wrap">
-                    <div className="img">
-                      <Image layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered} />
-                    </div>
-                  </div>
-                  <div className="detail flex space-between">
-                    <div>
-                      <h2 className="title futura bold" dangerouslySetInnerHTML={{__html: props.post.title.rendered}}></h2>
-                      <p className="text" dangerouslySetInnerHTML={{__html: props.post.content.rendered}}></p>
-                    </div>
-                    <div>
-                      <a className="flex pc align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
-                        <span className="text rocextrawide red">VIEW SITE</span>
-                        <Arrow />
-                      </a>
-                      { getCategories(props.cats) }
-                      <div className="client">
-                        <p className="futura bold">Client</p>
-                        <p className="futura">{props.post['acf']['client']}</p>
-                      </div>
-                      <a className="flex sp flex-sp align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
-                        <span className="text rocextrawide red">VIEW SITE</span>
-                        <Arrow />
-                      </a>
-                    </div>
-                  </div>
-                  <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}>
-                  </div>
-              </div>
-            </section>
-            <section className="works-wrapper other-works-wrapper">
-              <div className="ruler">
-                  <h3 className="section-title rocextrawide red">OTHER WORKS</h3>
-              </div>
-                <p className="vertical rocextrawideLight">
-                  OTHER WORKS
-                </p>
-              <div className="ruler">
-                <div className="inner">
-                    <ul className="flex flex-sp">
-                        {props.posts.map((item, index) => {
-                            let thisCategories = '';
-                            for (let i = 0; i < item.categories.length; i++) {
-                                for (let j = 0; j < props.cats.length; j++) {
-                                    if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
-                                        thisCategories += ` ${props.cats[j].name} /` 
-                                    }
-                                }
-                            }
-                            if (index < 9) {
-                              return(
-                                  <li key={index}>
-                                      <Link href={`/works/${item.id}`}>
-                                        <a>
-                                          <div className="img">
-                                              <Image layout='fill' objectFit="contain" src={item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} alt="" />
-                                          </div>
-                                          <div className="detail">
-                                              <p className="title bold futura" dangerouslySetInnerHTML={{__html: item.title.rendered}}></p>
-                                              <p className="categories futura">
-                                                  {thisCategories.slice( 0, -1 )}
-                                              </p>
-                                          </div>
-                                        </a>
-                                      </Link>
-                                  </li>
-                              )
-                            } else {
-                              return (null)
-                            }
-                        })}
-                    </ul>
-                  </div>
-              </div>
-            </section>
-          </main>
-          </Content>
-        </div>
-      </>
+            <div className="ruler">
+              <div className="inner">
+                  <ul className="flex flex-sp">
+                      {props.posts.map((item, index) => {
+                          let thisCategories = '';
+                          for (let i = 0; i < item.categories.length; i++) {
+                              for (let j = 0; j < props.cats.length; j++) {
+                                  if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
+                                      thisCategories += ` ${props.cats[j].name} /` 
+                                  }
+                              }
+                          }
+                          if (index < 9) {
+                            return(
+                                <li key={index}>
+                                    <Link href={`/works/${item.id}`}>
+                                      <a>
+                                        <div className="img">
+                                            <Image layout='fill' objectFit="contain" src={item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} alt="" />
+                                        </div>
+                                        <div className="detail">
+                                            <p className="title bold futura" dangerouslySetInnerHTML={{__html: item.title.rendered}}></p>
+                                            <p className="categories futura">
+                                                {thisCategories.slice( 0, -1 )}
+                                            </p>
+                                        </div>
+                                      </a>
+                                    </Link>
+                                </li>
+                            )
+                          } else {
+                            return (null)
+                          }
+                      })}
+                  </ul>
+                </div>
+            </div>
+          </section>
+        </main>
+        </Content>
+      </div>
     )
 }
 

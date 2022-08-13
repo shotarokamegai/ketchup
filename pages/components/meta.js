@@ -14,7 +14,6 @@ export default function Meta(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
       <meta name="twitter:card" content="summary_large_image"/>
-      <link rel="stylesheet" href="//use.typekit.net/ueg2vna.css"/>
     </Head>
   )
 }

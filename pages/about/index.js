@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Meta from './../components/meta'
+import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 import Content from '../components/content'
@@ -13,12 +13,12 @@ export default function About() {
       restDelta: 0.001
     });
   const meta = {
-    title: 'ABOUT'
+    title: 'ABOUT',
+    description: ''
   }
   return (
-    <>
-      <Meta {...meta} />
       <div className={styles.container}>
+        <Meta {...meta} />
         <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
           <main id="about" className="common main_">
@@ -85,6 +85,5 @@ export default function About() {
           </main>
         </Content>
       </div>
-    </>
   )
 }
