@@ -12,9 +12,12 @@ export default function Meta(props) {
       <meta property="description" content={description} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={`${process.env.SITE_URL}/ogp.jpg`} />
+      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
       <meta name="twitter:card" content="summary_large_image"/>
       <link rel="stylesheet" href="//use.typekit.net/ueg2vna.css"/>
     </Head>
   )
 }
+
+// export const getStaticPaths = async () => {
+// }

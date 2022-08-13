@@ -16,7 +16,7 @@ export default function Header(props) {
     setIsOpen(false)
   }, [pathname])
   return(
-    <header id="header" className={isOpen ? 'show' : (pathname === '/' && 'hide')}>
+    <header id="header" className={(isOpen && pathname !== '/')? 'show' : 'hide'}>
       <h1>
         <Link href="/">
           <a>

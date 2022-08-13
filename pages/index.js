@@ -56,23 +56,16 @@ function Home(props) {
 
   getPageNum()
 
-  function getPageNum() {
-    async function a() {
-       const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts`);
-       const num = Number(res.headers['x-wp-totalpages']);
-
-       setMaxPage(num)
-    }
-    a()
+  async function getPageNum() {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts`);
+    const num = Number(res.headers['x-wp-totalpages']);
+    setMaxPage(num)
   }
 
-  function GetDataFromWp() {
-    async function a() {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&page=${page+1}`);
-        setPage((page) => page+1)
-        setPosts((posts) => posts.concat(res.data))
-    }
-    a()
+  async function GetDataFromWp() {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&page=${page+1}`);
+    setPage((page) => page+1)
+    setPosts((posts) => posts.concat(res.data))
   }
 
 
@@ -148,8 +141,6 @@ export async function getStaticProps() {
     props: {
       posts,
       cats
-    //   posts: JSON.parse(JSON.stringify(posts)),
-    //   cats:  JSON.parse(JSON.stringify(cats))
     }
   }
 }

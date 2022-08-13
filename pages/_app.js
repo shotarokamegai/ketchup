@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Header from './components/header'
-import Meta from './components/meta'
+// import Meta from './components/meta'
 import AnimatedPage from './components/animatedPage';
 import '../styles/scss/style.scss'
 
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
 
   return mounted ? 
     <>
-      <Meta {...meta} />
+      {/* <Meta {...meta} /> */}
       <Header routes={routes} />
       <AnimatedPage>
         <Component {...pageProps} /> 

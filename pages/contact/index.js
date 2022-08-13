@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Meta from './../components/meta'
 import {init,sendForm,send} from 'emailjs-com';
 import Head from 'next/head'
 import Image from 'next/image'
@@ -28,6 +29,9 @@ export default function Contact() {
         damping: 30,
         restDelta: 0.001
       });
+    const meta = {
+      title: 'CONTACT'
+    }
 
     const handleSubmit = () => {
         for (let i = 0; i < arry.length; i++) {
@@ -119,118 +123,121 @@ export default function Contact() {
         checkValue(name, value)
     }
     return (
-        <div className={styles.container}>
-            <Content>
-            <motion.div className="progress-bar" style={{ scaleX }} />
-                <main id="contact" className="common main_">
-                    <section id="top">
-                        <div className="ruler">
-                            <h3 className="section-title rocextrawide red">CONTACT</h3>
-                            {sent &&
-                                <div className="thank-you">
-                                    <p className="roc red">Thanks for reaching out.<br />
-                                    We will get back soon.
-                                    </p>
-                                </div>
-                            }
-                        </div>
-                    </section>
-                    <section>
-                        <p className="vertical rocextrawideLight">
-                            CONTACT
-                        </p>
-                        <div className="ruler">
-                        <form
-                          action="https://getform.io/f/5e54e38e-f647-4a27-b27a-ea140781df50"
-                          method="POST"
-                        >
-                          <div>
-                            <label className="bold" htmlFor="company">貴社名</label>
-                            <input 
-                            name="company" 
-                            type="text" 
-                            value={company}
-                            onChange={(e) => {
-                              setCompany(e.target.value)
-                            }}
-                            />
-                          </div>
-                          <div>
-                            <label className="bold" htmlFor="name">ご担当社名※</label>
-                            <input 
-                                name="name" 
+        <>
+            <Meta {...meta} />
+            <div className={styles.container}>
+                <Content>
+                <motion.div className="progress-bar" style={{ scaleX }} />
+                    <main id="contact" className="common main_">
+                        <section id="top">
+                            <div className="ruler">
+                                <h3 className="section-title rocextrawide red">CONTACT</h3>
+                                {sent &&
+                                    <div className="thank-you">
+                                        <p className="roc red">Thanks for reaching out.<br />
+                                        We will get back soon.
+                                        </p>
+                                    </div>
+                                }
+                            </div>
+                        </section>
+                        <section>
+                            <p className="vertical rocextrawideLight">
+                                CONTACT
+                            </p>
+                            <div className="ruler">
+                            <form
+                              action="https://getform.io/f/5e54e38e-f647-4a27-b27a-ea140781df50"
+                              method="POST"
+                            >
+                              <div>
+                                <label className="bold" htmlFor="company">貴社名</label>
+                                <input 
+                                name="company" 
                                 type="text" 
-                                value={name}
+                                value={company}
                                 onChange={(e) => {
-                                  setName(e.target.value)
+                                  setCompany(e.target.value)
                                 }}
-                                onBlur={handleBlur}
-                                required
-                            />
-                            {nameError && <p className="error">{nameError}</p>}
-                          </div>
-                          <div>
-                            <label className="bold" htmlFor="email">メールアドレス※</label>
-                            <input 
-                                name="email" 
-                                type="email" 
-                                value={email}
-                                onChange={(e) => {
-                                  setEmail(e.target.value)
-                                }}
-                                onBlur={handleBlur}
-                                required
-                            />
-                            {emailError && <p className="error">{emailError}</p>}
-                          </div>
-                          <div>
-                            <label className="bold" htmlFor="tel">電話番号※</label>
-                            <input
-                                name="tel"
-                                type="tel"
-                                value={tel}
-                                onChange={(e) => {
-                                  setTel(e.target.value)
-                                }}
-                                onBlur={handleBlur}
-                                required
-                            />
-                            {telError && <p className="error">{telError}</p>}
-                          </div>
-                          <div>
-                            <label className="bold" htmlFor="subject">件名</label>
-                            <input 
-                                name="subject" 
-                                type="text" 
-                                value={subject}
-                                onChange={(e) => {
-                                  setSubject(e.target.value)
-                                }}
-                            />
-                          </div>
-                          <div>
-                            <label className="bold" htmlFor="content">お問い合わせ内容※</label>
-                            <textarea 
-                                name="content" 
-                                type="text" 
-                                rows="10" 
-                                value={content}
-                                onChange={(e) => {
-                                  setContent(e.target.value)
-                                }}
-                                required
-                            ></textarea>
-                            {contentError && <p className="error">{contentError}</p>}
-                          </div>
-                          <div className="btn flex flex-sp space-between align-center" onClick={handleSubmit}>
-                            <span className="text rocextrawideLight">SEND</span>
-                            <Arrow className="white" />
-                          </div>
-                        </form>
-                        </div>
-                    </section>
-                </main>
-            </Content>
-        </div>
+                                />
+                              </div>
+                              <div>
+                                <label className="bold" htmlFor="name">ご担当社名※</label>
+                                <input 
+                                    name="name" 
+                                    type="text" 
+                                    value={name}
+                                    onChange={(e) => {
+                                      setName(e.target.value)
+                                    }}
+                                    onBlur={handleBlur}
+                                    required
+                                />
+                                {nameError && <p className="error">{nameError}</p>}
+                              </div>
+                              <div>
+                                <label className="bold" htmlFor="email">メールアドレス※</label>
+                                <input 
+                                    name="email" 
+                                    type="email" 
+                                    value={email}
+                                    onChange={(e) => {
+                                      setEmail(e.target.value)
+                                    }}
+                                    onBlur={handleBlur}
+                                    required
+                                />
+                                {emailError && <p className="error">{emailError}</p>}
+                              </div>
+                              <div>
+                                <label className="bold" htmlFor="tel">電話番号※</label>
+                                <input
+                                    name="tel"
+                                    type="tel"
+                                    value={tel}
+                                    onChange={(e) => {
+                                      setTel(e.target.value)
+                                    }}
+                                    onBlur={handleBlur}
+                                    required
+                                />
+                                {telError && <p className="error">{telError}</p>}
+                              </div>
+                              <div>
+                                <label className="bold" htmlFor="subject">件名</label>
+                                <input 
+                                    name="subject" 
+                                    type="text" 
+                                    value={subject}
+                                    onChange={(e) => {
+                                      setSubject(e.target.value)
+                                    }}
+                                />
+                              </div>
+                              <div>
+                                <label className="bold" htmlFor="content">お問い合わせ内容※</label>
+                                <textarea 
+                                    name="content" 
+                                    type="text" 
+                                    rows="10" 
+                                    value={content}
+                                    onChange={(e) => {
+                                      setContent(e.target.value)
+                                    }}
+                                    required
+                                ></textarea>
+                                {contentError && <p className="error">{contentError}</p>}
+                              </div>
+                              <div className="btn flex flex-sp space-between align-center" onClick={handleSubmit}>
+                                <span className="text rocextrawideLight">SEND</span>
+                                <Arrow className="white" />
+                              </div>
+                            </form>
+                            </div>
+                        </section>
+                    </main>
+                </Content>
+            </div>
+        </>
     )
 }
