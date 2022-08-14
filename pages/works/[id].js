@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import WP from 'wpapi'
 import Meta from './../components/meta'
 import axios from "axios"
 import Image from 'next/image'
@@ -187,7 +188,22 @@ export default function Work(props) {
     )
 }
 
-export async function getServerSideProps({params}) {
+export async function getStaticPaths() {
+  const wpClient = new WP({
+    endpoint: `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json`
+  })
+  const posts = await wpClient.posts()
+  return {
+      paths: posts.map(post => ({
+          params: {
+            id: String(post.id)
+          }
+      })),
+      fallback: false
+  }
+}
+
+export async function getStaticProps({params}) {
   const res1 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts/${params.id}?_embed`)
   const res2 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`)
   const res3 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&exclude=${params.id}`)
