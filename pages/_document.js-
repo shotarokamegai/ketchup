@@ -1,17 +1,12 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 // import Meta from "./components/meta";
 
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
-  }
-
-  render() {
+  function MyDocument(props) {
+    console.log(props)
     return (
       <Html>
         <Head>
-            <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}`} />
+            <meta property="og:url" content={`${props.page}`} />
             <meta property="og:type" content="website" />
             <meta property="description" content="Ketchup Inc." />
             <meta property="og:title" content="Ketchup Inc." />
@@ -24,9 +19,14 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
-  }
+  );
 }
 
 export default MyDocument;
+
+export async function getInitialProps(ctx) {
+  const initialProps = await Document.getInitialProps(ctx);
+  return { ...initialProps };
+}
+
 
