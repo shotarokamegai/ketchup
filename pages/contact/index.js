@@ -119,7 +119,9 @@ export default function Contact() {
     }
     return (
         <div className={styles.container}>
-            <NextSeo title="CONTACT" />
+            <NextSeo title="CONTACT | Ketchup Inc." opentGraph={{
+              title: "CONTACT | Ketchup Inc.",
+            }}/>
             <Content>
             <motion.div className="progress-bar" style={{ scaleX }} />
                 <main id="contact" className="common main_">

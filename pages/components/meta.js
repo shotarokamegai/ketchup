@@ -5,13 +5,10 @@ import { useRouter } from "next/router";
 export default function Meta(props) {
   const router = useRouter();
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`;
-  const titleJa = "株式会社Ketchup";
-  const titleEn = "Ketchup Inc.";
-  const title = props.title !== '' ? `${props.title} | ${titleEn}` : titleEn;
-  const description = titleEn;
+  const title = "Ketchup Inc.";
+  const description = title;
 
   return (
-    <Head>
       <DefaultSeo
           defaultTitle={title}
           canonical={url}
@@ -46,9 +43,10 @@ export default function Meta(props) {
               alt: title,
              }],
           }}
+          twitter={{
+            cardType: "summary_large_image",
+          }}
         />
-      {/* <link rel="stylesheet" href="//use.typekit.net/ueg2vna.css" key="font" /> */}
-    </Head>
     // <Head>
     //   <title>{title}</title>
     //   <meta property="og:url" content={url} />
