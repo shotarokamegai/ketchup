@@ -18,9 +18,13 @@ export default function About() {
   }
   return (
     <>
-        <NextSeo title="ABOUT | Ketchup Inc." opentGraph={{
+        {/* <NextSeo title="ABOUT | Ketchup Inc." opentGraph={{
           title: "ABOUT | Ketchup Inc.",
-        }}/>
+        }}/> */}
+    <Head>
+      <title>ABOUT TEST</title>
+      <meta property="og:title" content="ABOUT TEST" />
+    </Head>
       <div className={styles.container}>
         <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
