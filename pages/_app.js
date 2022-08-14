@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} /> 
       </AnimatedPage>
     </>
-    : <div/>;
+    : <Meta />;
 }
 
 export default MyApp;
