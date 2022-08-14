@@ -14,9 +14,7 @@ export default function Meta(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
       <meta name="twitter:card" content="summary_large_image"/>
+      <link rel="icon" href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`} />
     </Head>
   )
 }
-
-// export const getStaticPaths = async () => {
-// }
