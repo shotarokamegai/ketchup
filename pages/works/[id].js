@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { NextSeo } from 'next-seo'
 import WP from 'wpapi'
 import axios from "axios"
 import Image from 'next/image'
@@ -37,11 +38,6 @@ export default function Work(props) {
       damping: 30,
       restDelta: 0.001
     });
-
-    const meta = {
-      title: props.post.title.rendered,
-      description: ''
-    }
 
     let i = 0
 
@@ -93,6 +89,7 @@ export default function Work(props) {
     // if (isLoading) return(null)
     return (
       <div className={styles.container}>
+      <NextSeo title={props.post.title.rendered} />
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="work" className={`common main_ show`}>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import fetch from 'node-fetch'
 
+import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import List from './components/list'
 import Arrow from './components/svg/arrow'
@@ -75,6 +76,7 @@ function Home(props) {
 
   return(
     <div className={styles.container}>
+      <NextSeo title="Ketchup Inc." />
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="home" className="main_">

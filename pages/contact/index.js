@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NextSeo } from 'next-seo'
 import {init,sendForm,send} from 'emailjs-com';
 import Arrow from '../components/svg/arrow'
 import styles from '../../styles/Home.module.css'
@@ -26,11 +27,6 @@ export default function Contact() {
         damping: 30,
         restDelta: 0.001
       });
-
-    const meta = {
-      title: 'CONTACT',
-      description: ''
-    }
 
     const handleSubmit = () => {
         for (let i = 0; i < arry.length; i++) {
@@ -123,6 +119,7 @@ export default function Contact() {
     }
     return (
         <div className={styles.container}>
+            <NextSeo title="CONTACT" />
             <Content>
             <motion.div className="progress-bar" style={{ scaleX }} />
                 <main id="contact" className="common main_">
