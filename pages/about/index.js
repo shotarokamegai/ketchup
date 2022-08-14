@@ -17,10 +17,11 @@ export default function About() {
     description: ''
   }
   return (
-      <div className={styles.container}>
+    <>
         <NextSeo title="ABOUT | Ketchup Inc." opentGraph={{
           title: "ABOUT | Ketchup Inc.",
         }}/>
+      <div className={styles.container}>
         <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
           <main id="about" className="common main_">
@@ -87,5 +88,6 @@ export default function About() {
           </main>
         </Content>
       </div>
+    </>
   )
 }

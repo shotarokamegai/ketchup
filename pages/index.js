@@ -75,10 +75,11 @@ function Home(props) {
 
 
   return(
-    <div className={styles.container}>
+    <>
       <NextSeo title={`Ketchup Inc.`} opentGraph={{
               title: `Ketchup Inc.`
             }}/>
+    <div className={styles.container}>
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="home" className="main_">
@@ -136,6 +137,7 @@ function Home(props) {
         </main>
       </Content>
     </div>
+    </>
   )
 }
 

@@ -88,10 +88,11 @@ export default function Work(props) {
     // //ロード中
     // if (isLoading) return(null)
     return (
-      <div className={styles.container}>
+      <>
       <NextSeo title={`${props.post.title.rendered} | Ketchup Inc.`} opentGraph={{
               title: `${props.post.title.rendered} | Ketchup Inc.`
             }}/>
+      <div className={styles.container}>
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="work" className={`common main_ show`}>
@@ -182,6 +183,7 @@ export default function Work(props) {
         </main>
         </Content>
       </div>
+      </>
     )
 }
 

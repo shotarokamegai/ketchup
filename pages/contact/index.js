@@ -118,10 +118,11 @@ export default function Contact() {
         checkValue(name, value)
     }
     return (
-        <div className={styles.container}>
+        <>
             <NextSeo title="CONTACT | Ketchup Inc." opentGraph={{
               title: "CONTACT | Ketchup Inc.",
             }}/>
+        <div className={styles.container}>
             <Content>
             <motion.div className="progress-bar" style={{ scaleX }} />
                 <main id="contact" className="common main_">
@@ -234,5 +235,6 @@ export default function Contact() {
                 </main>
             </Content>
         </div>
+        </>
     )
 }
