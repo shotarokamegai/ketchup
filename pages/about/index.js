@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Meta from './../components/meta'
+import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -18,7 +18,7 @@ export default function About() {
   }
   return (
       <div className={styles.container}>
-        <Meta {...meta} />
+        <NextSeo title="ABOUT" />
         <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
           <main id="about" className="common main_">

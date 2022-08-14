@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Head from 'next/head'
 import { useRouter } from "next/router";
 import Header from './components/header'
 import AnimatedPage from './components/animatedPage';
@@ -23,9 +22,6 @@ function MyApp({ Component, pageProps }) {
 
   return mounted ? 
     <>
-      <Head>
-        <link rel="stylesheet" href="//use.typekit.net/ueg2vna.css" key="font" />
-      </Head>
       <Header routes={routes} />
       <AnimatedPage>
         <Component {...pageProps} /> 

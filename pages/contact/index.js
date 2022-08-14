@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Meta from './../components/meta'
 import {init,sendForm,send} from 'emailjs-com';
 import Arrow from '../components/svg/arrow'
 import styles from '../../styles/Home.module.css'
@@ -124,7 +123,6 @@ export default function Contact() {
     }
     return (
         <div className={styles.container}>
-            <Meta {...meta} />
             <Content>
             <motion.div className="progress-bar" style={{ scaleX }} />
                 <main id="contact" className="common main_">

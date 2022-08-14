@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Meta from './components/meta'
 import fetch from 'node-fetch'
 
 import Image from 'next/image'
@@ -76,7 +75,6 @@ function Home(props) {
 
   return(
     <div className={styles.container}>
-      <Meta {...meta} />
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="home" className="main_">

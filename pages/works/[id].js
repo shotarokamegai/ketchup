@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import WP from 'wpapi'
-import Meta from './../components/meta'
 import axios from "axios"
 import Image from 'next/image'
 import Link from 'next/link'
@@ -94,7 +93,6 @@ export default function Work(props) {
     // if (isLoading) return(null)
     return (
       <div className={styles.container}>
-      <Meta {...meta} />
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="work" className={`common main_ show`}>
