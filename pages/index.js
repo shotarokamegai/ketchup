@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import Head from 'next/head'
 import fetch from 'node-fetch'
 
-import { NextSeo } from 'next-seo'
+// import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import List from './components/list'
 import Arrow from './components/svg/arrow'
@@ -76,9 +77,16 @@ function Home(props) {
 
   return(
     <>
-      <NextSeo title={`Ketchup Inc.`} opentGraph={{
-              title: `Ketchup Inc.`
-            }}/>
+    <Head>
+        <title>Ketchup Inc.</title>
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}`} />
+        <meta property="og:type" content="website" />
+        <meta property="description" content="Ketchup Inc." />
+        <meta property="og:title" content="Ketchup Inc." />
+        <meta property="og:description" content="Ketchup Inc." />
+        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
+        <meta name="twitter:card" content="summary_large_image"/>
+    </Head>
     <div className={styles.container}>
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />

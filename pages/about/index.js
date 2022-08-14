@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -18,12 +17,15 @@ export default function About() {
   }
   return (
     <>
-        {/* <NextSeo title="ABOUT | Ketchup Inc." opentGraph={{
-          title: "ABOUT | Ketchup Inc.",
-        }}/> */}
     <Head>
-      <title>ABOUT TEST</title>
-      <meta property="og:title" content="ABOUT TEST" />
+        <title>ABOUT | Ketchup Inc.</title>
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ABOUT/`} />
+        <meta property="og:type" content="website" />
+        <meta property="description" content="Ketchup Inc." />
+        <meta property="og:title" content="ABOUT | Ketchup Inc." />
+        <meta property="og:description" content="Ketchup Inc." />
+        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
+        <meta name="twitter:card" content="summary_large_image"/>
     </Head>
       <div className={styles.container}>
         <Content>

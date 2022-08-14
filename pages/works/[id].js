@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { NextSeo } from 'next-seo'
+import Head from 'next/head'
 import WP from 'wpapi'
 import axios from "axios"
 import Image from 'next/image'
@@ -89,9 +89,16 @@ export default function Work(props) {
     // if (isLoading) return(null)
     return (
       <>
-      <NextSeo title={`${props.post.title.rendered} | Ketchup Inc.`} opentGraph={{
-              title: `${props.post.title.rendered} | Ketchup Inc.`
-            }}/>
+    <Head>
+        <title>{`${props.post.title.rendered} | Ketchup Inc.`}</title>
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
+        <meta property="og:type" content="website" />
+        <meta property="description" content="Ketchup Inc." />
+        <meta property="og:title" content={`${props.post.title.rendered} | Ketchup Inc.`} />
+        <meta property="og:description" content="Ketchup Inc." />
+        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
+        <meta name="twitter:card" content="summary_large_image"/>
+    </Head>
       <div className={styles.container}>
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />

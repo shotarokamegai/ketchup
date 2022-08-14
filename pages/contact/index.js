@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NextSeo } from 'next-seo'
+import Head from 'next/head'
 import {init,sendForm,send} from 'emailjs-com';
 import Arrow from '../components/svg/arrow'
 import styles from '../../styles/Home.module.css'
@@ -119,9 +119,16 @@ export default function Contact() {
     }
     return (
         <>
-            <NextSeo title="CONTACT | Ketchup Inc." opentGraph={{
-              title: "CONTACT | Ketchup Inc.",
-            }}/>
+    <Head>
+        <title>CONTACT | Ketchup Inc.</title>
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}/contact/`} />
+        <meta property="og:type" content="website" />
+        <meta property="description" content="Ketchup Inc." />
+        <meta property="og:title" content="CONTACT | Ketchup Inc." />
+        <meta property="og:description" content="Ketchup Inc." />
+        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
+        <meta name="twitter:card" content="summary_large_image"/>
+    </Head>
         <div className={styles.container}>
             <Content>
             <motion.div className="progress-bar" style={{ scaleX }} />
