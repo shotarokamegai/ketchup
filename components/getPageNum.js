@@ -15,7 +15,7 @@ export default async function getStaticProps() {
     // }
     // setMounted(true)
     // return axios.get(`${process.env.REACT_APP_API_URL}/wp-json/wp/v2/categories`)
-    console.log(response)
+    // console.log(response)
     return {
       props: {
         response,

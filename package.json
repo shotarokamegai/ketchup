@@ -12,7 +12,7 @@
     "axios": "^0.27.2",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^7.0.0",
-    "next": "12.2.4",
+    "next": "^12.2.6-canary.0",
     "next-seo": "^5.5.0",
     "node-fetch": "^3.2.10",
     "react": "18.2.0",

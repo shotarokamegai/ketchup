@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Head from 'next/head'
 import {init,sendForm,send} from 'emailjs-com';
-import Arrow from '../components/svg/arrow'
+import Arrow from '../../components/svg/arrow'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
-import Content from '../components/content'
+import Content from '../../components/content'
 
 export default function Contact() {
     const [company, setCompany] = useState('');

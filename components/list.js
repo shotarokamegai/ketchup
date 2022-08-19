@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export default function List(props) {
+  console.log(props.item._embedded['wp:featuredmedia'])
   return(
     <li className={props.className}>
       <Link href={props.item ? `/works/${props.item.id}` : ''}>

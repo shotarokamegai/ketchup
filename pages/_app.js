@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+// import Meta from "../components/meta";
 import { useRouter } from "next/router";
-import Header from './components/header'
-import AnimatedPage from './components/animatedPage';
+import Header from '../components/header'
+import AnimatedPage from '../components/animatedPage';
 import '../styles/scss/style.scss'
 
 const routes = [
@@ -20,14 +21,25 @@ function MyApp({ Component, pageProps }) {
     setMounted(true);
   }, []);
 
-  return mounted ? 
+  return(
+
     <>
+      {/* <Meta /> */}
       <Header routes={routes} />
       <AnimatedPage>
         <Component {...pageProps} /> 
       </AnimatedPage>
     </>
-    : <div/>;
+  )
+  // return mounted ? 
+  //   <>
+  //     {/* <Meta /> */}
+  //     <Header routes={routes} />
+  //     <AnimatedPage>
+  //       <Component {...pageProps} /> 
+  //     </AnimatedPage>
+  //   </>
+  //   : <div/>;
 }
 
 export default MyApp;

@@ -4,12 +4,12 @@ import fetch from 'node-fetch'
 
 // import { NextSeo } from 'next-seo'
 import Image from 'next/image'
-import List from './components/list'
-import Arrow from './components/svg/arrow'
+import List from '../components/list'
+import Arrow from '../components/svg/arrow'
 import useSWR from 'swr'
 import axios from "axios"
-import Content from './components/content'
-import fetcher from './components/fetcher'
+import Content from '../components/content'
+import fetcher from '../components/fetcher'
 import styles from '../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 

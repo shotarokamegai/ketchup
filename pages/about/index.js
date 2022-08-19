@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
-import Content from '../components/content'
+import Content from '../../components/content'
 
 export default function About() {
   const { scrollYProgress } = useScroll();
@@ -19,7 +19,7 @@ export default function About() {
     <>
     <Head>
         <title>ABOUT | Ketchup Inc.</title>
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ABOUT/`} />
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}/about/`} />
         <meta property="og:type" content="website" />
         <meta property="description" content="Ketchup Inc." />
         <meta property="og:title" content="ABOUT | Ketchup Inc." />

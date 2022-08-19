@@ -6,10 +6,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr'
 import { useRouter } from "next/router";
-import Arrow from '../components/svg/arrow';
+import Arrow from '../../components/svg/arrow';
 import { motion, useScroll, useSpring } from "framer-motion";
-import fetcher from '../components/fetcher'
-import Content from '../components/content'
+// import fetcher from '../../components/fetcher'
+import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
 
 // function GetDataFromWp(id) {
