@@ -98,7 +98,7 @@ function Home(props) {
         function gtag(){window.dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', ${process.env.NEXT_PUBLIC_GTAG});
+        gtag('config', ${parseInt(process.env.NEXT_PUBLIC_GTAG)});
       `}
     </Script>
     <div className={styles.container}>
