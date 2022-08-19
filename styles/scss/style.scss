@@ -8,6 +8,7 @@
 @import "//use.typekit.net/ueg2vna.css";
 
 body {
+  font-weight: normal;
   overscroll-behavior-y: none;
 }
 
@@ -917,6 +918,7 @@ body {
   .vertical {
     position: sticky;
     top: rem(130);
+    left: 0;
     @include fontsize(16);
     color: $red;
     writing-mode: vertical-rl;

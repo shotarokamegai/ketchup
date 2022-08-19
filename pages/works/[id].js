@@ -81,8 +81,17 @@ export default function Work(props) {
       return(html)
     }
 
+    const playVideo = () => {
+      let video = document.getElementsByTagName('video')
+      if (video.length !== 0) {
+        for (let i = 0; i < video.length; i++) {
+          video[i].play()
+        }
+      }
+    }
+
     useEffect(() => {
-        window.scrollTo(0, 0);
+        playVideo()
     }, [id]);
 
     // if (isError) return(null)
