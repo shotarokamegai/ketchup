@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Head from 'next/head'
+import Script from 'next/script'
 import WP from 'wpapi'
 import axios from "axios"
 import Image from 'next/image'
@@ -90,15 +91,28 @@ export default function Work(props) {
     return (
       <>
     <Head>
-        <title>{`${props.post.title.rendered} | Ketchup Inc.`}</title>
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
-        <meta property="og:type" content="website" />
-        <meta property="description" content="Ketchup Inc." />
-        <meta property="og:title" content={`${props.post.title.rendered} | Ketchup Inc.`} />
-        <meta property="og:description" content="Ketchup Inc." />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
-        <meta name="twitter:card" content="summary_large_image"/>
-    </Head>
+      <title>{`${props.post.title.rendered} | Ketchup Inc.`}</title>
+      <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
+      <meta property="og:type" content="website" />
+      <meta property="description" content="Ketchup Inc." />
+      <meta property="og:title" content={`${props.post.title.rendered} | Ketchup Inc.`} />
+      <meta property="og:description" content="Ketchup Inc." />
+      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
+      <meta name="twitter:card" content="summary_large_image"/>
+      </Head>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
+      strategy="afterInteractive"
+    />
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', ${process.env.NEXT_PUBLIC_GTAG});
+      `}
+    </Script>
       <div className={styles.container}>
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />

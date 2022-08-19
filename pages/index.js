@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Head from 'next/head'
+import Script from 'next/script'
 import fetch from 'node-fetch'
 
 // import { NextSeo } from 'next-seo'
@@ -78,15 +79,28 @@ function Home(props) {
   return(
     <>
     <Head>
-        <title>Ketchup Inc.</title>
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}`} />
-        <meta property="og:type" content="website" />
-        <meta property="description" content="Ketchup Inc." />
-        <meta property="og:title" content="Ketchup Inc." />
-        <meta property="og:description" content="Ketchup Inc." />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
-        <meta name="twitter:card" content="summary_large_image"/>
+      <title>Ketchup Inc.</title>
+      <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}`} />
+      <meta property="og:type" content="website" />
+      <meta property="description" content="Ketchup Inc." />
+      <meta property="og:title" content="Ketchup Inc." />
+      <meta property="og:description" content="Ketchup Inc." />
+      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
+      <meta name="twitter:card" content="summary_large_image"/>
     </Head>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
+      strategy="afterInteractive"
+    />
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', ${process.env.NEXT_PUBLIC_GTAG});
+      `}
+    </Script>
     <div className={styles.container}>
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />

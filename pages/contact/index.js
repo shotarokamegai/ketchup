@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Script from 'next/script'
 import Head from 'next/head'
 import {init,sendForm,send} from 'emailjs-com';
 import Arrow from '../../components/svg/arrow'
@@ -129,6 +130,19 @@ export default function Contact() {
         <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
         <meta name="twitter:card" content="summary_large_image"/>
     </Head>
+        <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', ${process.env.NEXT_PUBLIC_GTAG});
+        `}
+      </Script>
         <div className={styles.container}>
             <Content>
             <motion.div className="progress-bar" style={{ scaleX }} />

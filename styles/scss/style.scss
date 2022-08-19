@@ -1,3 +1,4 @@
+@charset "utf-8";
 @import "./property";
 @import "./mixin";
 
@@ -5,7 +6,6 @@
 @import "./animation";
 
 @import "//use.typekit.net/ueg2vna.css";
-@charset "utf-8";
 
 body {
   overscroll-behavior-y: none;

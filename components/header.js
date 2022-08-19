@@ -8,12 +8,24 @@ export default function Header(props) {
   const router = useRouter();
   const pathname = router.pathname;
   const [isOpen, setIsOpen] = useState(false)
+  const checkLocation = () => {
+    const menuLink = document.getElementsByClassName('menu-link');
+    for (let i = 0; i < menuLink.length; i++) {
+        let thisMenuLink = menuLink[i]
+        if (thisMenuLink.getAttribute('data-pathname') === location.pathname) {
+            thisMenuLink.classList.add('active');
+        } else {
+            thisMenuLink.classList.remove('active');
+        }
+    }
+}
 
   const handleClick = () => {
     setIsOpen(!isOpen)
   }
   useEffect(() => {
     setIsOpen(false)
+    checkLocation()
   }, [pathname])
   return(
     <header id="header" className={`${isOpen && 'show'} ${pathname === '/' && 'hide'}`}>

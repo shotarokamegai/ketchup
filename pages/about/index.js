@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -27,6 +28,19 @@ export default function About() {
         <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
         <meta name="twitter:card" content="summary_large_image"/>
     </Head>
+        <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', ${process.env.NEXT_PUBLIC_GTAG});
+        `}
+      </Script>
       <div className={styles.container}>
         <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
@@ -34,12 +48,12 @@ export default function About() {
             <section id="top">
                 <div className="ruler">
                     <h3 className="section-title rocextrawide red">ABOUT</h3>
-                    <p className="section-text futura">
+                    {/* <p className="section-text futura">
                         株式会社Ketchupは企業のコーポレートサイト、商品の魅力を伝えるプロモーションサイトをはじめ、<br/>
                         広告、企業、ブランドに纏わるさまざまなモノを企画・制作している、
                         「インターネット領域」に強みを持つ制作会社です。<br /><br />
                         その他にグラフィック制作、データ分析、撮影など、クリエイティブ領域全般の業務を行います。
-                    </p>
+                    </p> */}
                 </div>
                 <p className="vertical rocextrawideLight">
                     PROFILE
