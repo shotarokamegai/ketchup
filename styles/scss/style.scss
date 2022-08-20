@@ -406,7 +406,7 @@ body {
               width: 100% !important;
             }
             img {
-              width: vw(70) !important;
+              width: vw(65) !important;
               min-width: initial !important;
               max-width: initial !important;
               min-height: initial !important;
@@ -564,7 +564,7 @@ body {
                     @include fontvw(15);
                     .futura {
                       top: 0.3vw;
-                      @include fontvw(18.5);
+                      @include fontvw(18);
                     }
                   }
                 }
@@ -790,10 +790,11 @@ body {
             .title {
               @include fontvw(24);
               line-height: (31 / 24);
+              font-weight: 600;
               .futura {
                 position: relative;
-                top: 0.5vw;
-                font-size: 8.4vw;
+                top: 0.3vw;
+                font-size: 7.8vw;
               }
             }
             .text {

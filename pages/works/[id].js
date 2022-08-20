@@ -102,11 +102,11 @@ export default function Work(props) {
     return (
       <>
     <Head>
-      <title>{`${props.post.title.rendered} | Ketchup Inc.`}</title>
+      <title>{`${props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} | Ketchup Inc.`}</title>
       <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
       <meta property="og:type" content="website" />
       <meta property="description" content="Ketchup Inc." />
-      <meta property="og:title" content={`${props.post.title.rendered} | Ketchup Inc.`} />
+      <meta property="og:title" content={`${props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} | Ketchup Inc.`} />
       <meta property="og:description" content="Ketchup Inc." />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
       <meta name="twitter:card" content="summary_large_image"/>
@@ -139,12 +139,12 @@ export default function Work(props) {
             <div className="ruler">
                 <div className="keyv-wrap">
                   <div className="img">
-                    <Image layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered} />
+                    <Image layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} />
                   </div>
                 </div>
                 <div className="detail flex space-between">
                   <div>
-                    <h2 className="title futura bold" dangerouslySetInnerHTML={{__html: props.post.title.rendered}}></h2>
+                    <h2 className="title futura bold" dangerouslySetInnerHTML={{__html: props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}}></h2>
                     <p className="text" dangerouslySetInnerHTML={{__html: props.post.content.rendered}}></p>
                   </div>
                   <div>

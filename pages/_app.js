@@ -15,11 +15,6 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    // console.log(1)
-    // document.onload = () => {
-    // console.log(2)
-    //   document.body.classList.add('show')
-    // }
   }, [])
   return(
     <>
