@@ -23,7 +23,7 @@ export default function Content({ children }) {
       animate={{ opacity: 1 }} // マウント時
       exit={{ opacity: 0 }}    // アンマウント時
       transition={{
-        duration: .25,
+        duration: .5,
       }}
     >
       <div className="container">

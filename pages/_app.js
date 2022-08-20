@@ -34,6 +34,7 @@ function MyApp({ Component, pageProps }) {
     let header = document.getElementById('header');
     let vh = window.innerHeight * 0.01;
     // カスタム変数--vhの値をドキュメントのルートに設定
+    document.body.classList.add('loaded');
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     if (header) {
         header.classList.remove('show')

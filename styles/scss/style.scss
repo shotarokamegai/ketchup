@@ -10,12 +10,15 @@
 body {
   font-weight: normal;
   overscroll-behavior-y: none;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+  // transition: opacity 500ms;
+  &.loaded {
+    opacity: 1;
+  }
   .container {
     // opacity: 0;
     // transition: opacity 500ms;
-    // &.show {
-    //   opacity: 1;
-    // }
   }
 }
 
@@ -398,8 +401,8 @@ body {
           .ketchup {
             @include center();
             // transform: translate3d(-50%, -50%, 0) scale(0);
-            height: vw(64.61);
-            width: vw(70);
+            height: vw(51.528);
+            width: vw(56);
             span {
               overflow: visible !important;
               transform: translate3d(-50%, -50%, 0) !important;
@@ -413,7 +416,7 @@ body {
               width: 100% !important;
             }
             img {
-              width: vw(65) !important;
+              width: auto !important;
               min-width: initial !important;
               max-width: initial !important;
               min-height: initial !important;
@@ -567,12 +570,19 @@ body {
                   margin-right: 0;
                 }
                 .detail {
+                  margin-bottom: 0 !important;
                   .title {
-                    @include fontvw(15);
+                    @include fontvw(13);
                     .futura {
                       top: 0.3vw;
-                      @include fontvw(18);
+                      @include fontvw(15);
                     }
+                  }
+                }
+                .img {
+                  height: 22vw;
+                  img {
+                    object-fit: cover !important;
                   }
                 }
               }
@@ -616,7 +626,7 @@ body {
                 position: relative;
                 margin-bottom: vw(20);
                 overflow: hidden;
-                border: rem(1) solid $red;
+                // border: rem(1) solid $red;
                 &::before {
                   @include center();
                   height: 101%;
@@ -632,7 +642,7 @@ body {
                 img {
                   position: relative !important;
                   width: 100% !important;
-                  height: unset !important;
+                  height: 100% !important;
                 }
                 img {
                   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -647,18 +657,18 @@ body {
                 }
                 .title {
                   margin-bottom: vw(10);
-                  @include fontvw(20);
-                  line-height: (28 / 20);
+                  @include fontvw(16);
+                  line-height: 1.2;
                   font-weight: 600;
                   .futura {
                     position: relative;
                     top: 0.3vw;
-                    font-size: 6.733333vw;
+                    @include fontvw(20);
                   }
                 }
                 .categories {
-                  @include fontvw(13);
-                  line-height: (17 / 13);
+                  @include fontvw(11);
+                  line-height: (15 / 11);
                 }
               }
             }
@@ -797,13 +807,13 @@ body {
               background-color: $black;
             }
             .title {
-              @include fontvw(24);
+              @include fontvw(20);
               line-height: (31 / 24);
               font-weight: 600;
               .futura {
                 position: relative;
                 top: 0.3vw;
-                font-size: 7.8vw;
+                @include fontvw(25);
               }
             }
             .text {
@@ -836,14 +846,14 @@ body {
             }
             .categories {
               margin-top: vw(20);
-              @include fontvw(13);
+              @include fontvw(11);
             }
             .client {
               margin: vw(20) 0 vw(30) 0;
               p {
                 &:nth-child(1) {
                   margin-bottom: vw(5);
-                  @include fontvw(20);
+                  @include fontvw(18);
                 }
                 &:nth-child(2) {
                   // margin-bottom: rem(5);
@@ -1175,7 +1185,26 @@ body {
                 &:nth-child(3n) {
                   margin-right: 0;
                 }
+                &:last-child {
+                  display: none;
+                }
+                .img {
+                  &::after {
+                    display: block;
+                    padding-top: 52.428571%;
+                    content: "";
+                  }
+                  span,
+                  img {
+                    position: absolute !important;
+                    height: 100% !important;
+                  }
+                  img {
+                    object-fit: cover !important;
+                  }
+                }
                 .detail {
+                  margin-bottom: 0 !important;
                   .title {
                     .futura {
                       position: relative;
@@ -1229,7 +1258,7 @@ body {
                 position: relative;
                 margin-bottom: rem(25);
                 overflow: hidden;
-                border: rem(1) solid $red;
+                // border: rem(1) solid $red;
                 &::before {
                   @include center();
                   height: 100%;
@@ -1380,11 +1409,11 @@ body {
       }
     }
     &#work {
-      opacity: 0;
-      transition: opacity 500ms;
-      &.show {
-        opacity: 1;
-      }
+      // opacity: 0;
+      // transition: opacity 500ms;
+      // &.show {
+      //   opacity: 1;
+      // }
       section {
         &#top {
           margin-bottom: rem(160);

@@ -4,6 +4,7 @@ import Script from 'next/script'
 import WP from 'wpapi'
 import axios from "axios"
 import Image from 'next/image'
+import List from '../../components/list'
 import Link from 'next/link'
 import useSWR from 'swr'
 import { useRouter } from "next/router";
@@ -93,11 +94,11 @@ export default function Work(props) {
     }
 
     useEffect(() => {
-      if (document.getElementById('work')) {
-        document.getElementById('work').classList.add('reset')
-        document.getElementById('work').classList.remove('show')
-      }
-        playVideo()
+      // if (document.getElementById('work')) {
+      //   document.getElementById('work').classList.add('reset')
+      //   document.getElementById('work').classList.remove('show')
+      // }
+      playVideo()
     }, [id]);
 
     // if (isError) return(null)
@@ -131,6 +132,14 @@ export default function Work(props) {
       <div className={styles.container}>
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
+        <motion.div
+          initial={{ opacity: 0 }} // 初期状態
+          animate={{ opacity: 1 }} // マウント時
+          exit={{ opacity: 0 }}    // アンマウント時
+          transition={{
+            duration: .25,
+          }}
+        >
         <main id="work" className={`common main_`}>
         {/* <main id="work" className={`common main_ ${data.length !== 0 && 'show'}`}> */}
           <section id="top">
@@ -143,13 +152,13 @@ export default function Work(props) {
             <div className="ruler">
                 <div className="keyv-wrap">
                   <div className="img">
-                    <Image layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} 
-                    onLoadingComplete={() => {
-                      document.getElementById('work').classList.remove('reset')
-                      setTimeout(() => {
-                        document.getElementById('work').classList.add('show')
-                      }, 500)
-                    }}
+                    <Image placeholder="blur" blurDataURL={props.post['_embedded']['wp:featuredmedia'][0].source_url} layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} 
+                    // onLoadingComplete={() => {
+                    //   document.getElementById('work').classList.remove('reset')
+                    //   setTimeout(() => {
+                    //     document.getElementById('work').classList.add('show')
+                    //   }, 500)
+                    // }}
                     />
                   </div>
                 </div>
@@ -189,41 +198,34 @@ export default function Work(props) {
               <div className="inner">
                   <ul className="flex flex-sp">
                       {props.posts.map((item, index) => {
-                          let thisCategories = '';
-                          for (let i = 0; i < item.categories.length; i++) {
-                              for (let j = 0; j < props.cats.length; j++) {
-                                  if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
-                                      thisCategories += ` ${props.cats[j].name} /` 
-                                  }
-                              }
-                          }
-                          if (index < 9) {
-                            return(
-                                <li key={index}>
-                                    <Link href={`/works/${item.id}`}>
-                                      <a>
-                                        <div className="img">
-                                            <Image layout='fill' objectFit="contain" src={item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} alt="" />
-                                        </div>
-                                        <div className="detail">
-                                            <p className="title bold" dangerouslySetInnerHTML={{__html: item.title.rendered}}></p>
-                                            <p className="categories futura">
-                                                {thisCategories.slice( 0, -1 )}
-                                            </p>
-                                        </div>
-                                      </a>
-                                    </Link>
-                                </li>
-                            )
-                          } else {
-                            return (null)
-                          }
+                          let datum = {
+                            thisCategories: ''
+                        };
+                        datum.index = index;
+                        datum.item = item;
+                        for (let i = 0; i < item.categories.length; i++) {
+                            for (let j = 0; j < props.cats.length; j++) {
+                                if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
+                                    datum.thisCategories += ` ${props.cats[j].name} /` 
+                                }
+                            }
+                        }
+                        datum.className = ''
+                        if (i === 5) {
+                            i = 0;
+                        } else {
+                            i++;
+                        }
+                        return(
+                          <List key={index} {...datum} />
+                        )
                       })}
                   </ul>
                 </div>
             </div>
           </section>
         </main>
+        </motion.div>
         </Content>
       </div>
       </>
