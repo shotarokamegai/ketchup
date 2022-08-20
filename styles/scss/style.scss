@@ -637,6 +637,11 @@ body {
                   margin-bottom: vw(10);
                   @include fontvw(20);
                   line-height: (28 / 20);
+                  .futura {
+                    position: relative;
+                    top: 0.3vw;
+                    font-size: 6.733333vw;
+                  }
                 }
                 .categories {
                   @include fontvw(13);
@@ -780,6 +785,11 @@ body {
             .title {
               @include fontvw(24);
               line-height: (31 / 24);
+              .futura {
+                position: relative;
+                top: 0.5vw;
+                font-size: 8.4vw;
+              }
             }
             .text {
               margin-top: vw(40);
@@ -1227,6 +1237,11 @@ body {
                   margin-bottom: rem(10);
                   @include fontsize(20);
                   line-height: (28 / 20);
+                  .fututa {
+                    position: relative;
+                    top: rem(1);
+                    @include fontsize(24);
+                  }
                 }
                 .categories {
                   @include fontsize(13);
@@ -1371,6 +1386,11 @@ body {
             .title {
               @include fontsize(32);
               line-height: 1.4;
+              .futura {
+                position: relative;
+                top: rem(2);
+                @include fontsize(40);
+              }
             }
             .text {
               margin-top: rem(35);

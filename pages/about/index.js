@@ -12,10 +12,6 @@ export default function About() {
       damping: 30,
       restDelta: 0.001
     });
-  const meta = {
-    title: 'ABOUT',
-    description: ''
-  }
   return (
     <>
     <Head>
@@ -38,7 +34,7 @@ export default function About() {
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', ${process.env.NEXT_PUBLIC_GTAG});
+          gtag('config', ${parseInt(process.env.NEXT_PUBLIC_GTAG)});
         `}
       </Script>
       <div className={styles.container}>
@@ -61,38 +57,38 @@ export default function About() {
                 <div className="ruler">
                     <div className="company">
                         <div className="flex">
-                            <p className="futura">
-                                <span>Company Name</span>
+                            <p>
+                                <span className="futura">Company Name</span>
                                 <span>株式会社Ketchup</span>
                             </p>
-                            <p className="futura">
-                                <span>Founded</span>
+                            <p>
+                                <span className="futura">Founded</span>
                                 <span>2022年7月1日</span>
                             </p>
                         </div>
                         <div className="flex">
-                            <p className="futura">
-                                <span>CEO</span>
+                            <p>
+                                <span className="futura">CEO</span>
                                 <span>亀谷 晶太郎</span>
                             </p>
-                            <p className="futura">
-                                <span>Office</span>
+                            <p>
+                                <span className="futura">Office</span>
                                 <span>東京都世田谷区下馬2-2-5 301</span>
                             </p>
                         </div>
                         <div className="flex">
-                            <p className="futura">
-                                <span>Tel</span>
+                            <p>
+                                <span className="futura">Tel</span>
                                 <span>080-4628-6277</span>
                             </p>
-                            <p className="futura">
-                                <span>Capital</span>
+                            <p>
+                                <span className="futura">Capital</span>
                                 <span>1,000,000円</span>
                             </p>
                         </div>
                         <div>
-                            <p className="futura">
-                                <span>Fields of Activities</span>
+                            <p>
+                                <span className="futura">Fields of Activities</span>
                                 <span>
                                     Web制作（コーポレートサイト・ブランドサイト・EC サイト・オウンドメディア・LP 他）
                                     ブランド戦略・デジタルブランディング（コミュニケーション戦略・カスタマーエクスペリエンス・CI/VI開発 他）

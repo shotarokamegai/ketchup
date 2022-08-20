@@ -114,7 +114,8 @@ function Home(props) {
                   </div>
                   <div>
                       <h2 className="slogan roc">
-                          We know the internet and people in equal measure. 
+                          We create design + development to keep balance around ketchup. 
+                          {/* We know the internet and people in equal measure.  */}
                       </h2>
                   </div>
               </div>
