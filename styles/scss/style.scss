@@ -33,7 +33,7 @@ body {
 
 .futura {
   font-family: $Futura;
-  font-weight: 500;
+  // font-weight: 500;
   font-style: normal;
 }
 
@@ -562,6 +562,10 @@ body {
                 .detail {
                   .title {
                     @include fontvw(15);
+                    .futura {
+                      top: 0.3vw;
+                      @include fontvw(18.5);
+                    }
                   }
                 }
               }
@@ -637,6 +641,7 @@ body {
                   margin-bottom: vw(10);
                   @include fontvw(20);
                   line-height: (28 / 20);
+                  font-weight: 600;
                   .futura {
                     position: relative;
                     top: 0.3vw;
@@ -748,7 +753,7 @@ body {
           margin-bottom: vw(100);
           .ruler {
             .keyv-wrap {
-              margin-top: vw(-170.78);
+              margin-top: vw(-73.09);
             }
           }
         }
@@ -1160,6 +1165,15 @@ body {
                 &:nth-child(3n) {
                   margin-right: 0;
                 }
+                .detail {
+                  .title {
+                    .futura {
+                      position: relative;
+                      @include fontsize(25);
+                      top: rem(1);
+                    }
+                  }
+                }
               }
             }
           }
@@ -1237,7 +1251,8 @@ body {
                   margin-bottom: rem(10);
                   @include fontsize(20);
                   line-height: (28 / 20);
-                  .fututa {
+                  font-weight: 600;
+                  .futura {
                     position: relative;
                     top: rem(1);
                     @include fontsize(24);

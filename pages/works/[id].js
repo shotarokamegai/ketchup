@@ -195,7 +195,7 @@ export default function Work(props) {
                                             <Image layout='fill' objectFit="contain" src={item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} alt="" />
                                         </div>
                                         <div className="detail">
-                                            <p className="title bold futura" dangerouslySetInnerHTML={{__html: item.title.rendered}}></p>
+                                            <p className="title bold" dangerouslySetInnerHTML={{__html: item.title.rendered}}></p>
                                             <p className="categories futura">
                                                 {thisCategories.slice( 0, -1 )}
                                             </p>

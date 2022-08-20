@@ -169,7 +169,7 @@ export default function Contact() {
                           method="POST"
                         >
                           <div>
-                            <label className="bold" htmlFor="company">貴社名</label>
+                            <label htmlFor="company">貴社名</label>
                             <input 
                             name="company" 
                             type="text" 
@@ -180,7 +180,7 @@ export default function Contact() {
                             />
                           </div>
                           <div>
-                            <label className="bold" htmlFor="name">ご担当社名※</label>
+                            <label htmlFor="name">ご担当社名※</label>
                             <input 
                                 name="name" 
                                 type="text" 
@@ -194,7 +194,7 @@ export default function Contact() {
                             {nameError && <p className="error">{nameError}</p>}
                           </div>
                           <div>
-                            <label className="bold" htmlFor="email">メールアドレス※</label>
+                            <label htmlFor="email">メールアドレス※</label>
                             <input 
                                 name="email" 
                                 type="email" 
@@ -208,7 +208,7 @@ export default function Contact() {
                             {emailError && <p className="error">{emailError}</p>}
                           </div>
                           <div>
-                            <label className="bold" htmlFor="tel">電話番号※</label>
+                            <label htmlFor="tel">電話番号※</label>
                             <input
                                 name="tel"
                                 type="tel"
@@ -222,7 +222,7 @@ export default function Contact() {
                             {telError && <p className="error">{telError}</p>}
                           </div>
                           <div>
-                            <label className="bold" htmlFor="subject">件名</label>
+                            <label htmlFor="subject">件名</label>
                             <input 
                                 name="subject" 
                                 type="text" 
@@ -233,7 +233,7 @@ export default function Contact() {
                             />
                           </div>
                           <div>
-                            <label className="bold" htmlFor="content">お問い合わせ内容※</label>
+                            <label htmlFor="content">お問い合わせ内容※</label>
                             <textarea 
                                 name="content" 
                                 type="text" 
