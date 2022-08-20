@@ -119,7 +119,7 @@ export default function Work(props) {
         function gtag(){window.dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', ${parseInt(process.env.NEXT_PUBLIC_GTAG)});
+        gtag('config', ${process.env.NEXT_PUBLIC_GTAG});
       `}
     </Script>
       <div className={styles.container}>
@@ -218,10 +218,11 @@ export default function Work(props) {
 }
 
 export async function getStaticPaths() {
-  const wpClient = new WP({
-    endpoint: `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json`
-  })
-  const posts = await wpClient.posts()
+  // const wpClient = new WP({
+  //   endpoint: `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts`
+  // })
+  const res1 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts/?per_page=100`)
+  const posts = await res1.data
   return {
       paths: posts.map(post => ({
           params: {
