@@ -60,23 +60,25 @@ export default function Work(props) {
 
     const setGallery = (imgs) => {
       let html = '';
-      for (let i = 0; i < imgs.length; i++) {
-        let img_ = imgs[i]['img']
-        let html_ = `<div class="column ${imgs[i]['classname']}">`;
-        for (let j = 0; j < img_.length; j++) {
-          if (img_[j]['url'].match(/mov/)) {
-            html_ += 
-                `<div class="img" key=${j}>
-                  <video src=${img_[j]['url']} playsInline autoPlay muted loop />
-                </div>`;
-          } else {
-            html_ += 
-                `<div class="img" key=${j}>
-                  <img src=${img_[j]['url']} alt="" />
-                </div>`;
+      if (imgs) {
+        for (let i = 0; i < imgs.length; i++) {
+          let img_ = imgs[i]['img']
+          let html_ = `<div class="column ${imgs[i]['classname']}">`;
+          for (let j = 0; j < img_.length; j++) {
+            if (img_[j]['url'].match(/mov/)) {
+              html_ += 
+                  `<div class="img" key=${j}>
+                    <video src=${img_[j]['url']} playsInline autoPlay muted loop />
+                  </div>`;
+            } else {
+              html_ += 
+                  `<div class="img" key=${j}>
+                    <img src=${img_[j]['url']} alt="" />
+                  </div>`;
+            }
           }
+          html += `${html_}</div>`;
         }
-        html += `${html_}</div>`;
       }
       return(html)
     }
