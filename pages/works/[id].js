@@ -93,6 +93,10 @@ export default function Work(props) {
     }
 
     useEffect(() => {
+      if (document.getElementById('work')) {
+        document.getElementById('work').classList.add('reset')
+        document.getElementById('work').classList.remove('show')
+      }
         playVideo()
     }, [id]);
 
@@ -141,7 +145,10 @@ export default function Work(props) {
                   <div className="img">
                     <Image layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} 
                     onLoadingComplete={() => {
-                      document.getElementById('work').classList.add('show')
+                      document.getElementById('work').classList.remove('reset')
+                      setTimeout(() => {
+                        document.getElementById('work').classList.add('show')
+                      }, 500)
                     }}
                     />
                   </div>
