@@ -127,7 +127,7 @@ export default function Work(props) {
       <div className={styles.container}>
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
-        <main id="work" className={`common main_ show`}>
+        <main id="work" className={`common main_`}>
         {/* <main id="work" className={`common main_ ${data.length !== 0 && 'show'}`}> */}
           <section id="top">
             <div className="ruler">
@@ -139,7 +139,11 @@ export default function Work(props) {
             <div className="ruler">
                 <div className="keyv-wrap">
                   <div className="img">
-                    <Image layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} />
+                    <Image layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} 
+                    onLoadingComplete={() => {
+                      document.getElementById('work').classList.add('show')
+                    }}
+                    />
                   </div>
                 </div>
                 <div className="detail flex space-between">

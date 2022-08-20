@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Header from '../components/header'
 import AnimatedPage from '../components/animatedPage';
@@ -13,9 +13,41 @@ const routes = [
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const pathname = router.asPath;
+  const isRunning = useRef(false) // スクロール多発防止用フラグ
+  const isScrollToggle = useCallback(() => {
+    let header = document.getElementById('header');
+    if (isRunning.current) return
+    isRunning.current = true
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+    requestAnimationFrame(() => {
+      if (scrollTop > window.innerHeight) {
+          header.classList.remove('hide')
+      } else {
+          header.classList.add('hide')
+      }
+      isRunning.current = false
+    })
+  }, [])
 
   useEffect(() => {
-  }, [])
+    let header = document.getElementById('header');
+    let vh = window.innerHeight * 0.01;
+    // カスタム変数--vhの値をドキュメントのルートに設定
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    if (header) {
+        header.classList.remove('show')
+        if (pathname === '/') {
+            header.classList.add('hide')
+            document.addEventListener('scroll', isScrollToggle, { passive: true })
+            return () => {
+              document.removeEventListener('scroll', isScrollToggle, { passive: true })
+            }
+        } else {
+            header.classList.remove('hide')
+        }
+    }
+  }, [pathname])
   return(
     <>
       <Header routes={routes} />

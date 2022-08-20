@@ -10,6 +10,13 @@
 body {
   font-weight: normal;
   overscroll-behavior-y: none;
+  .container {
+    // opacity: 0;
+    // transition: opacity 500ms;
+    // &.show {
+    //   opacity: 1;
+    // }
+  }
 }
 
 .rocextrawide {
@@ -609,6 +616,7 @@ body {
                 position: relative;
                 margin-bottom: vw(20);
                 overflow: hidden;
+                border: rem(1) solid $red;
                 &::before {
                   @include center();
                   height: 101%;
@@ -695,6 +703,7 @@ body {
             .slogan {
               @include fontvw(40);
               line-height: (50 / 40);
+              font-size: 10.366667vw;
             }
           }
         }
@@ -1220,9 +1229,10 @@ body {
                 position: relative;
                 margin-bottom: rem(25);
                 overflow: hidden;
+                border: rem(1) solid $red;
                 &::before {
                   @include center();
-                  height: 98%;
+                  height: 100%;
                   width: 100%;
                   content: "";
                   background-color: $red;
@@ -1281,12 +1291,13 @@ body {
           margin-bottom: rem(117.25);
           .ruler {
             height: 100%;
-            width: 97.22222222222222%;
+            width: 94%;
+            // width: 97.22222222222222%;
             max-width: initial;
             div {
               @include fitcenter();
               &:nth-child(1) {
-                width: 69.28571428571428%;
+                width: 50%;
                 .logo {
                   position: relative;
                   margin: 0 auto 0 0;
@@ -1300,13 +1311,15 @@ body {
                 }
               }
               &:nth-child(2) {
-                width: 30.714285714285716%;
-                min-width: rem(410);
+                width: 50%;
+                // width: 30.714285714285716%;
+                // min-width: rem(410);
               }
             }
             .slogan {
               @include fontsize(70);
               line-height: (90 / 70);
+              font-size: 5.6vw;
             }
           }
         }
