@@ -93,6 +93,12 @@ export default function Work(props) {
       }
     }
 
+    const onLoad = (e) => {
+      if (e.target.srcset) {
+        e.target.dataset.load = "done";
+      }
+    };
+
     useEffect(() => {
       // if (document.getElementById('work')) {
       //   document.getElementById('work').classList.add('reset')
@@ -153,12 +159,7 @@ export default function Work(props) {
                 <div className="keyv-wrap">
                   <div className="img">
                     <Image placeholder="blur" blurDataURL={props.post['_embedded']['wp:featuredmedia'][0].source_url} layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} 
-                    // onLoadingComplete={() => {
-                    //   document.getElementById('work').classList.remove('reset')
-                    //   setTimeout(() => {
-                    //     document.getElementById('work').classList.add('show')
-                    //   }, 500)
-                    // }}
+                     onLoad={onLoad}
                     />
                   </div>
                 </div>

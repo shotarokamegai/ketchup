@@ -626,7 +626,13 @@ body {
                 position: relative;
                 margin-bottom: vw(20);
                 overflow: hidden;
-                // border: rem(1) solid $red;
+                img {
+                  opacity: 0;
+                  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                img[data-load="done"] {
+                  opacity: 1;
+                }
                 &::before {
                   @include center();
                   height: 101%;
@@ -713,7 +719,7 @@ body {
             .slogan {
               @include fontvw(40);
               line-height: (50 / 40);
-              font-size: 10.366667vw;
+              // font-size: 10.366667vw;
             }
           }
         }
@@ -785,6 +791,13 @@ body {
             position: relative !important;
             width: 100% !important;
             height: unset !important;
+          }
+          img {
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          img[data-load="done"] {
+            opacity: 1;
           }
         }
       }
@@ -1258,7 +1271,14 @@ body {
                 position: relative;
                 margin-bottom: rem(25);
                 overflow: hidden;
-                // border: rem(1) solid $red;
+                img {
+                  opacity: 0;
+                  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                img[data-load="done"] {
+                  opacity: 1;
+                }
+
                 &::before {
                   @include center();
                   height: 100%;
@@ -1275,9 +1295,6 @@ body {
                   position: relative !important;
                   width: 100% !important;
                   height: unset !important;
-                }
-                img {
-                  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                 }
               }
               a {
@@ -1348,7 +1365,7 @@ body {
             .slogan {
               @include fontsize(70);
               line-height: (90 / 70);
-              font-size: 5.6vw;
+              // font-size: 5.6vw;
             }
           }
         }
@@ -1433,6 +1450,13 @@ body {
             width: 100% !important;
             height: unset !important;
           }
+        }
+        img {
+          opacity: 0;
+          transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        img[data-load="done"] {
+          opacity: 1;
         }
       }
       .detail {
