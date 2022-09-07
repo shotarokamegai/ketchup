@@ -121,6 +121,7 @@ export default function Work(props) {
       <meta property="og:description" content="Ketchup Inc." />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
       <meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`} />
       </Head>
     <Script
       src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
