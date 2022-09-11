@@ -45,6 +45,14 @@ export default function About() {
             <section id="top">
                 <div className="ruler">
                     <h3 className="section-title rocextrawide red">ABOUT</h3>
+                    <p className="section-text">
+                        トマトソースはトマトをベースに作られました。<br />
+                        その後トマトソースをいつでも楽しめるようにケチャップが開発され、<br />
+                        世界中で味わえるような調味料として普及しました。<br /><br />
+                        世の中には素晴らしいアイディア、コンテンツが無数に広がっています。<br />
+                        私たちの力で少し味付けをして、さらにより良い形で届けられるように。<br /><br />
+                        Ketchupはそんな想いで設立された、クリエイティブカンパニーです。
+                    </p>
                     {/* <p className="section-text futura">
                         株式会社Ketchupは企業のコーポレートサイト、商品の魅力を伝えるプロモーションサイトをはじめ、<br/>
                         広告、企業、ブランドに纏わるさまざまなモノを企画・制作している、

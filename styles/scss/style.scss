@@ -1386,7 +1386,12 @@ body {
           .ruler {
             .section-text {
               margin-bottom: rem(80);
-              width: 58.97435897435898%;
+              // width: 58.97435897435898%;
+              @include fontsize(20);
+              line-height: (40 / 20);
+              // .futura {
+              //   @include fontsize(22);
+              // }
             }
             .company {
               margin-top: rem(-121.17);
