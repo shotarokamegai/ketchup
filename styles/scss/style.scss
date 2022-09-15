@@ -23,8 +23,10 @@ body {
   //   opacity: 1;
   // }
   ::selection {
-    color: $white;
-    background-color: $red;
+    color: $red;
+    background-color: transparent;
+    // color: $white;
+    // background-color: $red;
   }
   .container {
     // opacity: 0;
