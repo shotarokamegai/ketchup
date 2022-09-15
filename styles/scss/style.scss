@@ -6,21 +6,22 @@
 @import "./animation";
 
 html {
-  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 html.wf-active {
-  visibility: visible;
+  opacity: 1;
 }
 
 body {
   font-weight: normal;
   overscroll-behavior-y: none;
-  opacity: 0;
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+  // opacity: 0;
+  // transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
   // transition: opacity 500ms;
-  &.loaded {
-    opacity: 1;
-  }
+  // &.loaded {
+  //   opacity: 1;
+  // }
   ::selection {
     color: $white;
     background-color: $red;
