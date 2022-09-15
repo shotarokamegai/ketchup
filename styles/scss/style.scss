@@ -251,6 +251,9 @@ body {
       }
     }
     &.show {
+      h1 {
+        opacity: 1;
+      }
       .logo {
         path {
           fill: $white;
