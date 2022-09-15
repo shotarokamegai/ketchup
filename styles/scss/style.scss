@@ -16,6 +16,10 @@ body {
   &.loaded {
     opacity: 1;
   }
+  ::selection {
+    color: $white;
+    background-color: $red;
+  }
   .container {
     // opacity: 0;
     // transition: opacity 500ms;
@@ -745,6 +749,8 @@ body {
           .ruler {
             .section-text {
               margin-bottom: vw(80);
+              font-family: $Mincho;
+              color: $red;
             }
             .company {
               margin-top: vw(-90.89);
@@ -1394,6 +1400,8 @@ body {
               // width: 58.97435897435898%;
               @include fontsize(20);
               line-height: (40 / 20);
+              font-family: $Mincho;
+              color: $red;
               // .futura {
               //   @include fontsize(22);
               // }
