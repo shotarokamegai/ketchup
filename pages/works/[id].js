@@ -13,6 +13,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 // import fetcher from '../../components/fetcher'
 import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
+import adobeLoader from "../../components/adobeLoader";
 
 // function GetDataFromWp(id) {
 //   const { data, error } = useSWR([
@@ -104,6 +105,7 @@ export default function Work(props) {
       //   document.getElementById('work').classList.add('reset')
       //   document.getElementById('work').classList.remove('show')
       // }
+       adobeLoader(document)
       playVideo()
     }, [id]);
 

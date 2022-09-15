@@ -5,7 +5,12 @@
 @import "./base";
 @import "./animation";
 
-@import "//use.typekit.net/ueg2vna.css";
+html {
+  visibility: hidden;
+}
+html.wf-active {
+  visibility: visible;
+}
 
 body {
   font-weight: normal;

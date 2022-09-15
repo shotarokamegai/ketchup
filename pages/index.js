@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from 'next/head'
 import Script from 'next/script'
 import fetch from 'node-fetch'
+import adobeLoader from "../components/adobeLoader";
 
 // import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -74,6 +75,9 @@ function Home(props) {
     setPage((page) => page+1)
     setPosts((posts) => posts.concat(res.data))
   }
+  useEffect(() => {
+     adobeLoader(document)
+  }, []);
 
 
   return(
