@@ -16,6 +16,10 @@ html.wf-active {
 body {
   font-weight: normal;
   overscroll-behavior-y: none;
+  ::selection {
+    color: $white;
+    background-color: $red;
+  }
   // opacity: 0;
   // transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
   // transition: opacity 500ms;
@@ -955,12 +959,6 @@ body {
 
 @media screen and (min-width: 750px) {
   body {
-    ::selection {
-      color: $red;
-      background-color: transparent;
-      // color: $white;
-      // background-color: $red;
-    }
   }
   .loading {
     position: absolute;
@@ -1199,9 +1197,6 @@ body {
     .section-title {
       margin-bottom: rem(50);
       @include fontsize(30);
-      &::selection {
-        color: $black;
-      }
     }
     .section-text {
       @include fontsize(12);
@@ -1415,9 +1410,6 @@ body {
               line-height: (40 / 20);
               font-family: $Mincho;
               color: $red;
-              &::selection {
-                color: $black;
-              }
               // .futura {
               //   @include fontsize(22);
               // }
@@ -1446,9 +1438,6 @@ body {
                       margin-bottom: rem(20);
                       @include fontsize(16);
                       color: $red;
-                      &::selection {
-                        color: $black;
-                      }
                     }
                     &:nth-child(2) {
                       @include fontsize(13);
@@ -1606,9 +1595,6 @@ body {
           margin-top: rem(10);
           color: red;
           @include fontsize(12);
-          &::selection {
-            color: $black;
-          }
         }
         input,
         textarea {
