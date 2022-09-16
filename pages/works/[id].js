@@ -153,10 +153,10 @@ export default function Work(props) {
         {/* <main id="work" className={`common main_ ${data.length !== 0 && 'show'}`}> */}
           <section id="top">
             <div className="ruler">
-                <h3 className="section-title rocextrawide red">WORK</h3>
+                <h3 className="section-title rocextrawide red">WORKS</h3>
             </div>
             <p className="vertical rocextrawideLight">
-              WORK
+              WORKS
             </p>
             <div className="ruler">
                 <div className="keyv-wrap">

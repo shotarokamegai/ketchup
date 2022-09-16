@@ -60,6 +60,7 @@ export default function About() {
                         世の中には素晴らしいアイディア、<br className="sp" />コンテンツが無数に広がっています。<br />
                         私たちの力で少し味付けをして、<br className="sp" />さらにより良い形で届けられるように。<br /><br />
                         Ketchupはそんな想いで設立された、<br className="sp" />クリエイティブカンパニーです。
+                        <Image layout="fill" src="/img/common/ketchup.png" alt="" />
                     </p>
                     {/* <p className="section-text futura">
                         株式会社Ketchupは企業のコーポレートサイト、商品の魅力を伝えるプロモーションサイトをはじめ、<br/>
