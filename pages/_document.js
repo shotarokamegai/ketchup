@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ja" dir="ltr">
         <Head />
-        <body>
+        <body style={{'opacity': 0}}>
           <Main />
           <NextScript />
         </body>
