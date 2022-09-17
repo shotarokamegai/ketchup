@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Head from 'next/head'
 import Script from 'next/script'
 import fetch from 'node-fetch'
 import adobeLoader from "../components/adobeLoader";
+import { gsap } from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+
 
 // import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -48,6 +52,7 @@ function returnClassName (i) {
 
 function Home(props) {
   const { scrollYProgress } = useScroll();
+  const logoRef = useRef();
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState(props.posts)
   const [maxPage, setMaxPage] = useState(0);
@@ -59,6 +64,74 @@ function Home(props) {
   const meta = {
     title: '',
     description: ''
+  }
+  const setAnimation = () => {
+    let animation1 = gsap.timeline();
+    let slogan1 = gsap.timeline();
+    let slogan2 = gsap.timeline();
+    let slogan3 = gsap.timeline();
+    let slogan4 = gsap.timeline();
+    let sloganScrub = .5;
+    ScrollTrigger.create({
+        animation: animation1,
+        trigger: ".container",
+        start: "0",
+        end: "8%",
+        scrub: .5,
+        invalidateOnRefresh: true,
+        // markers: true
+    });
+    ScrollTrigger.create({
+        animation: slogan1,
+        trigger: ".container",
+        start: "0",
+        end: "5%",
+        scrub: sloganScrub,
+        invalidateOnRefresh: true,
+        // markers: true
+    });
+    ScrollTrigger.create({
+        animation: slogan2,
+        trigger: ".container",
+        start: "1%",
+        end: "6%",
+        scrub: sloganScrub - .1,
+        invalidateOnRefresh: true,
+        // markers: true
+    });
+    ScrollTrigger.create({
+        animation: slogan3,
+        trigger: ".container",
+        start: "2%",
+        end: "7%",
+        scrub: sloganScrub - .2,
+        invalidateOnRefresh: true,
+        // markers: true
+    });
+    ScrollTrigger.create({
+        animation: slogan4,
+        trigger: ".container",
+        start: "3%",
+        end: "8%",
+        scrub: sloganScrub - .3,
+        invalidateOnRefresh: true,
+        // markers: true
+    });
+    animation1.to("#logo", {
+      y: -50,opacity: .1
+    },0)
+    slogan1.to(".slogan1", {
+      y: -50,opacity: .1
+    },0)
+    slogan2.to(".slogan2", {
+      y: -50,opacity: .1
+    },0)
+    slogan3.to(".slogan3", {
+      y: -50,opacity: .1
+    },0)
+    slogan4.to(".slogan4", {
+      y: -50,opacity: .1
+    },0)
   }
   let i = 0
 
@@ -77,6 +150,11 @@ function Home(props) {
   }
   useEffect(() => {
      adobeLoader(document)
+     if (process.browser) {
+      gsap.registerPlugin(ScrollTrigger)
+      setAnimation()
+    }
+      // gsap.to(logoRef.current, { rotation: "+=360" });
   }, []);
 
 
@@ -113,13 +191,20 @@ function Home(props) {
           <section id="top">
               <div className="ruler flex space-between">
                   <div>
-                      <h1 className="logo">
+                      <h1 id="logo" className="logo" ref={logoRef}>
                           <Image layout='fill' objectFit="contain" src="/img/common/logo.svg" alt="Ketchup" />
                       </h1>
                   </div>
                   <div>
                       <h2 className="slogan roc">
-                          Add a bit of flavoring <br/>to those contents, <br/>and deliver them <br/>in an even better form.
+                        <span className="slogan1">
+                          Add a bit of flavoring 
+                        </span>
+                          <br/>
+                        <span className="slogan2">to those contents, </span><br/>
+                        <span className="slogan3">and deliver them </span>
+                        <br/>
+                        <span className="slogan4">in an even better form.</span>
                       </h2>
                   </div>
               </div>

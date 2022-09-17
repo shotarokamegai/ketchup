@@ -1251,6 +1251,7 @@ body {
               margin-bottom: 8.547008547008547%;
               margin-right: 2.564102564102564%;
               width: 38.461538461538464%;
+              will-change: transform;
               &.medium {
                 .img {
                   &::before {
@@ -1346,7 +1347,8 @@ body {
       section {
         &#top {
           // height: 50vh;
-          margin-bottom: rem(117.25);
+          margin-bottom: rem(200);
+          // margin-bottom: rem(117.25);
           .ruler {
             height: 100%;
             width: 94%;
@@ -1360,6 +1362,7 @@ body {
                   position: relative;
                   margin: 0 auto 0 0;
                   width: 90%;
+                  will-change: transform;
                   span,
                   img {
                     position: relative !important;
@@ -1378,13 +1381,19 @@ body {
               line-height: (90 / 70);
               font-size: 4.5vw;
               white-space: nowrap;
+              span {
+                position: relative;
+                display: inline-block;
+                will-change: transform;
+              }
             }
           }
         }
       }
       .works-wrapper {
         .inner {
-          margin-top: rem(-117.25);
+          margin-top: -11.025rem;
+          // margin-top: rem(-117.25);
         }
       }
       .btn {
