@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export default function List(props) {
+  gsap.registerPlugin(ScrollTrigger)
   const onLoad = (e) => {
     if (e.target.srcset) {
       e.target.dataset.load = "done";
@@ -16,18 +17,32 @@ export default function List(props) {
       scrub = 1;
     }
     if (process.browser) {
-      gsap.registerPlugin(ScrollTrigger)
       ScrollTrigger.create({
         animation: animation,
         trigger: `.box${props.item.id}`,
-        start: "top bottom-=200",
-        end: "bottom top+=200",
+        start: "top bottom",
+        end: `top bottom-=${window.innerHeight*.3}`,
+        // end: `bottom bottom+=${window.innerHeight*.5}`,
         scrub: scrub,
         invalidateOnRefresh: true,
         // markers: true
       });
-      animation.to(`.box${props.item.id}`, {y: -150},0)
-    }
+      animation.to(`.box${props.item.id}`, {y: -150, opacity:1},0)
+      if (props.index === props.max-1) {
+        let loadBtn = gsap.timeline();
+        ScrollTrigger.create({
+          animation: loadBtn,
+          trigger: `#load-more`,
+            start: "top bottom",
+            end: `top bottom-=${window.innerHeight*.3}`,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          // markers: true
+        });
+        loadBtn.to(`#load-more`, {y: -50},0)
+        ScrollTrigger.refresh()
+      }
+      }
     }
   };
   useEffect(() => {

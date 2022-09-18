@@ -119,6 +119,9 @@ export default function Contact() {
 
         checkValue(name, value)
     }
+    useEffect(() => {
+      adobeLoader(document)
+    }, [])
     return (
         <>
     <Head>

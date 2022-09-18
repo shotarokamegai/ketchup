@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Header from '../components/header'
 import AnimatedPage from '../components/animatedPage';
 import '../styles/scss/style.scss'
+// import adobeLoader from "../components/adobeLoader";
 
 const routes = [
   { path: '/', name: 'Home', Element: '' },
@@ -48,6 +49,7 @@ function MyApp({ Component, pageProps }) {
             header.classList.remove('hide')
         }
     }
+    // adobeLoader(document)
   }, [pathname])
   return(
     <>

@@ -1,7 +1,32 @@
 import Link from 'next/link'
 import Arrow from './svg/arrow'
+import { gsap } from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { useEffect } from 'react';
+import { useRouter } from "next/router";
 
 export default function Footer() {
+  const router = useRouter();
+  const pathname = router.asPath;
+  useEffect(() => {
+    let animation = gsap.timeline();
+    gsap.registerPlugin(ScrollTrigger)
+    // setTimeout(() => {
+      ScrollTrigger.create({
+        animation: animation,
+        trigger: `#footer`,
+        start: `top bottom`,
+        end: `bottom bottom+=${document.getElementById('footer').clientHeight/2}`,
+        // start: `top bottom+=${document.getElementById('footer').clientHeight*2}`,
+        // end: `bottom bottom`,
+        scrub: 1,
+        invalidateOnRefresh: true,
+        // markers: true
+      });
+      animation.to(`.footer-inner`, {y: -document.getElementById('footer').clientHeight},0)
+      // console.log(9)
+    // }, 5000)
+  },[])
   return(
     <footer id="footer">
       <div className="footer-inner">

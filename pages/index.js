@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Head from 'next/head'
 import Script from 'next/script'
 import fetch from 'node-fetch'
+// import Footer from './../components/footer'
 import adobeLoader from "../components/adobeLoader";
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -117,20 +118,25 @@ function Home(props) {
         invalidateOnRefresh: true,
         // markers: true
     });
-    animation1.to("#logo", {
-      y: -50,opacity: .1
+    animation1.to("#top-logo", {
+      y: -50
+      // y: -50,opacity: .1
     },0)
     slogan1.to(".slogan1", {
-      y: -50,opacity: .1
+      y: -50
+      // y: -50,opacity: .1
     },0)
     slogan2.to(".slogan2", {
-      y: -50,opacity: .1
+      y: -50
+      // y: -50,opacity: .1
     },0)
     slogan3.to(".slogan3", {
-      y: -50,opacity: .1
+      y: -50
+      // y: -50,opacity: .1
     },0)
     slogan4.to(".slogan4", {
-      y: -50,opacity: .1
+      y: -50
+      // y: -50,opacity: .1
     },0)
   }
   let i = 0
@@ -149,14 +155,10 @@ function Home(props) {
     setPosts((posts) => posts.concat(res.data))
   }
   useEffect(() => {
-     adobeLoader(document)
-     if (process.browser) {
-      gsap.registerPlugin(ScrollTrigger)
-      setAnimation()
-    }
-      // gsap.to(logoRef.current, { rotation: "+=360" });
+    adobeLoader(document)
+    gsap.registerPlugin(ScrollTrigger)
+    setAnimation();
   }, []);
-
 
   return(
     <>
@@ -169,7 +171,7 @@ function Home(props) {
       <meta property="og:description" content="Ketchup Inc." />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
       <meta name="twitter:card" content="summary_large_image"/>
-<link rel="icon" href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`} />
+      <link rel="icon" href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`} />
     </Head>
     <Script
       src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
@@ -191,7 +193,7 @@ function Home(props) {
           <section id="top">
               <div className="ruler flex space-between">
                   <div>
-                      <h1 id="logo" className="logo" ref={logoRef}>
+                      <h1 id="top-logo" className="logo" ref={logoRef}>
                           <Image layout='fill' objectFit="contain" src="/img/common/logo.svg" alt="Ketchup" />
                       </h1>
                   </div>
@@ -220,6 +222,7 @@ function Home(props) {
                           let datum = {
                               thisCategories: ''
                           };
+                          datum.max = posts.length;
                           datum.index = index;
                           datum.item = item;
                           for (let i = 0; i < item.categories.length; i++) {
@@ -240,13 +243,14 @@ function Home(props) {
                           )
                       })}
                   </ul>
-                  {maxPage > page && <div className="btn flex flex-sp space-between align-center" onClick={GetDataFromWp}>
+                  <div className={`btn flex flex-sp space-between align-center ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
                     <span className="text rocextrawideLight">LOAD MORE</span>
                     <Arrow className="white" />
-                  </div>}
+                  </div>
               </div>
           </section>
         </main>
+        {/* <Footer /> */}
       </Content>
     </div>
     </>
