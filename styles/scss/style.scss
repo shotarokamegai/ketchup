@@ -517,7 +517,7 @@ body {
     will-change: transform;
     .footer-inner {
       position: absolute;
-      top: 200px;
+      top: vw(91);
       // top: rem(200);
       left: 0;
       padding-top: vw(100);
@@ -1166,8 +1166,7 @@ body {
     .footer-inner {
       position: absolute;
       // top: 10%;
-      // top: 200px;
-      top: rem(400);
+      top: rem(100);
       left: 0;
       padding-top: rem(120);
       height: 100%;

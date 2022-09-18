@@ -16,14 +16,14 @@ export default function Footer() {
         animation: animation,
         trigger: `#footer`,
         start: `top bottom`,
-        end: `bottom bottom+=${document.getElementById('footer').clientHeight/2}`,
+        end: `bottom bottom+=${document.getElementById('footer').clientHeight*.25}`,
         // start: `top bottom+=${document.getElementById('footer').clientHeight*2}`,
         // end: `bottom bottom`,
         scrub: 1,
         invalidateOnRefresh: true,
         // markers: true
       });
-      animation.to(`.footer-inner`, {y: -document.getElementById('footer').clientHeight},0)
+      animation.to(`.footer-inner`, {y: -document.getElementById('footer').clientHeight*.25},0)
       // console.log(9)
     // }, 5000)
   },[])

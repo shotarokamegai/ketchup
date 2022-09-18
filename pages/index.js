@@ -73,6 +73,7 @@ function Home(props) {
     let slogan3 = gsap.timeline();
     let slogan4 = gsap.timeline();
     let sloganScrub = .5;
+    let opacity = 1;
     ScrollTrigger.create({
         animation: animation1,
         trigger: ".container",
@@ -119,24 +120,23 @@ function Home(props) {
         // markers: true
     });
     animation1.to("#top-logo", {
-      y: -50
-      // y: -50,opacity: .1
+      // y: -50
+      y: -50,opacity: opacity
     },0)
     slogan1.to(".slogan1", {
-      y: -50
-      // y: -50,opacity: .1
+      // y: -50
+      y: -50,opacity: opacity
     },0)
     slogan2.to(".slogan2", {
-      y: -50
-      // y: -50,opacity: .1
+      // y: -50
+      y: -50,opacity: opacity
     },0)
     slogan3.to(".slogan3", {
-      y: -50
-      // y: -50,opacity: .1
+      // y: -50
+      y: -50,opacity: opacity
     },0)
     slogan4.to(".slogan4", {
-      y: -50
-      // y: -50,opacity: .1
+      y: -50,opacity: opacity
     },0)
   }
   let i = 0

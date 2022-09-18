@@ -20,7 +20,7 @@ export default function List(props) {
       ScrollTrigger.create({
         animation: animation,
         trigger: `.box${props.item.id}`,
-        start: "top bottom",
+        start: `top bottom+=${window.innerHeight*.25}`,
         end: `top bottom-=${window.innerHeight*.3}`,
         // end: `bottom bottom+=${window.innerHeight*.5}`,
         scrub: scrub,
@@ -34,7 +34,7 @@ export default function List(props) {
           animation: loadBtn,
           trigger: `#load-more`,
             start: "top bottom",
-            end: `top bottom-=${window.innerHeight*.3}`,
+            end: `top bottom-=${window.innerHeight*.5}`,
           scrub: 1,
           invalidateOnRefresh: true,
           // markers: true
