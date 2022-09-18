@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Head from 'next/head'
 import Script from 'next/script'
 import WP from 'wpapi'
@@ -13,7 +15,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 // import fetcher from '../../components/fetcher'
 import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
-import adobeLoader from "../../components/adobeLoader";
+// import adobeLoader from "../../components/adobeLoader";
 
 // function GetDataFromWp(id) {
 //   const { data, error } = useSWR([
@@ -31,6 +33,7 @@ import adobeLoader from "../../components/adobeLoader";
 // }
 
 export default function Work(props) {
+    gsap.registerPlugin(ScrollTrigger)
     const router = useRouter(); 
     const { id } = router.query;
     // const { data, isLoading, isError } = GetDataFromWp(id)
@@ -105,7 +108,8 @@ export default function Work(props) {
       //   document.getElementById('work').classList.add('reset')
       //   document.getElementById('work').classList.remove('show')
       // }
-       adobeLoader(document)
+      // adobeLoader(document)
+      
       playVideo()
     }, [id]);
 
@@ -145,6 +149,7 @@ export default function Work(props) {
           initial={{ opacity: 0 }} // 初期状態
           animate={{ opacity: 1 }} // マウント時
           exit={{ opacity: 0 }}    // アンマウント時
+          onAnimationComplete={() => {ScrollTrigger.refresh()}}
           transition={{
             duration: .25,
           }}
@@ -205,6 +210,7 @@ export default function Work(props) {
                           let datum = {
                             thisCategories: ''
                         };
+                        datum.type = 'others';
                         datum.index = index;
                         datum.item = item;
                         for (let i = 0; i < item.categories.length; i++) {

@@ -6,7 +6,7 @@ import Arrow from '../../components/svg/arrow'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 import Content from '../../components/content'
-import adobeLoader from "../../components/adobeLoader";
+// import adobeLoader from "../../components/adobeLoader";
 
 export default function Contact() {
     const [company, setCompany] = useState('');
@@ -120,7 +120,7 @@ export default function Contact() {
         checkValue(name, value)
     }
     useEffect(() => {
-      adobeLoader(document)
+      // adobeLoader(document)
     }, [])
     return (
         <>

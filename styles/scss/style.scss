@@ -5,6 +5,36 @@
 @import "./base";
 @import "./animation";
 
+.privacy-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  transform: initial;
+  // background-color: $red;
+  z-index: 2;
+  will-change: transform;
+  &::before {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    content: "";
+    display: block;
+    padding-top: 100%;
+    width: 100%;
+    background-color: $red;
+  }
+  svg {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+}
+
 html.wf-active {
   body {
     opacity: 1 !important;
@@ -14,7 +44,7 @@ html.wf-active {
 body {
   font-weight: normal;
   overscroll-behavior-y: none;
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  // transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   ::selection {
     color: $white;
     background-color: $red;
@@ -568,7 +598,7 @@ body {
         min-height: 100vh;
         &.other-works-wrapper {
           .inner {
-            margin-top: vw(-170.78);
+            // margin-top: vw(-170.78);
             width: 100%;
             ul {
               li {
@@ -1214,7 +1244,7 @@ body {
         min-height: 100vh;
         &.other-works-wrapper {
           .inner {
-            margin-top: rem(-227.7);
+            margin-top: rem(-80);
             width: 100%;
             ul {
               li {
@@ -1360,6 +1390,8 @@ body {
       padding-bottom: rem(160);
       section {
         &#top {
+          // position: sticky;
+          // top: 0;
           // height: 50vh;
           @include fitcenter();
           height: 100vh;

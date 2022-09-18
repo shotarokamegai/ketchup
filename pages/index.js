@@ -73,7 +73,7 @@ function Home(props) {
     let slogan3 = gsap.timeline();
     let slogan4 = gsap.timeline();
     let sloganScrub = .5;
-    let opacity = 1;
+    let opacity = .1;
     ScrollTrigger.create({
         animation: animation1,
         trigger: ".container",
@@ -155,7 +155,7 @@ function Home(props) {
     setPosts((posts) => posts.concat(res.data))
   }
   useEffect(() => {
-    adobeLoader(document)
+    // adobeLoader(document)
     gsap.registerPlugin(ScrollTrigger)
     setAnimation();
   }, []);
@@ -223,6 +223,7 @@ function Home(props) {
                               thisCategories: ''
                           };
                           datum.max = posts.length;
+                          datum.type = 'list';
                           datum.index = index;
                           datum.item = item;
                           for (let i = 0; i < item.categories.length; i++) {

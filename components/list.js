@@ -11,17 +11,27 @@ export default function List(props) {
       e.target.dataset.load = "done";
     let animation = gsap.timeline();
     let scrub;
-    if (props.index % 2 === 0) {
-      scrub = true;
+    if (props.type === 'list') {
+      if (props.index % 2 === 0) {
+        scrub = true;
+      } else {
+        scrub = 1;
+      }
     } else {
-      scrub = 1;
+      if (props.index % 3 === 0) {
+        scrub = .333333;
+      } else if (props.index % 2 === 0) {
+        scrub = 1;
+      } else {
+        scrub = .666666;
+      }
     }
     if (process.browser) {
       ScrollTrigger.create({
         animation: animation,
         trigger: `.box${props.item.id}`,
-        start: `top bottom+=${window.innerHeight*.25}`,
-        end: `top bottom-=${window.innerHeight*.3}`,
+        start: `top bottom+=${window.innerHeight*.1}`,
+        end: `top bottom-=${window.innerHeight*.4}`,
         // end: `bottom bottom+=${window.innerHeight*.5}`,
         scrub: scrub,
         invalidateOnRefresh: true,
@@ -40,8 +50,8 @@ export default function List(props) {
           // markers: true
         });
         loadBtn.to(`#load-more`, {y: -50},0)
-        ScrollTrigger.refresh()
       }
+      ScrollTrigger.refresh()
       }
     }
   };

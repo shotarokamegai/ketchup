@@ -3,7 +3,7 @@ import Script from 'next/script'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
-import adobeLoader from "../../components/adobeLoader";
+// import adobeLoader from "../../components/adobeLoader";
 
 import Content from '../../components/content'
 import { useEffect } from 'react';
@@ -16,7 +16,7 @@ export default function About() {
       restDelta: 0.001
     });
     useEffect(() => {
-       adobeLoader(document)
+    //    adobeLoader(document)
     }, [])
   return (
     <>

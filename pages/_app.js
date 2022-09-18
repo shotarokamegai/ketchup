@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef } from "react";
+import { AnimatePresence } from 'framer-motion'
 import { useRouter } from "next/router";
 import Header from '../components/header'
-import AnimatedPage from '../components/animatedPage';
 import '../styles/scss/style.scss'
-// import adobeLoader from "../components/adobeLoader";
+import adobeLoader from "../components/adobeLoader";
 
 const routes = [
   { path: '/', name: 'Home', Element: '' },
@@ -32,6 +32,7 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   useEffect(() => {
+    adobeLoader(document)
     let header = document.getElementById('header');
     let vh = window.innerHeight * 0.01;
     // カスタム変数--vhの値をドキュメントのルートに設定
@@ -49,14 +50,21 @@ function MyApp({ Component, pageProps }) {
             header.classList.remove('hide')
         }
     }
-    // adobeLoader(document)
-  }, [pathname])
+  }, [])
   return(
     <>
       <Header routes={routes} />
-      <AnimatedPage>
-        <Component {...pageProps} /> 
-      </AnimatedPage>
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter
+        // onExitComplete={() => {
+          // window.scrollTo(0, 0)
+        // }}
+      >
+        {Component &&
+          <Component key={router.asPath} {...pageProps} /> 
+        }
+      </AnimatePresence>
     </>
   )
 }
