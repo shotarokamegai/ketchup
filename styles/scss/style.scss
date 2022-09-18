@@ -15,7 +15,7 @@
   width: 100%;
   transform: initial;
   // background-color: $red;
-  z-index: 2;
+  z-index: 100;
   will-change: transform;
   &::before {
     position: absolute;

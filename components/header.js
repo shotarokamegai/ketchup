@@ -18,7 +18,7 @@ export default function Header(props) {
   return(
     <header id="header" className={`${isOpen && 'show'} ${pathname === '/' && 'hide'}`}>
       <h1>
-        <Link href="/">
+        <Link href="/" scroll={false}>
           <a>
             <Logo />
           </a>
@@ -28,7 +28,7 @@ export default function Header(props) {
         <ul className="flex flex-sp flex-end">
           {props.routes.map(route => (
             <li key={route.path} className={`menu-link futura`} data-pathname={route.path}>
-              <Link href={route.path}>
+              <Link href={route.path} scroll={false}>
                 <a className="ketchup">
                   <Image layout="fill" src="/img/common/ketchup.png" alt="" />
                 </a>
