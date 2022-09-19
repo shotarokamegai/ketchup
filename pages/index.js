@@ -52,6 +52,7 @@ function returnClassName (i) {
 }
 
 function Home(props) {
+    gsap.registerPlugin(ScrollTrigger)
   const { scrollYProgress } = useScroll();
   const logoRef = useRef();
   const [page, setPage] = useState(1);
@@ -67,13 +68,17 @@ function Home(props) {
     description: ''
   }
   const setAnimation = () => {
+    if (ScrollTrigger) {
+      ScrollTrigger.killAll()
+    }
     let animation1 = gsap.timeline();
     let slogan1 = gsap.timeline();
     let slogan2 = gsap.timeline();
     let slogan3 = gsap.timeline();
     let slogan4 = gsap.timeline();
     let sloganScrub = .5;
-    let opacity = .1;
+    let opacity = 1;
+    let y = -100;
     ScrollTrigger.create({
         animation: animation1,
         trigger: ".container",
@@ -121,22 +126,22 @@ function Home(props) {
     });
     animation1.to("#top-logo", {
       // y: -50
-      y: -50,opacity: opacity
+      y: y,opacity: opacity
     },0)
     slogan1.to(".slogan1", {
       // y: -50
-      y: -50,opacity: opacity
+      y: y,opacity: opacity
     },0)
     slogan2.to(".slogan2", {
       // y: -50
-      y: -50,opacity: opacity
+      y: y,opacity: opacity
     },0)
     slogan3.to(".slogan3", {
       // y: -50
-      y: -50,opacity: opacity
+      y: y,opacity: opacity
     },0)
     slogan4.to(".slogan4", {
-      y: -50,opacity: opacity
+      y: y,opacity: opacity
     },0)
   }
   let i = 0
@@ -156,7 +161,7 @@ function Home(props) {
   }
   useEffect(() => {
     // adobeLoader(document)
-    gsap.registerPlugin(ScrollTrigger)
+    ScrollTrigger.refresh()
     setAnimation();
   }, []);
 

@@ -13,7 +13,7 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  transform: initial;
+  transform: translate3d(0, 0, 0);
   // background-color: $red;
   z-index: 100;
   will-change: transform;
@@ -1291,10 +1291,12 @@ body {
           ul {
             flex-wrap: wrap;
             li {
+              position: relative;
               margin-bottom: 8.547008547008547%;
               margin-right: 2.564102564102564%;
               width: 38.461538461538464%;
               will-change: transform;
+              overflow: hidden;
               // opacity: 0.1;
               &.medium {
                 .img {
@@ -1324,10 +1326,30 @@ body {
                   }
                 }
               }
-              .img {
+              .img-wrap {
                 position: relative;
                 margin-bottom: rem(25);
                 overflow: hidden;
+                &::before {
+                  content: "";
+                  display: block;
+                  padding-top: 52.22222222222223%;
+                }
+              }
+              .img {
+                @include center();
+                height: 100%;
+                width: 100%;
+                transform: translate3d(-50%, -50%, 0) scale(1.1);
+                will-change: transform;
+                transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+                &.show {
+                  transform: translate3d(-50%, -50%, 0) scale(1);
+                  .cover {
+                    transform: translate3d(0, -100%, 0);
+                    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+                  }
+                }
                 img {
                   opacity: 0;
                   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1336,15 +1358,19 @@ body {
                   opacity: 1;
                 }
 
-                &::before {
-                  @include center();
+                .cover {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
                   height: 100%;
                   width: 100%;
                   content: "";
                   background-color: $red;
-                  mix-blend-mode: color;
-                  opacity: 0;
+                  // mix-blend-mode: color;
+                  // opacity: 0;
+                  transform: translate3d(0, 0, 0);
                   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                  will-change: transform;
                   z-index: 1;
                 }
                 span,

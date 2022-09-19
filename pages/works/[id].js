@@ -210,6 +210,7 @@ export default function Work(props) {
                           let datum = {
                             thisCategories: ''
                         };
+                        datum.max = props.posts.length;
                         datum.type = 'others';
                         datum.index = index;
                         datum.item = item;

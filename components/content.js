@@ -1,11 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useCallback,useEffect, useState } from "react";
+import Header from './header'
 import { useRouter } from "next/router";
 import { motion, useIsPresent } from 'framer-motion'
 import Footer from './footer'
 
 export default function Content({ children }) {
   const router = useRouter();
+  const pathname = router.asPath;
+  const isRunning = useRef(false) // スクロール多発防止用フラグ
   const isPresent = useIsPresent();
+  const isScrollToggle = useCallback(() => {
+    let header = document.getElementById('header');
+    if (isRunning.current) return
+    isRunning.current = true
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+    requestAnimationFrame(() => {
+      if (scrollTop > window.innerHeight) {
+          header.classList.remove('hide')
+      } else {
+          header.classList.add('hide')
+      }
+      isRunning.current = false
+    })
+  }, [])
   const checkLocation = () => {
     const menuLink = document.getElementsByClassName('menu-link');
     for (let i = 0; i < menuLink.length; i++) {
@@ -17,6 +34,12 @@ export default function Content({ children }) {
         }
     }
   }
+const routes = [
+  { path: '/', name: 'Home', Element: '' },
+  // { path: '/works', name: 'Works', Element: Works },
+  { path: '/about', name: 'About', Element: '' },
+  { path: '/contact', name: 'Contact', Element: '' },
+]
   const waveAnimation = {
     key: "wave",
     initial: {
@@ -57,6 +80,19 @@ export default function Content({ children }) {
 }
   useEffect(() => {
     checkLocation()
+    let header = document.getElementById('header');
+    if (header) {
+        header.classList.remove('show')
+        if (pathname === '/') {
+            header.classList.add('hide')
+            document.addEventListener('scroll', isScrollToggle, { passive: true })
+            return () => {
+              document.removeEventListener('scroll', isScrollToggle, { passive: true })
+            }
+        } else {
+            header.classList.remove('hide')
+        }
+    }
   }, [])
   return (
 <>
@@ -65,7 +101,8 @@ export default function Content({ children }) {
      {...boxAnimation}
     >
       <div className="container">
-        { children }
+        <Header routes={routes} />
+          { children }
         <Footer />
       </div>
     </motion.div>
