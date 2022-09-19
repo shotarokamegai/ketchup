@@ -109,6 +109,7 @@ export default function Work(props) {
       //   document.getElementById('work').classList.remove('show')
       // }
       // adobeLoader(document)
+      ScrollTrigger.refresh();
       
       playVideo()
     }, [id]);
@@ -145,15 +146,6 @@ export default function Work(props) {
       <div className={styles.container}>
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
-        <motion.div
-          initial={{ opacity: 0 }} // 初期状態
-          animate={{ opacity: 1 }} // マウント時
-          exit={{ opacity: 0 }}    // アンマウント時
-          onAnimationComplete={() => {ScrollTrigger.refresh()}}
-          transition={{
-            duration: .25,
-          }}
-        >
         <main id="work" className={`common main_`}>
         {/* <main id="work" className={`common main_ ${data.length !== 0 && 'show'}`}> */}
           <section id="top">
@@ -236,7 +228,6 @@ export default function Work(props) {
             </div>
           </section>
         </main>
-        </motion.div>
         </Content>
       </div>
       </>
