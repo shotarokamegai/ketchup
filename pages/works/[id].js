@@ -3,34 +3,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Head from 'next/head'
 import Script from 'next/script'
-import WP from 'wpapi'
 import axios from "axios"
 import Image from 'next/image'
 import List from '../../components/list'
-import Link from 'next/link'
-import useSWR from 'swr'
 import { useRouter } from "next/router";
 import Arrow from '../../components/svg/arrow';
 import { motion, useScroll, useSpring } from "framer-motion";
-// import fetcher from '../../components/fetcher'
 import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
-// import adobeLoader from "../../components/adobeLoader";
-
-// function GetDataFromWp(id) {
-//   const { data, error } = useSWR([
-//     `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts/${id}?_embed`,
-//     `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&exclude=${id}`,
-//     `${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`
-//   ],
-//   fetcher,
-//   )
-//   return {
-//     data: data ? data : [],
-//     isLoading: !data && !error,
-//     isError: error,
-//   }
-// }
 
 export default function Work(props) {
     gsap.registerPlugin(ScrollTrigger)
@@ -100,23 +80,13 @@ export default function Work(props) {
     const onLoad = (e) => {
       if (e.target.srcset) {
         e.target.dataset.load = "done";
+        ScrollTrigger.refresh();
       }
     };
 
     useEffect(() => {
-      // if (document.getElementById('work')) {
-      //   document.getElementById('work').classList.add('reset')
-      //   document.getElementById('work').classList.remove('show')
-      // }
-      // adobeLoader(document)
-      ScrollTrigger.refresh();
-      
       playVideo()
     }, [id]);
-
-    // if (isError) return(null)
-    // //ロード中
-    // if (isLoading) return(null)
     return (
       <>
     <Head>
@@ -147,7 +117,6 @@ export default function Work(props) {
       <Content>
         <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="work" className={`common main_`}>
-        {/* <main id="work" className={`common main_ ${data.length !== 0 && 'show'}`}> */}
           <section id="top">
             <div className="ruler">
                 <h3 className="section-title rocextrawide red">WORKS</h3>

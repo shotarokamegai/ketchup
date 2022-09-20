@@ -1,12 +1,9 @@
 import Head from 'next/head'
 import Script from 'next/script'
-import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
-// import adobeLoader from "../../components/adobeLoader";
 
 import Content from '../../components/content'
-import { useEffect } from 'react';
 
 export default function About() {
   const { scrollYProgress } = useScroll();
@@ -15,9 +12,6 @@ export default function About() {
       damping: 30,
       restDelta: 0.001
     });
-    useEffect(() => {
-    //    adobeLoader(document)
-    }, [])
   return (
     <>
     <Head>

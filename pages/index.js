@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Head from 'next/head'
 import Script from 'next/script'
 import fetch from 'node-fetch'
-// import Footer from './../components/footer'
-import adobeLoader from "../components/adobeLoader";
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -13,10 +11,8 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image'
 import List from '../components/list'
 import Arrow from '../components/svg/arrow'
-import useSWR from 'swr'
 import axios from "axios"
 import Content from '../components/content'
-import fetcher from '../components/fetcher'
 import styles from '../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 
@@ -68,9 +64,6 @@ function Home(props) {
     description: ''
   }
   const setAnimation = () => {
-    if (ScrollTrigger) {
-      ScrollTrigger.killAll()
-    }
     let animation1 = gsap.timeline();
     let slogan1 = gsap.timeline();
     let slogan2 = gsap.timeline();
@@ -160,7 +153,6 @@ function Home(props) {
     setPosts((posts) => posts.concat(res.data))
   }
   useEffect(() => {
-    // adobeLoader(document)
     ScrollTrigger.refresh()
     setAnimation();
   }, []);

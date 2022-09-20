@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { AnimatePresence } from 'framer-motion'
 import { useRouter } from "next/router";
-// import Header from '../components/header'
 import '../styles/scss/style.scss'
 import adobeLoader from "../components/adobeLoader";
 
@@ -27,7 +26,6 @@ function MyApp({ Component, pageProps }) {
   }, [])
   return(
     <>
-      {/* <Header routes={routes} /> */}
       <AnimatePresence
         initial={false}
         exitBeforeEnter
