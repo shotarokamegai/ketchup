@@ -123,8 +123,8 @@ export default function List(props) {
               <p className="categories">
                 {props.item && props.thisCategories.slice( 0, -1 )}
               </p>
-              <div className="inner">
-                <div className="inner-slide">
+              <div className="inner-slide">
+                <div className="inner-slide-slide">
                   <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title bold">
                   </p>
                   <p className="categories">
