@@ -1369,6 +1369,12 @@ body {
                     transform: scale(1.05) !important;
                   }
                 }
+                .detail p {
+                  background-position-x: 0;
+                  .inner {
+                    background-position-x: 0;
+                  }
+                }
               }
               .img-wrap {
                 position: relative;
@@ -1437,22 +1443,59 @@ body {
                 }
               }
               a {
-                color: $black;
+                // color: $black;
               }
               .detail {
-                .title,
-                .categories {
+                p {
+                  background-image: linear-gradient(
+                    to right,
+                    $red 50%,
+                    $white 50%
+                  );
+                  background-size: 200% 100%;
+                  background-position-x: 100%;
+                  transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                  .inner {
+                    // display: inline-flex;
+                    // padding: 12px 24px;
+                    background-image: linear-gradient(
+                      to right,
+                      $white 50%,
+                      $black 50%
+                    );
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    background-size: inherit;
+                    color: transparent;
+                    background-position-x: 100%;
+                    transition: inherit;
+                    // .futura {
+                    //   background-image: linear-gradient(
+                    //     to right,
+                    //     $white 50%,
+                    //     $red 50%
+                    //   );
+                    //   background-clip: text;
+                    //   -webkit-background-clip: text;
+                    //   background-size: inherit;
+                    //   color: transparent;
+                    //   background-position-x: 100%;
+                    //   transition: inherit;
+                    // }
+                  }
                 }
                 .title {
                   margin-bottom: rem(10);
-                  @include fontsize(20);
+                  @include fontsize(24);
                   line-height: (28 / 20);
+                  // @include fontsize(20);
+                  // line-height: (28 / 20);
                   font-weight: 600;
-                  .futura {
-                    position: relative;
-                    top: rem(1);
-                    @include fontsize(24);
-                  }
+                  // .futura {
+                  //   position: relative;
+                  //   top: rem(1);
+                  //   @include fontsize(24);
+                  // }
                 }
                 .categories {
                   @include fontsize(13);

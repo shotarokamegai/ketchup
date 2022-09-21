@@ -33,7 +33,7 @@ export default function Footer() {
         <p className="vertical rocextrawideLight white">
             CONTACT
         </p>
-        <Link href="/contact">
+        <Link href="/contact" scroll={false}>
           <a className="btn flex flex-sp space-between align-center white">
             <span className="text rocextrawideLight">CONTACT US</span>
             <Arrow />
