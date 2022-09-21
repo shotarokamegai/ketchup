@@ -117,15 +117,21 @@ export default function List(props) {
             <Image placeholder="blur" blurDataURL={props.item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} layout='fill' objectFit="contain" src={props.item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} alt={props.item && props.item.title} onLoad={onLoad} />
           </div>
           </div>
-          <div className="detail futura">
-              <p className="title bold">
-                <span className="inner" dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}}></span>
+          <div className="detail futura slide-text">
+              <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title bold">
               </p>
               <p className="categories">
-                <span className="inner">
-                  {props.item && props.thisCategories.slice( 0, -1 )}
-                </span>
+                {props.item && props.thisCategories.slice( 0, -1 )}
               </p>
+              <div className="inner">
+                <div className="inner-slide">
+                  <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title bold">
+                  </p>
+                  <p className="categories">
+                    {props.item && props.thisCategories.slice( 0, -1 )}
+                  </p>
+                </div>
+              </div>
           </div>
         </a>
       </Link>

@@ -13,10 +13,11 @@
   bottom: 0;
   height: 100%;
   width: 100%;
-  transform: translate3d(0, 100%, 0);
-  // background-color: $red;
+  // transform: translate3d(0, 100%, 0);
+  background-color: $red;
   z-index: 10;
   will-change: transform;
+  pointer-events: none;
   &::before {
     position: absolute;
     top: 0;
@@ -608,6 +609,7 @@ body {
                 .detail {
                   margin-bottom: 0 !important;
                   .title {
+                    margin-bottom: vw(5);
                     @include fontvw(13);
                     .futura {
                       top: 0.3vw;
@@ -634,21 +636,6 @@ body {
               position: relative;
               margin-bottom: vw(20);
               width: 100%;
-              &.medium {
-                .img {
-                  &::before {
-                    // padding-top: 100%;
-                  }
-                }
-              }
-              &.large {
-                // margin-left: 20.512820512820512%;
-                .img {
-                  &::before {
-                    // padding-top: 140%;
-                  }
-                }
-              }
               &:active {
                 .img {
                   &::before {
@@ -683,6 +670,17 @@ body {
                     transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
                   }
                 }
+                &::before {
+                  @include center();
+                  height: 101%;
+                  width: 101%;
+                  content: "";
+                  background-color: $red;
+                  mix-blend-mode: color;
+                  opacity: 0;
+                  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                  z-index: 1;
+                }
                 img {
                   opacity: 0;
                   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -705,17 +703,6 @@ body {
                   will-change: transform;
                   z-index: 1;
                 }
-                &::before {
-                  @include center();
-                  height: 101%;
-                  width: 101%;
-                  content: "";
-                  background-color: $red;
-                  mix-blend-mode: color;
-                  opacity: 0;
-                  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                  z-index: 1;
-                }
                 span,
                 img {
                   position: relative !important;
@@ -730,9 +717,6 @@ body {
                 color: $black;
               }
               .detail {
-                .title,
-                .categories {
-                }
                 .title {
                   margin-bottom: vw(10);
                   @include fontvw(16);
@@ -873,9 +857,14 @@ body {
         position: relative;
         margin-bottom: vw(30);
         overflow: hidden;
-        opacity: 0;
+        // opacity: 0;
         transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 1s,
           transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+        &::before {
+          content: "";
+          display: block;
+          padding-top: 52.22222222222223%;
+        }
         &.active {
           opacity: 1;
           .cover {
@@ -907,15 +896,14 @@ body {
           opacity: 1;
         }
         .img {
+          @include center();
+          height: 100%;
+          width: 100%;
           span,
           img {
             position: relative !important;
             width: 100% !important;
             height: unset !important;
-          }
-          img {
-            opacity: 0;
-            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
           }
           img[data-load="done"] {
             opacity: 1;
@@ -1386,19 +1374,52 @@ body {
               &.mn {
                 margin-right: 0;
               }
+              .slide-text {
+                position: relative;
+                display: block;
+                overflow: hidden;
+                color: $black;
+                .inner {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  height: 100%;
+                  width: 100%;
+                  line-height: 1;
+                  overflow: hidden;
+                  transform: translate3d(-101%, 0, 0);
+                  background-color: $white;
+                  will-change: transform;
+                  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                  .inner-slide {
+                    * {
+                      color: $red !important;
+                      background-color: transparent !important;
+                    }
+                    display: block;
+                    height: 100%;
+                    transform: translate3d(101%, 0, 0);
+                    text-decoration: none;
+                    will-change: transform;
+                    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                  }
+                }
+              }
               &:hover {
+                .slide-text {
+                  .inner {
+                    transform: translateZ(0);
+                    .inner-slide {
+                      transform: translateZ(0);
+                    }
+                  }
+                }
                 .img {
                   &::before {
-                    opacity: 1;
+                    // opacity: 1;
                   }
                   img {
                     transform: scale(1.05) !important;
-                  }
-                }
-                .detail p {
-                  background-position-x: 0;
-                  .inner {
-                    background-position-x: 0;
                   }
                 }
               }
@@ -1454,8 +1475,6 @@ body {
                   width: 100%;
                   content: "";
                   background-color: $red;
-                  // mix-blend-mode: color;
-                  // opacity: 0;
                   transform: translate3d(0, 0, 0);
                   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                   will-change: transform;
@@ -1472,63 +1491,18 @@ body {
                 // color: $black;
               }
               .detail {
-                p {
-                  background-image: linear-gradient(
-                    to right,
-                    $red 50%,
-                    $white 50%
-                  );
-                  background-size: 200% 100%;
-                  background-position-x: 100%;
-                  transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                  .inner {
-                    display: inline-block;
-                    height: 100%;
-                    width: 100%;
-                    // padding: 12px 24px;
-                    background-image: linear-gradient(
-                      to right,
-                      $white 50%,
-                      $black 50%
-                    );
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    background-size: inherit;
-                    color: transparent;
-                    background-position-x: 100%;
-                    transition: inherit;
-                    // .futura {
-                    //   background-image: linear-gradient(
-                    //     to right,
-                    //     $white 50%,
-                    //     $red 50%
-                    //   );
-                    //   background-clip: text;
-                    //   -webkit-background-clip: text;
-                    //   background-size: inherit;
-                    //   color: transparent;
-                    //   background-position-x: 100%;
-                    //   transition: inherit;
-                    // }
-                  }
-                }
                 .title {
                   margin-bottom: rem(10);
                   @include fontsize(24);
                   line-height: (28 / 20);
-                  // @include fontsize(20);
-                  // line-height: (28 / 20);
                   font-weight: 600;
-                  // .futura {
-                  //   position: relative;
-                  //   top: rem(1);
-                  //   @include fontsize(24);
-                  // }
                 }
                 .categories {
                   @include fontsize(13);
                   line-height: (17 / 13);
                 }
+              }
+              .inner {
               }
             }
           }
@@ -1676,7 +1650,7 @@ body {
       .keyv-wrap {
         position: relative;
         margin-bottom: rem(22);
-        opacity: 0;
+        // opacity: 0;
         overflow: hidden;
         transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 1s,
           transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;

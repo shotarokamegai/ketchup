@@ -43,16 +43,19 @@ const routes = [
   const waveAnimation = {
     key: "wave",
     initial: {
-      y: '0',
+      opacity: 1,
+      // y: '0',
     },
     animate: {
-      y: '-150vh',
+      opacity: 0,
+      // y: '-150vh',
     },
     exit: {
-      y: '0',
+      opacity: 1,
+      // y: '0',
     },
     transition: {
-        duration: 1,
+        duration: .5,
         ease: [0.65, 0, 0.35, 1]
     },
 }
