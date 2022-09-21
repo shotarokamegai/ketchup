@@ -1456,7 +1456,9 @@ body {
                   background-position-x: 100%;
                   transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                   .inner {
-                    // display: inline-flex;
+                    display: inline-block;
+                    height: 100%;
+                    width: 100%;
                     // padding: 12px 24px;
                     background-image: linear-gradient(
                       to right,
