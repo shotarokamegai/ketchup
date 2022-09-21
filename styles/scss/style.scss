@@ -28,18 +28,6 @@
     width: 100%;
     background-color: $red;
   }
-  svg {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    &.wave-top {
-      top: -22vw;
-    }
-    &.wave-bottom {
-      transform: rotateX(180deg);
-      bottom: -22vw;
-    }
-  }
 }
 
 html.wf-active {
@@ -200,17 +188,19 @@ body {
 }
 
 @media screen and (max-width: 749px) {
-  .loading {
-    position: absolute;
-    min-height: 100%;
-    left: 50%;
-    transform: translate3d(-50%, 0, 0);
-    height: 100vh;
-    width: 100vw;
-    background-image: url(../../public/img/common/ketchup.png);
-    background-size: rem(300);
-    background-position: center;
-    background-repeat: repeat;
+  .privacy-screen {
+    svg {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      &.wave-top {
+        top: -21vw;
+      }
+      &.wave-bottom {
+        transform: rotateX(180deg);
+        bottom: -21vw;
+      }
+    }
   }
   .progress-bar {
     position: fixed;
@@ -610,6 +600,7 @@ body {
             ul {
               li {
                 margin-right: vw(21);
+                margin-bottom: vw(15);
                 width: vw(152);
                 &:nth-child(2n) {
                   margin-right: 0;
@@ -641,7 +632,7 @@ body {
             flex-wrap: wrap;
             li {
               position: relative;
-              margin-bottom: vw(40);
+              margin-bottom: vw(20);
               width: 100%;
               &.medium {
                 .img {
@@ -879,7 +870,42 @@ body {
         }
       }
       .keyv-wrap {
+        position: relative;
         margin-bottom: vw(30);
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 1s,
+          transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+        &.active {
+          opacity: 1;
+          .cover {
+            transform: translate3d(0, -105%, 0);
+          }
+          .img img {
+            transform: scale(1);
+          }
+        }
+        .cover {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          content: "";
+          background-color: $red;
+          transform: translate3d(0, 0, 0);
+          transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+          will-change: transform;
+          z-index: 1;
+        }
+        img {
+          transform: scale(1.1);
+          will-change: transform;
+          transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+        }
+        img[data-load="done"] {
+          opacity: 1;
+        }
         .img {
           span,
           img {
@@ -1036,19 +1062,19 @@ body {
 }
 
 @media screen and (min-width: 750px) {
-  body {
-  }
-  .loading {
-    position: absolute;
-    min-height: 100%;
-    left: 50%;
-    transform: translate3d(-50%, 0, 0);
-    height: 100vh;
-    width: 100vw;
-    background-image: url(../../public/img/common/ketchup.png);
-    background-size: rem(300);
-    background-position: center;
-    background-repeat: repeat;
+  .privacy-screen {
+    svg {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      &.wave-top {
+        top: -22vw;
+      }
+      &.wave-bottom {
+        transform: rotateX(180deg);
+        bottom: -22vw;
+      }
+    }
   }
   .progress-bar {
     position: fixed;
@@ -1650,12 +1676,16 @@ body {
       .keyv-wrap {
         position: relative;
         margin-bottom: rem(22);
+        opacity: 0;
         overflow: hidden;
+        transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 1s,
+          transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;
         &.active {
+          opacity: 1;
           .cover {
             transform: translate3d(0, -105%, 0);
           }
-          img {
+          .img img {
             transform: scale(1);
           }
         }
@@ -1667,10 +1697,8 @@ body {
           width: 100%;
           content: "";
           background-color: $red;
-          // mix-blend-mode: color;
-          // opacity: 0;
           transform: translate3d(0, 0, 0);
-          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+          transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;
           will-change: transform;
           z-index: 1;
         }
@@ -1685,7 +1713,7 @@ body {
         img {
           transform: scale(1.1);
           will-change: transform;
-          transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1) 1s;
         }
         img[data-load="done"] {
           opacity: 1;
