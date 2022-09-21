@@ -14,6 +14,7 @@ import styles from '../../styles/Home.module.css'
 
 export default function Work(props) {
     gsap.registerPlugin(ScrollTrigger)
+    const [load, setOnload] = useState(false);
     const router = useRouter(); 
     const { id } = router.query;
     // const { data, isLoading, isError } = GetDataFromWp(id)
@@ -81,6 +82,7 @@ export default function Work(props) {
       if (e.target.srcset) {
         e.target.dataset.load = "done";
         ScrollTrigger.refresh();
+        setOnload(true)
       }
     };
 
@@ -125,12 +127,13 @@ export default function Work(props) {
               WORKS
             </p>
             <div className="ruler">
-                <div className="keyv-wrap">
+                <div className={`keyv-wrap ${load && 'active'}`}>
                   <div className="img">
                     <Image placeholder="blur" blurDataURL={props.post['_embedded']['wp:featuredmedia'][0].source_url} layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} 
                      onLoad={onLoad}
                     />
                   </div>
+                  <div className="cover"></div>
                 </div>
                 <div className="detail flex space-between">
                   <div>

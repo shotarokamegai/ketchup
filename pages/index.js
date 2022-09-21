@@ -70,7 +70,7 @@ function Home(props) {
     let slogan3 = gsap.timeline();
     let slogan4 = gsap.timeline();
     let sloganScrub = .5;
-    let opacity = 1;
+    let opacity = .5;
     let y = -100;
     ScrollTrigger.create({
         animation: animation1,

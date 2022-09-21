@@ -15,7 +15,7 @@
   width: 100%;
   transform: translate3d(0, 100%, 0);
   // background-color: $red;
-  z-index: 1;
+  z-index: 10;
   will-change: transform;
   &::before {
     position: absolute;
@@ -33,11 +33,11 @@
     width: 100%;
     left: 0;
     &.wave-top {
-      top: -22.222641509433963vw;
+      top: -22vw;
     }
     &.wave-bottom {
       transform: rotateX(180deg);
-      bottom: -22.222641509433963vw;
+      bottom: -22vw;
     }
   }
 }
@@ -51,7 +51,7 @@ html.wf-active {
 body {
   font-weight: normal;
   overscroll-behavior-y: none;
-  // transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   ::selection {
     color: $white;
     background-color: $red;
@@ -1554,7 +1554,29 @@ body {
         }
       }
       .keyv-wrap {
+        position: relative;
         margin-bottom: rem(22);
+        overflow: hidden;
+        &.active {
+          .cover {
+            transform: translate3d(0, -105%, 0);
+          }
+        }
+        .cover {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          content: "";
+          background-color: $red;
+          // mix-blend-mode: color;
+          // opacity: 0;
+          transform: translate3d(0, 0, 0);
+          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+          will-change: transform;
+          z-index: 1;
+        }
         .img {
           span,
           img {
