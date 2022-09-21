@@ -72,6 +72,12 @@ function Home(props) {
     let sloganScrub = .5;
     let opacity = .5;
     let y = -100;
+
+    if (window.innerWidth < 750) {
+      opacity = opacity*.8
+      y = y*.8
+    }
+
     ScrollTrigger.create({
         animation: animation1,
         trigger: ".container",
