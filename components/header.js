@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,18 +6,27 @@ import Logo from './svg/logo'
 
 export default function Header(props) {
   const router = useRouter();
+  const ref = useRef();
   const pathname = router.pathname;
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
-    console.log(pathname)
     setIsOpen(!isOpen)
   }
   useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
+    setTimeout(() => {
+      setIsOpen(false)
+    }, 1500)
+    if (pathname === '/') {
+      ref.current.classList.add('reset')
+      ref.current.classList.remove('hide')
+      setTimeout(() => {
+        ref.current.classList.remove('reset')
+      }, 500)
+    }
+  }, [])
   return(
-    <header id="header" className={`${isOpen || pathname !== '/' ? 'show': ''}`}>
+    <header id="header" className={`${isOpen ? 'show': ''}`} ref={ref}>
       <h1>
         <Link href="/" scroll={false}>
           <a>
