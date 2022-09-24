@@ -74,8 +74,8 @@ function Home(props) {
     let y = -100;
 
     if (window.innerWidth < 750) {
-      opacity = opacity*.8
-      y = y*.8
+      opacity = opacity*.5
+      y = y*.5
     }
 
     ScrollTrigger.create({
@@ -124,19 +124,15 @@ function Home(props) {
         // markers: true
     });
     animation1.to("#top-logo", {
-      // y: -50
       y: y,opacity: opacity
     },0)
     slogan1.to(".slogan1", {
-      // y: -50
       y: y,opacity: opacity
     },0)
     slogan2.to(".slogan2", {
-      // y: -50
       y: y,opacity: opacity
     },0)
     slogan3.to(".slogan3", {
-      // y: -50
       y: y,opacity: opacity
     },0)
     slogan4.to(".slogan4", {

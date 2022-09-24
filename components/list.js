@@ -12,6 +12,7 @@ export default function List(props) {
     let animation1 = gsap.timeline();
     let animation2 = gsap.timeline();
     let animation3 = gsap.timeline();
+    let y = -150;
     let scrub;
     if (props.type === 'list') {
       if (props.index % 2 === 0) {
@@ -20,14 +21,29 @@ export default function List(props) {
         scrub = 1;
       }
     } else {
-      if (props.index % 3 === 0) {
-        scrub = .333333;
-      } else if (props.index % 2 === 0) {
-        scrub = 1;
+      if (window.innerWidth < 750) {
+        if (props.index % 2 === 0) {
+          scrub = true;
+        } else {
+          scrub = 1;
+        }
       } else {
-        scrub = .666666;
+        if (props.index % 3 === 0) {
+          scrub = .333333;
+        } else if (props.index % 2 === 0) {
+          scrub = 1;
+        } else {
+          scrub = .666666;
+        }
       }
+      y = -50;
     }
+    if (window.innerWidth < 750) {
+      y = y/2;
+    }
+    console.log(y)
+    console.log(scrub)
+    console.log(props.type)
     if (process.browser) {
       ScrollTrigger.create({
         animation: animation1,
