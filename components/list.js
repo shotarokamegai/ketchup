@@ -22,11 +22,11 @@ export default function List(props) {
         scrub = 1;
       }
       if (window.innerWidth < 750) {
-        y = y/2;
+        y = -100;
       }
     } else {
       if (window.innerWidth < 750) {
-        y = -100
+        y = -50
         if (props.index % 2 === 0) {
           scrub = true;
         } else {
