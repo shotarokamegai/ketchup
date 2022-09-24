@@ -840,6 +840,7 @@ body {
         margin: 0 auto;
         &.none {
           visibility: hidden !important;
+          height: 0 !important;
         }
       }
     }
@@ -1612,6 +1613,7 @@ body {
         margin: 0 auto;
         &.none {
           visibility: hidden !important;
+          height: 0 !important;
         }
       }
     }
