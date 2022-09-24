@@ -5,12 +5,11 @@ import fetch from 'node-fetch'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-
-
 // import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import List from '../components/list'
 import Arrow from '../components/svg/arrow'
+import Logo from '../components/svg/logo'
 import axios from "axios"
 import Content from '../components/content'
 import styles from '../styles/Home.module.css'
@@ -193,7 +192,7 @@ function Home(props) {
               <div className="ruler flex space-between">
                   <div>
                       <h1 id="top-logo" className="logo" ref={logoRef}>
-                          <Image layout='fill' objectFit="contain" src="/img/common/logo.svg" alt="Ketchup" />
+                        <Logo />
                       </h1>
                   </div>
                   <div>

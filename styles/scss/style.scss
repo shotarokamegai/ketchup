@@ -800,6 +800,9 @@ body {
                   position: relative;
                   margin: 0 auto vw(70);
                   width: vw(355);
+                  path {
+                    fill: $red;
+                  }
                   span,
                   img {
                     position: relative !important;
@@ -1569,6 +1572,9 @@ body {
                   margin: 0 auto 0 0;
                   width: 90%;
                   will-change: transform;
+                  path {
+                    fill: $red;
+                  }
                   span,
                   img {
                     position: relative !important;
