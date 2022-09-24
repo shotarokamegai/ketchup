@@ -12,22 +12,28 @@ export default function List(props) {
     let animation1 = gsap.timeline();
     let animation2 = gsap.timeline();
     let animation3 = gsap.timeline();
-    let y = -150;
+    let y;
     let scrub;
     if (props.type === 'list') {
+      y = -150;
       if (props.index % 2 === 0) {
         scrub = true;
       } else {
         scrub = 1;
       }
+      if (window.innerWidth < 750) {
+        y = y/2;
+      }
     } else {
       if (window.innerWidth < 750) {
+        y = -100
         if (props.index % 2 === 0) {
           scrub = true;
         } else {
           scrub = 1;
         }
       } else {
+        y = -100;
         if (props.index % 3 === 0) {
           scrub = .333333;
         } else if (props.index % 2 === 0) {
@@ -36,10 +42,6 @@ export default function List(props) {
           scrub = .666666;
         }
       }
-      y = -50;
-    }
-    if (window.innerWidth < 750) {
-      y = y/2;
     }
     console.log(y)
     console.log(scrub)
@@ -101,7 +103,7 @@ export default function List(props) {
         }
         // markers: true
       });
-      animation1.to(`.box${props.item.id}`, {y: -150},0)
+      animation1.to(`.box${props.item.id}`, {y: y},0)
       // animation2.to(`.cover${props.item.id}`, {y: '-100%'},0)
       // animation3.to(`.img${props.item.id}`, {scale: 1},0)
       if (props.index === props.max-1) {
