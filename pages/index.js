@@ -196,7 +196,7 @@ function Home(props) {
                   <div>
                       <h2 className="slogan roc">
                         <span className="slogan1">
-                          Add a bit off flavoring 
+                          Add a bit of flavoring 
                         </span>
                           <br/>
                         <span className="slogan2">to those contents, </span><br/>
