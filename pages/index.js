@@ -5,8 +5,6 @@ import fetch from 'node-fetch'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-// import { NextSeo } from 'next-seo'
-import Image from 'next/image'
 import List from '../components/list'
 import Arrow from '../components/svg/arrow'
 import Logo from '../components/svg/logo'
