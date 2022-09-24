@@ -239,7 +239,7 @@ body {
     border: none;
     &:active {
       .text {
-        @include tracking(111);
+        @include tracking(120);
       }
       img,
       svg {
@@ -1074,7 +1074,9 @@ body {
           border: vw(1) solid $red;
           box-sizing: border-box;
           &:focus {
-            outline: solid rem(1) $red;
+            outline: none;
+            border: vw(2) solid $red;
+            // outline: solid rem(1) $red;
           }
         }
         input {
@@ -1851,7 +1853,9 @@ body {
           border: rem(1) solid $red;
           box-sizing: border-box;
           &:focus {
-            outline: solid rem(1) $red;
+            border: rem(2) solid $red;
+            outline: none;
+            // outline: solid rem(1) $red;
           }
         }
         input {

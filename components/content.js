@@ -55,8 +55,9 @@ const routes = [
       // y: '0',
     },
     transition: {
-        duration: .5,
-        ease: [0.65, 0, 0.35, 1]
+      duration: .5,
+      // delay: 1,
+      ease: [0.65, 0, 0.35, 1]
     },
 }
   const boxAnimation = {
@@ -66,17 +67,17 @@ const routes = [
     },
     animate: {
         opacity: 1,
-        transition: {
-          delay: 1
-        },
+        // transition: {
+        //   delay: 1
+        // },
     },
     exit: {
         opacity: 1,
-        transition: {
-          delay: 1
-        },
+        // transition: {
+        // },
     },
     transition: {
+        delay: .5,
         duration: 0.2,
         ease: "easeOut"
     },
@@ -99,16 +100,16 @@ const routes = [
   }, [])
   return (
 <>
-    <motion.div
-      key={router.asPath}
-     {...boxAnimation}
-    >
-      <div className="container">
-        <Header routes={routes} />
-          { children }
+    <div className="container">
+      <Header routes={routes} />
+      <motion.div
+        key={router.asPath}
+       {...boxAnimation}
+      >
+        { children }
         <Footer />
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
     <motion.div
       key={router.asPath}
      {...waveAnimation}

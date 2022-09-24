@@ -10,13 +10,14 @@ export default function Header(props) {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
+    console.log(pathname)
     setIsOpen(!isOpen)
   }
   useEffect(() => {
     setIsOpen(false)
   }, [pathname])
   return(
-    <header id="header" className={`${isOpen && 'show'}`}>
+    <header id="header" className={`${isOpen || pathname !== '/' ? 'show': ''}`}>
       <h1>
         <Link href="/" scroll={false}>
           <a>
@@ -48,9 +49,6 @@ export default function Header(props) {
           <p>Menu</p>
           <p>Close</p>
         </div>
-        {/* <div></div>
-        <div></div>
-        <div></div> */}
         <span className="ketchup sp" onClick={handleClick}>
           <Image layout="fill" src="/img/common/ketchup.png" alt="" />
         </span>
