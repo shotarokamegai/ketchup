@@ -791,6 +791,7 @@ body {
           margin-bottom: vw(80);
           .ruler {
             // height: 100%;
+            top: vw(40);
             width: 100%;
             max-width: initial;
             div {
@@ -798,7 +799,7 @@ body {
               &:nth-child(1) {
                 .logo {
                   position: relative;
-                  margin: 0 auto vw(70);
+                  margin: 0 auto vw(30);
                   width: vw(355);
                   path {
                     fill: $red;
