@@ -239,11 +239,11 @@ body {
     border: none;
     &:active {
       .text {
-        @include tracking(120);
+        @include tracking(200);
       }
       img,
       svg {
-        transform: translate3d(vw(10), 0, 0);
+        transform: translate3d(vw(5), 0, 0);
       }
     }
     &.white {
@@ -258,7 +258,7 @@ body {
       transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .text {
-      margin-right: vw(20);
+      margin-right: vw(15);
       @include fontvw(20);
       white-space: nowrap;
       color: $white;
