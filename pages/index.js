@@ -202,7 +202,7 @@ function Home(props) {
                         <span className="slogan2">to those contents, </span><br/>
                         <span className="slogan3">and deliver them </span>
                         <br/>
-                        <span className="slogan4">in an even better form.</span>
+                        <span className="slogan4">in an even better thing.</span>
                       </h2>
                   </div>
               </div>
