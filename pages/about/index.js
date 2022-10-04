@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Script from 'next/script'
 import styles from '../../styles/Home.module.css'
+import Image from 'next/image'
 import { motion, useScroll, useSpring } from "framer-motion";
 
 import Content from '../../components/content'
@@ -55,12 +56,9 @@ export default function About() {
                         私たちの力で少し味付けをして、<br className="sp" />さらにより良い形で届けられるように。<br /><br />
                         Ketchupはそんな想いで設立された、<br className="sp" />クリエイティブカンパニーです。
                     </p>
-                    {/* <p className="section-text futura">
-                        株式会社Ketchupは企業のコーポレートサイト、商品の魅力を伝えるプロモーションサイトをはじめ、<br/>
-                        広告、企業、ブランドに纏わるさまざまなモノを企画・制作している、
-                        「インターネット領域」に強みを持つ制作会社です。<br /><br />
-                        その他にグラフィック制作、データ分析、撮影など、クリエイティブ領域全般の業務を行います。
-                    </p> */}
+                    <div className="img">
+                        <Image height="900" width="900" src="/img/common/ketchup-illustration.png" alt="" />
+                    </div>
                 </div>
                 <p className="vertical rocextrawideLight">
                     PROFILE

@@ -851,9 +851,18 @@ body {
         &#top {
           .ruler {
             .section-text {
-              margin-bottom: vw(80);
+              position: relative;
               font-family: $Mincho;
               color: $red;
+              z-index: 1;
+            }
+            .img {
+              position: relative;
+              left: 50%;
+              margin-top: vw(20);
+              margin-bottom: vw(80);
+              width: 100vw;
+              transform: translate3d(-50%, 0, 0);
             }
             .company {
               margin-top: vw(-90.89);
@@ -1624,15 +1633,25 @@ body {
         &#top {
           .ruler {
             .section-text {
+              position: relative;
               margin-bottom: rem(80);
               // width: 58.97435897435898%;
               @include fontsize(20);
               line-height: (40 / 20);
               font-family: $Mincho;
               color: $red;
+              z-index: 1;
               // .futura {
               //   @include fontsize(22);
               // }
+            }
+            .img {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 38.461538461538464%;
+              // width: rem(450);
+              min-width: rem(450);
             }
             .company {
               margin-top: rem(-121.17);
