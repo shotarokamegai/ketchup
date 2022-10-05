@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Script from 'next/script'
 import styles from '../../styles/Home.module.css'
-import Image from 'next/image'
 import { motion, useScroll, useSpring } from "framer-motion";
 
 import Content from '../../components/content'
@@ -57,7 +56,7 @@ export default function About() {
                         Ketchupはそんな想いで設立された、<br className="sp" />クリエイティブカンパニーです。
                     </p>
                     <div className="img">
-                        <Image height="900" width="900" src="/img/common/ketchup-illustration.png" alt="" />
+                        <img src="/img/common/ketchup-illustration.png" alt="" />
                     </div>
                 </div>
                 <p className="vertical rocextrawideLight">
