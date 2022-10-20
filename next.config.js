@@ -5,6 +5,8 @@ const nextConfig = {
   staticPageGenerationTimeout: 2000,
   images: {
     domains: ['xs849487.xsrv.jp'],
+    unoptimized: true,
+
   },
 }
 
