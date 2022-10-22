@@ -7,8 +7,10 @@ import Image from 'next/image'
 export default function List(props) {
   gsap.registerPlugin(ScrollTrigger)
   const onLoad = (e) => {
-    if (e.target.srcset) {
-      e.target.dataset.load = "done";
+      console.log(1)
+    // if (e.target.srcset) {
+      console.log(2)
+    e.target.dataset.load = "done";
     let animation1 = gsap.timeline();
     let animation2 = gsap.timeline();
     let animation3 = gsap.timeline();
@@ -43,9 +45,6 @@ export default function List(props) {
         }
       }
     }
-    console.log(y)
-    console.log(scrub)
-    console.log(props.type)
     if (process.browser) {
       ScrollTrigger.create({
         animation: animation1,
@@ -121,7 +120,7 @@ export default function List(props) {
       }
       // ScrollTrigger.refresh()
       }
-    }
+    // }
   };
   useEffect(() => {
   },[])
