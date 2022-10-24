@@ -79,11 +79,11 @@ export default function Work(props) {
     }
 
     const onLoad = (e) => {
-      if (e.target.srcset) {
+      // if (e.target.srcset) {
         e.target.dataset.load = "done";
         ScrollTrigger.refresh();
         setOnload(true)
-      }
+      // }
     };
 
     useEffect(() => {
