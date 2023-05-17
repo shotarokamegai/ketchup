@@ -41,7 +41,7 @@ export default function Footer() {
         </Link>
         <div className="ruler flex flex-sp space-between">
           <p className="copy futura">©Ketchup Inc.</p>
-          <p className="address futura">B Miura Terrace House 2-23-20 Nozawa Setagaya, Tokyo 154-0003</p>
+          <p className="address futura">B Miura Terrace House 3-23-20 Nozawa Setagaya, Tokyo 154-0003</p>
         </div>
       </div>
     </footer>
