@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "export": "npm run build && next export && next-sitemap --config sitemap.config.js",
     "lint": "next lint"

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ktcp.jp/
+
+# Sitemaps
+Sitemap: https://ktcp.jp/sitemap.xml
