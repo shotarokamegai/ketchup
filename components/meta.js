@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 export default function Meta(props) {
   const router = useRouter();
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`;
-  const title = "Ketchup Inc.";
-  const description = title;
+  const title = "Ketchup Inc. | 株式会社 Kｅｔｃｈｕｐ";
+  const description = "簡単で、便利で、形を変えて、どんなものでも、Web の世界を彩るサービスを。デザインから幅広いWeb サイト制作まで、一貫した企画制作・運用。";
 
   return (
       <DefaultSeo
