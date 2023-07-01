@@ -152,6 +152,9 @@ function Home(props) {
     setPosts((posts) => posts.concat(res.data))
   }
   useEffect(() => {
+    let vh = window.innerHeight * 0.01;
+    // カスタム変数--vhの値をドキュメントのルートに設定
+    document.getElementById('top').documentElement.style.setProperty('--vh', `${vh}px`);
     ScrollTrigger.refresh()
     setAnimation();
   }, []);
