@@ -827,6 +827,12 @@ body {
               line-height: (50 / 40);
               font-size: 8.3vw;
               // font-size: 10.366667vw;
+              .slogan2 {
+                left: 6vw;
+              }
+              .slogan3 {
+                left: 10vw;
+              }
               span {
                 position: relative;
                 display: inline-block;
@@ -1608,6 +1614,18 @@ body {
               line-height: (90 / 70);
               font-size: 4.5vw;
               white-space: nowrap;
+              .slogan1 {
+                left: rem(-30);
+              }
+              .slogan2 {
+                left: rem(-10);
+              }
+              .slogan3 {
+                left: rem(-10);
+              }
+              .slogan4 {
+                left: rem(-40);
+              }
               span {
                 position: relative;
                 display: inline-block;
