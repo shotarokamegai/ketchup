@@ -5,6 +5,10 @@
 @import "./base";
 @import "./animation";
 
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
 .privacy-screen {
   position: fixed;
   top: 0;

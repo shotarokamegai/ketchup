@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef } from "react";
+import Lenis from '@studio-freight/lenis'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { AnimatePresence } from 'framer-motion'
@@ -17,12 +18,30 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const pathname = router.asPath;
 
+  const initLenis = () => {
+    const lenis = new Lenis()
+
+
+    lenis.on('scroll', (e) => {
+      // console.log(e)
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  }
+
   useEffect(() => {
+    console.log('add')
     adobeLoader(document)
     let vh = window.innerHeight * 0.01;
     // カスタム変数--vhの値をドキュメントのルートに設定
     document.body.classList.add('loaded');
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+    initLenis();
   }, [])
   return(
     <>
