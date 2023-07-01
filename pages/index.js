@@ -154,7 +154,7 @@ function Home(props) {
   useEffect(() => {
     let vh = window.innerHeight * 0.01;
     // カスタム変数--vhの値をドキュメントのルートに設定
-    document.getElementById('top').documentElement.style.setProperty('--vh', `${vh}px`);
+    document.getElementById('top').style.setProperty('--vh', `${vh}px`);
     ScrollTrigger.refresh()
     setAnimation();
   }, []);
