@@ -87,7 +87,7 @@ export default function About() {
                         <div className="flex">
                             <p>
                                 <span className="futura">Tel</span>
-                                <span>080-4628-6277</span>
+                                <span>-</span>
                             </p>
                             <p>
                                 <span className="futura">Capital</span>
