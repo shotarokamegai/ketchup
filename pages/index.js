@@ -162,11 +162,11 @@ function Home(props) {
   return(
     <>
     <Head>
-      <title>Ketchup Inc.</title>
+      <title>Ketchup Inc. | 株式会社 Ketchup</title>
+      <meta name="description" content="Add a bit of flavoring to those contents, and deliver them in an even better thing. | デザインから幅広いWebサイト制作まで、一貫した企画制作・運用。" />
       <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}`} />
       <meta property="og:type" content="website" />
-      <meta property="description" content="Add a bit of flavoring to those contents, and deliver them in an even better thing. | デザインから幅広いWebサイト制作まで、一貫した企画制作・運用。" />
-      <meta property="og:title" content="Ketchup Inc." />
+      <meta property="og:title" content="Ketchup Inc. | 株式会社 Ketchup" />
       <meta property="og:description" content="Add a bit of flavoring to those contents, and deliver them in an even better thing. | デザインから幅広いWebサイト制作まで、一貫した企画制作・運用。" />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
       <meta name="twitter:card" content="summary_large_image"/>
