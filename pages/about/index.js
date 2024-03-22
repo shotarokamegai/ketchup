@@ -81,7 +81,7 @@ export default function About() {
                             </p>
                             <p>
                                 <span className="futura">Office</span>
-                                <span>東京都目黒谷区碑文谷5-15-6 ダイナシティ碑文谷 416</span>
+                                <span>東京都目黒区碑文谷5-15-6 ダイナシティ碑文谷 416</span>
                             </p>
                         </div>
                         <div className="flex">
