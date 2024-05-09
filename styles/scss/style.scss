@@ -1669,11 +1669,13 @@ body {
             }
             .img {
               position: absolute;
-              top: 0;
+              top: 50%;
+              // top: 0;
               right: 0;
               width: 38.461538461538464%;
               // width: rem(450);
               min-width: rem(450);
+              transform: translate3d(0, -50%, 0);
             }
             .company {
               margin-top: rem(-121.17);
