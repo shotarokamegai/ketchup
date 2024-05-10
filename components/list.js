@@ -9,114 +9,117 @@ export default function List(props) {
   gsap.registerPlugin(ScrollTrigger)
   const onLoad = (e) => {
     // if (e.target.srcset) {
-    e.target.dataset.load = "done";
-    let animation1 = gsap.timeline();
-    // let animation2 = gsap.timeline();
-    let animation3 = gsap.timeline();
-    let y;
-    let scrub;
-    if (props.type === 'list') {
-      y = -150;
-      if (props.index % 2 === 0) {
-        scrub = true;
-      } else {
-        scrub = 1;
-      }
-      if (window.innerWidth < 750) {
-        y = -100;
-      }
-    } else {
-      if (window.innerWidth < 750) {
-        y = -50
-        if (props.index % 2 === 0) {
-          scrub = true;
+      imagesLoaded(`.box${props.item.id}`,(e) => {
+        // e.target.dataset.load = "done";
+        let animation1 = gsap.timeline();
+        // let animation2 = gsap.timeline();
+        let animation3 = gsap.timeline();
+        let y;
+        let scrub;
+        if (props.type === 'list') {
+          y = -150;
+          if (props.index % 2 === 0) {
+            scrub = true;
+          } else {
+            scrub = 1;
+          }
+          if (window.innerWidth < 750) {
+            y = -100;
+          }
         } else {
-          scrub = 1;
+          if (window.innerWidth < 750) {
+            y = -50
+            if (props.index % 2 === 0) {
+              scrub = true;
+            } else {
+              scrub = 1;
+            }
+          } else {
+            y = -100;
+            if (props.index % 3 === 0) {
+              scrub = .333333;
+            } else if (props.index % 2 === 0) {
+              scrub = 1;
+            } else {
+              scrub = .666666;
+            }
+          }
         }
-      } else {
-        y = -100;
-        if (props.index % 3 === 0) {
-          scrub = .333333;
-        } else if (props.index % 2 === 0) {
-          scrub = 1;
-        } else {
-          scrub = .666666;
-        }
-      }
-    }
-    if (process.browser) {
-      ScrollTrigger.create({
-        animation: animation1,
-        trigger: `.box${props.item.id}`,
-        start: `top bottom+=${window.innerHeight*.1}`,
-        end: `top bottom-=${window.innerHeight*.4}`,
-        scrub: scrub,
-        invalidateOnRefresh: true,
-        // markers: true
-      });
-      // ScrollTrigger.create({
-      //   animation: animation2,
-      //   trigger: `.cover${props.item.id}`,
-      //   start: `top bottom-=${window.innerHeight*.1}`,
-      //   end: `top bottom-=${window.innerHeight*.7}`,
-      //   // end: `bottom bottom+=${window.innerHeight*.5}`,
-      //   scrub: scrub,
-      //   invalidateOnRefresh: true,
-      //   // markers: true
-      // });
-      ScrollTrigger.create({
-        animation: animation3,
-        trigger: `.img${props.item.id}`,
-        start: `top bottom-=${window.innerHeight*.1}`,
-        end: `top bottom-=${window.innerHeight*.5}`,
-        // end: `bottom bottom+=${window.innerHeight*.5}`,
-        scrub: true,
-        invalidateOnRefresh: true,
-        // once: true,
-        toggleActions: "play pause resume reset",
-        onEnterBack: () => {
-          if (props.index === 0) {
-            // document.getElementsByClassName(`img${props.item.id}`)[0].classList.add('show')
-          }
-        },
-        onEnter: () => {
-          if (props.index === 0) {
-            console.log('onEnter')
-          }
-          if (document.getElementsByClassName(`img${props.item.id}`).length) {
-            document.getElementsByClassName(`img${props.item.id}`)[0].classList.add('show')
-          }
-        },
-        onLeaveBack: () => {
-          if (props.index === 0) {
-          // document.getElementsByClassName(`img${props.item.id}`)[0].classList.remove('show')
-          }
-        },
-        onLeave: () => {
-          if (props.index === 0) {
-            console.log('onLeave')
-          }
-          // document.getElementsByClassName(`img${props.item.id}`)[0].classList.remove('show')
-        }
-        // markers: true
-      });
-      animation1.to(`.box${props.item.id}`, {y: y},0)
-      if (props.index === props.max-1) {
-        let loadBtn = gsap.timeline();
-        ScrollTrigger.create({
-          animation: loadBtn,
-          trigger: `#load-more`,
-            start: "top bottom",
+        if (process.browser) {
+          ScrollTrigger.create({
+            animation: animation1,
+            trigger: `.box${props.item.id}`,
+            start: `top bottom+=${window.innerHeight*.1}`,
+            end: `top bottom-=${window.innerHeight*.4}`,
+            scrub: scrub,
+            invalidateOnRefresh: true,
+            // markers: true
+          });
+          // ScrollTrigger.create({
+          //   animation: animation2,
+          //   trigger: `.cover${props.item.id}`,
+          //   start: `top bottom-=${window.innerHeight*.1}`,
+          //   end: `top bottom-=${window.innerHeight*.7}`,
+          //   // end: `bottom bottom+=${window.innerHeight*.5}`,
+          //   scrub: scrub,
+          //   invalidateOnRefresh: true,
+          //   // markers: true
+          // });
+          ScrollTrigger.create({
+            animation: animation3,
+            trigger: `.img${props.item.id}`,
+            start: `top bottom-=${window.innerHeight*.1}`,
             end: `top bottom-=${window.innerHeight*.5}`,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          // markers: true
+            // end: `bottom bottom+=${window.innerHeight*.5}`,
+            scrub: true,
+            invalidateOnRefresh: true,
+            // once: true,
+            toggleActions: "play pause resume reset",
+            onEnterBack: () => {
+              if (props.index === 0) {
+                // document.getElementsByClassName(`img${props.item.id}`)[0].classList.add('show')
+              }
+            },
+            onEnter: () => {
+              if (props.index === 0) {
+                console.log('onEnter')
+              }
+              if (document.getElementsByClassName(`img${props.item.id}`).length) {
+                document.getElementsByClassName(`img${props.item.id}`)[0].classList.add('show')
+              }
+            },
+            onLeaveBack: () => {
+              if (props.index === 0) {
+              // document.getElementsByClassName(`img${props.item.id}`)[0].classList.remove('show')
+              }
+            },
+            onLeave: () => {
+              if (props.index === 0) {
+                console.log('onLeave')
+              }
+              // document.getElementsByClassName(`img${props.item.id}`)[0].classList.remove('show')
+            }
+            // markers: true
+          });
+          animation1.to(`.box${props.item.id}`, {y: y},0)
+          if (props.index === props.max-1) {
+            let loadBtn = gsap.timeline();
+            ScrollTrigger.create({
+              animation: loadBtn,
+              trigger: `#load-more`,
+                start: "top bottom",
+                end: `top bottom-=${window.innerHeight*.5}`,
+              scrub: 1,
+              invalidateOnRefresh: true,
+              // markers: true
+            });
+            loadBtn.to(`#load-more`, {y: -50},0)
+          }
+          }
         });
-        loadBtn.to(`#load-more`, {y: -50},0)
       }
-    }
-  };
   useEffect(() => {
+    onLoad();
     // const list = document.getElementById(`box${props.item.id}`);
     // if (list) {
     //   if (!list.classList.contains('done')) {
@@ -129,6 +132,7 @@ export default function List(props) {
     // }
   },[])
   // },[props])
+  console.log(props)
   return(
     <li className={`${props.className} box${props.item.id}`} id={`box${props.item.id}`}>
       <div className="box-inner">
@@ -137,7 +141,10 @@ export default function List(props) {
             <div className="img-wrap">
             <div className={`img img${props.item.id}`}>
               <div className={`cover cover${props.item.id}`}></div>
-              <Image placeholder="blur" blurDataURL={props.item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} layout='fill' objectFit="contain" src={props.item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} alt={props.item && props.item.title} onLoad={onLoad} />
+              <picture className={`picture${props.item.id}`}>
+                <source srcSet={props.item['acf']['pc_thumbnail']} media="(min-width: 750px)" />
+                <img layout='fill' src={props.item['acf']['sp_thumbnail']} alt={props.item && props.item.title.rendered} />
+              </picture>
             </div>
             </div>
             <div className="detail futura slide-text">

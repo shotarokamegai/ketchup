@@ -44,28 +44,24 @@ export default function Work(props) {
       )
     }
 
-    const setGallery = (imgs) => {
+    const setGallery = (images) => {
       let html = '';
-      if (imgs) {
-        for (let i = 0; i < imgs.length; i++) {
-          let img_ = imgs[i]['img']
-          let html_ = `<div class="column ${imgs[i]['classname']}">`;
-          for (let j = 0; j < img_.length; j++) {
-            if (img_[j]['url'].match(/mov/)) {
+      if (images) {
+        for (let i = 0; i < images.length; i++) {
+          let html_ = `<div class="column">`;
+          let imgs = images[i]['imgs']
+          for (let k = 0; k < imgs.length; k++) {
+            let img = imgs[k];
               html_ += 
-                  `<div class="img" key=${j}>
-                    <video src=${img_[j]['url']} playsInline autoPlay muted loop />
+                  `<div class="img" key=${k}>
+                    <img src=${img['img']['url']} alt="" />
                   </div>`;
-            } else {
-              html_ += 
-                  `<div class="img" key=${j}>
-                    <img src=${img_[j]['url']} alt="" />
-                  </div>`;
-            }
+            // html += `${html_}</div>`;
           }
           html += `${html_}</div>`;
         }
       }
+      // setOnload(true);
       return(html)
     }
 
@@ -80,7 +76,7 @@ export default function Work(props) {
 
     const onLoad = (e) => {
       // if (e.target.srcset) {
-        e.target.dataset.load = "done";
+        // e.target.dataset.load = "done";
         ScrollTrigger.refresh();
         setOnload(true)
       // }
@@ -88,6 +84,7 @@ export default function Work(props) {
 
     useEffect(() => {
       playVideo()
+      onLoad();
     }, [id]);
     return (
       <>
@@ -129,9 +126,10 @@ export default function Work(props) {
             <div className="ruler">
                 <div className={`keyv-wrap ${load && 'active'}`}>
                   <div className="img">
-                    <Image placeholder="blur" blurDataURL={props.post['_embedded']['wp:featuredmedia'][0].source_url} layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} 
-                     onLoad={onLoad}
-                    />
+                    <picture className={`picture${props.post.id}`}>
+                      <source srcSet={props.post['acf']['pc_thumbnail']} media="(min-width: 750px)" />
+                      <img layout='fill' src={props.post['acf']['sp_thumbnail']} alt={props.post && props.post.title.rendered} />
+                    </picture>
                   </div>
                   <div className="cover"></div>
                 </div>
@@ -156,10 +154,8 @@ export default function Work(props) {
                     </a>
                   </div>
                 </div>
-                <div className="gallery gallery-pc" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['pc_images'])}}></div>
-                {props.post['acf']['video']['url'] !== '' && <div className="gallery video"><div className="img"><video src={props.post['acf']['video']['url']} playsInline autoPlay muted /></div></div>}
-                {/* <div className="video" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['video'])}}></div> */}
-                <div className="gallery gallery-sp" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['sp_images'])}}></div>
+                <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
+                {props.post['acf']['video']['url'] !== '' && <div className="gallery video"><div className="img"><video src={props.post['acf']['video']['url']} playsInline autoPlay muted loop /></div></div>}
             </div>
           </section>
           <section className="works-wrapper other-works-wrapper">
