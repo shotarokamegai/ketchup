@@ -20,22 +20,16 @@ function returnClassName (i) {
   let className = '';
   switch(i) {
       case 0:
-          className = ''
+          className = 'box1'
           break
       case 1:
-          className = 'medium'
+          className = 'box2'
           break
       case 2:
-          className = 'large'
+          className = 'box3'
           break
       case 3:
-          className = 'mn'
-          break
-      case 4:
-          className = 'medium'
-          break
-      case 5:
-          className = 'medium'
+          className = 'box4'
           break
       default:
           className = ''
@@ -45,7 +39,7 @@ function returnClassName (i) {
 }
 
 function Home(props) {
-    gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger)
   const { scrollYProgress } = useScroll();
   const logoRef = useRef();
   const [page, setPage] = useState(1);
@@ -59,6 +53,51 @@ function Home(props) {
   const meta = {
     title: '',
     description: ''
+  }
+  const showList = () => {
+    // setTimeout(() => {
+    // }, 1000);
+    // let list = document.getElementsByClassName('hide');
+
+    // for (let i = 0; i < list.length; i++) {
+    //   let thisList = list[i];
+    //   thisList.classList.remove('hide');
+    // }
+  }
+  const setList = () => {
+    console.log('setList');
+    console.log(posts);
+    return posts.map((item, index) => {
+        let datum = {
+            thisCategories: ''
+        };
+        datum.last = false;
+        datum.max = posts.length;
+        datum.type = 'list';
+        datum.index = index;
+        datum.item = item;
+        for (let i = 0; i < item.categories.length; i++) {
+            for (let j = 0; j < props.cats.length; j++) {
+                if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
+                    datum.thisCategories += ` ${props.cats[j].name} /` 
+                }
+            }
+        }
+        datum.className = returnClassName(i) + ` hide`;
+        if (i === 3) {
+            i = 0;
+        } else {
+            i++;
+        }
+        console.log(posts.length);
+        if (index === posts.length-1) {
+          console.log(`index${index}`);
+          console.log('last');
+        }
+        return(
+          <List key={index} {...datum} />
+        )
+    })
   }
   const setAnimation = () => {
     let animation1 = gsap.timeline();
@@ -138,27 +177,31 @@ function Home(props) {
   }
   let i = 0
 
-  getPageNum()
+  console.log('here')
 
-  async function getPageNum() {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts`);
-    const num = Number(res.headers['x-wp-totalpages']);
-    setMaxPage(num)
-  }
-
-  async function GetDataFromWp() {
+  const GetDataFromWp = async () => {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&page=${page+1}`);
     setPage((page) => page+1)
     setPosts((posts) => posts.concat(res.data))
   }
+  const GetPageNum = async () => {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts`);
+    const num = Number(res.headers['x-wp-totalpages']);
+    console.log(`getPageNum ${num}`);
+    setMaxPage(num)
+  }
   useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-    // カスタム変数--vhの値をドキュメントのルートに設定
-    document.getElementById('top').style.setProperty('--vh', `${vh}px`);
-    ScrollTrigger.refresh()
-    setAnimation();
-  }, []);
+    //TOP用アニメーション
+    const loadFunc = () => {
+      ScrollTrigger.refresh()
+      setAnimation();
+      showList();
+    }
 
+    loadFunc();
+    GetPageNum();
+  // }, []);
+  }, [posts]);
   return(
     <>
     <Head>
@@ -216,32 +259,7 @@ function Home(props) {
               </p>
               <div className="inner">
                   <ul className="flex">
-                    {posts && 
-                      posts.map((item, index) => {
-                          let datum = {
-                              thisCategories: ''
-                          };
-                          datum.max = posts.length;
-                          datum.type = 'list';
-                          datum.index = index;
-                          datum.item = item;
-                          for (let i = 0; i < item.categories.length; i++) {
-                              for (let j = 0; j < props.cats.length; j++) {
-                                  if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
-                                      datum.thisCategories += ` ${props.cats[j].name} /` 
-                                  }
-                              }
-                          }
-                          datum.className = returnClassName(i);
-                          if (i === 5) {
-                              i = 0;
-                          } else {
-                              i++;
-                          }
-                          return(
-                            <List key={index} {...datum} />
-                          )
-                      })}
+                    { posts && setList() }
                   </ul>
                   <div className={`btn flex flex-sp space-between align-center ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
                     <span className="text rocextrawideLight">LOAD MORE</span>

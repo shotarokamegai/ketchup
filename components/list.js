@@ -3,16 +3,15 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link'
 import Image from 'next/image'
+import imagesLoaded from 'imagesloaded'
 
 export default function List(props) {
   gsap.registerPlugin(ScrollTrigger)
   const onLoad = (e) => {
-      console.log(1)
     // if (e.target.srcset) {
-      console.log(2)
     e.target.dataset.load = "done";
     let animation1 = gsap.timeline();
-    let animation2 = gsap.timeline();
+    // let animation2 = gsap.timeline();
     let animation3 = gsap.timeline();
     let y;
     let scrub;
@@ -51,7 +50,6 @@ export default function List(props) {
         trigger: `.box${props.item.id}`,
         start: `top bottom+=${window.innerHeight*.1}`,
         end: `top bottom-=${window.innerHeight*.4}`,
-        // end: `bottom bottom+=${window.innerHeight*.5}`,
         scrub: scrub,
         invalidateOnRefresh: true,
         // markers: true
@@ -103,8 +101,6 @@ export default function List(props) {
         // markers: true
       });
       animation1.to(`.box${props.item.id}`, {y: y},0)
-      // animation2.to(`.cover${props.item.id}`, {y: '-100%'},0)
-      // animation3.to(`.img${props.item.id}`, {scale: 1},0)
       if (props.index === props.max-1) {
         let loadBtn = gsap.timeline();
         ScrollTrigger.create({
@@ -118,40 +114,51 @@ export default function List(props) {
         });
         loadBtn.to(`#load-more`, {y: -50},0)
       }
-      // ScrollTrigger.refresh()
-      }
-    // }
+    }
   };
   useEffect(() => {
+    // const list = document.getElementById(`box${props.item.id}`);
+    // if (list) {
+    //   if (!list.classList.contains('done')) {
+    //     imagesLoaded( list, () => {
+    //       list.classList.add('show');
+    //     })
+    //   } else {
+    //     list.classList.add('done');
+    //   }
+    // }
   },[])
+  // },[props])
   return(
-    <li className={`${props.className} box${props.item.id}`}>
-      <Link href={props.item ? `/works/${props.item.id}` : ''} scroll={false}>
-        <a>
-          <div className="img-wrap">
-          <div className={`img img${props.item.id}`}>
-            <div className={`cover cover${props.item.id}`}></div>
-            <Image placeholder="blur" blurDataURL={props.item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} layout='fill' objectFit="contain" src={props.item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} alt={props.item && props.item.title} onLoad={onLoad} />
-          </div>
-          </div>
-          <div className="detail futura slide-text">
-              <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title bold">
-              </p>
-              <p className="categories">
-                {props.item && props.thisCategories.slice( 0, -1 )}
-              </p>
-              <div className="inner-slide">
-                <div className="inner-slide-slide">
-                  <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title bold">
-                  </p>
-                  <p className="categories">
-                    {props.item && props.thisCategories.slice( 0, -1 )}
-                  </p>
+    <li className={`${props.className} box${props.item.id}`} id={`box${props.item.id}`}>
+      <div className="box-inner">
+        <Link href={props.item ? `/works/${props.item.id}` : ''} scroll={false}>
+          <a>
+            <div className="img-wrap">
+            <div className={`img img${props.item.id}`}>
+              <div className={`cover cover${props.item.id}`}></div>
+              <Image placeholder="blur" blurDataURL={props.item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} layout='fill' objectFit="contain" src={props.item._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} alt={props.item && props.item.title} onLoad={onLoad} />
+            </div>
+            </div>
+            <div className="detail futura slide-text">
+                <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title bold">
+                </p>
+                <p className="categories">
+                  {props.item && props.thisCategories.slice( 0, -1 )}
+                </p>
+                <div className="inner-slide">
+                  <div className="inner-slide-slide">
+                    <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title bold">
+                    </p>
+                    <p className="categories">
+                      {props.item && props.thisCategories.slice( 0, -1 )}
+                    </p>
+                  </div>
                 </div>
-              </div>
-          </div>
-        </a>
-      </Link>
+            </div>
+          </a>
+        </Link>
+      </div>
     </li>
   )
 };

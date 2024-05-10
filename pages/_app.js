@@ -16,7 +16,7 @@ const routes = [
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const pathname = router.asPath;
+  // const pathname = router.asPath;
 
   const initLenis = () => {
     const lenis = new Lenis()
@@ -35,14 +35,18 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    console.log('add')
-    adobeLoader(document)
-    let vh = window.innerHeight * 0.01;
-    // カスタム変数--vhの値をドキュメントのルートに設定
-    document.body.classList.add('loaded');
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-    initLenis();
-  }, [])
+    const loadFunc = () => {
+      console.log('_app.js 更新')
+      console.log(Component)
+      adobeLoader(document)
+      let vh = window.innerHeight * 0.01;
+      // カスタム変数--vhの値をドキュメントのルートに設定
+      document.body.classList.add('loaded');
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      initLenis();
+    }
+    loadFunc();
+  })
   return(
     <>
       <AnimatePresence
