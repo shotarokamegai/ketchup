@@ -148,12 +148,12 @@ export default function Work(props) {
                     <p className="roc bold">Client</p>
                     <p className="roc ">{props.post['acf']['client']}</p>
                   </div>
-                  <div className="categories flex align-center">
+                  <div className={ props.post['acf']['url'] !== '' ? "categories flex align-center" : "categories flex align-center no-url" }>
                     { getCategories(props.cats) }
-                    <a className="flex flex-sp align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
+                    {props.post['acf']['url'] !== '' && <a className="flex flex-sp align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
                       <span className="text rocextrawide red">VIEW SITE</span>
                       <Arrow />
-                    </a>
+                    </a>}
                   </div>
                 </div>
                 <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
