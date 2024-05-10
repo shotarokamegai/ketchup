@@ -156,8 +156,8 @@ export default function Work(props) {
                     </a>
                   </div>
                 </div>
-                <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}>
-                </div>
+                {/* <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}>
+                </div> */}
             </div>
           </section>
           <section className="works-wrapper other-works-wrapper">
