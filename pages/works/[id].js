@@ -38,7 +38,7 @@ export default function Work(props) {
           }
       }
       return(
-        <p className="categories futura">
+        <p className="roc">
             {thisCategories.slice( 0, -1 )}
         </p>
       )
@@ -48,8 +48,14 @@ export default function Work(props) {
       let html = '';
       if (images) {
         for (let i = 0; i < images.length; i++) {
-          let html_ = `<div class="column">`;
           let imgs = images[i]['imgs']
+          let className = '';
+          if (imgs.length > 1) {
+            className += 'flex space-between double';
+          } else if (imgs.length > 2) {
+            className += 'flex space-between triple';
+          }
+          let html_ = `<div class="column ${className}">`;
           for (let k = 0; k < imgs.length; k++) {
             let img = imgs[k];
               html_ += 
@@ -120,10 +126,14 @@ export default function Work(props) {
             <div className="ruler">
                 <h3 className="section-title rocextrawide red">WORKS</h3>
             </div>
-            <p className="vertical rocextrawideLight">
+            {/* <p className="vertical rocextrawideLight">
               WORKS
-            </p>
+            </p> */}
             <div className="ruler">
+                <div className="title">
+                  <h2 className="roc" dangerouslySetInnerHTML={{__html: props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}}></h2>
+                  {/* <p className="text" dangerouslySetInnerHTML={{__html: props.post.content.rendered}}></p> */}
+                </div>
                 <div className={`keyv-wrap ${load && 'active'}`}>
                   <div className="img">
                     <picture className={`picture${props.post.id}`}>
@@ -134,21 +144,13 @@ export default function Work(props) {
                   <div className="cover"></div>
                 </div>
                 <div className="detail flex space-between">
-                  <div>
-                    <h2 className="title futura bold" dangerouslySetInnerHTML={{__html: props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}}></h2>
-                    <p className="text" dangerouslySetInnerHTML={{__html: props.post.content.rendered}}></p>
+                  <div className="client">
+                    <p className="roc bold">Client</p>
+                    <p className="roc ">{props.post['acf']['client']}</p>
                   </div>
-                  <div>
-                    <a className="flex pc align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
-                      <span className="text rocextrawide red">VIEW SITE</span>
-                      <Arrow />
-                    </a>
+                  <div className="categories flex align-center">
                     { getCategories(props.cats) }
-                    <div className="client">
-                      <p className="futura bold">Client</p>
-                      <p className="futura">{props.post['acf']['client']}</p>
-                    </div>
-                    <a className="flex sp flex-sp align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
+                    <a className="flex align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
                       <span className="text rocextrawide red">VIEW SITE</span>
                       <Arrow />
                     </a>
