@@ -150,7 +150,7 @@ export default function Work(props) {
                   </div>
                   <div className="categories flex align-center">
                     { getCategories(props.cats) }
-                    <a className="flex align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
+                    <a className="flex flex-sp align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
                       <span className="text rocextrawide red">VIEW SITE</span>
                       <Arrow />
                     </a>

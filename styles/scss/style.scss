@@ -914,45 +914,55 @@ body {
               position: relative;
               left: 50%;
               transform: translate3d(-50%, 0, 0);
-              margin: vw(-80) auto vw(30);
+              margin: 0 auto vw(30);
               width: 100vw;
+            }
+            .title {
+              margin-bottom: vw(30);
+              h2 {
+              @include fontvw(30);
+              line-height: (40 / 30);
+              font-weight: 500;
+              }
             }
           }
           .detail {
             margin-bottom: vw(40);
-            div {
-              &:nth-child(1) {
-                position: relative;
-                padding-bottom: vw(40);
-                margin-bottom: vw(35);
-                &::after {
-                  position: absolute;
-                  left: 0;
-                  bottom: 0;
-                  // bottom: vw(-40);
-                  display: block;
-                  content: "";
-                  height: vw(1);
-                  width: vw(80);
-                  background-color: $black;
+            .client {
+              margin: 0 0 vw(40) 0;
+              p {
+                &:nth-child(1) {
+                  margin-bottom: vw(5);
+                  @include fontvw(14);
+                  font-weight: 700;
                 }
-                .title {
-                  @include fontvw(20);
-                  line-height: (31 / 24);
-                  font-weight: 600;
-                  .futura {
-                    position: relative;
-                    top: 0.3vw;
-                    @include fontvw(25);
-                  }
-                }
-                .text {
-                  margin-top: vw(40);
-                  @include fontvw(13);
-                  line-height: (25 / 13);
+                &:nth-child(2) {
+                  // margin-bottom: rem(5);
+                  font-weight: 400;
+                  @include fontvw(16);
                 }
               }
-              &:nth-child(2) {
+            }
+            .categories {
+              p {
+                position: relative;
+                @include fontvw(12);
+                font-weight: 400;
+                color: #6C6C6C;
+                padding-bottom: vw(12);
+                margin-bottom: vw(20);
+                &::after {
+                  position: absolute;
+                  bottom: 0;
+                  left: 50%;
+                  transform: translate3d(-50%, 0, 0);
+                  display: block;
+                  content: '';
+                  height: rem(1);
+                  width: 100vw;
+                  background-color: #E0E0E0;
+                }
+              }
                 a {
                   &:active {
                     .text {
@@ -974,27 +984,9 @@ body {
                     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                   }
                 }
-                .categories {
-                  margin-top: vw(20);
-                  @include fontvw(11);
-                }
-                .client {
-                  margin: vw(20) 0 vw(30) 0;
-                  p {
-                    &:nth-child(1) {
-                      margin-bottom: vw(5);
-                      @include fontvw(18);
-                    }
-                    &:nth-child(2) {
-                      // margin-bottom: rem(5);
-                      @include fontvw(13);
-                    }
-                  }
-                }
                 a {
-                  justify-content: flex-end;
+                  align-items: center;
                 }
-              }
             }
           }
         }
@@ -1058,23 +1050,8 @@ body {
       }
       .gallery {
         // border: vw(1) solid $red;
-        &.gallery-pc {
-          .column {
-            margin: 0 auto vw(20);
-          }
-        }
-        &.gallery-sp {
-          .column {
-            margin: 0 auto vw(20);
-            @include fitcenter();
-            background-color: $black;
-            .img {
-              width: vw(127.73);
-            }
-          }
-        }
-        &.video {
-          margin-bottom: 2.803738317757009%;
+        .img {
+          margin: 0 auto vw(20);
         }
         video {
           width: 100%;
