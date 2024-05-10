@@ -48,20 +48,18 @@ export default function Work(props) {
       let html = '';
       if (imgs) {
         for (let i = 0; i < imgs.length; i++) {
-          let img_ = imgs[i]['img']
-          let html_ = `<div class="column ${imgs[i]['classname']}">`;
-          for (let j = 0; j < img_.length; j++) {
-            if (img_[j]['url'].match(/mov/)) {
-              html_ += 
-                  `<div class="img" key=${j}>
-                    <video src=${img_[j]['url']} playsInline autoPlay muted loop />
-                  </div>`;
-            } else {
-              html_ += 
-                  `<div class="img" key=${j}>
-                    <img src=${img_[j]['url']} alt="" />
-                  </div>`;
-            }
+          let html_ = `<div class="column ${imgs[i]['classname_']}">`;
+          let img_ = imgs[i]['img_']
+          if (img_['url'].match(/mov/) || img_['url'].match(/mp4/)) {
+            html_ += 
+                `<div class="img" key=${i}>
+                  <video src=${img_['url']} playsInline autoPlay muted loop />
+                </div>`;
+          } else {
+            html_ += 
+                `<div class="img" key=${i}>
+                  <img src=${img_['url']} alt="" />
+                </div>`;
           }
           html += `${html_}</div>`;
         }
@@ -156,8 +154,8 @@ export default function Work(props) {
                     </a>
                   </div>
                 </div>
-                {/* <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}>
-                </div> */}
+                {<div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images_'])}}>
+                </div>}
             </div>
           </section>
           <section className="works-wrapper other-works-wrapper">
