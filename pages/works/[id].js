@@ -157,7 +157,7 @@ export default function Work(props) {
                   </div>
                 </div>
                 <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
-                {props.post['acf']['video']['url'] !== '' && <div className="gallery video"><div className="img"><video src={props.post['acf']['video']['url']} playsInline autoPlay muted loop /></div></div>}
+                {typeof props.post['acf']['video'] !== '' && <div className="gallery video"><div className="img"><video src={props.post['acf']['video']} playsInline autoPlay muted loop /></div></div>}
             </div>
           </section>
           <section className="works-wrapper other-works-wrapper">
