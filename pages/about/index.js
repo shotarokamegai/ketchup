@@ -46,22 +46,22 @@ export default function About() {
                 <div className="ruler">
                     <h3 className="section-title rocextrawide red">ABOUT</h3>
                     <p className="section-text">
-                        トマトソースは<br className="sp" />トマトをベースに作られました。<br />
+                        {/* トマトソースは<br className="sp" />トマトをベースに作られました。<br />
                         その後トマトソースを<br className="sp" />いつでも楽しめるように<br className="sp" />ケチャップが開発され、<br />
                         世界中で味わえるような<br className="sp" />調味料として普及しました。<br /><br />
                         我々はKetchupという<br className="sp" />クリエイティブカンパニーです。<br /><br />
                         時には味付け担当、<br className="sp" />時には食事の主役として、<br />
                         世界中の食卓で活躍している<br className="sp" />ケチャップのように、<br />
                         周囲のために世の中のために、<br className="sp" />アウトプットの形にとらわれず、<br />
-                        変化しながら価値のある<br className="sp" />制作(活動)を続けていきます。
-                        {/* トマトソースは<br className="sp" />
+                        変化しながら価値のある<br className="sp" />制作(活動)を続けていきます。 */}
+                        トマトソースは<br className="sp" />
                         トマトをベースに作られました。<br />
                         その後トマトソースをいつでも楽しめるように<br className="sp" />
                         ケチャップが開発され、<br className="pc" />
                         世界中で味わえるような<br className="sp" />調味料として普及しました。<br /><br />
                         世の中には素晴らしいアイディア、<br className="sp" />コンテンツが無数に広がっています。<br />
                         私たちの力で少し味付けをして、<br className="sp" />さらにより良い形で届けられるように。<br /><br />
-                        Ketchupはそんな想いで設立された、<br className="sp" />クリエイティブカンパニーです。 */}
+                        Ketchupはそんな想いで設立された、<br className="sp" />クリエイティブカンパニーです。
                     </p>
                     <div className="img">
                         <img src="/img/common/ketchup-illustration.png" alt="" />
