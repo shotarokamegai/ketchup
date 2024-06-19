@@ -1,0 +1,11 @@
+export default function Instagram(props) {
+    return(
+      <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.5 1H1.5V19H19.5V1Z" stroke="#C80F2E" strokeWidth="2" strokeMiterlimit="10"/>
+      <path d="M10.5 14C12.7091 14 14.5 12.2091 14.5 10C14.5 7.79086 12.7091 6 10.5 6C8.29086 6 6.5 7.79086 6.5 10C6.5 12.2091 8.29086 14 10.5 14Z" stroke="#C80F2E" strokeWidth="2" strokeMiterlimit="10"/>
+      <path d="M16 5C16.2761 5 16.5 4.77614 16.5 4.5C16.5 4.22386 16.2761 4 16 4C15.7239 4 15.5 4.22386 15.5 4.5C15.5 4.77614 15.7239 5 16 5Z" stroke="#C80F2E" strokeWidth="2" strokeMiterlimit="10"/>
+      </svg>
+      
+  
+    )
+  }

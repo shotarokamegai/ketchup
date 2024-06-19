@@ -28,21 +28,18 @@ export default function Footer() {
     // }, 5000)
   },[])
   return(
-    <footer id="footer">
-      <div className="footer-inner">
-        <p className="vertical rocextrawideLight white">
-            CONTACT
+    <footer id="footer" className='section'>
+      <div className='ruler'>
+        <div className='section-line bg-red absolute top'></div>
+        <p className='address roc-grotesk medium red'>
+        Ketchup Inc.<br/>
+        152-0003<br/>
+        Dynacity Himonya #416, <br/>
+        5-15-6 Himonya Meguro, Tokyo
         </p>
-        <Link href="/contact" scroll={false}>
-          <a className="btn flex flex-sp space-between align-center white">
-            <span className="text rocextrawideLight">CONTACT US</span>
-            <Arrow />
-          </a>
-        </Link>
-        <div className="ruler flex flex-sp space-between">
-          <p className="copy futura">©Ketchup Inc.</p>
-          <p className="address futura">Dynacity Himonya #416, 5-15-6 Himonya Meguro, Tokyo 152-0003</p>
-        </div>
+        <p className='copy roc-grotesk medium red'>
+        © 2024 Ketchup Inc. All rights reserved.
+        </p>
       </div>
     </footer>
   )

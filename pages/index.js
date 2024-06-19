@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import List from '../components/list'
+import WorkTogether from '../components/work-together'
 import Arrow from '../components/svg/arrow'
 import Logo from '../components/svg/logo'
 import axios from "axios"
@@ -16,27 +17,27 @@ import { motion, useScroll, useSpring } from "framer-motion";
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-function returnClassName (i) {
-  let className = '';
-  switch(i) {
-      case 0:
-          className = 'box1'
-          break
-      case 1:
-          className = 'box2'
-          break
-      case 2:
-          className = 'box3'
-          break
-      case 3:
-          className = 'box4'
-          break
-      default:
-          className = ''
-          break
-  }
-  return className;
-}
+// function returnClassName (i) {
+//   let className = '';
+//   switch(i) {
+//       case 0:
+//           className = 'box1'
+//           break
+//       case 1:
+//           className = 'box2'
+//           break
+//       case 2:
+//           className = 'box3'
+//           break
+//       case 3:
+//           className = 'box4'
+//           break
+//       default:
+//           className = ''
+//           break
+//   }
+//   return className;
+// }
 
 function Home(props) {
   gsap.registerPlugin(ScrollTrigger)
@@ -83,7 +84,7 @@ function Home(props) {
                 }
             }
         }
-        datum.className = returnClassName(i) + ` hide`;
+        datum.className = ` hide`;
         if (i === 3) {
             i = 0;
         } else {
@@ -194,7 +195,7 @@ function Home(props) {
     //TOP用アニメーション
     const loadFunc = () => {
       ScrollTrigger.refresh()
-      setAnimation();
+      // setAnimation();
       showList();
     }
 
@@ -233,40 +234,47 @@ function Home(props) {
       <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="home" className="main_">
           <section id="top">
-              <div className="ruler flex space-between">
+              <div className="ruler">
+                  <h1 id="top-logo" className="logo" ref={logoRef}>
+                    <Logo />
+                  </h1>
+                  <p className="est red flex flex-end">
+                    <span className="roc-grotesk">EST.</span>
+                    <span className="borax italic">2022</span>
+                  </p>
                   <div>
-                      <h1 id="top-logo" className="logo" ref={logoRef}>
-                        <Logo />
-                      </h1>
-                  </div>
-                  <div>
-                      <h2 className="slogan roc">
-                        <span className="slogan1">
-                          Add a bit of flavoring 
-                        </span>
-                          <br/>
-                        <span className="slogan2">to those contents, </span><br/>
-                        <span className="slogan3">and deliver them </span>
-                        <br/>
-                        <span className="slogan4">in an even better thing.</span>
+                      <h2 className="slogan borax red">
+                      Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing.
                       </h2>
                   </div>
               </div>
           </section>
-          <section className="works-wrapper">
-              <p className="vertical rocextrawideLight">
-                  WORKS
-              </p>
-              <div className="inner">
+          <section id="works" className="section">
+              <div className="ruler">
+                <h2 className="section-title red">
+                  <span className="roc-grotesk medium">Featured</span>
+                  <span className="borax italic">Works</span>
+                </h2>
+                <div className="section-line bg-red"></div>
+                <div className="works-wrapper">
                   <ul className="flex">
                     { posts && setList() }
                   </ul>
-                  <div className={`btn flex flex-sp space-between align-center ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
-                    <span className="text rocextrawideLight">LOAD MORE</span>
-                    <Arrow className="white" />
+                  <div className={`btn ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
+                    <div className="section-line top absolute bg-red"></div>
+                    <div className="section-line bottom absolute bg-red"></div>
+                    <div className="mix-text red">
+                      <span className="roc-grotesk-wide">MORE</span>
+                      <span className="borax italic">Works</span>
+                      <span className="icon">
+                        <Arrow color="#c8102e" />
+                      </span>
+                    </div>
                   </div>
+                </div>
               </div>
           </section>
+          <WorkTogether />
         </main>
         {/* <Footer /> */}
       </Content>

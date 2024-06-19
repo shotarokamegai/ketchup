@@ -1,0 +1,7 @@
+export default function Mail(props) {
+    return(
+        <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 4.75L10 8.75L1 4.75M1 1H19V14.5H1V1Z" stroke="#C80F2E" strokeWidth="2" strokeMiterlimit="10"/>
+        </svg>
+    )
+  }
