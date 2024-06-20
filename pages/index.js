@@ -242,6 +242,17 @@ function Home(props) {
                     <span className="roc-grotesk">EST.</span>
                     <span className="borax italic">2022</span>
                   </p>
+                  <div className="mix-text red vertical absolute scroll-trigger" data-target="works">
+                    <div className="mix-text__inner">
+                      <span className="roc-grotesk-wide">SCROLL</span>
+                      <span className="borax italic">Down</span>
+                      <span className="triangle flex">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                    </div>
+                  </div>
                   <div>
                       <h2 className="slogan borax red">
                       Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing.
@@ -263,12 +274,20 @@ function Home(props) {
                   <div className={`btn ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
                     <div className="section-line top absolute bg-red"></div>
                     <div className="section-line bottom absolute bg-red"></div>
+                    <div className="cover left">
+                      <div className="cover__inner bg-red"></div>
+                    </div>
+                    <div className="cover right">
+                      <div className="cover__inner bg-red"></div>
+                    </div>
                     <div className="mix-text red">
-                      <span className="roc-grotesk-wide">MORE</span>
-                      <span className="borax italic">Works</span>
-                      <span className="icon">
-                        <Arrow color="#c8102e" />
-                      </span>
+                      <div className="mix-text__inner">
+                        <span className="roc-grotesk-wide">MORE</span>
+                        <span className="borax italic">Works</span>
+                        <span className="icon">
+                          <Arrow color="#c8102e" />
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -149,16 +149,16 @@ export default function List(props) {
                 <p className="categories roc-grotesk medium red">
                   {props.item && props.thisCategories.slice( 0, -1 )}
                 </p>
-                <div className="inner-slide">
+                <div className="inner-slide bg-red">
                   <div className="inner-slide-slide">
                     <div className="flex detail-above">
-                      <p dangerouslySetInnerHTML={{__html: '(01)'}} className="index roc-grotesk light"></p>
-                      <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title roc-grotesk"></p>
+                      <p dangerouslySetInnerHTML={{__html: '(01)'}} className="index roc-grotesk light white"></p>
+                      <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title roc-grotesk white"></p>
                       <div className="arrow">
-                        <Arrow color="#000" />
+                        <Arrow color="#fff" />
                       </div>
                     </div>
-                    <p className="categories roc-grotesk medium">
+                    <p className="categories roc-grotesk white medium">
                       {props.item && props.thisCategories.slice( 0, -1 )}
                     </p>
                   </div>

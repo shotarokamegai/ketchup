@@ -154,7 +154,9 @@ export default function Contact() {
                 <main id="contact" className="common main_">
                     <section id="top">
                         <div className="ruler">
-                            <h3 className="section-title rocextrawide red">CONTACT</h3>
+                            <h2 className="section-title red fixed">
+                              <span className="borax italic">Contact</span>
+                            </h2>
                             {sent &&
                                 <div className="thank-you">
                                     <p className="roc red">Thanks for reaching out.<br />
@@ -162,100 +164,119 @@ export default function Contact() {
                                     </p>
                                 </div>
                             }
-                        </div>
-                    </section>
-                    <section>
-                        <p className="vertical rocextrawideLight">
-                            CONTACT
-                        </p>
-                        <div className="ruler">
-                        <form
-                          action="https://getform.io/f/5e54e38e-f647-4a27-b27a-ea140781df50"
-                          method="POST"
-                        >
-                          <div>
-                            <label htmlFor="company">貴社名</label>
-                            <input 
-                            name="company" 
-                            type="text" 
-                            value={company}
-                            onChange={(e) => {
-                              setCompany(e.target.value)
-                            }}
-                            />
+                          <form
+                            action="https://getform.io/f/5e54e38e-f647-4a27-b27a-ea140781df50"
+                            method="POST"
+                          >
+                            <div className="form">
+                              <label htmlFor="company" className="red">貴社名</label>
+                              <input 
+                              className="red"
+                              name="company" 
+                              type="text" 
+                              placeholder="株式会社Ketchup"
+                              value={company}
+                              onChange={(e) => {
+                                setCompany(e.target.value)
+                              }}
+                              />
+                              <div className="section-line bg-red absolute bottom"></div>
+                            </div>
+                            <div className="form">
+                              <label htmlFor="name" className="red">ご担当者名※</label>
+                              <input 
+                                  className="red"
+                                  name="name" 
+                                  type="text" 
+                                  value={name}
+                                  placeholder="姓名"
+                                  onChange={(e) => {
+                                    setName(e.target.value)
+                                  }}
+                                  onBlur={handleBlur}
+                                  required
+                              />
+                              {nameError && <p className="error">{nameError}</p>}
+                              <div className="section-line bg-red absolute bottom"></div>
+                            </div>
+                            <div className="form">
+                              <label htmlFor="email" className="red">メールアドレス※</label>
+                              <input 
+                                  className="red"
+                                  name="email" 
+                                  type="email" 
+                                  value={email}
+                                  placeholder="XXXX@ketchup.jp"
+                                  onChange={(e) => {
+                                    setEmail(e.target.value)
+                                  }}
+                                  onBlur={handleBlur}
+                                  required
+                              />
+                              {emailError && <p className="error">{emailError}</p>}
+                              <div className="section-line bg-red absolute bottom"></div>
+                            </div>
+                            <div className="form">
+                              <label htmlFor="tel" className="red">電話番号※</label>
+                              <input
+                                  className="red"
+                                  name="tel"
+                                  type="tel"
+                                  value={tel}
+                                  placeholder="00000000000"
+                                  onChange={(e) => {
+                                    setTel(e.target.value)
+                                  }}
+                                  onBlur={handleBlur}
+                                  required
+                              />
+                              {telError && <p className="error">{telError}</p>}
+                              <div className="section-line bg-red absolute bottom"></div>
+                            </div>
+                            <div className="form">
+                              <label htmlFor="subject" className="red">件名</label>
+                              <input 
+                                  className="red"
+                                  name="subject" 
+                                  type="text" 
+                                  placeholder="件名をご記入ください"
+                                  value={subject}
+                                  onChange={(e) => {
+                                    setSubject(e.target.value)
+                                  }}
+                              />
+                              <div className="section-line bg-red absolute bottom"></div>
+                            </div>
+                            <div className="form">
+                              <label htmlFor="content" className="red">お問い合わせ内容※</label>
+                              <textarea 
+                                  className="red"
+                                  name="content" 
+                                  type="text" 
+                                  rows="10" 
+                                  placeholder="ご依頼や採用についてなどお問い合わせ内容をご記入ください"
+                                  value={content}
+                                  onChange={(e) => {
+                                    setContent(e.target.value)
+                                  }}
+                                  required
+                              ></textarea>
+                              {contentError && <p className="error">{contentError}</p>}
+                              <div className="section-line bg-red absolute bottom"></div>
+                            </div>
+                          </form>
+                          <div className="mix-text-wrap">
+                            <div className="submit mix-text red" onClick={handleSubmit}>
+                              <div className="mix-text__inner">
+                                <span className="roc-grotesk-wide">SEND</span>
+                                <span className="borax italic">Message</span>
+                                <span className='icon'>
+                                    <Arrow color="#c8102e" />
+                                </span>
+                                <span className='mix-text-line bg-red'></span>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <label htmlFor="name">ご担当社名※</label>
-                            <input 
-                                name="name" 
-                                type="text" 
-                                value={name}
-                                onChange={(e) => {
-                                  setName(e.target.value)
-                                }}
-                                onBlur={handleBlur}
-                                required
-                            />
-                            {nameError && <p className="error">{nameError}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="email">メールアドレス※</label>
-                            <input 
-                                name="email" 
-                                type="email" 
-                                value={email}
-                                onChange={(e) => {
-                                  setEmail(e.target.value)
-                                }}
-                                onBlur={handleBlur}
-                                required
-                            />
-                            {emailError && <p className="error">{emailError}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="tel">電話番号※</label>
-                            <input
-                                name="tel"
-                                type="tel"
-                                value={tel}
-                                onChange={(e) => {
-                                  setTel(e.target.value)
-                                }}
-                                onBlur={handleBlur}
-                                required
-                            />
-                            {telError && <p className="error">{telError}</p>}
-                          </div>
-                          <div>
-                            <label htmlFor="subject">件名</label>
-                            <input 
-                                name="subject" 
-                                type="text" 
-                                value={subject}
-                                onChange={(e) => {
-                                  setSubject(e.target.value)
-                                }}
-                            />
-                          </div>
-                          <div>
-                            <label htmlFor="content">お問い合わせ内容※</label>
-                            <textarea 
-                                name="content" 
-                                type="text" 
-                                rows="10" 
-                                value={content}
-                                onChange={(e) => {
-                                  setContent(e.target.value)
-                                }}
-                                required
-                            ></textarea>
-                            {contentError && <p className="error">{contentError}</p>}
-                          </div>
-                          <div className="btn flex flex-sp space-between align-center" onClick={handleSubmit}>
-                            <span className="text rocextrawideLight">SEND</span>
-                            <Arrow className="white" />
-                          </div>
-                        </form>
                         </div>
                     </section>
                 </main>

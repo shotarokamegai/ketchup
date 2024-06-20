@@ -49,10 +49,6 @@ body {
     color: $white;
     background-color: $red;
   }
-  .container {
-    // opacity: 0;
-    // transition: opacity 500ms;
-  }
 }
 
 .italic {
@@ -60,7 +56,11 @@ body {
 }
 
 .absolute {
-  position: absolute;
+  position: absolute !important;
+}
+
+.fixed {
+  position: fixed !important;
 }
 
 .roc-grotesk {
@@ -87,7 +87,15 @@ body {
   color: $red;
 }
 
+.white {
+  color: $white;
+}
+
 .bg-red {
+  background-color: $red;
+}
+
+.bg-white {
   background-color: $red;
 }
 
@@ -108,12 +116,6 @@ body {
 .roc {
   font-family: $Roc;
   font-weight: 600;
-}
-
-.futura {
-  font-family: $Futura;
-  // font-weight: 500;
-  font-style: normal;
 }
 
 .arrow {
@@ -234,13 +236,6 @@ body {
       position: absolute;
       width: 100%;
       left: 0;
-      &.wave-top {
-        top: -21vw;
-      }
-      &.wave-bottom {
-        transform: rotateX(180deg);
-        bottom: -21vw;
-      }
     }
   }
   .progress-bar {
@@ -252,6 +247,7 @@ body {
     background: $red;
     transform-origin: 0%;
     z-index: 10;
+    display: none;
   }
   #cursor-dot {
     position: fixed;
@@ -1137,13 +1133,6 @@ body {
       position: absolute;
       width: 100%;
       left: 0;
-      &.wave-top {
-        top: -22vw;
-      }
-      &.wave-bottom {
-        transform: rotateX(180deg);
-        bottom: -22vw;
-      }
     }
   }
   .progress-bar {
@@ -1155,6 +1144,7 @@ body {
     background: $red;
     transform-origin: 0%;
     z-index: 10;
+    display: none;
   }
   #cursor-dot {
     position: fixed;
@@ -1168,11 +1158,39 @@ body {
     @include fitcenter();
     height: vwPc(120);
   }
+  .mix-text-wrap {
+    text-align: center;
+  }
   .mix-text {
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    line-height: .4;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    &:hover {
+      .mix-text-line {
+        width: 100%;
+      }
+      .icon svg {
+        transform: translate3d(vwPc(16), 0, 0);
+      }
+    }
+    &__inner {
+      position: relative;
+      display: inline-flex;
+      align-items: end;
+      justify-content: center;
+      line-height: .4;
+    }
+    &-line {
+      position: absolute;
+      bottom: vwPc(-12);
+      left: 50%;
+      content: '';
+      height: vwPc(2);
+      width: 0%;
+      will-change: width;
+      transition: width .5s $slide;
+      transform: translate3d(-50%, 0, 0);
+    }
     .roc-grotesk-wide {
       @include fontvwPc(16);
       // @include fontvwPc(16);
@@ -1185,10 +1203,17 @@ body {
       }
     }
     .icon {
-      margin-left: vwPc(20);
-      width: vwPc(18);
-      &.mail {
-        width: vwPc(20);
+      position: relative;
+      top: vwPc(4);
+      padding-right: vwPc(16);
+      margin-left: vwPc(16);
+      box-sizing: content-box;
+      width: vwPc(24);
+      svg {
+        position: relative;
+        height: vwPc(24);
+        width: 100%;
+        transition: transform .25s $slide;
       }
     }
   } 
@@ -1203,7 +1228,8 @@ body {
     z-index: 10;
     &.hide {
       h1 {
-        opacity: 0;
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        transform: translate3d(vwPc(-10), 0, 0);
       }
     }
     .inner {
@@ -1216,7 +1242,11 @@ body {
       top: vwPc(24);
       left: 0;
       width: vwPc(225);
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: clip-path, transform;
+      transform: translate3d(0, 0, 0);
+      transition: transform .5s $ziwaziwa, clip-path .5s $slide;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      // transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       .logo {
         path {
           fill: $red;
@@ -1253,24 +1283,27 @@ body {
           .text {
             position: relative;
             display: block;
-            @include fontsize(10);
             // @include fontvwPc(10);
             color: $red;
             overflow: hidden;
+            list-style: 1.2;
             pointer-events: none;
             span {
               position: relative;
               display: block;
+              height: rem(12);
               transition: transform 0.5s $zoom;
               z-index: 1;
               &:nth-child(1) {
                 position: relative;
+                @include fontsize(10);
               }
               &:nth-child(2) {
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
+                @include fontsize(12);
               }
             }
           }
@@ -1320,6 +1353,14 @@ body {
         bottom: 0;
       }
     }
+    &-title {
+      &.fixed {
+        top: vwPc(135);
+        right: vwPc(20);
+        @include fontvwPc(22);
+        z-index: 1;
+      }
+    }
     &#work-together {
       .ruler {
         padding: vwPc(120) 0; 
@@ -1327,6 +1368,11 @@ body {
           display: block;
           margin: vwPc(90) auto vwPc(40);
           width: vwPc(64);
+          svg {
+            position: relative;
+            animation: scaleIcon 3s ease-in-out infinite;
+            // animation: scaleIcon 3s $easeInOutCubic infinite;
+          }
         }
       }
       .section {
@@ -1339,9 +1385,72 @@ body {
     }
   }
   main {
-    min-height: 100vh;
+    // min-height: 100vh;
     .works-wrapper {
       position: relative;
+      #load-more {
+        &:hover {
+          .mix-text {
+            color: $white;
+            transition: color .25s $slide;
+            .icon svg {
+              transform: translate3d(vwPc(14), 0, 0);
+              transition: transform .25s $slide;
+              * {
+                stroke: $white;
+                transition: stroke .25s $slide;
+              }
+            }
+          }
+          .cover {
+            &.left, &.right {
+              .cover__inner {
+                transform: translate3d(0, 0, 0);
+              }
+            }
+          }
+        }
+        .mix-text {
+          will-change: color;
+          transition: color .25s $slide .25s;
+          .icon svg {
+            position: relative;
+            will-change: transform;
+            transition: transform .25s $slide .25s;
+            * {
+              will-change: stroke;
+              transition: stroke .25s $slide .25s;
+            }
+          }
+        }
+        .cover {
+          position: absolute;
+          height: 100%;
+          width: 50%;
+          overflow: hidden;
+          &__inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            will-change: transform;
+            transition: transform .5s $slide;
+          }
+          &.left {
+            left: 0;
+            .cover__inner {
+              transform: translate3d(101%, 0, 0);
+            }
+          }
+          &.right {
+            right: 0;
+            .cover__inner {
+              transform: translate3d(-101%, 0, 0);
+            }
+          }
+        }  
+      }
       ul {
         flex-wrap: wrap;
         li {
@@ -1364,26 +1473,21 @@ body {
               position: absolute;
               top: 0;
               left: 0;
-              padding: vwPc(24) 0 vwPc(48);
+              padding: vwPc(24) 0 vwPc(48) 0;
               height: 100%;
               width: 100%;
               line-height: 1;
               overflow: hidden;
               transform: translate3d(-101%, 0, 0);
-              background-color: $white;
               will-change: transform;
-              transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+              transition: transform .5s $slide;
               .inner-slide-slide {
-                * {
-                  color: $black !important;
-                  background-color: transparent !important;
-                }
                 display: block;
                 height: 100%;
                 transform: translate3d(101%, 0, 0);
                 text-decoration: none;
                 will-change: transform;
-                transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: transform .5s $slide;
               }
             }
           }
@@ -1473,9 +1577,10 @@ body {
             // color: $black;
           }
           .detail {
-            padding: vwPc(24) 0 vwPc(48);
+            padding: vwPc(24) 0 vwPc(48) 0;
             &-above {
               position: relative;
+              padding-left: vwPc(24);
               padding-right: vwPc(45);
               .index {
                 position: relative;
@@ -1499,6 +1604,7 @@ body {
               }
             }
             .categories {
+              padding-left: vwPc(24);
               @include fontvwPc(10);
             }
           }
@@ -1574,6 +1680,47 @@ body {
                 height: unset !important;
               }
             }
+            .mix-text.vertical {
+              top: vwPc(700);
+              right: vwPc(20); 
+              writing-mode: vertical-rl;
+              cursor: pointer;
+              .roc-grotesk-wide {
+                @include fontvwPc(12);
+              }
+              .borax {
+                margin-top: vwPc(4);
+                margin-left: 0;
+                @include fontvwPc(24);
+              }
+              .triangle {
+                margin-top: vwPc(8);
+                span {
+                  margin-bottom: vwPc(6);
+                  display: block;
+                  width: 0;
+                  height: 0;
+                  border-style: solid;
+                  border-right: vwPc(5) solid transparent;
+                  border-left: vwPc(5) solid transparent;
+                  border-top: vwPc(6) solid $red;
+                  border-bottom: 0;
+                  opacity: 0;
+                  &:nth-child(1) {
+                    animation: scrollIcon 2s steps(1) infinite;
+                  }
+                  &:nth-child(2) {
+                    animation: scrollIcon 2s steps(1) infinite .25s;
+                  }
+                  &:nth-child(3) {
+                    animation: scrollIcon 2s steps(1) infinite .5s;
+                  }
+                  &:last-child {
+                    margin-bottom: 0;
+                  }
+                }
+              }
+            }
             .est {
               margin-right: vwPc(240);
               margin-left: auto;
@@ -1625,6 +1772,17 @@ body {
             &-line {
               margin-bottom: vwPc(40);
             }
+            .btn {
+              position: absolute;
+              bottom: vwPc(-12);
+              left: 50%;
+              content: '';
+              height: vwPc(2);
+              width: 0%;
+              will-change: width;
+              transition: width .5s $slide;
+              transform: translate3d(-50%, 0, 0);
+            }
           }
         }
       }
@@ -1637,62 +1795,38 @@ body {
       }
     }
     &#about {
-      padding-bottom: rem(120);
       section {
         &#top {
+          padding-top: vwPc(104);
           .ruler {
+            .img {
+              margin: 0 auto vwPc(64);
+              width: vwPc(577);
+            }
             .section-text {
               position: relative;
-              margin-bottom: rem(80);
-              // width: 58.97435897435898%;
-              @include fontsize(20);
-              line-height: (40 / 20);
-              font-family: $Mincho;
-              color: $red;
-              z-index: 1;
-              // .futura {
-              //   @include fontsize(22);
-              // }
-            }
-            .img {
-              position: absolute;
-              top: 50%;
-              // top: 0;
-              right: 0;
-              width: 38.461538461538464%;
-              // width: rem(450);
-              min-width: rem(450);
-              transform: translate3d(0, -50%, 0);
+              margin-bottom: vwPc(80);
+              @include fontvwPc(16);
+              line-height: (24 / 16);
+              text-align: center;
             }
             .company {
-              margin-top: rem(-121.17);
-              padding-left: rem(120);
+              margin: 0 auto;
+              width: vwPc(930);
               .flex {
+                padding: vwPc(40) 0;
+                border-bottom: rem(1) solid $red;
+                &:first-child {
+                border-top: rem(1) solid $red;
+                }
                 p {
+                  @include fontvwPc(14);
+                  line-height: (21 / 14);
                   &:nth-child(1) {
-                    margin-right: rem(30);
-                    width: rem(330);
+                    width: vwPc(225);
                   }
-                }
-              }
-              div {
-                margin-bottom: rem(40);
-                &:last-child {
-                  margin-bottom: 0;
-                  width: rem(690);
-                }
-                p {
-                  span {
-                    display: block;
-                    &:nth-child(1) {
-                      margin-bottom: rem(20);
-                      @include fontsize(16);
-                      color: $red;
-                    }
-                    &:nth-child(2) {
-                      @include fontsize(13);
-                      line-height: (25 / 13);
-                    }
+                  &:nth-child(2) {
+                    width: calc( 100% - vwPc(225) );
                   }
                 }
               }
@@ -1875,7 +2009,12 @@ body {
       }
     }
     &#contact {
-      padding-bottom: rem(120);
+      section {
+        &#top {
+          padding-top: vwPc(134);
+          padding-bottom: vwPc(120);
+        }
+      }
       .thank-you {
         margin: rem(50) 0;
         @include fontsize(40);
@@ -1883,42 +2022,50 @@ body {
         line-height: 1.2;
       }
       form {
-        margin-top: rem(-141.41);
-        div {
-          margin-bottom: rem(40);
+        margin: 0 auto;
+        display: block;
+        width: vwPc(695);
+        .form {
+          position: relative;
+          margin-bottom: vwPc(32);
+          padding-bottom: vwPc(24);
+          width: 100%;
         }
         label {
-          margin-bottom: rem(20);
+          margin-bottom: vwPc(32);
           display: block;
-          @include fontsize(13);
+          @include fontvwPc(14);
         }
         .error {
           margin-top: rem(10);
           color: red;
-          @include fontsize(12);
+          @include fontvwPc(12);
         }
         input,
         textarea {
-          border: rem(1) solid $black;
-          width: rem(690);
-          @include fontsize(16);
-          border: rem(1) solid $red;
+          width: 100%;
+          @include fontvwPc(16);
           box-sizing: border-box;
+          outline: none;
+          border: none;
+          &::placeholder {
+            color: rgba(200, 15, 46, .3);
+          }
           &:focus {
-            border: rem(2) solid $red;
+            // border: rem(2) solid $red;
             outline: none;
-            // outline: solid rem(1) $red;
           }
         }
         input {
-          padding: 0 rem(20);
-          height: rem(70);
+          height: vwPc(16);
         }
         textarea {
-          padding: rem(10) rem(20);
-          height: rem(200);
+          height: vwPc(114);
           line-height: (32 / 16);
         }
+      }
+      .submit {
+        cursor: pointer;
       }
     }
   }
