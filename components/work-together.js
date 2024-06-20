@@ -8,7 +8,7 @@ export default function WorkTogether(props) {
     <section id="work-together" className="section">
         <div className="ruler">
             <h2 className="section-title borax red">LET’S WORK TOGETHER</h2>
-            <div className='mix-text-wrap'>
+            <div className='text-center'>
             <Link href='/contact' scroll={false}>
                 <a className='mix-text red'>
                     <div className="mix-text__inner">
@@ -27,19 +27,19 @@ export default function WorkTogether(props) {
                     <Ketchup color="#c8102e" />
                 </a>
             </Link>
-            <div className='mix-text-wrap'>
-            <Link href='https://www.instagram.com' scroll={false} rel="noopener noreferrer" target="_blank">
-                <a className='mix-text red'>
-                    <div className="mix-text__inner">
-                        <span className='roc-grotesk-wide'>INSTA</span>
-                        <span className='borax italic no-m'>Gram</span>
-                        <span className='icon instagram'>
-                            <Instagram color="#c8102e" />
-                        </span>
-                        <span className='mix-text-line bg-red'></span>
-                    </div>
-                </a>
-            </Link>
+            <div className='text-center'>
+                <Link href='https://www.instagram.com' scroll={false} rel="noopener noreferrer" target="_blank">
+                    <a className='mix-text red'>
+                        <div className="mix-text__inner">
+                            <span className='roc-grotesk-wide'>INSTA</span>
+                            <span className='borax italic no-m'>Gram</span>
+                            <span className='icon instagram'>
+                                <Instagram color="#c8102e" />
+                            </span>
+                            <span className='mix-text-line bg-red'></span>
+                        </div>
+                    </a>
+                </Link>
             </div>
         </div>
     </section>

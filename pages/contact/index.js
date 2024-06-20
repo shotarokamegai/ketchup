@@ -265,7 +265,7 @@ export default function Contact() {
                               <div className="section-line bg-red absolute bottom"></div>
                             </div>
                           </form>
-                          <div className="mix-text-wrap">
+                          <div className="text-center">
                             <div className="submit mix-text red" onClick={handleSubmit}>
                               <div className="mix-text__inner">
                                 <span className="roc-grotesk-wide">SEND</span>

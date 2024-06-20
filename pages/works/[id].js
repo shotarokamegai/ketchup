@@ -4,10 +4,12 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Head from 'next/head'
 import Script from 'next/script'
 import axios from "axios"
+import Link from 'next/link'
 import Image from 'next/image'
 import List from '../../components/list'
 import { useRouter } from "next/router";
 import Arrow from '../../components/svg/arrow';
+import WorkTogether from '../../components/work-together';
 import { motion, useScroll, useSpring } from "framer-motion";
 import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
@@ -38,7 +40,7 @@ export default function Work(props) {
           }
       }
       return(
-        <p className="roc">
+        <p className="roc-grotesk medium red">
             {thisCategories.slice( 0, -1 )}
         </p>
       )
@@ -124,81 +126,82 @@ export default function Work(props) {
         <main id="work" className={`common main_`}>
           <section id="top">
             <div className="ruler">
-                <h3 className="section-title rocextrawide red">WORKS</h3>
+              <h2 className="section-title red fixed">
+                <span className="borax italic">Works</span>
+              </h2>
             </div>
-            {/* <p className="vertical rocextrawideLight">
-              WORKS
-            </p> */}
             <div className="ruler">
-                <div className="title">
-                  <h2 className="roc" dangerouslySetInnerHTML={{__html: props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}}></h2>
-                  {/* <p className="text" dangerouslySetInnerHTML={{__html: props.post.content.rendered}}></p> */}
+              <div className={`keyv-wrap ${load && 'active'}`}>
+                <div className="img">
+                  <picture className={`picture${props.post.id}`}>
+                    <source srcSet={props.post['acf']['pc_thumbnail']} media="(min-width: 750px)" />
+                    <img layout='fill' src={props.post['acf']['sp_thumbnail']} alt={props.post && props.post.title.rendered} />
+                  </picture>
                 </div>
-                <div className={`keyv-wrap ${load && 'active'}`}>
-                  <div className="img">
-                    <picture className={`picture${props.post.id}`}>
-                      <source srcSet={props.post['acf']['pc_thumbnail']} media="(min-width: 750px)" />
-                      <img layout='fill' src={props.post['acf']['sp_thumbnail']} alt={props.post && props.post.title.rendered} />
-                    </picture>
-                  </div>
-                  <div className="cover"></div>
-                </div>
-                <div className="detail flex space-between">
-                  <div className="client">
-                    <p className="roc bold">Client</p>
-                    <p className="roc ">{props.post['acf']['client']}</p>
+                <div className="cover"></div>
+              </div>
+              <div className="detail flex space-between">
+                <div className="left">
+                  <div className="title">
+                    <h2 className="roc-grotesk red" dangerouslySetInnerHTML={{__html: props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}}></h2>
                   </div>
                   <div className={ props.post['acf']['url'] !== '' ? "categories flex align-center" : "categories flex align-center no-url" }>
                     { getCategories(props.cats) }
-                    {props.post['acf']['url'] !== '' && <a className="flex flex-sp align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
-                      <span className="text rocextrawide red">VIEW SITE</span>
-                      <Arrow />
-                    </a>}
                   </div>
                 </div>
-                <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
-                {typeof props.post['acf']['video'] !== '' && <div className="gallery video"><div className="img"><video src={props.post['acf']['video']} playsInline autoPlay muted loop /></div></div>}
-            </div>
-          </section>
-          <section className="works-wrapper other-works-wrapper">
-            <div className="ruler">
-                <h3 className="section-title rocextrawide red">OTHER WORKS</h3>
-            </div>
-              <p className="vertical rocextrawideLight">
-                OTHER WORKS
-              </p>
-            <div className="ruler">
-              <div className="inner">
-                  <ul className="flex flex-sp">
-                      {props.posts.map((item, index) => {
-                          let datum = {
-                            thisCategories: ''
-                        };
-                        datum.max = props.posts.length;
-                        datum.type = 'others';
-                        datum.index = index;
-                        datum.item = item;
-                        for (let i = 0; i < item.categories.length; i++) {
-                            for (let j = 0; j < props.cats.length; j++) {
-                                if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
-                                    datum.thisCategories += ` ${props.cats[j].name} /` 
-                                }
-                            }
-                        }
-                        datum.className = ''
-                        if (i === 5) {
-                            i = 0;
-                        } else {
-                            i++;
-                        }
-                        return(
-                          <List key={index} {...datum} />
-                        )
-                      })}
-                  </ul>
+                <div className="right">
+                  <div className="client">
+                    <p className="borax red italic">Client</p>
+                    <p className="roc-grotesk red medium">{props.post['acf']['client']}</p>
+                  </div>
+                  {props.post['acf']['url'] !== '' && 
+                    <Link href={props.post['acf']['url']} scroll={false} rel="noopener noreferrer" target="_blank">
+                        <a className='mix-text red'>
+                            <div className="mix-text__inner">
+                                <span className='roc-grotesk-wide'>VISIT</span>
+                                <span className='borax italic no-m'>Site</span>
+                                <span className='icon instagram'>
+                                    <Arrow color="#c8102e" />
+                                </span>
+                                <span className='mix-text-line bg-red'></span>
+                            </div>
+                        </a>
+                    </Link>
+                  }
                 </div>
-            </div>
+              </div>
+              <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
+              {typeof props.post['acf']['video'] !== '' &&
+                <div className="gallery video">
+                  <div className="img">
+                    <video src={props.post['acf']['video']} playsInline autoPlay muted loop />
+                  </div>
+                </div>
+              }
+              </div>
+              <Link href="/#works">
+                <div className={`btn btn-full`}>
+                  <div className="section-line top absolute bg-red"></div>
+                  <div className="section-line bottom absolute bg-red"></div>
+                  <div className="cover left">
+                    <div className="cover__inner bg-red"></div>
+                  </div>
+                  <div className="cover right">
+                    <div className="cover__inner bg-red"></div>
+                  </div>
+                  <div className="mix-text red">
+                    <div className="mix-text__inner">
+                      <span className="roc-grotesk-wide">MORE</span>
+                      <span className="borax italic">Works</span>
+                      <span className="icon">
+                        <Arrow color="#c8102e" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
           </section>
+          <WorkTogether />
         </main>
         </Content>
       </div>

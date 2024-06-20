@@ -5,13 +5,12 @@ import fetch from 'node-fetch'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import List from '../components/list'
-import WorkTogether from '../components/work-together'
-import Arrow from '../components/svg/arrow'
-import Logo from '../components/svg/logo'
+import List from '../../components/list'
+import WorkTogether from '../../components/work-together'
+import Arrow from '../../components/svg/arrow'
 import axios from "axios"
-import Content from '../components/content'
-import styles from '../styles/Home.module.css'
+import Content from '../../components/content'
+import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
@@ -39,7 +38,7 @@ axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 //   return className;
 // }
 
-function Home(props) {
+function Works(props) {
   gsap.registerPlugin(ScrollTrigger)
   const { scrollYProgress } = useScroll();
   const logoRef = useRef();
@@ -232,38 +231,10 @@ function Home(props) {
     <div className={styles.container}>
       <Content>
       <motion.div className="progress-bar" style={{ scaleX }} />
-        <main id="home" className="main_">
-          <section id="top">
-              <div className="ruler">
-                  <h1 id="top-logo" className="logo" ref={logoRef}>
-                    <Logo />
-                  </h1>
-                  <p className="est red flex flex-end">
-                    <span className="roc-grotesk">EST.</span>
-                    <span className="borax italic">2022</span>
-                  </p>
-                  <div className="mix-text red vertical absolute scroll-trigger" data-target="works">
-                    <div className="mix-text__inner">
-                      <span className="roc-grotesk-wide">SCROLL</span>
-                      <span className="borax italic">Down</span>
-                      <span className="triangle flex">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </span>
-                    </div>
-                  </div>
-                  <div>
-                      <h2 className="slogan borax red">
-                      Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing.
-                      </h2>
-                  </div>
-              </div>
-          </section>
+        <main id="works" className="main_">
           <section id="works" className="section">
               <div className="ruler">
-                <h2 className="section-title red">
-                  <span className="roc-grotesk medium">Featured</span>
+                <h2 className="section-title red fixed">
                   <span className="borax italic">Works</span>
                 </h2>
                 <div className="section-line bg-red"></div>
@@ -316,4 +287,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Home
+export default Works
