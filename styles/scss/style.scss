@@ -306,6 +306,9 @@ body {
       h1 {
         opacity: 0;
       }
+      nav {
+        opacity: 0;
+      }
     }
     &.show {
       h1 {
@@ -1303,9 +1306,11 @@ body {
     }
     h1 {
       position: absolute;
-      top: vwPc(24);
+      top: rem(24);
       left: 0;
-      width: vwPc(225);
+      width: rem(110);
+      // width: rem(225);
+      // width: vwPc(225);
       will-change: clip-path, transform;
       transform: translate3d(0, 0, 0);
       transition: transform .5s $ziwaziwa, clip-path .5s $slide;
@@ -1319,14 +1324,14 @@ body {
     }
     nav {
       position: absolute;
-      top: vwPc(26);
+      top: rem(26);
       right: rem(30);
       ul {
         li {
           position: relative;
           display: flex;
           align-items: center;
-          margin-right: vwPc(303);
+          margin-right: rem(303);
           cursor: pointer;
           &:last-child {
             margin-right: 0;
@@ -1372,8 +1377,8 @@ body {
             }
           }
           .ketchup {
-            margin-right: vwPc(2);
-            width: vwPc(16);
+            margin-right: rem(2);
+            width: rem(16);
             svg {
               position: relative;
               width: 100%;
@@ -1663,13 +1668,19 @@ body {
         &#top {
           padding-top: vwPc(110);
           padding-bottom: vwPc(120);
+          height: vwPc(1160);
           box-sizing: border-box;
           .ruler {
             max-width: initial;
+            height: 100%;
             .logo {
-              position: relative;
-              margin-bottom: vwPc(110);
-              width: 100%;
+              // position: relative;
+              // top: 0;
+              top: vwPc(110);
+              left: vwPc(20);
+              // left: 0;
+              width: vwPc(1400);
+              // width: 100%;
               will-change: transform;
               path {
                 fill: $red;
@@ -1723,9 +1734,8 @@ body {
               }
             }
             .est {
-              margin-right: vwPc(240);
-              margin-left: auto;
-              margin-bottom: vwPc(160);
+              bottom: vwPc(330);
+              right: vwPc(240);
               .roc-grotesk {
                 margin-right: vwPc(8);
                 @include fontvwPc(16)
@@ -1735,9 +1745,13 @@ body {
               }
             }
             .slogan {
+              position: sticky;
+              // top: 0;
+              top: vwPc(350);
               margin-left: vwPc(120);
               @include fontvwPc(52);
               line-height: (62.4 / 52);
+              mix-blend-mode: screen;
               .slogan1 {
                 left: rem(-30);
               }
