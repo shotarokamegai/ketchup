@@ -18,20 +18,24 @@
   height: 100%;
   width: 100%;
   // transform: translate3d(0, 100%, 0);
-  background-color: $red;
+  // background-color: $red;
   z-index: 10;
+  // overflow: hidden;
   will-change: transform;
   pointer-events: none;
   &::before {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 220vh;
+    left: 50%;
     content: "";
     display: block;
     // padding-top: 100%;
-    height: 100%;
-    width: 100%;
+    height: 150vw;
+    width: 150vw;
+    transform: translate3d(-50%, 0, 0);
+    border-radius: 40%;
     background-color: $red;
+    animation: loadAnim 4s linear infinite;
   }
 }
 
@@ -124,10 +128,6 @@ body {
       fill: $white;
     }
   }
-}
-
-.red {
-  color: $red;
 }
 
 .transition-enter {
@@ -845,8 +845,9 @@ body {
             }
             .slogan {
               // @include fontvw(30);
-              line-height: (50 / 40);
-              font-size: 8.3vw;
+              width: vwPc(780);
+              // line-height: (50 / 40);
+              // font-size: 8.3vw;
               // font-size: 10.366667vw;
               .slogan2 {
                 left: 6vw;
@@ -1291,12 +1292,14 @@ body {
   }
   #header {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 10;
     &.hide {
       h1 {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-        transform: translate3d(vwPc(-10), 0, 0);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transform: translate3d(0, vwPc(-10), 0);
       }
     }
     .inner {
@@ -1377,7 +1380,7 @@ body {
             }
           }
           .ketchup {
-            margin-right: rem(2);
+            margin-right: rem(6);
             width: rem(16);
             svg {
               position: relative;
@@ -1666,18 +1669,24 @@ body {
     &#home {
       section {
         &#top {
-          padding-top: vwPc(110);
-          padding-bottom: vwPc(120);
-          height: vwPc(1160);
+          // height: calc( 100vh );
           box-sizing: border-box;
+          // background-color: rgb(255,255,255);
           .ruler {
             max-width: initial;
-            height: 100%;
+            // height: 100%;
+            .vh {
+              position: relative;
+              height: 100vh;
+              box-sizing: content-box;
+            }
             .logo {
               // position: relative;
               // top: 0;
-              top: vwPc(110);
-              left: vwPc(20);
+              @include center();
+              left: 49.5%;
+              // top: vwPc(110);
+              // left: vwPc(20);
               // left: 0;
               width: vwPc(1400);
               // width: 100%;
@@ -1693,29 +1702,39 @@ body {
               }
             }
             .mix-text.vertical {
-              top: vwPc(700);
-              right: vwPc(20); 
+              // bottom: vwPc(60);
+              // right: vwPc(20); 
+              bottom: rem(60);
+              right: rem(20); 
               writing-mode: vertical-rl;
               cursor: pointer;
               .roc-grotesk-wide {
-                @include fontvwPc(12);
+                @include fontsize(12);
+                // @include fontvwPc(12);
               }
               .borax {
-                margin-top: vwPc(4);
+                margin-top: rem(4);
+                // margin-top: vwPc(4);
                 margin-left: 0;
-                @include fontvwPc(24);
+                @include fontsize(24);
+                // @include fontvwPc(24);
               }
               .triangle {
-                margin-top: vwPc(8);
+                margin-top: rem(8);
+                // margin-top: vwPc(8);
                 span {
-                  margin-bottom: vwPc(6);
+                  margin-bottom: rem(6);
+                  // margin-bottom: vwPc(6);
                   display: block;
                   width: 0;
                   height: 0;
                   border-style: solid;
-                  border-right: vwPc(5) solid transparent;
-                  border-left: vwPc(5) solid transparent;
-                  border-top: vwPc(6) solid $red;
+                  border-right: rem(5) solid transparent;
+                  border-left: rem(5) solid transparent;
+                  border-top: rem(6) solid $red;
+                  // border-right: vwPc(5) solid transparent;
+                  // border-left: vwPc(5) solid transparent;
+                  // border-top: vwPc(6) solid $red;
                   border-bottom: 0;
                   opacity: 0;
                   &:nth-child(1) {
@@ -1734,7 +1753,7 @@ body {
               }
             }
             .est {
-              bottom: vwPc(330);
+              bottom: vwPc(-32);
               right: vwPc(240);
               .roc-grotesk {
                 margin-right: vwPc(8);
@@ -1746,33 +1765,25 @@ body {
             }
             .slogan {
               position: sticky;
-              // top: 0;
-              top: vwPc(350);
+              top: 0;
+              // transform: translate3d(0, vwPc(-650), 0);
+              width: vwPc(780);
+              // width: vwPc(780);
+              padding-top: vhPc(360);
               margin-left: vwPc(120);
-              @include fontvwPc(52);
-              line-height: (62.4 / 52);
+              // @include fontvwPc(52);
+              // line-height: (62.4 / 52);
+              // mix-blend-mode: difference;
               mix-blend-mode: screen;
-              .slogan1 {
-                left: rem(-30);
-              }
-              .slogan2 {
-                left: rem(-10);
-              }
-              .slogan3 {
-                left: rem(-10);
-              }
-              .slogan4 {
-                left: rem(-40);
-              }
-              span {
-                position: relative;
-                display: inline-block;
-                will-change: transform;
+              svg {
+                display: block;
+                width: 100%;
               }
             }
           }
         }
         &#works {
+          padding-top: vwPc(120);
           .section {
             &-title {
               padding-bottom: vwPc(16);

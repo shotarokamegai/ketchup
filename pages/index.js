@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import List from '../components/list'
 import WorkTogether from '../components/work-together'
 import Arrow from '../components/svg/arrow'
+import Slogan from '../components/svg/slogan'
 import Logo from '../components/svg/logo'
 import axios from "axios"
 import Content from '../components/content'
@@ -103,8 +104,9 @@ function Home(props) {
   const setAnimation = () => {
     const parallax = document.getElementsByClassName('parallax');
     gsap.to('#top-logo', {
-      scale: () => `1.5`,
-      alpha: () => `0`,
+      // scale: () => `1.5`,
+      y: () => `-50%`,
+      // alpha: () => `0`,
       // ease: "power1.out",
       scrollTrigger: {
         trigger: '.container',
@@ -118,8 +120,9 @@ function Home(props) {
       const elm = parallax[i];
       const start = elm.getAttribute('data-start');
       const end = elm.getAttribute('data-end');
+      const amount = parseFloat(elm.getAttribute('data-amount'));
       gsap.to(elm, {
-        y: () => `${-window.innerWidth*.1}`,
+        y: () => `${-window.innerWidth*amount}`,
         // ease: "power1.out",
         scrollTrigger: {
           trigger: '.container',
@@ -297,15 +300,14 @@ function Home(props) {
         <main id="home" className="main_">
           <section id="top">
               <div className="ruler">
-                  <h1 id="top-logo" className="logo fixed fade" data-start="0" data-end="10%" ref={logoRef}>
-                  {/* <h1 id="top-logo" className="logo absolute parallax" data-start="0" data-end="10%" ref={logoRef}> */}
-                    <Logo />
+                <div className="vh">
+                  {/* <h1 id="top-logo" className="logo fade" data-start="0" data-end="10%" ref={logoRef}> */}
+                  <h1 id="top-logo" className="logo absolute">
+                    <div className="parallax" data-start="0" data-end="10%" ref={logoRef} data-amount=".15">
+                      <Logo />
+                    </div>
                   </h1>
-                  <div className="est red flex flex-end absolute parallax" data-start="0%" data-end="15%">
-                    <span className="roc-grotesk">EST.</span>
-                    <span className="borax italic">2022</span>
-                  </div>
-                  <div className="mix-text red vertical absolute scroll-trigger parallax" data-start="0%" data-end="25%" data-target="works">
+                  <div className="mix-text red vertical absolute scroll-trigger parallax" data-start="0%" data-end="25%" data-amount=".1" data-target="works">
                     <div className="mix-text__inner">
                       <span className="roc-grotesk-wide">SCROLL</span>
                       <span className="borax italic">Down</span>
@@ -317,8 +319,14 @@ function Home(props) {
                     </div>
                   </div>
                   <h2 className="slogan borax red">
-                  Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing.
+                    <Slogan color="#c8102e" />
+                  {/* Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing. */}
                   </h2>
+                  <div className="est absolute red flex flex-end parallax" data-start="0%" data-end="15%" data-amount=".11">
+                    <span className="roc-grotesk">EST.</span>
+                    <span className="borax italic">2022</span>
+                  </div>
+                </div>
               </div>
           </section>
           <section id="works" className="section">

@@ -34,8 +34,8 @@ export default function Content({ children }) {
     }
   }
 const routes = [
-  { path: '/', name: 'Home', Element: '' },
-  // { path: '/works', name: 'Works', Element: Works },
+  // { path: '/', name: 'Home', Element: '' },
+  { path: '/works', name: 'Works', Element: '' },
   { path: '/about', name: 'About', Element: '' },
   { path: '/contact', name: 'Contact', Element: '' },
 ]
@@ -43,19 +43,19 @@ const ease = [0.37, 0, 0.63, 1];
   const waveAnimation = {
     key: "wave",
     initial: {
-      // opacity: 1,
-      y: ['0vh', '0vh'],
+      y: ['240vh', '240vh'],
+      // y: ['0vh', '0vh'],
     },
     animate: {
-      // opacity: 0,
-      y: ['0vh', '0vh', '-100vh'],
+      y: ['-260vh', '-260vh', '-560vh'],
+      // y: ['0vh', '0vh', '-100vh'],
     },
     exit: {
-      // opacity: 1,
-      y: ['100vh', '0vh', '0vh'],
+      y: ['0vh', '-260vh', '-260vh'],
+      // y: ['100vh', '0vh', '0vh'],
     },
     transition: {
-      duration: .7,
+      duration: 2,
       // delay: 1,
       ease: ease
     },

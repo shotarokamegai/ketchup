@@ -8,8 +8,8 @@ import '../styles/scss/style.scss'
 import adobeLoader from "../components/adobeLoader";
 
 const routes = [
-  { path: '/', name: 'Home', Element: '' },
-  // { path: '/works', name: 'Works', Element: Works },
+  // { path: '/', name: 'Home', Element: '' },
+  { path: '/works', name: 'Works', Element: '' },
   { path: '/about', name: 'About', Element: '' },
   { path: '/contact', name: 'Contact', Element: '' },
 ]
