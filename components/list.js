@@ -9,6 +9,7 @@ import Arrow from './svg/arrow'
 export default function List(props) {
   gsap.registerPlugin(ScrollTrigger)
   const onLoad = (e) => {
+    // scrollAnimation();
     // if (e.target.srcset) {
       // imagesLoaded(`.box${props.item.id}`,(e) => {
       //   // e.target.dataset.load = "done";
@@ -143,7 +144,7 @@ export default function List(props) {
                   <p dangerouslySetInnerHTML={{__html: '(01)'}} className="index roc-grotesk light red"></p>
                   <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title roc-grotesk red"></p>
                   <div className="arrow">
-                    <Arrow color="#c8102e" />
+                    <Arrow color="bg-red stroke" />
                   </div>
                 </div>
                 <p className="categories roc-grotesk medium red">
@@ -155,7 +156,7 @@ export default function List(props) {
                       <p dangerouslySetInnerHTML={{__html: '(01)'}} className="index roc-grotesk light white"></p>
                       <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title roc-grotesk white"></p>
                       <div className="arrow">
-                        <Arrow color="#fff" />
+                        <Arrow color="bg-white stroke" />
                       </div>
                     </div>
                     <p className="categories roc-grotesk white medium">

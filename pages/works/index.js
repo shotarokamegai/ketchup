@@ -256,7 +256,7 @@ function Works(props) {
                         <span className="roc-grotesk-wide">MORE</span>
                         <span className="borax italic">Works</span>
                         <span className="icon">
-                          <Arrow color="#c8102e" />
+                          <Arrow color="bg-red stroke" />
                         </span>
                       </div>
                     </div>

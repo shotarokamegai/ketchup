@@ -39,19 +39,22 @@ const routes = [
   { path: '/about', name: 'About', Element: '' },
   { path: '/contact', name: 'Contact', Element: '' },
 ]
-const ease = [0.37, 0, 0.63, 1];
+// const ease = [0.37, 0, 0.63, 1];
+const ease = [.69,-0.01,.41,.99];
   const waveAnimation = {
     key: "wave",
     initial: {
-      y: ['240vh', '240vh'],
+      y: ['150vh', '150vh','150vh', '150vh'],
       // y: ['0vh', '0vh'],
     },
     animate: {
-      y: ['-260vh', '-260vh', '-560vh'],
+      y: ['0vh', '0vh','-150vh', '-150vh'],
+      // y: ['-20vw', '-20vw','-180vw', '-180vw'],
       // y: ['0vh', '0vh', '-100vh'],
     },
     exit: {
-      y: ['0vh', '-260vh', '-260vh'],
+      y: ['150vh', '150vh','0vh', '0vh'],
+      // y: ['140vw', '140vw','-20vw', '-20vw'],
       // y: ['100vh', '0vh', '0vh'],
     },
     transition: {
@@ -59,7 +62,34 @@ const ease = [0.37, 0, 0.63, 1];
       // delay: 1,
       ease: ease
     },
-}
+  }
+  const gifAnimation = {
+    key: "gif",
+    initial: {
+      scale: [0, 0],
+      x: ["-50%","-50%","-50%",],
+      y: ["-50%","-50%","-50%",]
+      // y: ['0vh', '0vh'],
+    },
+    animate: {
+      scale: [1, 1, 1, 0, 0, 0, 0],
+      x: ["-50%","-50%","-50%",],
+      y: ["-50%","-50%","-50%",]
+      // y: ['0vh', '0vh', '-100vh'],
+    },
+    exit: {
+      scale: [0, 0, 0, 0, 1, 1, 1],
+      x: ["-50%","-50%","-50%",],
+      y: ["-50%","-50%","-50%",]
+      // y: ['100vh', '0vh', '0vh'],
+    },
+    transition: {
+      duration: 2,
+      // delay: 1.5,
+      ease: ease
+      // ease: "easeOut"
+    },
+  }
   const boxAnimation = {
     key: "box",
     initial: {
@@ -82,6 +112,25 @@ const ease = [0.37, 0, 0.63, 1];
         ease: "easeOut"
     },
 }
+const onStart = (e) => {
+  console.log(e.y)
+  const privacyScreen = document.getElementsByClassName('privacy-screen')[0];
+  if (e.y[0] === '0vh') {
+    privacyScreen.classList.remove('start');
+    privacyScreen.classList.add('end');
+  } else {
+    privacyScreen.classList.add('start');
+    privacyScreen.classList.remove('end');
+  }
+  console.log("Animation started")
+}
+const onComplete = (e) => {
+  console.log(e.y)
+  // const privacyScreen = document.getElementsByClassName('privacy-screen')[0];
+  // privacyScreen.classList.remove('start');
+  // privacyScreen.classList.add('end');
+  console.log("Animation completed")
+}
   useEffect(() => {
     checkLocation()
     let header = document.getElementById('header');
@@ -102,9 +151,18 @@ const ease = [0.37, 0, 0.63, 1];
 <>
     <motion.div
       key={router.asPath}
+      onAnimationStart={onStart}
+      onAnimationComplete={onComplete}
      {...waveAnimation}
-      className="privacy-screen"
+      className="privacy-screen end"
     >
+    </motion.div>
+    <motion.div
+      key={router.asPath}
+     {...gifAnimation}
+      id="gif"
+    >
+      <img src="/img/common/ktcp-bottle.gif" />
     </motion.div>
     <div className="container">
       <Header routes={routes} />

@@ -1,9 +1,9 @@
 export default function Instagram(props) {
     return(
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M21 3H3V21H21V3Z" stroke={props.color} strokeWidth="2" strokeMiterlimit="10"/>
-<path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke={props.color} strokeWidth="2" strokeMiterlimit="10"/>
-<path d="M17.5 7C17.7761 7 18 6.77614 18 6.5C18 6.22386 17.7761 6 17.5 6C17.2239 6 17 6.22386 17 6.5C17 6.77614 17.2239 7 17.5 7Z" stroke={props.color} strokeWidth="2" strokeMiterlimit="10"/>
+      <svg className={props.color} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 3H3V21H21V3Z" stroke="" strokeWidth="2" strokeMiterlimit="10"/>
+<path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="" strokeWidth="2" strokeMiterlimit="10"/>
+<path d="M17.5 7C17.7761 7 18 6.77614 18 6.5C18 6.22386 17.7761 6 17.5 6C17.2239 6 17 6.22386 17 6.5C17 6.77614 17.2239 7 17.5 7Z" stroke="" strokeWidth="2" strokeMiterlimit="10"/>
 </svg>
 
       

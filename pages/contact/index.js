@@ -271,7 +271,7 @@ export default function Contact() {
                                 <span className="roc-grotesk-wide">SEND</span>
                                 <span className="borax italic">Message</span>
                                 <span className='icon'>
-                                    <Arrow color="#c8102e" />
+                                    <Arrow color="bg-red stroke" />
                                 </span>
                                 <span className='mix-text-line bg-red'></span>
                               </div>

@@ -61,7 +61,7 @@ export default function Work(props) {
           for (let k = 0; k < imgs.length; k++) {
             let img = imgs[k];
               html_ += 
-                  `<div class="img" key=${k}>
+                  `<div class="img addactive" key=${k}>
                     <img src=${img['img']['url']} alt="" />
                   </div>`;
             // html += `${html_}</div>`;
@@ -81,12 +81,39 @@ export default function Work(props) {
         }
       }
     }
+  const scrollAnimation = () => {
+    let addactive = document.getElementsByClassName('addactive');
+
+    for (let i = 0; i < addactive.length; i++) {
+      let elm = addactive[i];
+      let start = `top center+=${window.innerHeight/4}`;
+      if (elm.classList.contains('blur')) {
+        start = `top center`;
+      }
+      gsap.to(elm, {
+        ease: "power4.inOut",
+        scrollTrigger: {
+          trigger: elm,
+          start: start, 
+          onEnter: () => {
+            elm.classList.add('active');
+            if (elm.classList.contains('show')) {
+              setTimeout(() => {
+                elm.classList.add('nowillchange');
+              }, 3000)
+            }
+          }
+        }
+      });
+    }
+  }
 
     const onLoad = (e) => {
       // if (e.target.srcset) {
         // e.target.dataset.load = "done";
         ScrollTrigger.refresh();
         setOnload(true)
+        scrollAnimation();
       // }
     };
 
@@ -161,7 +188,7 @@ export default function Work(props) {
                                 <span className='roc-grotesk-wide'>VISIT</span>
                                 <span className='borax italic no-m'>Site</span>
                                 <span className='icon instagram'>
-                                    <Arrow color="#c8102e" />
+                                    <Arrow color="bg-red stroke" />
                                 </span>
                                 <span className='mix-text-line bg-red'></span>
                             </div>
@@ -173,7 +200,7 @@ export default function Work(props) {
               <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
               {typeof props.post['acf']['video'] !== '' &&
                 <div className="gallery video">
-                  <div className="img">
+                  <div className="img addactive">
                     <video src={props.post['acf']['video']} playsInline autoPlay muted loop />
                   </div>
                 </div>
@@ -194,7 +221,7 @@ export default function Work(props) {
                       <span className="roc-grotesk-wide">MORE</span>
                       <span className="borax italic">Works</span>
                       <span className="icon">
-                        <Arrow color="#c8102e" />
+                        <Arrow color="bg-red stroke" />
                       </span>
                     </div>
                   </div>

@@ -15,7 +15,7 @@ export default function WorkTogether(props) {
                         <span className='roc-grotesk-wide'>CONTACT</span>
                         <span className='borax italic'>Us</span>
                         <span className='icon mail'>
-                            <Mail color="#c8102e" />
+                            <Mail color="bg-red stroke" />
                         </span>
                         <span className='mix-text-line bg-red'></span>
                     </div>
@@ -24,7 +24,7 @@ export default function WorkTogether(props) {
             </div>
             <Link href='/' scroll={false}>
                 <a className='ketchup-icon'>
-                    <Ketchup color="#c8102e" />
+                    <Ketchup color="bg-red fill" />
                 </a>
             </Link>
             <div className='text-center'>
@@ -34,7 +34,7 @@ export default function WorkTogether(props) {
                             <span className='roc-grotesk-wide'>INSTA</span>
                             <span className='borax italic no-m'>Gram</span>
                             <span className='icon instagram'>
-                                <Instagram color="#c8102e" />
+                                <Instagram color="bg-red stroke" />
                             </span>
                             <span className='mix-text-line bg-red'></span>
                         </div>

@@ -14,6 +14,15 @@ export default function Header(props) {
   const handleClick = () => {
     setIsOpen(!isOpen)
   }
+  const splitText = (els, className) => {//--①
+    const els_ = els.split('');
+    let result = "";
+    for (let j = 0; j < els.length; j++) { // --④
+      let c = els[j].replace(" ", "&nbsp;");// --⑤
+      result += `<span class="${className}">${c}</span>`;// --⑥
+    }
+    return result;
+  }
   useEffect(() => {
     setTimeout(() => {
       setIsOpen(false)
@@ -26,13 +35,14 @@ export default function Header(props) {
       }, 500)
     }
   }, [])
+  
   return(
     <header id="header" className={`${isOpen ? 'show': ''}`} ref={ref}>
       <div className="inner">
         <h1>
           <Link href="/" scroll={false}>
             <a>
-              <Logo />
+              <Logo color="bg-red fill" />
             </a>
           </Link>
         </h1>
@@ -43,11 +53,11 @@ export default function Header(props) {
                 <Link href={route.path} scroll={false}>
                 <span className="flex align-center">
                   <span className="ketchup">
-                    <Ketchup />
+                    <Ketchup color="bg-red fill" />
                   </span>
                   <span className="text">
-                    <span className="roc-grotesk-wide">{route.name}</span>
-                    <span className="borax">{route.name}</span>
+                    <span className="text-wrap red roc-grotesk-wide" dangerouslySetInnerHTML={{__html: splitText(route.name, '')}}></span>
+                    <span className="text-wrap red borax" dangerouslySetInnerHTML={{__html: splitText(route.name, '')}}></span>
                   </span>
                 </span>
                 </Link>

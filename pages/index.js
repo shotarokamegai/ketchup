@@ -304,7 +304,7 @@ function Home(props) {
                   {/* <h1 id="top-logo" className="logo fade" data-start="0" data-end="10%" ref={logoRef}> */}
                   <h1 id="top-logo" className="logo absolute">
                     <div className="parallax" data-start="0" data-end="10%" ref={logoRef} data-amount=".15">
-                      <Logo />
+                      <Logo color="bg-red fill" />
                     </div>
                   </h1>
                   <div className="mix-text red vertical absolute scroll-trigger parallax" data-start="0%" data-end="25%" data-amount=".1" data-target="works">
@@ -319,7 +319,7 @@ function Home(props) {
                     </div>
                   </div>
                   <h2 className="slogan borax red">
-                    <Slogan color="#c8102e" />
+                    <Slogan color="bg-red fill" />
                   {/* Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing. */}
                   </h2>
                   <div className="est absolute red flex flex-end parallax" data-start="0%" data-end="15%" data-amount=".11">
@@ -354,7 +354,7 @@ function Home(props) {
                         <span className="roc-grotesk-wide">MORE</span>
                         <span className="borax italic">Works</span>
                         <span className="icon">
-                          <Arrow color="#c8102e" />
+                          <Arrow color="bg-red stroke" />
                         </span>
                       </div>
                     </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Arrow from './svg/arrow'
+import Ketchup from './svg/ketchup'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useEffect } from 'react';
@@ -8,6 +9,15 @@ import { useRouter } from "next/router";
 export default function Footer() {
   const router = useRouter();
   const pathname = router.asPath;
+  const changeMode = (e) => {
+    const elm = e.currentTarget;
+
+    if (!elm.classList.contains('light')) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
   useEffect(() => {
     let animation = gsap.timeline();
     gsap.registerPlugin(ScrollTrigger)
@@ -40,6 +50,14 @@ export default function Footer() {
         <p className='copy roc-grotesk medium red'>
         © 2024 Ketchup Inc. All rights reserved.
         </p>
+        <div id="switcher" className='flex'>
+          <div className='switcher light bg-white' onClick={changeMode}>
+            <Ketchup color="bg-red fill" />
+          </div>
+          <div className='switcher dark bg-red' onClick={changeMode}>
+            <Ketchup color="bg-white fill" />
+          </div>
+        </div>
       </div>
     </footer>
   )
