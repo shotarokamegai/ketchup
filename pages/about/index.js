@@ -49,10 +49,15 @@ export default function About() {
                       <span className="borax italic">About</span>
                     </h2>
                     <div className="img">
-                        <picture>
-    					   	<source srcSet="/img/common/ketchup-illustration.png" type="image/webp" />
-    					   	<img width="2048" height="2048" src="/img/common/ketchup-illustration.png" alt="" />
-    					</picture>
+                        <div className="bg">
+    					   	<img width="" height="" src="/img/common/bg.png" alt="" />
+                        </div>
+                        <div className="lamp">
+    					   	<img width="" height="" src="/img/common/lamp.png" alt="" />
+                        </div>
+                        <div className="team">
+    					   	<img width="" height="" src="/img/common/team.png" alt="" />
+                        </div>
                     </div>
                     <p className="section-text red">
                         トマトソースは<br className="sp" />

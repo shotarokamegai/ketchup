@@ -9,20 +9,37 @@
   scroll-behavior: auto;
 }
 
+* {
+  cursor:none;
+}
+
+// a {
+//   cursor: url('/img/common/ketchup_pointer.png'), auto;
+// }
+
+#cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: rem(30);
+  width: rem(30);
+  border-radius: 100%;
+  pointer-events: none;
+  // background-color: $black;
+  z-index: 1000;
+  will-change: top, left;
+  background-image: url(/img/common/ketchup_pointer.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translate3d(0, 0, 0)
+}
+
 #gif {
-  // top: 50%;
-  // left: 50%;
-  // transform: translate3d(-50%, -50%,0);
   @include center();
   position: fixed;
   transform: translate3d(-50%, -50%, 0) scale(0);
-  // will-change: transform;
-  // transition: transform .5s $easeInOutBack; 
   width: vwPc(200);
   z-index: 11;
-  // &.active {
-  //   animation: bottleAnim 3s $easeInOutBack forwards;
-  // }
 }
 .privacy-screen {
   position: fixed;
@@ -68,6 +85,9 @@ html.wf-active {
 
 .dark-mode {
   background-color: $red;
+  main#contact form input, main#contact form textarea {
+    background-color: $red;
+  }
   main#about section#top .ruler .company .flex {
     border-color: $white;
     &:nth-child(1) {
@@ -1989,8 +2009,23 @@ body {
           padding-top: vwPc(104);
           .ruler {
             .img {
+              position: relative;
               margin: 0 auto vwPc(64);
               width: vwPc(577);
+              div {
+                position: absolute;
+                width: 100%;
+                &.lamp {
+                  top: vwPc(-500);
+                  left: 0;
+                }
+                &.bg {
+                  @include center();
+                }
+                &.team {
+                  position: relative;
+                }
+              }
             }
             .section-text {
               position: relative;
