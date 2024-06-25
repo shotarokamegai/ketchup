@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Lenis from '@studio-freight/lenis'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -35,20 +35,6 @@ function MyApp({ Component, pageProps }) {
 
     requestAnimationFrame(raf)
   }
-  const moveCursor = (e) => {
-    gsap.to(myRef.current, 0.3, {
-      css: {
-        x: e.pageX,
-        y: e.pageY
-      }
-    });
-  }
-  const stickCursor = (e) => {
-    gsap.set(myRef.current, {
-      x: e.pageX,
-      y: e.pageY
-    });
-  }
 
   useEffect(() => {
     const loadFunc = () => {
@@ -65,7 +51,7 @@ function MyApp({ Component, pageProps }) {
       var ball = document.querySelector("#cursor");
       var pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
       var mouse = { x: pos.x, y: pos.y };
-      var speed = 0.5;
+      var speed = 0.2;
           
       var fpms = 60 / 1000;
           

@@ -164,8 +164,8 @@ const onComplete = (e) => {
     >
       <img src="/img/common/ktcp-bottle.gif" />
     </motion.div>
+    <Header routes={routes} />
     <div className="container">
-      <Header routes={routes} />
       <motion.div
         key={router.asPath}
        {...boxAnimation}

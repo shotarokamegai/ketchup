@@ -85,6 +85,9 @@ html.wf-active {
 
 .dark-mode {
   background-color: $red;
+  #cursor {
+    background-image: url(/img/common/ketchup_pointer_default_white.svg);
+  }
   main#contact form input, main#contact form textarea {
     background-color: $red;
   }
@@ -2016,13 +2019,19 @@ body {
                 position: absolute;
                 width: 100%;
                 &.lamp {
-                  top: vwPc(-500);
+                  // top: vwPc(-500);
+                  top: 0;
+                  transform: translate3d(0, vwPc(-800), 0);
                   left: 0;
+                  z-index: 1;
                 }
                 &.bg {
+                  opacity: 0;
                   @include center();
                 }
                 &.team {
+                  opacity: 0;
+                  transform: translate3d(0, 0, 0);
                   position: relative;
                 }
               }
