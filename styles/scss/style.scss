@@ -488,7 +488,9 @@ body {
       width: vw(127);
       z-index: 12;
       transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      clip-path: url(/img/common/logo.svg);
       .logo {
+        visibility: hidden;
         path {
           fill: $red;
         }
@@ -1874,6 +1876,15 @@ body {
               width: vwPc(1400);
               // width: 100%;
               will-change: transform;
+              img {
+                @include center();
+                height: 100%;
+                width: 100%;
+                clip-path: url(#logo);
+              }
+              svg {
+                // visibility: hidden;
+              }
               path {
                 // fill: $red;
               }

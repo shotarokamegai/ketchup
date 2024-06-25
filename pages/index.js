@@ -9,7 +9,7 @@ import List from '../components/list'
 import WorkTogether from '../components/work-together'
 import Arrow from '../components/svg/arrow'
 import Slogan from '../components/svg/slogan'
-import Logo from '../components/svg/logo'
+import ClipLogo from '../components/svg/clip-logo'
 import axios from "axios"
 import Content from '../components/content'
 import styles from '../styles/Home.module.css'
@@ -304,7 +304,8 @@ function Home(props) {
                   {/* <h1 id="top-logo" className="logo fade" data-start="0" data-end="10%" ref={logoRef}> */}
                   <h1 id="top-logo" className="logo absolute">
                     <div className="parallax" data-start="0" data-end="10%" ref={logoRef} data-amount=".15">
-                      <Logo color="bg-red fill" />
+                      <ClipLogo color="bg-red fill" />
+                      <img src="/img/common/sample.png" alt="" />
                     </div>
                   </h1>
                   <div className="mix-text red vertical absolute scroll-trigger parallax" data-start="0%" data-end="25%" data-amount=".1" data-target="works">
