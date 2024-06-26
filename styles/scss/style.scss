@@ -17,6 +17,10 @@
 //   cursor: url('/img/common/ketchup_pointer.png'), auto;
 // }
 
+.parallax {
+  will-change: transform;
+}
+
 .privacy-screen {
   position: fixed;
   top: 0;
