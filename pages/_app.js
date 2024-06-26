@@ -32,7 +32,11 @@ function MyApp({ Component, pageProps }) {
       requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    if (window.innerWidth < 750) {
+
+    } else {
+      requestAnimationFrame(raf)
+    }
   }
 
   useEffect(() => {

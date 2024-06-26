@@ -20,28 +20,6 @@ import { motion, useScroll, useSpring } from "framer-motion";
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-// function returnClassName (i) {
-//   let className = '';
-//   switch(i) {
-//       case 0:
-//           className = 'box1'
-//           break
-//       case 1:
-//           className = 'box2'
-//           break
-//       case 2:
-//           className = 'box3'
-//           break
-//       case 3:
-//           className = 'box4'
-//           break
-//       default:
-//           className = ''
-//           break
-//   }
-//   return className;
-// }
-
 function Home(props) {
   gsap.registerPlugin(ScrollTrigger)
   const { scrollYProgress } = useScroll();
