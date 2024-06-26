@@ -39,8 +39,8 @@ const routes = [
   { path: '/about', name: 'About', Element: '' },
   { path: '/contact', name: 'Contact', Element: '' },
 ]
-// const ease = [0.37, 0, 0.63, 1];
-const ease = [.69,-0.01,.41,.99];
+const ease = [0.37, 0, 0.63, 1];
+// const ease = [.69,-0.01,.41,.99];
   const waveAnimation = {
     key: "wave",
     initial: {

@@ -17,7 +17,6 @@ const routes = [
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const myRef = useRef(null);
-  let curX = 0, curY = 0, x = 0, y = 0;
   // const pathname = router.asPath;
 
   const initLenis = () => {
@@ -51,7 +50,7 @@ function MyApp({ Component, pageProps }) {
       var ball = document.querySelector("#cursor");
       var pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
       var mouse = { x: pos.x, y: pos.y };
-      var speed = 0.2;
+      var speed = 0.5;
           
       var fpms = 60 / 1000;
           
@@ -62,6 +61,10 @@ function MyApp({ Component, pageProps }) {
         mouse.x = e.x;
         mouse.y = e.y;  
       });
+
+      window.onresize = () => {
+        ScrollTrigger.refresh();
+      }
       
       gsap.ticker.add((time, deltaTime) => {
         

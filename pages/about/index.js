@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Head from 'next/head'
 import Script from 'next/script'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { gsap } from "gsap";
 import styles from '../../styles/Home.module.css'
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -12,23 +13,17 @@ export default function About() {
   const { scrollYProgress } = useScroll();
   const setAnimation = () => {
     gsap.to('#lamp', {
-        // scale: () => `1.5`,
-        y: () => `-34.7222222222vw`,
-        // alpha: () => `0`,
-        // ease: "power1.out",
+        y: () => window.innerWidth * -.297222,
         scrollTrigger: {
           trigger: '.container',
           start: `0`, 
-          end: `10%`,
+          end: `20%`,
           scrub: .5,
           invalidateOnRefresh: true
         }
       });
     gsap.to('#bg', {
-        // scale: () => `1.5`,
-        // y: () => `-34.7222222222vw`,
         alpha: () => `1`,
-        // ease: "power1.out",
         scrollTrigger: {
           trigger: '.container',
           start: `5%`, 
@@ -37,24 +32,28 @@ export default function About() {
           invalidateOnRefresh: true
         }
       });
-    gsap.to('#team', {
-        // scale: () => `1.5`,
-        y: () => `0`,
+    gsap.to('#light', {
         alpha: () => `1`,
-        // ease: "power1.out",
         scrollTrigger: {
           trigger: '.container',
           start: `25%`, 
+          end: `30%`,
+          scrub: .5,
+          invalidateOnRefresh: true
+        }
+      });
+    gsap.to('#team', {
+        y: () => `0`,
+        alpha: () => `1`,
+        scrollTrigger: {
+          trigger: '.container',
+          start: `30%`, 
           end: `35%`,
           scrub: .5,
           invalidateOnRefresh: true
         }
       });
     gsap.to('#container', {
-        // scale: () => `1.5`,
-        // y: () => `-34.7222222222vw`,
-        // alpha: () => `0`,
-        // ease: "power1.out",
         scrollTrigger: {
           trigger: '.container',
           start: `0`, 
@@ -72,6 +71,10 @@ export default function About() {
     });
     useEffect(() => {
         setAnimation()
+        window.onresize = () => {
+            ScrollTrigger.refresh(true)
+            setAnimation()
+          }
         console.log('about loaded')
     }, [])
   return (
@@ -115,6 +118,7 @@ export default function About() {
                         </div>
                         <div className="lamp" id="lamp">
     					   	<img width="" height="" src="/img/common/lamp.png" alt="" />
+    					   	<img id="light" width="" height="" src="/img/common/light.png" alt="" />
                         </div>
                         <div className="team" id="team">
     					   	<img width="" height="" src="/img/common/team.png" alt="" />
