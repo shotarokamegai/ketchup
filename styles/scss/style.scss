@@ -632,7 +632,7 @@ body {
         left: 0;
         height: calc(var(--vh, 1vh) * 100);
         width: 100%;
-        transform: translate3d(0, 70vh, 0);
+        transform: translate3d(0, 90vh, 0);
         will-change: transform;
         transition: transform 2s $easeInOutExpo;
         z-index: -1;

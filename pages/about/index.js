@@ -80,6 +80,7 @@ export default function About() {
     });
     useEffect(() => {
         setAnimation()
+        ScrollTrigger.refresh(true)
         window.onresize = () => {
             ScrollTrigger.refresh(true)
             setAnimation()
