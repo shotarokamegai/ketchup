@@ -1206,6 +1206,8 @@ body {
             transform: translate3d(0, -105%, 0);
           }
           .img img {
+            opacity: 1;
+            filter: blur(rem(0));
             transform: scale(1);
           }
         }
@@ -1221,6 +1223,7 @@ body {
           transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;
           will-change: transform;
           z-index: 1;
+          display: none;
         }
         .img {
           position: relative;
@@ -1229,10 +1232,11 @@ body {
             width: 100%;
           }
           img {
-            transform: scale(1.1);
-            height: 100%;
-            will-change: transform;
-            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+            opacity: 0;
+            transform: scale(1.05);
+            filter: blur(rem(10));
+            transition: opacity 1s $slide, transform 1s $slide, filter 1s $slide ;
+            will-change: transform, opacity, filter;
           }
           img[data-load="done"] {
             opacity: 1;
@@ -1375,6 +1379,7 @@ body {
   transform: translate3d(-50%, -50%, 0) scale(0);
   width: vwPc(400);
   z-index: 12;
+  pointer-events: none;
 }
   .privacy-screen {
     svg {
@@ -2203,10 +2208,12 @@ body {
           transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;
         &.active {
           opacity: 1;
-          .cover {
-            transform: translate3d(0, -105%, 0);
-          }
+          // .cover {
+          //   transform: translate3d(0, -105%, 0);
+          // }
           .img img {
+            opacity: 1;
+            filter: blur(rem(0));
             transform: scale(1);
           }
         }
@@ -2222,6 +2229,7 @@ body {
           transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) 1s;
           will-change: transform;
           z-index: 1;
+          display: none;
         }
         .img {
           position: relative;
@@ -2230,10 +2238,11 @@ body {
             width: 100%;
           }
           img {
-            transform: scale(1.1);
-            height: 100%;
-            will-change: transform;
-            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+            opacity: 0;
+            transform: scale(1.05);
+            filter: blur(rem(10));
+            transition: opacity 1s $slide, transform 1s $slide, filter 1s $slide ;
+            will-change: transform, opacity, filter;
           }
           img[data-load="done"] {
             opacity: 1;
