@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from 'next/image'
 import Link from 'next/link'
 import Logo from './svg/logo'
 import Ketchup from './svg/ketchup'
+import Instagram from './svg/instagram'
 
 export default function Header(props) {
   const router = useRouter();
@@ -47,6 +47,7 @@ export default function Header(props) {
           </Link>
         </h1>
         <nav>
+          <div className="nav-cover"></div>
           <ul className="flex flex-end">
             {props.routes.map(route => (
               <li key={route.path} className={`menu-link futura`} data-pathname={route.path}>
@@ -63,15 +64,27 @@ export default function Header(props) {
                 </Link>
               </li>
             ))}
+            <div className='text-center sp'>
+              <Link href='https://www.instagram.com' scroll={false} rel="noopener noreferrer" target="_blank">
+                  <a className='mix-text white'>
+                      <div className="mix-text__inner">
+                          <span className='roc-grotesk-wide'>INSTA</span>
+                          <span className='borax italic no-m'>Gram</span>
+                          <span className='icon instagram'>
+                              <Instagram color="bg-white stroke" />
+                          </span>
+                          <span className='mix-text-line bg-white'></span>
+                      </div>
+                  </a>
+              </Link>
+            </div>
           </ul>
-          <div className="ketchup-back">
-          </div>
         </nav>
         <div className="sp">
           <div className="menu-trigger" onClick={handleClick}>
             <div className="text-wrapper">
-              <p className="roc-grotesk-wide white">Menu</p>
-              <p className="borax white">Close</p>
+              <p className="roc-grotesk-wide white" dangerouslySetInnerHTML={{__html: splitText('Menu', '')}}></p>
+              <p className="borax white" dangerouslySetInnerHTML={{__html: splitText('Close', '')}}></p>
             </div>
             <span className="ketchup">
     					<img width="" height="" src="/img/common/tomato.png" alt="" />

@@ -27,7 +27,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 100%;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100%;
   z-index: 11;
   will-change: transform;
@@ -339,6 +339,20 @@ body {
   html {
     overscroll-behavior: none;
   }
+  .dark-mode {
+    #header .menu-trigger .text-wrapper p {
+      color: $white;
+    }
+    #header nav ul li .ketchup svg * {
+      fill: $white;
+    }
+    #header nav ul li {
+      border-color: $white;
+    }
+    #header nav ul li .text-wrap {
+      color: $white;
+    }
+  }
 #cursor {
   display: none;
 }
@@ -497,15 +511,52 @@ body {
     width: 100%;
     z-index: 10;
     &.show {
+      h1 {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        path {
+          fill: $white;
+        }
+      }
       nav {
         opacity: 1;
         visibility: visible;
+        transition: opacity 0s, visibility 0s;
+        ul {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+          transition: opacity .5s $slide .5s, transform .5s $slide .5s;
+        }
+        .nav-cover {
+          transform: translate3d(0, -70vh, 0);
+        }
+      }
+      .menu-trigger {
+        .text-wrapper {
+          p {
+            &:nth-child(1) {
+                transform: translate3d(0, -101%, 0);
+            }
+            &:nth-child(2) {
+              span {
+                transform: translate3d(0, 0%, 0);
+                @for $i from 1 through 10 {
+                  &:nth-child(#{$i}) {
+                    transition: transform .5s
+                          $easeInOutBack
+                          #{$i *
+                          0.1}s;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
     &.hide {
       h1 {
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transform: translate3d(0, vwPc(-10), 0);
+        transform: translate3d(0, vw(-10), 0);
       }
     }
     .inner {
@@ -522,10 +573,12 @@ body {
       transform: translate3d(0, 0, 0);
       transition: transform .5s $ziwaziwa, clip-path .5s $slide;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 1;
       // transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      .logo {
+      svg {
         path {
-          // fill: $red;
+          will-change: fill;
+          transition: fill .5s $ziwaziwa;
         }
       }
     }
@@ -542,6 +595,7 @@ body {
         p {
           &.roc-grotesk-wide {
             @include fontvw(10);
+            transition: transform 0.5s $zoom;
           }
           &.borax {
             @include fontvw(12);
@@ -550,7 +604,14 @@ body {
             position: absolute;
             top: 0;
             left: 0;
-            transform: translate3d(0, 100%, 0);
+            width: 100%;
+            span {
+              position: relative;
+              display: inline-block;
+              transform: translate3d(0, 101%, 0);
+                  transition: transform .5s
+                        $easeInOutBack;
+            }
           }
         }
       }
@@ -562,12 +623,41 @@ body {
       left: 0;
       height: calc(var(--vh, 1vh) * 100);
       width: 100%;
-      background-color: $red;
       opacity: 0;
       visibility: hidden;
+      transition: opacity 0s 1s, visibility 0s 1s;
+      .nav-cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: calc(var(--vh, 1vh) * 100);
+        width: 100%;
+        transform: translate3d(0, 70vh, 0);
+        will-change: transform;
+        transition: transform 2s $easeInOutExpo;
+        z-index: -1;
+        &::before {
+          position: absolute;
+          bottom: -80vh;
+          left: 50%;
+          content: '';
+          display: block;
+          height: 250vw;
+          width: 250vw;
+          transform: translate3d(-50%, 0, 0);
+          border-radius: 40%;
+          background-color: $red;
+          animation: loadAnim 3s linear infinite;
+        }
+      }
       ul {
+        position: relative;
+        opacity: 0;
+        transform: translate3d(0, vw(10),0);
         margin: 0 auto;
         width: vw(350);
+        will-change: opacity, transform;
+        transition: opacity .5s $slide, transform .5s $slide;
         li {
           position: relative;
           height: vw(87);
@@ -663,6 +753,9 @@ body {
             }
           }
         }
+      }
+      .text-center {
+        margin-top: vw(64);
       }
     }
   }
