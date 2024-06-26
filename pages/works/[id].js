@@ -197,7 +197,6 @@ export default function Work(props) {
                   }
                 </div>
               </div>
-              <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
               {typeof props.post['acf']['video'] !== '' &&
                 <div className="gallery video">
                   <div className="img addactive">
@@ -205,6 +204,7 @@ export default function Work(props) {
                   </div>
                 </div>
               }
+              <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
               </div>
               <Link href="/#works">
                 <div className={`btn btn-full`}>

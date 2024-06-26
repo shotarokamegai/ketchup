@@ -339,6 +339,9 @@ body {
   html {
     overscroll-behavior: none;
   }
+  .container {
+    overflow: hidden;
+  }
   .dark-mode {
     #header .menu-trigger .text-wrapper p {
       color: $white;
@@ -1369,6 +1372,7 @@ body {
           left: 50%;
           transform: translate3d(-50%, 0, 0);
           width: 100vw;
+          margin-bottom: vw(10);
         }
         .img {
           position: relative;
@@ -1390,7 +1394,7 @@ body {
         }
       }
       .btn-full {
-        margin-top: 2.803738317757009%;
+        margin-top: vw(64);
       }
     }
     &#contact {
@@ -2370,9 +2374,10 @@ body {
         }
         &.video {
           position: relative;
-          left: 50%;
-          transform: translate3d(-50%, 0, 0);
-          width: 100vw;
+          // left: 50%;
+          // transform: translate3d(-50%, 0, 0);
+          // width: 100vw;
+          margin: 0 auto vwPc(10);
         }
         .img {
           position: relative;
@@ -2394,7 +2399,7 @@ body {
         }
       }
       .btn-full {
-        margin-top: 2.803738317757009%;
+        margin-top: vwPc(64);
       }
     }
     &#contact {
