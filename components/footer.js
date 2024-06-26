@@ -47,10 +47,7 @@ export default function Footer() {
         Dynacity Himonya #416, <br/>
         5-15-6 Himonya Meguro, Tokyo
         </p>
-        <p className='copy roc-grotesk medium red'>
-        © 2024 Ketchup Inc. All rights reserved.
-        </p>
-        <div id="switcher" className='flex'>
+        <div id="switcher" className='flex flex-sp'>
           <div className='switcher light bg-white' onClick={changeMode}>
             <Ketchup color="bg-red fill" />
           </div>
@@ -58,6 +55,9 @@ export default function Footer() {
             <Ketchup color="bg-white fill" />
           </div>
         </div>
+        <p className='copy roc-grotesk medium red'>
+        © 2024 Ketchup Inc. All rights reserved.
+        </p>
       </div>
     </footer>
   )

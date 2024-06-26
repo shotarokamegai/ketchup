@@ -11,9 +11,18 @@ import WorkTogether from '../../components/work-together'
 
 export default function About() {
   const { scrollYProgress } = useScroll();
+  const returnY = () => {
+    let y;
+    if (window.innerWidth < 750) {
+        y = window.innerWidth * -.7;
+    } else {
+        y = window.innerWidth * -.297222;
+    }
+    return y
+  }
   const setAnimation = () => {
     gsap.to('#lamp', {
-        y: () => window.innerWidth * -.297222,
+        y: () => returnY(),
         scrollTrigger: {
           trigger: '.container',
           start: `0`, 

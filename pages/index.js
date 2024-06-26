@@ -9,6 +9,7 @@ import List from '../components/list'
 import WorkTogether from '../components/work-together'
 import Arrow from '../components/svg/arrow'
 import Slogan from '../components/svg/slogan'
+import SloganSp from '../components/svg/slogan_sp'
 import ClipLogo from '../components/svg/clip-logo'
 import Logo from '../components/svg/logo'
 import axios from "axios"
@@ -134,114 +135,7 @@ function Home(props) {
         }
       });
     }
-    // ScrollTrigger.create({
-    //   pin: true, //トリガー要素を固定する
-    //   trigger: ".container",
-    //   startTrigger: ".slogan",
-    //   start: "top top",
-    //   endTrigger: ".slogan",
-    //   end:`top top-=${window.innerHeight}`,
-    //  // サイドメニューの高さ125px+start位置の50px=1７５px
-    //   markers: true,
-    // });
-    // gsap.to('.slogan', {
-    //   y: () => `${window.innerWidth*.486111111111}`,
-    //   // ease: "power1.out",
-    //   scrollTrigger: {
-    //     pin: true,
-    //     markers: true,
-    //     trigger: '.container',
-    //     start: `top top`, 
-    //     end: `top top+=${window.innerHeight}`,
-    //     scrub: .5,
-    //     invalidateOnRefresh: true
-    //   }
-    // });
-    // ScrollTrigger.create({
-    //     trigger: ".container",
-    //     start: "0",
-    //     end: `${window.innerHeight}`,
-    //     scrub: .5,
-    //     invalidateOnRefresh: true,
-    //     // markers: true
-    // });
   }
-  // const setAnimation = () => {
-  //   let animation1 = gsap.timeline();
-  //   let slogan1 = gsap.timeline();
-  //   let slogan2 = gsap.timeline();
-  //   let slogan3 = gsap.timeline();
-  //   let slogan4 = gsap.timeline();
-  //   let sloganScrub = .5;
-  //   let opacity = .5;
-  //   let y = -100;
-
-  //   if (window.innerWidth < 750) {
-  //     opacity = opacity*.5
-  //     y = y*.5
-  //   }
-
-  //   ScrollTrigger.create({
-  //       animation: animation1,
-  //       trigger: ".container",
-  //       start: "0",
-  //       end: "8%",
-  //       scrub: .5,
-  //       invalidateOnRefresh: true,
-  //       // markers: true
-  //   });
-  //   ScrollTrigger.create({
-  //       animation: slogan1,
-  //       trigger: ".container",
-  //       start: "0",
-  //       end: "5%",
-  //       scrub: sloganScrub,
-  //       invalidateOnRefresh: true,
-  //       // markers: true
-  //   });
-  //   ScrollTrigger.create({
-  //       animation: slogan2,
-  //       trigger: ".container",
-  //       start: "1%",
-  //       end: "6%",
-  //       scrub: sloganScrub - .1,
-  //       invalidateOnRefresh: true,
-  //       // markers: true
-  //   });
-  //   ScrollTrigger.create({
-  //       animation: slogan3,
-  //       trigger: ".container",
-  //       start: "2%",
-  //       end: "7%",
-  //       scrub: sloganScrub - .2,
-  //       invalidateOnRefresh: true,
-  //       // markers: true
-  //   });
-  //   ScrollTrigger.create({
-  //       animation: slogan4,
-  //       trigger: ".container",
-  //       start: "3%",
-  //       end: "8%",
-  //       scrub: sloganScrub - .3,
-  //       invalidateOnRefresh: true,
-  //       // markers: true
-  //   });
-  //   animation1.to("#top-logo", {
-  //     y: y,opacity: opacity
-  //   },0)
-  //   slogan1.to(".slogan1", {
-  //     y: y,opacity: opacity
-  //   },0)
-  //   slogan2.to(".slogan2", {
-  //     y: y,opacity: opacity
-  //   },0)
-  //   slogan3.to(".slogan3", {
-  //     y: y,opacity: opacity
-  //   },0)
-  //   slogan4.to(".slogan4", {
-  //     y: y,opacity: opacity
-  //   },0)
-  // }
   let i = 0
 
   console.log('here')
@@ -314,21 +208,26 @@ function Home(props) {
                     <div className="mix-text__inner">
                       <span className="roc-grotesk-wide">SCROLL</span>
                       <span className="borax italic">Down</span>
-                      <span className="triangle flex">
+                      <span className="triangle flex flex-sp">
                         <span></span>
                         <span></span>
                         <span></span>
                       </span>
                     </div>
                   </div>
-                  <h2 className="slogan borax red">
-                    <Slogan color="bg-red fill" />
-                  {/* Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing. */}
-                  </h2>
                   <div className="est absolute red flex flex-end parallax" data-start="0%" data-end="15%" data-amount=".11">
                     <span className="roc-grotesk">EST.</span>
                     <span className="borax italic">2022</span>
                   </div>
+                  <h2 className="slogan borax red">
+                    <span className="pc">
+                      <Slogan color="bg-red fill" />
+                    </span>
+                    <span className="sp">
+                      <SloganSp color="bg-red fill" />
+                    </span>
+                  {/* Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing. */}
+                  </h2>
                 </div>
               </div>
           </section>

@@ -237,7 +237,6 @@ function Works(props) {
                 <h2 className="section-title red fixed">
                   <span className="borax italic">Works</span>
                 </h2>
-                <div className="section-line bg-red"></div>
                 <div className="works-wrapper">
                   <ul className="flex">
                     { posts && setList() }

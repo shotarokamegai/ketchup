@@ -47,11 +47,11 @@ export default function Header(props) {
           </Link>
         </h1>
         <nav>
-          <ul className="flex flex-sp flex-end">
+          <ul className="flex flex-end">
             {props.routes.map(route => (
               <li key={route.path} className={`menu-link futura`} data-pathname={route.path}>
                 <Link href={route.path} scroll={false}>
-                <span className="flex align-center">
+                <span className="flex flex-sp align-center">
                   <span className="ketchup">
                     <Ketchup color="bg-red fill" />
                   </span>
@@ -67,14 +67,16 @@ export default function Header(props) {
           <div className="ketchup-back">
           </div>
         </nav>
-        <div className="menu-trigger futura">
-          <div className="text-wrapper sp">
-            <p>Menu</p>
-            <p>Close</p>
+        <div className="sp">
+          <div className="menu-trigger" onClick={handleClick}>
+            <div className="text-wrapper">
+              <p className="roc-grotesk-wide white">Menu</p>
+              <p className="borax white">Close</p>
+            </div>
+            <span className="ketchup">
+    					<img width="" height="" src="/img/common/tomato.png" alt="" />
+            </span>
           </div>
-          <span className="ketchup sp" onClick={handleClick}>
-            <Image layout="fill" src="/img/common/ketchup.png" alt="" />
-          </span>
         </div>
       </div>
     </header>

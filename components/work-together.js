@@ -7,7 +7,8 @@ export default function WorkTogether(props) {
   return (
     <section id="work-together" className="section">
         <div className="ruler">
-            <h2 className="section-title borax red">LET’S WORK TOGETHER</h2>
+            <h2 className="section-title borax red pc">LET’S WORK TOGETHER</h2>
+            <h2 className="section-title borax red sp">LET’S<br className="sp" />WORK<br className="sp" />TOGETHER</h2>
             <div className='text-center'>
             <Link href='/contact' scroll={false}>
                 <a className='mix-text red'>

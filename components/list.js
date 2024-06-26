@@ -129,7 +129,7 @@ export default function List(props) {
     <li className={`${props.className} box${props.item.id}`} id={`box${props.item.id}`}>
       <div className="box-inner">
         <Link href={props.item ? `/works/${props.item.id}` : ''} scroll={false}>
-          <a>
+        <>
             <div className="img-wrap">
             <div className={`img img${props.item.id}`}>
               <div className={`cover cover${props.item.id}`}></div>
@@ -165,7 +165,7 @@ export default function List(props) {
                   </div>
                 </div>
             </div>
-          </a>
+        </>
         </Link>
       </div>
     </li>
