@@ -21,41 +21,6 @@
   will-change: transform;
 }
 
-.privacy-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: calc(var(--vh, 1vh) * 100);
-  width: 100%;
-  z-index: 11;
-  will-change: transform;
-  background-color: $red;
-  pointer-events: none;
-  &.start {
-    &::before {
-      top: -30vh;
-    }
-  }
-  &.end {
-    &::before {
-      bottom: -30vh;
-    }
-  }
-  &::before {
-    position: absolute;
-    left: 50%;
-    content: '';
-    display: block;
-    height: 150vw;
-    width: 150vw;
-    transform: translate3d(-50%, 0, 0);
-    border-radius: 40%;
-    background-color: $red;
-    animation: loadAnim 3s linear infinite;
-  }
-}
 
 html.wf-active {
   body {
@@ -336,6 +301,41 @@ body {
 }
 
 @media screen and (max-width: 749px) {
+.privacy-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  z-index: 11;
+  will-change: transform;
+  background-color: $white;
+  pointer-events: none;
+  &.start {
+    &::before {
+      top: -30vh;
+    }
+  }
+  &.end {
+    &::before {
+      bottom: -30vh;
+    }
+  }
+  &::before {
+    position: absolute;
+    left: 50%;
+    content: '';
+    display: block;
+    height: 150vw;
+    width: 150vw;
+    transform: translate3d(-50%, 0, 0);
+    border-radius: 40%;
+    background-color: $white;
+    animation: loadAnim 3s linear infinite;
+  }
+}
   html {
     overscroll-behavior: none;
   }
@@ -343,6 +343,11 @@ body {
     overflow: hidden;
   }
   .dark-mode {
+    .privacy-screen {
+      &::before {
+        background-color: $red;
+      }
+    }
     #header .menu-trigger .text-wrapper p {
       color: $white;
     }
@@ -354,6 +359,12 @@ body {
     }
     #header nav ul li .text-wrap {
       color: $white;
+    }
+    #header nav .nav-cover {
+      // background-color: $white;
+      &::before {
+        background-color: $white;
+      }
     }
   }
 #cursor {
@@ -1462,6 +1473,41 @@ body {
 }
 
 @media screen and (min-width: 750px) {
+.privacy-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  z-index: 11;
+  will-change: transform;
+  background-color: $red;
+  pointer-events: none;
+  &.start {
+    &::before {
+      top: -30vh;
+    }
+  }
+  &.end {
+    &::before {
+      bottom: -30vh;
+    }
+  }
+  &::before {
+    position: absolute;
+    left: 50%;
+    content: '';
+    display: block;
+    height: 150vw;
+    width: 150vw;
+    transform: translate3d(-50%, 0, 0);
+    border-radius: 40%;
+    background-color: $red;
+    animation: loadAnim 3s linear infinite;
+  }
+}
 #cursor {
   position: fixed;
   top: 0;
