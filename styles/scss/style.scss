@@ -340,7 +340,11 @@ body {
     overscroll-behavior: none;
   }
   .container {
-    overflow: hidden;
+    main {
+      &#work section {
+        overflow: hidden;
+      }
+    }
   }
   .dark-mode {
     .privacy-screen {
@@ -361,7 +365,6 @@ body {
       color: $white;
     }
     #header nav .nav-cover {
-      background-color: $white;
       &::before {
         background-color: $white;
       }
@@ -646,7 +649,7 @@ body {
         left: 0;
         height: calc(var(--vh, 1vh) * 100);
         width: 100%;
-        transform: translate3d(0, 90vh, 0);
+        transform: translate3d(0, 120vh, 0);
         will-change: transform;
         transition: transform 2s $easeInOutExpo;
         z-index: -1;
@@ -1047,12 +1050,16 @@ body {
             max-width: initial;
             .vh {
               position: relative;
-              padding-top: vw(120);
-              height: vw(682);
-              box-sizing: border-box;
+              // @include fitcenter();
+              // padding-top: vw(120);
+              // margin-bottom: vw(295);
+              // height: calc(var(--vh, 1vh) * 50);
+              height: calc( vw(387) + vw(250));
+              box-sizing: content-box;
             }
             .logo {
-              // @include center();
+              @include center();
+              top: calc( 50% - vw(100));
               // margin: 0 auto;
               width: vw(350);
               // width: 100%;
@@ -1071,7 +1078,8 @@ body {
               }
             }
             .mix-text.vertical {
-              bottom: vw(150);
+              // top: vw(387);
+              top: calc( vw(387) + vw(50) );
               right: 0; 
               writing-mode: vertical-rl;
               .roc-grotesk-wide {
@@ -1113,7 +1121,8 @@ body {
               }
             }
             .est {
-              top: vw(387);
+              // top: vw(387);
+              top: calc( vw(387) + vw(50) );
               left: 0;
               .roc-grotesk {
                 margin-right: vw(8);
@@ -1129,7 +1138,7 @@ body {
               // transform: translate3d(0, vwPc(-650), 0);
               width: vw(240);
               // width: vwPc(780);
-              padding-top: vw(60);
+              padding-top: vw(210);
               // @include fontvwPc(52);
               // line-height: (62.4 / 52);
               // mix-blend-mode: difference;

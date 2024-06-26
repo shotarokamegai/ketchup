@@ -175,13 +175,15 @@ function Home(props) {
               <div className="ruler">
                 <div className="vh">
                   {/* <h1 id="top-logo" className="logo fade" data-start="0" data-end="10%" ref={logoRef}> */}
-                  <h1 id="top-logo" className="logo absolute">
+                  <div className="logo absolute">
+                  <h1 id="top-logo">
                     <div className="parallax" data-start="0" data-end="10%" ref={logoRef} data-amount=".15">
                       <Logo color="bg-red fill" />
                       {/* <ClipLogo color="bg-red fill" /> */}
                       {/* <img src="/img/common/sample.png" alt="" /> */}
                     </div>
                   </h1>
+                  </div>
                   <div className="mix-text red vertical absolute scroll-trigger parallax" data-start="0%" data-end="25%" data-amount=".1" data-target="works">
                     <div className="mix-text__inner">
                       <span className="roc-grotesk-wide">SCROLL</span>
