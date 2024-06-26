@@ -66,9 +66,9 @@ function MyApp({ Component, pageProps }) {
         mouse.y = e.y;  
       });
 
-      window.onresize = () => {
-        ScrollTrigger.refresh();
-      }
+      // window.onresize = () => {
+      //   ScrollTrigger.refresh();
+      // }
       
       gsap.ticker.add((time, deltaTime) => {
         

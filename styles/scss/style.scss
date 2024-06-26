@@ -336,6 +336,9 @@ body {
 }
 
 @media screen and (max-width: 749px) {
+  html {
+    overscroll-behavior: none;
+  }
 #cursor {
   display: none;
 }
