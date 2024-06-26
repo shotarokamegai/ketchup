@@ -361,7 +361,7 @@ body {
       color: $white;
     }
     #header nav .nav-cover {
-      // background-color: $white;
+      background-color: $white;
       &::before {
         background-color: $white;
       }
@@ -541,7 +541,7 @@ body {
           transition: opacity .5s $slide .5s, transform .5s $slide .5s;
         }
         .nav-cover {
-          transform: translate3d(0, -70vh, 0);
+          transform: translate3d(0, -50vh, 0);
         }
       }
       .menu-trigger {
@@ -656,8 +656,8 @@ body {
           left: 50%;
           content: '';
           display: block;
-          height: 250vw;
-          width: 250vw;
+          height: 180vh;
+          width: 180vh;
           transform: translate3d(-50%, 0, 0);
           border-radius: 40%;
           background-color: $red;

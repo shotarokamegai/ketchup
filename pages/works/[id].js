@@ -197,7 +197,7 @@ export default function Work(props) {
                   }
                 </div>
               </div>
-              {typeof props.post['acf']['video'] !== '' &&
+              {props.post['acf']['video'] &&
                 <div className="gallery video">
                   <div className="img addactive">
                     <video src={props.post['acf']['video']} playsInline autoPlay muted loop />
