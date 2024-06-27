@@ -317,20 +317,14 @@ body {
   will-change: transform;
   background-color: $red;
   pointer-events: none;
-  // &.red {
-  //   background-color: $red;
-  //   &::before {
-  //     background-color: $red;
-  //   }
-  // }
   &.start {
     &::before {
-      top: -30vh;
+      top: -15vh;
     }
   }
   &.end {
     &::before {
-      bottom: -30vh;
+      bottom: -15vh;
     }
   }
   &::before {
@@ -343,6 +337,7 @@ body {
     transform: translate3d(-50%, 0, 0);
     border-radius: 40%;
     background-color: $red;
+    will-change: transform;
     animation: loadAnim 3s linear infinite;
   }
 }
@@ -387,9 +382,11 @@ body {
 #gif {
   @include center();
   position: fixed;
+  will-change: transform;
   transform: translate3d(-50%, -50%, 0) scale(0);
   width: vw(200);
   z-index: 12;
+  // display: none;
 }
   .privacy-screen {
     svg {

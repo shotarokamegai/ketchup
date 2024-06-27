@@ -39,8 +39,9 @@ const routes = [
   { path: '/about', name: 'About', Element: '' },
   { path: '/contact', name: 'Contact', Element: '' },
 ]
-const ease = [0.37, 0, 0.63, 1];
-// const ease = [.69,-0.01,.41,.99];
+// const ease = [0.37, 0, 0.63, 1];
+const waveEase = [0, 0, 0, 0];
+const gifEase = [.25,.1,.25,1];
   const waveAnimation = {
     key: "wave",
     initial: {
@@ -59,9 +60,9 @@ const ease = [0.37, 0, 0.63, 1];
       // y: ['100vh', '0vh', '0vh'],
     },
     transition: {
-      duration: 2,
-      // delay: 1,
-      ease: ease
+      duration: 1.5,
+      // delay: -.5,
+      ease: waveEase
     },
   }
   const gifAnimation = {
@@ -85,9 +86,9 @@ const ease = [0.37, 0, 0.63, 1];
       // y: ['100vh', '0vh', '0vh'],
     },
     transition: {
-      duration: 2,
+      duration: 1.5,
       // delay: 1.5,
-      ease: ease
+      ease: gifEase
       // ease: "easeOut"
     },
   }
@@ -109,7 +110,7 @@ const ease = [0.37, 0, 0.63, 1];
     },
     transition: {
         delay: .5,
-        duration: 0.2,
+        // duration: 0.2,
         ease: "easeOut"
     },
 }
@@ -126,10 +127,6 @@ const onStart = (e) => {
   console.log("Animation started")
 }
 const onComplete = (e) => {
-  console.log(e.y)
-  // const privacyScreen = document.getElementsByClassName('privacy-screen')[0];
-  // privacyScreen.classList.remove('start');
-  // privacyScreen.classList.add('end');
   console.log("Animation completed")
 }
   useEffect(() => {
@@ -167,13 +164,8 @@ const onComplete = (e) => {
     </motion.div>
     <Header routes={routes} />
     <div className="container">
-      <motion.div
-        key={router.asPath}
-       {...boxAnimation}
-      >
         { children }
         <Footer />
-      </motion.div>
     </div>
   </>
   )
