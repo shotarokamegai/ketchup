@@ -5,8 +5,6 @@ import Head from 'next/head'
 import Script from 'next/script'
 import axios from "axios"
 import Link from 'next/link'
-import Image from 'next/image'
-import List from '../../components/list'
 import { useRouter } from "next/router";
 import Arrow from '../../components/svg/arrow';
 import WorkTogether from '../../components/work-together';

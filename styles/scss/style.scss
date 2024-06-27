@@ -1560,6 +1560,11 @@ body {
     animation: loadAnim 3s linear infinite;
   }
 }
+.btn-full {
+  &.none {
+    display: none;
+  }
+}
 #cursor {
   position: fixed;
   top: 0;
@@ -1684,6 +1689,9 @@ body {
           }
         }
       }
+    }
+    &.none {
+      display: none;
     }
     .mix-text {
       will-change: color;

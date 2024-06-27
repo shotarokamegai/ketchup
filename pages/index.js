@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Head from 'next/head'
 import Script from 'next/script'
 import fetch from 'node-fetch'
+import Link from 'next/link'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -10,7 +11,6 @@ import WorkTogether from '../components/work-together'
 import Arrow from '../components/svg/arrow'
 import Slogan from '../components/svg/slogan'
 import SloganSp from '../components/svg/slogan_sp'
-import ClipLogo from '../components/svg/clip-logo'
 import Logo from '../components/svg/logo'
 import axios from "axios"
 import Content from '../components/content'
@@ -222,7 +222,9 @@ function Home(props) {
                   <ul className="flex">
                     { posts && setList() }
                   </ul>
-                  <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
+                  <Link href="/works/">
+                  <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`}>
+                  {/* <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more"> */}
                     <div className="section-line top absolute bg-red"></div>
                     <div className="section-line bottom absolute bg-red"></div>
                     <div className="cover left">
@@ -241,6 +243,7 @@ function Home(props) {
                       </div>
                     </div>
                   </div>
+                  </Link>
                 </div>
               </div>
           </section>
