@@ -124,24 +124,30 @@ export default function List(props) {
     // }
   },[])
   // },[props])
-  console.log(props)
   return(
     <li className={`${props.className} box${props.item.id}`} id={`box${props.item.id}`}>
       <div className="box-inner">
         <Link href={props.item ? `/works/${props.item.id}` : ''} scroll={false}>
           <a>
-            <div className="img-wrap">
+            <div className={`${!props.item['acf']['sp_thumbnail'] ? 'img-wrap only-pc': 'img-wrap'}`}>
             <div className={`img img${props.item.id}`}>
               <div className={`cover cover${props.item.id}`}></div>
-              <picture className={`picture${props.item.id}`}>
-                <source srcSet={props.item['acf']['pc_thumbnail']} media="(min-width: 750px)" />
-                <img layout='fill' src={props.item['acf']['sp_thumbnail']} alt={props.item && props.item.title.rendered} />
-              </picture>
+              {props.item['acf']['sp_thumbnail'] &&
+                <picture className={`picture${props.item.id}`}>
+                  <source srcSet={props.item['acf']['pc_thumbnail']} media="(min-width: 750px)" />
+                  <img layout='fill' src={props.item['acf']['sp_thumbnail']} alt={props.item && props.item.title.rendered} />
+                </picture>
+              }
+              {!props.item['acf']['sp_thumbnail'] &&
+                <>
+                    <img layout='fill' src={props.item['acf']['pc_thumbnail']} alt={props.item && props.item.title.rendered} />
+                </>
+              }
             </div>
             </div>
             <div className="detail slide-text">
                 <div className="flex detail-above">
-                  <p dangerouslySetInnerHTML={{__html: '(01)'}} className="index roc-grotesk light red"></p>
+                  <p dangerouslySetInnerHTML={{__html: `(${props.item.id})`}} className="index roc-grotesk light red"></p>
                   <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title roc-grotesk red"></p>
                   <div className="arrow">
                     <Arrow color="bg-red stroke" />

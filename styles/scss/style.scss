@@ -973,10 +973,15 @@ body {
           .img-wrap {
             position: relative;
             overflow: hidden;
+            &.only-pc {
+              &::before {
+              padding-top: 52.22222222222223%;
+              }
+            }
             &::before {
               content: "";
               display: block;
-              padding-top: 52.22222222222223%;
+              padding-top: 125%;
             }
           }
           .img {

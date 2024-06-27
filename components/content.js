@@ -42,80 +42,53 @@ const routes = [
 // const ease = [0.37, 0, 0.63, 1];
 const waveEase = [0, 0, 0, 0];
 const gifEase = [.25,.1,.25,1];
-  const waveAnimation = {
-    key: "wave",
-    initial: {
-      y: ['150vh', '150vh','150vh', '150vh'],
-      // y: ['0vh', '0vh'],
-    },
-    animate: {
-      // y: ['0vh', '0vh','0vh', '0vh'],
-      y: ['0vh', '0vh','-200vh', '-200vh'],
-      // y: ['-20vw', '-20vw','-180vw', '-180vw'],
-      // y: ['0vh', '0vh', '-100vh']
-    },
-    exit: {
-      y: ['150vh', '150vh','0vh', '0vh'],
-      // y: ['140vw', '140vw','-20vw', '-20vw'],
-      // y: ['100vh', '0vh', '0vh'],
-    },
-    transition: {
-      duration: 1.5,
-      // delay: -.5,
-      ease: waveEase
-    },
-  }
-  const gifAnimation = {
-    key: "gif",
-    initial: {
-      scale: [0, 0],
-      x: ["-50%","-50%","-50%",],
-      y: ["-50%","-50%","-50%",]
-      // y: ['0vh', '0vh'],
-    },
-    animate: {
-      scale: [1, 1, 1, 0, 0, 0, 0],
-      x: ["-50%","-50%","-50%",],
-      y: ["-50%","-50%","-50%",]
-      // y: ['0vh', '0vh', '-100vh'],
-    },
-    exit: {
-      scale: [0, 0, 0, 0, 1, 1, 1],
-      x: ["-50%","-50%","-50%",],
-      y: ["-50%","-50%","-50%",]
-      // y: ['100vh', '0vh', '0vh'],
-    },
-    transition: {
-      duration: 1.5,
-      // delay: 1.5,
-      ease: gifEase
-      // ease: "easeOut"
-    },
-  }
-  const boxAnimation = {
-    key: "box",
-    initial: {
-        y: 0,
-    },
-    animate: {
-        opacity: 1,
-        // transition: {
-        //   delay: 1
-        // },
-    },
-    exit: {
-        opacity: 1,
-        // transition: {
-        // },
-    },
-    transition: {
-        delay: .5,
-        // duration: 0.2,
-        ease: "easeOut"
-    },
+const waveAnimation = {
+  key: "wave",
+  initial: {
+    y: ['150vh', '150vh','150vh', '150vh'],
+    // y: ['0vh', '0vh'],
+  },
+  animate: {
+    // y: ['0vh', '0vh','0vh', '0vh'],
+    y: ['0vh', '0vh','-200vh', '-200vh'],
+    // y: ['-20vw', '-20vw','-180vw', '-180vw'],
+    // y: ['0vh', '0vh', '-100vh']
+  },
+  exit: {
+    y: ['150vh', '150vh','0vh', '0vh'],
+    // y: ['140vw', '140vw','-20vw', '-20vw'],
+    // y: ['100vh', '0vh', '0vh'],
+  },
+  transition: {
+    duration: 1.5,
+    // delay: -.5,
+    ease: waveEase
+  },
+}
+const gifAnimation = {
+  key: "gif",
+  initial: {
+    scale: [1, 1],
+    x: ["-50%","-50%","-50%",],
+    y: ["-50%","-50%","-50%",]
+  },
+  animate: {
+    scale: [1, 1, 1, 0, 0, 0, 0],
+    x: ["-50%","-50%","-50%",],
+    y: ["-50%","-50%","-50%",]
+  },
+  exit: {
+    scale: [0, 0, 0, 0, 1, 1, 1],
+    x: ["-50%","-50%","-50%",],
+    y: ["-50%","-50%","-50%",]
+  },
+  transition: {
+    duration: 1.5,
+    ease: gifEase
+    // ease: "easeOut"
+  },
 }
 const onStart = (e) => {
-  console.log(e.y)
   const privacyScreen = document.getElementsByClassName('privacy-screen')[0];
   if (e.y[0] === '0vh') {
     privacyScreen.classList.remove('start');
