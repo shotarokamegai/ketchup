@@ -7,13 +7,6 @@ import { useRouter } from "next/router";
 import '../styles/scss/style.scss'
 import adobeLoader from "../components/adobeLoader";
 
-const routes = [
-  // { path: '/', name: 'Home', Element: '' },
-  { path: '/works', name: 'Works', Element: '' },
-  { path: '/about', name: 'About', Element: '' },
-  { path: '/contact', name: 'Contact', Element: '' },
-]
-
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const myRef = useRef(null);
@@ -48,6 +41,9 @@ function MyApp({ Component, pageProps }) {
       // カスタム変数--vhの値をドキュメントのルートに設定
       document.body.classList.add('loaded');
       document.documentElement.style.setProperty('--vh', `${vh}px`);
+      // document.addEventListener("mousemove", moveCursor);
+      // document.addEventListener('mousewheel', stickCursor);
+      // gsap.set("#cursor", {xPercent: -50, yPercent: -50});
       var ball = document.querySelector("#cursor");
       var pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
       var mouse = { x: pos.x, y: pos.y };
@@ -62,6 +58,10 @@ function MyApp({ Component, pageProps }) {
         mouse.x = e.x;
         mouse.y = e.y;  
       });
+
+      // window.onresize = () => {
+      //   ScrollTrigger.refresh();
+      // }
       
       gsap.ticker.add((time, deltaTime) => {
         

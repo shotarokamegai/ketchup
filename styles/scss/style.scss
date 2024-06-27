@@ -315,8 +315,14 @@ body {
   width: 100%;
   z-index: 11;
   will-change: transform;
-  background-color: $white;
+  background-color: $red;
   pointer-events: none;
+  // &.red {
+  //   background-color: $red;
+  //   &::before {
+  //     background-color: $red;
+  //   }
+  // }
   &.start {
     &::before {
       top: -30vh;
@@ -336,7 +342,7 @@ body {
     width: 150vw;
     transform: translate3d(-50%, 0, 0);
     border-radius: 40%;
-    background-color: $white;
+    background-color: $red;
     animation: loadAnim 3s linear infinite;
   }
 }
@@ -546,9 +552,46 @@ body {
           opacity: 1;
           transform: translate3d(0, 0, 0);
           transition: opacity .5s $slide .5s, transform .5s $slide .5s;
+          li {
+            .text-wrap {
+              &:nth-child(2) span {
+                transform: translate3d(0, 0%, 0);
+                @for $i from 1 through 10 {
+                  &:nth-child(#{$i}) {
+                    transition: transform .5s
+                          $easeInOutBack
+                          #{$i *
+                          0.1 + .5}s;
+                  }
+                }
+              }
+            }
+            @for $i from 1 through 3 {
+              &:nth-child(#{$i}) {
+                .section-line {
+                  transition: width .5s
+                        $slide
+                        #{$i *
+                        0.1 + .5}s;
+                }
+              }
+            }
+          }
+          .section-line {
+            width: 100% !important;
+            &.bottom {
+            transition: width .5s
+                  $slide .8s;
+            }
+          }
         }
         .nav-cover {
           transform: translate3d(0, -50vh, 0);
+        }
+        .text-center {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+          transition: opacity .5s $slide .8s, transform .5s $slide .8s;
         }
       }
       .menu-trigger {
@@ -667,7 +710,7 @@ body {
           width: 180vh;
           transform: translate3d(-50%, 0, 0);
           border-radius: 40%;
-          background-color: $red;
+          background-color: rgba(200, 15, 46, .8);
           animation: loadAnim 3s linear infinite;
         }
       }
@@ -679,48 +722,25 @@ body {
         width: vw(350);
         will-change: opacity, transform;
         transition: opacity .5s $slide, transform .5s $slide;
+        .section-line {
+          left: 0;
+          transform: translate3d(0, 0, 0);
+          will-change: width;
+          width: 0%;
+          transition: width .5s
+                $slide;
+        }
         li {
           position: relative;
-          height: vw(87);
-          line-height: vw(87);
+          padding: vw(32) 0;
           padding-left: vw(20);
-          width: 100%;
+          box-sizing: border-box;
           display: flex;
           align-items: center;
-          border-bottom: rem(1) solid $white;
-          &:first-child {
-            border-top: rem(1) solid $white;
-          }
           .flex {
             height: 100%;
             width: 100%;
           }
-          // &:active,
-          // &.active {
-          //   .text {
-          //     &-wrap {
-          //       &:nth-child(1) {
-          //         transform: translate3d(0, -100%, 0);
-          //       }
-          //       &:nth-child(2) span {
-          //         transform: translate3d(0, 0%, 0);
-          //         @for $i from 1 through 10 {
-          //           &:nth-child(#{$i}) {
-          //             transition: transform .5s
-          //                   $easeInOutBack
-          //                   #{$i *
-          //                   0.1}s;
-          //           }
-          //         }
-          //       }
-          //     }
-          //   }
-          //   .ketchup {
-          //     svg {
-          //       transform: scale(1);
-          //     }
-          //   }
-          // }
           .text {
             position: relative;
             display: block;
@@ -733,6 +753,9 @@ body {
               // height: rem(12);
               color: $white;
               z-index: 1;
+              span {
+                display: inline-block;
+              }
               &:nth-child(1) {
                 position: absolute;
                 display: flex;
@@ -740,7 +763,7 @@ body {
                 left: 0;
                 height: 100%;
                 width: 100%;
-                @include fontvw(32);
+                @include fontvw(30);
                 transition: transform 0.5s $zoom;
                 span {
                   position: relative;
@@ -751,9 +774,16 @@ body {
               }
               &:nth-child(2) {
                 position: relative;
-                @include fontvw(32);
+                @include fontvw(30);
                 transition: transform 0.5s $easeInOutBack;
                 font-style: italic;
+                span {
+                  position: relative;
+                  transform: translate3d(0, 101%, 0);
+                      transition: transform .5s
+                            $easeInOutBack;
+                }
+                // display: none;
               }
             }
           }
@@ -777,6 +807,10 @@ body {
       }
       .text-center {
         margin-top: vw(64);
+        opacity: 0;
+        transform: translate3d(0, vw(10), 0);
+        will-change: opacity, transform;
+        transition: opacity .5s $slide, transform .5s $slide;
       }
     }
   }

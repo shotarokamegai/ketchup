@@ -48,22 +48,27 @@ export default function Header(props) {
         </h1>
         <nav>
           <div className="nav-cover"></div>
+          <div>
           <ul className="flex flex-end">
             {props.routes.map(route => (
               <li key={route.path} className={`menu-link futura`} data-pathname={route.path}>
                 <Link href={route.path} scroll={false}>
-                <span className="flex flex-sp align-center">
-                  <span className="ketchup">
-                    <Ketchup color="bg-red fill" />
+                  <span className="flex flex-sp align-center">
+                    <span className="ketchup">
+                      <Ketchup color="bg-red fill" />
+                    </span>
+                    <span className="text">
+                      <span className="text-wrap red roc-grotesk-wide" dangerouslySetInnerHTML={{__html: splitText(route.name, '')}}></span>
+                      <span className="text-wrap red borax" dangerouslySetInnerHTML={{__html: splitText(route.name, '')}}></span>
+                    </span>
+                    <span className="section-line top bg-white sp absolute"></span>
                   </span>
-                  <span className="text">
-                    <span className="text-wrap red roc-grotesk-wide" dangerouslySetInnerHTML={{__html: splitText(route.name, '')}}></span>
-                    <span className="text-wrap red borax" dangerouslySetInnerHTML={{__html: splitText(route.name, '')}}></span>
-                  </span>
-                </span>
                 </Link>
               </li>
             ))}
+            <span className="section-line bottom bg-white sp absolute"></span>
+          </ul>
+
             <div className='text-center sp'>
               <Link href='https://www.instagram.com' scroll={false} rel="noopener noreferrer" target="_blank">
                   <a className='mix-text white'>
@@ -78,7 +83,7 @@ export default function Header(props) {
                   </a>
               </Link>
             </div>
-          </ul>
+          </div>
         </nav>
         <div className="sp">
           <div className="menu-trigger" onClick={handleClick}>
