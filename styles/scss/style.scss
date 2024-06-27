@@ -1182,12 +1182,15 @@ body {
               // @include fontvwPc(52);
               // line-height: (62.4 / 52);
               // mix-blend-mode: difference;
-              mix-blend-mode: multiply;
               will-change: transform;
-              // svg {
-              //   display: block;
-              //   width: 100%;
-              // }
+              mix-blend-mode: difference;
+              svg {
+                display: block;
+                width: 100%;
+                * {
+                  fill: $revert;
+                }
+              }
             }
           }
         }
@@ -2138,6 +2141,7 @@ body {
               width: vwPc(1400);
               // width: 100%;
               will-change: transform;
+              // mix-blend-mode: difference;
               img {
                 @include center();
                 height: 100%;
@@ -2149,6 +2153,9 @@ body {
                 // opacity: 0;
                 display: block;
                 // visibility: hidden;
+                // * {
+                //   fill: $revert;
+                // }
               }
               path {
                 // fill: $red;
@@ -2233,10 +2240,14 @@ body {
               // @include fontvwPc(52);
               // line-height: (62.4 / 52);
               // mix-blend-mode: difference;
-              mix-blend-mode: multiply;
+              // mix-blend-mode: multiply;
+              mix-blend-mode: difference;
               svg {
                 display: block;
                 width: 100%;
+                * {
+                  fill: $revert;
+                }
               }
             }
           }
