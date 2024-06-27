@@ -179,8 +179,8 @@ export default function Work(props) {
                     <p className="roc-grotesk red medium">{props.post['acf']['client']}</p>
                   </div>
                   {props.post['acf']['url'] !== '' && 
-                    <Link href={props.post['acf']['url']} scroll={false} rel="noopener noreferrer" target="_blank">
-                        <a className='mix-text red'>
+                    <a href={props.post['acf']['url']} rel="noopener noreferrer" target="_blank">
+                        <div className='mix-text red'>
                             <div className="mix-text__inner">
                                 <span className='roc-grotesk-wide'>VISIT</span>
                                 <span className='borax italic no-m'>Site</span>
@@ -189,8 +189,8 @@ export default function Work(props) {
                                 </span>
                                 <span className='mix-text-line bg-red'></span>
                             </div>
-                        </a>
-                    </Link>
+                        </div>
+                    </a>
                   }
                 </div>
               </div>
