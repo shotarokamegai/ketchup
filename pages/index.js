@@ -179,8 +179,6 @@ function Home(props) {
                   <h1 id="top-logo">
                     <div className="parallax" data-start="0" data-end="10%" ref={logoRef} data-amount=".15">
                       <Logo color="bg-red fill" />
-                      {/* <ClipLogo color="bg-red fill" /> */}
-                      {/* <img src="/img/common/sample.png" alt="" /> */}
                     </div>
                   </h1>
                   </div>
@@ -222,27 +220,27 @@ function Home(props) {
                   <ul className="flex">
                     { posts && setList() }
                   </ul>
-                  <Link href="/works/">
-                  <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`}>
-                  {/* <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more"> */}
-                    <div className="section-line top absolute bg-red"></div>
-                    <div className="section-line bottom absolute bg-red"></div>
-                    <div className="cover left">
-                      <div className="cover__inner bg-red"></div>
-                    </div>
-                    <div className="cover right">
-                      <div className="cover__inner bg-red"></div>
-                    </div>
-                    <div className="mix-text red">
-                      <div className="mix-text__inner">
-                        <span className="roc-grotesk-wide">MORE</span>
-                        <span className="borax italic">Works</span>
-                        <span className="icon">
-                          <Arrow color="bg-red stroke" />
-                        </span>
+                  <Link href="/works" scroll={false}>
+                    <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`}>
+                    {/* <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more"> */}
+                      <div className="section-line top absolute bg-red"></div>
+                      <div className="section-line bottom absolute bg-red"></div>
+                      <div className="cover left">
+                        <div className="cover__inner bg-red"></div>
+                      </div>
+                      <div className="cover right">
+                        <div className="cover__inner bg-red"></div>
+                      </div>
+                      <div className="mix-text red">
+                        <div className="mix-text__inner">
+                          <span className="roc-grotesk-wide">MORE</span>
+                          <span className="borax italic">Works</span>
+                          <span className="icon">
+                            <Arrow color="bg-red stroke" />
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </Link>
                 </div>
               </div>
