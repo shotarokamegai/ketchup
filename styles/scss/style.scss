@@ -10,7 +10,7 @@
 }
 
 * {
-  cursor:none !important;
+  // cursor:none !important;
 }
 
 // a {
@@ -26,6 +26,10 @@ html.wf-active {
   body {
     opacity: 1 !important;
   }
+}
+
+body {
+  background-color: $white;
 }
 
 .dark-mode {
@@ -1142,7 +1146,7 @@ body {
               // @include fontvwPc(52);
               // line-height: (62.4 / 52);
               // mix-blend-mode: difference;
-              mix-blend-mode: screen;
+              mix-blend-mode: multiply;
               will-change: transform;
               // svg {
               //   display: block;
@@ -1501,7 +1505,7 @@ body {
   }
   &.end {
     &::before {
-      bottom: -30vh;
+      bottom: -80vh;
     }
   }
   &::before {
@@ -1509,8 +1513,8 @@ body {
     left: 50%;
     content: '';
     display: block;
-    height: 150vw;
-    width: 150vw;
+    height: 200vw;
+    width: 200vw;
     transform: translate3d(-50%, 0, 0);
     border-radius: 40%;
     background-color: $red;
@@ -1531,7 +1535,8 @@ body {
   background-image: url(/img/common/ketchup_pointer.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  transform: translate3d(0, 0, 0)
+  transform: translate3d(0, 0, 0);
+  display: none
 }
 
 #gif {
@@ -2192,7 +2197,7 @@ body {
               // @include fontvwPc(52);
               // line-height: (62.4 / 52);
               // mix-blend-mode: difference;
-              mix-blend-mode: screen;
+              mix-blend-mode: multiply;
               svg {
                 display: block;
                 width: 100%;

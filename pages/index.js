@@ -132,7 +132,7 @@ function Home(props) {
   useEffect(() => {
     //TOP用アニメーション
     const loadFunc = () => {
-      ScrollTrigger.refresh()
+      ScrollTrigger.refresh(true)
       setAnimation();
       showList();
     }

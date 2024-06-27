@@ -35,8 +35,8 @@ export default function About() {
         alpha: () => `1`,
         scrollTrigger: {
           trigger: '.container',
-          start: `5%`, 
-          end: `20%`,
+          start: `10%`, 
+          end: `35%`,
           scrub: .5,
           invalidateOnRefresh: true
         }
@@ -82,9 +82,12 @@ export default function About() {
         setAnimation()
         ScrollTrigger.refresh(true)
         window.onresize = () => {
+          if (window.innerWidth < 750) {
+          } else {
             ScrollTrigger.refresh(true)
             setAnimation()
           }
+        }
         console.log('about loaded')
     }, [])
   return (
