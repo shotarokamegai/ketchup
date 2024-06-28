@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useRouter } from "next/router";
 import Arrow from '../../components/svg/arrow';
 import WorkTogether from '../../components/work-together';
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
 
@@ -17,17 +17,7 @@ export default function Work(props) {
     const [load, setOnload] = useState(false);
     const router = useRouter(); 
     const { id } = router.query;
-    // const { data, isLoading, isError } = GetDataFromWp(id)
     
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001
-    });
-
-    let i = 0
-
     const getCategories = (cats) => {
       let thisCategories = '';
       for (let i = 0; i < props.post.categories.length; i++) {
@@ -144,7 +134,6 @@ export default function Work(props) {
     </Script>
       <div className={styles.container}>
       <Content>
-        <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="work" className={`common main_`}>
           <section id="top">
             <div className="ruler">
@@ -164,6 +153,7 @@ export default function Work(props) {
               </div>
               <div className="detail flex space-between">
                 <div className="left">
+                <p dangerouslySetInnerHTML={{__html: `(${props.post.id})`}} className="index roc-grotesk light red"></p>
                   <div className="title">
                     <h2 className="roc-grotesk red" dangerouslySetInnerHTML={{__html: props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}}></h2>
                   </div>
@@ -201,7 +191,7 @@ export default function Work(props) {
               }
               <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
               </div>
-              <Link href="/#works">
+              <Link href="/works" scroll={false}>
                 <div className={`btn btn-full`}>
                   <div className="section-line top absolute bg-red"></div>
                   <div className="section-line bottom absolute bg-red"></div>

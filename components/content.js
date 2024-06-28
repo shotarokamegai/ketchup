@@ -85,6 +85,7 @@ const gifAnimation = {
   transition: {
     duration: 1.5,
     ease: gifEase
+    // ease: gifEase
     // ease: "easeOut"
   },
 }

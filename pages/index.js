@@ -15,37 +15,17 @@ import Logo from '../components/svg/logo'
 import axios from "axios"
 import Content from '../components/content'
 import styles from '../styles/Home.module.css'
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 function Home(props) {
   gsap.registerPlugin(ScrollTrigger)
-  const { scrollYProgress } = useScroll();
   const logoRef = useRef();
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState(props.posts)
   const [maxPage, setMaxPage] = useState(0);
-  const scaleX = useSpring(scrollYProgress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001
-    });
-  const meta = {
-    title: '',
-    description: ''
-  }
-  const showList = () => {
-    // setTimeout(() => {
-    // }, 1000);
-    // let list = document.getElementsByClassName('hide');
-
-    // for (let i = 0; i < list.length; i++) {
-    //   let thisList = list[i];
-    //   thisList.classList.remove('hide');
-    // }
-  }
   const setList = () => {
     console.log('setList');
     console.log(posts);
@@ -134,7 +114,6 @@ function Home(props) {
     const loadFunc = () => {
       ScrollTrigger.refresh(true)
       setAnimation();
-      showList();
     }
 
     loadFunc();
@@ -169,7 +148,6 @@ function Home(props) {
     </Script>
     <div className={styles.container}>
       <Content>
-      <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="home" className="main_">
           <section id="top">
               <div className="ruler">
@@ -225,11 +203,9 @@ function Home(props) {
                     {/* <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more"> */}
                       <div className="section-line top absolute bg-red"></div>
                       <div className="section-line bottom absolute bg-red"></div>
-                      <div className="cover left">
-                        <div className="cover__inner bg-red"></div>
-                      </div>
-                      <div className="cover right">
-                        <div className="cover__inner bg-red"></div>
+                      <div className="btn-full-cover">
+                        <div className="left"></div>
+                        <div className="right"></div>
                       </div>
                       <div className="mix-text red">
                         <div className="mix-text__inner">
@@ -247,8 +223,7 @@ function Home(props) {
           </section>
           <WorkTogether />
         </main>
-        {/* <Footer /> */}
-      </Content>
+        </Content>
     </div>
     </>
   )

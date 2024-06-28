@@ -4,13 +4,11 @@ import Script from 'next/script'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { gsap } from "gsap";
 import styles from '../../styles/Home.module.css'
-import { motion, useScroll, useSpring } from "framer-motion";
 
 import Content from '../../components/content'
 import WorkTogether from '../../components/work-together'
 
 export default function About() {
-  const { scrollYProgress } = useScroll();
   const returnY = () => {
     let y;
     if (window.innerWidth < 750) {
@@ -73,23 +71,18 @@ export default function About() {
         }
       });
   }
-  const scaleX = useSpring(scrollYProgress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001
-    });
-    useEffect(() => {
-        setAnimation()
-        ScrollTrigger.refresh(true)
-        window.onresize = () => {
-          if (window.innerWidth < 750) {
-          } else {
-            ScrollTrigger.refresh(true)
-            setAnimation()
-          }
+  useEffect(() => {
+      setAnimation()
+      ScrollTrigger.refresh(true)
+      window.onresize = () => {
+        if (window.innerWidth < 750) {
+        } else {
+          ScrollTrigger.refresh(true)
+          setAnimation()
         }
-        console.log('about loaded')
-    }, [])
+      }
+      console.log('about loaded')
+  }, [])
   return (
     <>
     <Head>
@@ -118,7 +111,6 @@ export default function About() {
       </Script>
       <div className={styles.container}>
         <Content>
-        <motion.div className="progress-bar" style={{ scaleX }} />
           <main id="about" className="common main_">
             <section id="top">
                 <div className="ruler">

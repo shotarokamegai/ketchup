@@ -17,6 +17,10 @@
 //   cursor: url('/img/common/ketchup_pointer.png'), auto;
 // }
 
+#gif {
+  // display: none;
+}
+
 .parallax {
   will-change: transform;
 }
@@ -505,6 +509,7 @@ body {
       height: 100%;
       width: 50%;
       overflow: hidden;
+      display: none;
       &__inner {
         position: absolute;
         top: 0;
@@ -707,7 +712,8 @@ body {
           width: 180vh;
           transform: translate3d(-50%, 0, 0);
           border-radius: 40%;
-          background-color: rgba(200, 15, 46, .8);
+          background-color: rgba(200, 15, 46, .6);
+          mix-blend-mode: overlay;
           animation: loadAnim 3s linear infinite;
         }
       }
@@ -1323,6 +1329,10 @@ body {
               width: 100vw;
             }
           }
+          .index {
+            margin-bottom: vw(12);
+            @include fontvw(10);
+          }
           .title {
             margin-bottom: vw(16);
             h2 {
@@ -1431,10 +1441,10 @@ body {
           }
         }
         &.video {
-          position: relative;
-          left: 50%;
-          transform: translate3d(-50%, 0, 0);
-          width: 100vw;
+          // position: relative;
+          // left: 50%;
+          // transform: translate3d(-50%, 0, 0);
+          // width: 100vw;
           margin-bottom: vw(10);
         }
         .img {
@@ -1669,6 +1679,7 @@ body {
   }
   .btn-full {
     position: relative;
+    overflow: hidden;
     &:hover {
       .mix-text {
         color: $white;
@@ -1682,16 +1693,55 @@ body {
           }
         }
       }
-      .cover {
-        &.left, &.right {
-          .cover__inner {
-            transform: translate3d(0, 0, 0);
-          }
+      .btn-full-cover {
+        &.right {
+          transition: transform .5s linear .9s;
+          transform: translate3d(20%, 0, 0);
         }
       }
     }
     &.none {
       display: none;
+    }
+    &-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      .left, .right {
+        &::before {
+          position: relative;
+          content: '';
+          display: block;
+          width: 100%;
+          will-change: transform;
+          background-color: $red;
+        }
+      }
+      .left {
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 70%;
+        &::before {
+          height: 100%;
+        }
+      }
+      .right {
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        transition: transform 0s linear;
+        will-change: transform;
+        &::before {
+          top: 50%;
+          padding-top: 250%;
+          border-radius: 40%;
+          animation: loadAnimSlide 3s linear infinite;
+        }
+      }
     }
     .mix-text {
       will-change: color;
@@ -1706,33 +1756,6 @@ body {
         }
       }
     }
-    .cover {
-      position: absolute;
-      height: 100%;
-      width: 50%;
-      overflow: hidden;
-      &__inner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        will-change: transform;
-        transition: transform .5s $slide;
-      }
-      &.left {
-        left: 0;
-        .cover__inner {
-          transform: translate3d(101%, 0, 0);
-        }
-      }
-      &.right {
-        right: 0;
-        .cover__inner {
-          transform: translate3d(-101%, 0, 0);
-        }
-      }
-    }  
   }
   #header {
     position: fixed;
@@ -1984,14 +2007,50 @@ body {
               overflow: hidden;
               transform: translate3d(-101%, 0, 0);
               will-change: transform;
-              transition: transform .5s $slide;
+              transition: transform 1s $slide;
+              &-cover {
+                position: absolute;
+                &::before {
+                  position: relative;
+                  content: '';
+                  display: block;
+                  width: 100%;
+                  will-change: transform;
+                  background-color: $red;
+                }
+                &.left {
+                  top: 0;
+                  left: 0;
+                  height: 100%;
+                  width: 70%;
+                  &::before {
+                    height: 100%;
+                  }
+                }
+                &.right {
+                  top: 0;
+                  right: 0;
+                  height: 100%;
+                  width: 50%;
+                  transition: transform 0s linear;
+                  will-change: transform;
+                  &::before {
+                    top: 50%;
+                    height: 250%;
+                    border-radius: 40%;
+                    animation: loadAnimSlide 3s linear infinite;
+                  }
+                }
+              }
               .inner-slide-slide {
+                position: relative;
                 display: block;
                 height: 100%;
                 transform: translate3d(101%, 0, 0);
                 text-decoration: none;
                 will-change: transform;
-                transition: transform .5s $slide;
+                transition: transform 1s $slide;
+                z-index: 1;
               }
             }
           }
@@ -1999,6 +2058,12 @@ body {
             .slide-text {
               .inner-slide {
                 transform: translateZ(0);
+                &-cover {
+                  &.right {
+                    transition: transform .5s linear .9s;
+                    transform: translate3d(20%, 0, 0);
+                  }
+                }
                 .inner-slide-slide {
                   transform: translateZ(0);
                 }
@@ -2006,7 +2071,7 @@ body {
             }
             .arrow {
               transform: translate3d(vwPc(14), 0, 0);
-              transition: transform .25s $slide .25s;
+              transition: transform .25s $slide .9s;
             }
             .img {
               &::before {
@@ -2384,6 +2449,10 @@ body {
               margin: 0 auto rem(40);
               width: 100vw;
             }
+          }
+          .index {
+            margin-bottom: vwPc(12);
+            @include fontvwPc(10);
           }
           .title {
             margin-bottom: vwPc(24);

@@ -311,3 +311,21 @@
     transform: translate3d(-50%, 0, 0) rotate(360deg);
   }
 }
+
+@keyframes loadAnimCenter {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+
+@keyframes loadAnimSlide {
+  0% {
+    transform: translate3d(0, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0) rotate(360deg);
+  }
+}

@@ -4,7 +4,7 @@ import Head from 'next/head'
 import {init,sendForm,send} from 'emailjs-com';
 import Arrow from '../../components/svg/arrow'
 import styles from '../../styles/Home.module.css'
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import Content from '../../components/content'
 // import adobeLoader from "../../components/adobeLoader";
 
@@ -22,13 +22,6 @@ export default function Contact() {
     const [sent, setSent] = useState(false);
 
     const arry = ['company', 'email', 'tel', 'content']
-
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-      });
 
     const handleSubmit = () => {
         for (let i = 0; i < arry.length; i++) {
@@ -150,7 +143,6 @@ export default function Contact() {
       </Script>
         <div className={styles.container}>
             <Content>
-            <motion.div className="progress-bar" style={{ scaleX }} />
                 <main id="contact" className="common main_">
                     <section id="top">
                         <div className="ruler">

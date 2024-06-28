@@ -11,59 +11,15 @@ import Arrow from '../../components/svg/arrow'
 import axios from "axios"
 import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
-import { motion, useScroll, useSpring } from "framer-motion";
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-// function returnClassName (i) {
-//   let className = '';
-//   switch(i) {
-//       case 0:
-//           className = 'box1'
-//           break
-//       case 1:
-//           className = 'box2'
-//           break
-//       case 2:
-//           className = 'box3'
-//           break
-//       case 3:
-//           className = 'box4'
-//           break
-//       default:
-//           className = ''
-//           break
-//   }
-//   return className;
-// }
-
 function Works(props) {
   gsap.registerPlugin(ScrollTrigger)
-  const { scrollYProgress } = useScroll();
-  const logoRef = useRef();
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState(props.posts)
   const [maxPage, setMaxPage] = useState(0);
-  const scaleX = useSpring(scrollYProgress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001
-    });
-  const meta = {
-    title: '',
-    description: ''
-  }
-  const showList = () => {
-    // setTimeout(() => {
-    // }, 1000);
-    // let list = document.getElementsByClassName('hide');
-
-    // for (let i = 0; i < list.length; i++) {
-    //   let thisList = list[i];
-    //   thisList.classList.remove('hide');
-    // }
-  }
   const setList = () => {
     console.log('setList');
     console.log(posts);
@@ -195,7 +151,7 @@ function Works(props) {
     const loadFunc = () => {
       ScrollTrigger.refresh()
       // setAnimation();
-      showList();
+      // showList();
     }
 
     loadFunc();
@@ -230,7 +186,6 @@ function Works(props) {
     </Script>
     <div className={styles.container}>
       <Content>
-      <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="works" className="main_">
           <section id="works" className="section">
               <div className="ruler">
