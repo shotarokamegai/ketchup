@@ -9,7 +9,7 @@ export default function List(props) {
   useEffect(() => {
   },[])
   return(
-    <li className={`${props.className} box${props.item.id}`} id={`box${props.item.id}`}>
+    <li className={`${props.className} box${props.item.id} slide-parent`} id={`box${props.item.id}`}>
       <div className="box-inner">
         <Link href={props.item ? `/works/${props.item.id}` : ''} scroll={false}>
           <a>
@@ -30,7 +30,12 @@ export default function List(props) {
             </div>
             </div>
             <div className="detail slide-text">
-                <div className="flex detail-above">
+              <div className="slide-cover">
+                <div className="slide-cover-left"></div>
+                <div className="slide-cover-right"></div>
+              </div>
+              <div className="detail-above">
+                <div className="flex relative">
                   <p dangerouslySetInnerHTML={{__html: `(${props.item.id})`}} className="index roc-grotesk light red"></p>
                   <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title roc-grotesk red"></p>
                   <div className="arrow">
@@ -40,22 +45,7 @@ export default function List(props) {
                 <p className="categories roc-grotesk medium red">
                   {props.item && props.thisCategories.slice( 0, -1 )}
                 </p>
-                <div className="inner-slide">
-                  <div className="inner-slide-cover left"></div>
-                  <div className="inner-slide-cover right"></div>
-                  <div className="inner-slide-slide">
-                    <div className="flex detail-above">
-                      <p dangerouslySetInnerHTML={{__html: `(${props.item.id})`}} className="index roc-grotesk light white"></p>
-                      <p dangerouslySetInnerHTML={{__html: props.item && props.item.title.rendered}} className="title roc-grotesk white"></p>
-                      <div className="arrow">
-                        <Arrow color="bg-white stroke" />
-                      </div>
-                    </div>
-                    <p className="categories roc-grotesk white medium">
-                      {props.item && props.thisCategories.slice( 0, -1 )}
-                    </p>
-                  </div>
-                </div>
+              </div>
             </div>
           </a>
         </Link>
