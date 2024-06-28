@@ -6,14 +6,41 @@ import Arrow from './svg/arrow'
 
 export default function List(props) {
   gsap.registerPlugin(ScrollTrigger)
+  const scrollAnimation = () => {
+    let addactive = document.getElementsByClassName('addactive');
+
+    for (let i = 0; i < addactive.length; i++) {
+      let elm = addactive[i];
+      let start = `top center+=${window.innerHeight/4}`;
+      if (elm.classList.contains('blur')) {
+        start = `top center`;
+      }
+      gsap.to(elm, {
+        ease: "power4.inOut",
+        scrollTrigger: {
+          trigger: elm,
+          start: start, 
+          onEnter: () => {
+            elm.classList.add('active');
+            if (elm.classList.contains('show')) {
+              setTimeout(() => {
+                elm.classList.add('nowillchange');
+              }, 3000)
+            }
+          }
+        }
+      });
+    }
+  }
   useEffect(() => {
+    scrollAnimation();
   },[])
   return(
     <li className={`${props.className} box${props.item.id} slide-parent`} id={`box${props.item.id}`}>
       <div className="box-inner">
         <Link href={props.item ? `/works/${props.item.id}` : ''} scroll={false}>
           <a>
-            <div className={`${!props.item['acf']['sp_thumbnail'] ? 'img-wrap only-pc': 'img-wrap'}`}>
+            <div className={`${!props.item['acf']['sp_thumbnail'] ? 'img-wrap only-pc addactive': 'img-wrap addactive'}`}>
             <div className={`img img${props.item.id}`}>
               <div className={`cover cover${props.item.id}`}></div>
               {props.item['acf']['sp_thumbnail'] &&

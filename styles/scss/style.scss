@@ -262,9 +262,9 @@ body {
   main .slide-parent:active .arrow svg *, main .slide-parent:active .arrow svg * {
     stroke: $red;
   }
-  #cursor {
-    background-image: url(/img/common/ketchup_pointer_default_white.svg);
-  }
+  // #cursor {
+  //   background-image: url(/img/common/ketchup_pointer_default_white.svg);
+  // }
   main#contact form input, main#contact form textarea {
     background-color: $red;
   }
@@ -364,7 +364,7 @@ body {
     }
   }
   html {
-    overscroll-behavior: none;
+    // overscroll-behavior: none;
   }
   .container {
     main {
@@ -1099,14 +1099,21 @@ body {
               display: block;
               padding-top: 125%;
             }
+            &.active .img {
+              opacity: 1;
+              filter: blur(0);
+              transform: translate3d(-50%, -50%, 0) scale(1);
+            }
           }
           .img {
             @include center();
             height: 100%;
             width: 100%;
-            transform: translate3d(-50%, -50%, 0) scale(1.1);
-            will-change: transform;
-            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            filter:blur(rem(10));
+            transform: translate3d(-50%, -50%, 0) scale(1.05);
+            will-change: transform, opacity, filter;
+            transition: opacity 1s $slide, transform 1s $slide, filter 1s $slide ;
             &::before {
               @include center();
               height: 101%;
@@ -2271,14 +2278,21 @@ body {
               display: block;
               padding-top: 52.22222222222223%;
             }
+            &.active .img {
+              opacity: 1;
+              filter:blur(0);
+              transform: translate3d(-50%, -50%, 0) scale(1);
+            }
           }
           .img {
             @include center();
             height: 100%;
             width: 100%;
-            transform: translate3d(-50%, -50%, 0) scale(1);
-            will-change: transform;
-            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            filter:blur(rem(10));
+            transform: translate3d(-50%, -50%, 0) scale(1.05);
+            will-change: transform, opacity, filter;
+            transition: opacity 1s $slide, transform 1s $slide, filter 1s $slide ;
             &::before {
               @include center();
               height: 101%;
@@ -2684,7 +2698,7 @@ body {
           // left: 50%;
           // transform: translate3d(-50%, 0, 0);
           // width: 100vw;
-          margin: 0 auto vwPc(10);
+          margin: 0 auto 2.8037383178%;
         }
         .img {
           position: relative;

@@ -196,22 +196,22 @@ function Works(props) {
                   <ul className="flex">
                     { posts && setList() }
                   </ul>
-                  <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
+                  <div className={`btn btn-full slide-parent double ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
                     <div className="section-line top absolute bg-red"></div>
                     <div className="section-line bottom absolute bg-red"></div>
-                    <div className="cover left">
-                      <div className="cover__inner bg-red"></div>
-                    </div>
-                    <div className="cover right">
-                      <div className="cover__inner bg-red"></div>
-                    </div>
-                    <div className="mix-text red">
-                      <div className="mix-text__inner">
-                        <span className="roc-grotesk-wide">MORE</span>
-                        <span className="borax italic">Works</span>
-                        <span className="icon">
-                          <Arrow color="bg-red stroke" />
-                        </span>
+                    <div className="slide-text">
+                      <div className="slide-cover">
+                        <div className="slide-cover-left"></div>
+                        <div className="slide-cover-right"></div>
+                      </div>
+                      <div className="mix-text red">
+                        <div className="mix-text__inner">
+                          <span className="roc-grotesk-wide">MORE</span>
+                          <span className="borax italic">Works</span>
+                          <span className="icon arrow">
+                            <Arrow color="bg-red stroke" />
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>

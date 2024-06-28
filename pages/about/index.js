@@ -25,7 +25,8 @@ export default function About() {
           trigger: '.container',
           start: `0`, 
           end: `20%`,
-          scrub: .5,
+          scrub: 1,
+once:true,
           invalidateOnRefresh: true
         }
       });
@@ -35,7 +36,8 @@ export default function About() {
           trigger: '.container',
           start: `10%`, 
           end: `35%`,
-          scrub: .5,
+          scrub: 1,
+once:true,
           invalidateOnRefresh: true
         }
       });
@@ -45,7 +47,8 @@ export default function About() {
           trigger: '.container',
           start: `25%`, 
           end: `30%`,
-          scrub: .5,
+          scrub: 1,
+once:true,
           invalidateOnRefresh: true
         }
       });
@@ -56,7 +59,8 @@ export default function About() {
           trigger: '.container',
           start: `30%`, 
           end: `35%`,
-          scrub: .5,
+          scrub: 1,
+once:true,
           invalidateOnRefresh: true
         }
       });
@@ -65,7 +69,8 @@ export default function About() {
           trigger: '.container',
           start: `0`, 
           end: `40%`,
-          scrub: .5,
+          scrub: 1,
+// once:true,
           pin: true,
           invalidateOnRefresh: true
         }
