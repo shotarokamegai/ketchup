@@ -38,6 +38,15 @@ body {
 
 .dark-mode {
   background-color: $red;
+  main .slide-parent .slide-text .slide-cover-left:before, main .slide-parent .slide-text .slide-cover-right:before {
+    background-color: $white;
+  }
+  main .slide-parent:hover .red, main .slide-parent:active .red {
+    color: $red;
+  }
+  main .slide-parent:hover .arrow svg *, main .slide-parent:active .arrow svg * {
+    stroke: $red;
+  }
   #cursor {
     background-image: url(/img/common/ketchup_pointer_default_white.svg);
   }
@@ -704,7 +713,7 @@ body {
           width: 180vh;
           transform: translate3d(-50%, 0, 0);
           border-radius: 40%;
-          background-color: rgba(200, 15, 46, .6);
+          background-color: rgba(200, 15, 46, .8);
           // mix-blend-mode: overlay;
           mix-blend-mode: multiply;
           animation: loadAnim 3s linear infinite;
@@ -728,8 +737,10 @@ body {
         }
         li {
           position: relative;
-          padding: vw(32) 0;
-          padding-left: vw(20);
+          // padding: vw(32) 0;
+          padding: vw(21.333333333333332) 0;
+          // padding-left: vw(20);
+          padding-left: vw(13.333333333333332);
           box-sizing: border-box;
           display: flex;
           align-items: center;
@@ -740,13 +751,11 @@ body {
           .text {
             position: relative;
             display: block;
-            // @include fontvwPc(10);
             overflow: hidden;
             pointer-events: none;
             &-wrap {
               position: relative;
               display: block;
-              // height: rem(12);
               color: $white;
               z-index: 1;
               span {
@@ -759,7 +768,8 @@ body {
                 left: 0;
                 height: 100%;
                 width: 100%;
-                @include fontvw(30);
+                @include fontvw(20);
+                // @include fontvw(30);
                 transition: transform 0.5s $zoom;
                 span {
                   position: relative;
@@ -770,7 +780,8 @@ body {
               }
               &:nth-child(2) {
                 position: relative;
-                @include fontvw(30);
+                @include fontvw(20);
+                // @include fontvw(30);
                 transition: transform 0.5s $easeInOutBack;
                 font-style: italic;
                 span {
@@ -786,7 +797,8 @@ body {
           .ketchup {
             margin-right: vw(6);
             height: 100%;
-            width: vw(24);
+            width: vw(16);
+            // width: vw(24);
             svg {
               position: relative;
               height: 100%;
@@ -1100,7 +1112,7 @@ body {
               height: 101%;
               width: 101%;
               content: "";
-              background-color: rgba(200, 15, 46, .6);
+              background-color: rgba(200, 15, 46, .8);
               mix-blend-mode: multiply;
               opacity: 0;
               will-change: opacity;
@@ -2201,7 +2213,7 @@ body {
               height: 101%;
               width: 101%;
               content: "";
-              background-color: rgba(200, 15, 46, .6);
+              background-color: rgba(200, 15, 46, .8);
               mix-blend-mode: multiply;
               opacity: 0;
               will-change: opacity;

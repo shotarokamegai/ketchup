@@ -192,22 +192,22 @@ export default function Work(props) {
               <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
               </div>
               <Link href="/works" scroll={false}>
-                <div className={`btn btn-full`}>
+                <div className={`btn btn-full slide-parent double`}>
                   <div className="section-line top absolute bg-red"></div>
                   <div className="section-line bottom absolute bg-red"></div>
-                  <div className="cover left">
-                    <div className="cover__inner bg-red"></div>
-                  </div>
-                  <div className="cover right">
-                    <div className="cover__inner bg-red"></div>
-                  </div>
-                  <div className="mix-text red">
-                    <div className="mix-text__inner">
-                      <span className="roc-grotesk-wide">MORE</span>
-                      <span className="borax italic">Works</span>
-                      <span className="icon">
-                        <Arrow color="bg-red stroke" />
-                      </span>
+                  <div className="slide-text">
+                    <div className="slide-cover">
+                      <div className="slide-cover-left"></div>
+                      <div className="slide-cover-right"></div>
+                    </div>
+                    <div className="mix-text red">
+                      <div className="mix-text__inner">
+                        <span className="roc-grotesk-wide">MORE</span>
+                        <span className="borax italic">Works</span>
+                        <span className="icon arrow">
+                          <Arrow color="bg-red stroke" />
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

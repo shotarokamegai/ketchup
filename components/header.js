@@ -50,6 +50,7 @@ export default function Header(props) {
           <div className="nav-cover"></div>
           <div>
           <ul className="flex flex-end">
+            <span className="section-line bottom bg-white sp absolute"></span>
             {props.routes.map(route => (
               <li key={route.path} className={`menu-link futura`} data-pathname={route.path}>
                 <Link href={route.path} scroll={false}>
@@ -66,7 +67,6 @@ export default function Header(props) {
                 </Link>
               </li>
             ))}
-            <span className="section-line bottom bg-white sp absolute"></span>
           </ul>
 
             <div className='text-center sp'>
