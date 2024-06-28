@@ -36,77 +36,6 @@ body {
   background-color: $white;
 }
 
-.dark-mode {
-  background-color: $red;
-  main .slide-parent .slide-text .slide-cover-left:before, main .slide-parent .slide-text .slide-cover-right:before {
-    background-color: $white;
-  }
-  main .slide-parent:hover .red, main .slide-parent:active .red {
-    color: $red;
-  }
-  main .slide-parent:hover .arrow svg *, main .slide-parent:active .arrow svg * {
-    stroke: $red;
-  }
-  #cursor {
-    background-image: url(/img/common/ketchup_pointer_default_white.svg);
-  }
-  main#contact form input, main#contact form textarea {
-    background-color: $red;
-  }
-  main#about section#top .ruler .company .flex {
-    border-color: $white;
-    &:nth-child(1) {
-      border-color: $white;
-    }
-  }
-  #footer #switcher .switcher.bg-white {
-    border-color: $white;
-  }
-  .privacy-screen {
-    &::before {
-      background-color: $white;
-    }
-  }
-  .red {
-    color: $white;
-  }
-  
-  .white {
-    color: $red;
-  }
-  
-  .bg-red {
-    background-color: $white;
-    &.stroke {
-      background-color: transparent;
-      * {
-        stroke: $white;
-      }
-    }
-    &.fill {
-      background-color: transparent;
-      * {
-        fill: $white;
-      }
-    }
-  }
-  
-  .bg-white {
-    background-color: $red;
-    &.stroke {
-      background-color: transparent;
-      * {
-        stroke: $red;
-      }
-    }
-    &.fill {
-      background-color: transparent;
-      * {
-        fill: $red;
-      }
-    }
-  }
-}
 
 body {
   font-weight: normal;
@@ -322,6 +251,77 @@ body {
 }
 
 @media screen and (max-width: 749px) {
+.dark-mode {
+  background-color: $red;
+  main .slide-parent .slide-text .slide-cover-left:before, main .slide-parent .slide-text .slide-cover-right:before {
+    background-color: $white;
+  }
+  main .slide-parent:active .red, main .slide-parent:active .red {
+    color: $red;
+  }
+  main .slide-parent:active .arrow svg *, main .slide-parent:active .arrow svg * {
+    stroke: $red;
+  }
+  #cursor {
+    background-image: url(/img/common/ketchup_pointer_default_white.svg);
+  }
+  main#contact form input, main#contact form textarea {
+    background-color: $red;
+  }
+  main#about section#top .ruler .company .flex {
+    border-color: $white;
+    &:nth-child(1) {
+      border-color: $white;
+    }
+  }
+  #footer #switcher .switcher.bg-white {
+    border-color: $white;
+  }
+  .privacy-screen {
+    &::before {
+      background-color: $white;
+    }
+  }
+  .red {
+    color: $white;
+  }
+  
+  .white {
+    color: $red;
+  }
+  
+  .bg-red {
+    background-color: $white;
+    &.stroke {
+      background-color: transparent;
+      * {
+        stroke: $white;
+      }
+    }
+    &.fill {
+      background-color: transparent;
+      * {
+        fill: $white;
+      }
+    }
+  }
+  
+  .bg-white {
+    background-color: $red;
+    &.stroke {
+      background-color: transparent;
+      * {
+        stroke: $red;
+      }
+    }
+    &.fill {
+      background-color: transparent;
+      * {
+        fill: $red;
+      }
+    }
+  }
+}
   .privacy-screen {
     position: fixed;
     top: 0;
@@ -1594,6 +1594,77 @@ body {
 }
 
 @media screen and (min-width: 750px) {
+.dark-mode {
+  background-color: $red;
+  main .slide-parent .slide-text .slide-cover-left:before, main .slide-parent .slide-text .slide-cover-right:before {
+    background-color: $white;
+  }
+  main .slide-parent:hover .red {
+    color: $red;
+  }
+  main .slide-parent:hover .arrow svg * {
+    stroke: $red;
+  }
+  #cursor {
+    background-image: url(/img/common/ketchup_pointer_default_white.svg);
+  }
+  main#contact form input, main#contact form textarea {
+    background-color: $red;
+  }
+  main#about section#top .ruler .company .flex {
+    border-color: $white;
+    &:nth-child(1) {
+      border-color: $white;
+    }
+  }
+  #footer #switcher .switcher.bg-white {
+    border-color: $white;
+  }
+  .privacy-screen {
+    &::before {
+      background-color: $white;
+    }
+  }
+  .red {
+    color: $white;
+  }
+  
+  .white {
+    color: $red;
+  }
+  
+  .bg-red {
+    background-color: $white;
+    &.stroke {
+      background-color: transparent;
+      * {
+        stroke: $white;
+      }
+    }
+    &.fill {
+      background-color: transparent;
+      * {
+        fill: $white;
+      }
+    }
+  }
+  
+  .bg-white {
+    background-color: $red;
+    &.stroke {
+      background-color: transparent;
+      * {
+        stroke: $red;
+      }
+    }
+    &.fill {
+      background-color: transparent;
+      * {
+        fill: $red;
+      }
+    }
+  }
+}
   .privacy-screen {
     position: fixed;
     top: 0;
