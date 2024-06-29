@@ -42,7 +42,6 @@ export default function List(props) {
           <a>
             <div className={`${!props.item['acf']['sp_thumbnail'] ? 'img-wrap only-pc addactive': 'img-wrap addactive'}`}>
             <div className={`img img${props.item.id}`}>
-              <div className={`cover cover${props.item.id}`}></div>
               {props.item['acf']['sp_thumbnail'] &&
                 <picture className={`picture${props.item.id}`}>
                   <source srcSet={props.item['acf']['pc_thumbnail']} media="(min-width: 750px)" />

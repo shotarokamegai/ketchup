@@ -1119,7 +1119,8 @@ body {
               height: 101%;
               width: 101%;
               content: "";
-              background-color: rgba(200, 15, 46, .8);
+              // background-color: rgba(200, 15, 46, .8);
+              background-color: rgba(255,255,255, .1);
               mix-blend-mode: multiply;
               opacity: 0;
               will-change: opacity;
@@ -1809,6 +1810,7 @@ body {
   .btn-full {
     position: relative;
     overflow: hidden;
+    cursor: pointer;
     &.slide-parent {
       .slide-text {
         .inner-slide {
@@ -1824,7 +1826,6 @@ body {
         transform: translate3d(0%, 0, 0);
         &.right {
           transition: transform .5s linear 1s;
-          // transform: translate3d(20%, 0, 0);
         }
       }
     }
@@ -1838,10 +1839,8 @@ body {
       height: 100%;
       width: 100%;
       transform: translate3d(0, 0, 0);
-      // transform: translate3d(-80%, 0, 0);
       will-change: transform;
       transition: transform 5s $slide;
-      // transition: transform 1.5s $slide;
       .left, .right {
         position: absolute;
         &::before {
@@ -2126,6 +2125,7 @@ body {
               transition: color .25s $slide .7s;
             }
             .arrow {
+              transform: translate3d(vwPc(14), 0, 0);
               transition: transform .25s $slide .7s;
               svg {
                 * {
@@ -2216,17 +2216,16 @@ body {
         }
         .red {
           will-change: color;
-          transition: color .25s $slide .25s;
+          transition: color .25s $slide .3s;
         }
         .arrow {
-          transform: translate3d(vwPc(14), 0, 0);
           will-change: transform;
-          transition: transform .25s $slide .25s;
+          transition: transform .25s $slide .3s;
           svg {
             width: 100%;
             * {
               will-change: stroke;
-              transition: stroke .25s $slide .25s;
+              transition: stroke .25s $slide .3s;
             }
           }
         }
@@ -2298,7 +2297,9 @@ body {
               height: 101%;
               width: 101%;
               content: "";
-              background-color: rgba(200, 15, 46, .8);
+              // background-color: rgba(0, 0, 0, .1);
+              background-color: rgba(255,255,255, .1);
+              // background-color: rgba(200, 15, 46, .1);
               mix-blend-mode: multiply;
               opacity: 0;
               will-change: opacity;
