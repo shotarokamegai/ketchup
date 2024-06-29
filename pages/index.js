@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Script from 'next/script'
 import fetch from 'node-fetch'
 import Link from 'next/link'
-import { gsap } from "gsap";
+import { gsap,  Power3  } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import List from '../components/list'
@@ -15,7 +15,8 @@ import Logo from '../components/svg/logo'
 import axios from "axios"
 import Content from '../components/content'
 import styles from '../styles/Home.module.css'
-import { motion } from "framer-motion";
+
+import Scroll from '../utils/Scroll';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -23,6 +24,7 @@ axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 function Home(props) {
   gsap.registerPlugin(ScrollTrigger)
   const logoRef = useRef();
+  const scrollRef = useRef();
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState(props.posts)
   const [maxPage, setMaxPage] = useState(0);
@@ -60,6 +62,15 @@ function Home(props) {
           <List key={index} {...datum} />
         )
     })
+  }
+  const toScroll = () => {
+    console.log(scrollRef)
+    const target = document.getElementById(scrollRef.current.getAttribute('data-target'));
+    let elemRect = target.getBoundingClientRect();
+    let scrollY = window.scrollY || window.pageYOffset;
+    let top = elemRect.top + scrollY;
+
+    gsap.to([document.body, document.documentElement], 1, { scrollTop: top, ease: Power3.easeInOut });
   }
   const setAnimation = () => {
     const parallax = document.getElementsByClassName('parallax');
@@ -152,7 +163,6 @@ function Home(props) {
           <section id="top">
               <div className="ruler">
                 <div className="vh">
-                  {/* <h1 id="top-logo" className="logo fade" data-start="0" data-end="10%" ref={logoRef}> */}
                   <div className="logo absolute">
                   <h1 id="top-logo">
                     <div className="parallax" data-start="0" data-end="10%" ref={logoRef} data-amount=".15">
@@ -160,7 +170,7 @@ function Home(props) {
                     </div>
                   </h1>
                   </div>
-                  <div className="mix-text red vertical absolute scroll-trigger parallax" data-start="0%" data-end="25%" data-amount=".1" data-target="works">
+                  <div className="mix-text red vertical absolute scroll-trigger parallax" data-start="0%" data-end="25%" data-amount=".1" data-target="works" ref={scrollRef} onClick={toScroll}>
                     <div className="mix-text__inner">
                       <span className="roc-grotesk-wide">SCROLL</span>
                       <span className="borax italic">Down</span>
@@ -200,7 +210,6 @@ function Home(props) {
                   </ul>
                   <Link href="/works" scroll={false}>
                     <div className={`btn btn-full slide-parent double ${(maxPage > page) ? '' : 'none'}`}>
-                    {/* <div className={`btn btn-full ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more"> */}
                       <div className="section-line top absolute bg-red"></div>
                       <div className="section-line bottom absolute bg-red"></div>
                       <div className="slide-text">
