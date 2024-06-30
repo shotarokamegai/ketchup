@@ -75,6 +75,7 @@ export default function Work(props) {
     for (let i = 0; i < addactive.length; i++) {
       let elm = addactive[i];
       let start = `top center+=${window.innerHeight/4}`;
+      elm.classList.remove('active');
       if (elm.classList.contains('blur')) {
         start = `top center`;
       }
