@@ -379,7 +379,7 @@ body {
   .dark-mode {
     .privacy-screen {
       &::before {
-        background-color: $red;
+        background-color: $white;
       }
     }
     #header .menu-trigger .text-wrapper p {
