@@ -8,15 +8,31 @@ import Link from 'next/link'
 import { useRouter } from "next/router";
 import Arrow from '../../components/svg/arrow';
 import WorkTogether from '../../components/work-together';
-import { motion } from "framer-motion";
 import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
 
 export default function Work(props) {
     gsap.registerPlugin(ScrollTrigger)
     const [load, setOnload] = useState(false);
+    const [nextPost, setNextPost] = useState();
     const router = useRouter(); 
     const { id } = router.query;
+
+    console.log(props.posts);
+
+    const getNextPost = () => {
+      let nextPost_ = '';
+      for (let i = 0; i < props.posts.length; i++) {
+        let thisPost = props.posts[i];
+        if (thisPost === props.post.id && i !== props.posts.length-1) {
+          nextPost = props.posts[i+1];
+        } else {
+          nextPost = props.posts[0];
+        }
+      }
+      setNextPost(nextPost_)
+      console.log(nextPost);
+    }
     
     const getCategories = (cats) => {
       let thisCategories = '';
@@ -101,6 +117,7 @@ export default function Work(props) {
         ScrollTrigger.refresh(true);
         setOnload(true)
         scrollAnimation();
+        getNextPost();
     };
 
     useEffect(() => {

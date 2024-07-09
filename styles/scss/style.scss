@@ -1112,9 +1112,9 @@ body {
             @include center();
             height: 100%;
             width: 100%;
-            opacity: 0;
-            filter:blur(rem(10));
-            transform: translate3d(-50%, -50%, 0) scale(1.05);
+            // opacity: 0;
+            // filter:blur(rem(10));
+            // transform: translate3d(-50%, -50%, 0) scale(1.05);
             will-change: transform, opacity, filter;
             transition: opacity 1s $slide, transform 1s $slide, filter 1s $slide ;
             &::before {
@@ -2293,9 +2293,9 @@ body {
             @include center();
             height: 100%;
             width: 100%;
-            opacity: 0;
-            filter:blur(rem(10));
-            transform: translate3d(-50%, -50%, 0) scale(1.05);
+            // opacity: 0;
+            // filter:blur(rem(10));
+            // transform: translate3d(-50%, -50%, 0) scale(1.05);
             will-change: transform, opacity, filter;
             transition: opacity 1s $slide, transform 1s $slide, filter 1s $slide ;
             &::before {
