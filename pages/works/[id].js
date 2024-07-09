@@ -14,24 +14,22 @@ import styles from '../../styles/Home.module.css'
 export default function Work(props) {
     gsap.registerPlugin(ScrollTrigger)
     const [load, setOnload] = useState(false);
-    const [nextPost, setNextPost] = useState();
+    const [nextPost, setNextPost] = useState(false);
     const router = useRouter(); 
     const { id } = router.query;
-
-    console.log(props.posts);
 
     const getNextPost = () => {
       let nextPost_ = '';
       for (let i = 0; i < props.posts.length; i++) {
         let thisPost = props.posts[i];
-        if (thisPost === props.post.id && i !== props.posts.length-1) {
-          nextPost = props.posts[i+1];
-        } else {
-          nextPost = props.posts[0];
+        if (thisPost.id === props.post.id && i-1 > 0) {
+          nextPost_ = props.posts[i-1];
         }
       }
+      if (nextPost_ === '') {
+        nextPost_ = props.posts[props.posts.length-1];
+      }
       setNextPost(nextPost_)
-      console.log(nextPost);
     }
     
     const getCategories = (cats) => {
@@ -114,10 +112,10 @@ export default function Work(props) {
   }
 
     const onLoad = (e) => {
+        getNextPost();
         ScrollTrigger.refresh(true);
         setOnload(true)
         scrollAnimation();
-        getNextPost();
     };
 
     useEffect(() => {
@@ -209,27 +207,28 @@ export default function Work(props) {
               }
               <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
               </div>
-              <Link href="/works" scroll={false}>
-                <div className={`btn btn-full slide-parent double`}>
-                  <div className="section-line top absolute bg-red"></div>
-                  <div className="section-line bottom absolute bg-red"></div>
-                  <div className="slide-text">
-                    <div className="slide-cover">
-                      <div className="slide-cover-left"></div>
-                      <div className="slide-cover-right"></div>
+              {nextPost &&
+                <Link href={`/works/${nextPost.id}`} scroll={false}>
+                  <div className="next-work">
+                    <div className="img">
+                      <picture>
+                        <source srcSet={nextPost['acf']['pc_thumbnail']} media="(min-width: 750px)" />
+                        <img layout='fill' src={nextPost['acf']['sp_thumbnail']} alt={nextPost.title.rendered} />
+                      </picture>
                     </div>
-                    <div className="mix-text red">
-                      <div className="mix-text__inner">
-                        <span className="roc-grotesk-wide">MORE</span>
-                        <span className="borax italic">Works</span>
-                        <span className="icon arrow">
-                          <Arrow color="bg-red stroke" />
-                        </span>
-                      </div>
+                    <div className='mix-text white big'>
+                        <div className="mix-text__inner">
+                            <span className='roc-grotesk-wide'>NEXT</span>
+                            <span className='borax italic'>Work</span>
+                            <span className='icon instagram'>
+                                <Arrow color="bg-white stroke" />
+                            </span>
+                            <span className='mix-text-line bg-white'></span>
+                        </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              }
           </section>
           <WorkTogether />
         </main>
@@ -258,7 +257,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
   const res1 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts/${params.id}?_embed`)
   const res2 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`)
-  const res3 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&exclude=${params.id}`)
+  const res3 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&per_page=100`)
+  // const res3 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&exclude=${params.id}&per_page=100`)
   const post = await res1.data
   const cats = await res2.data
   const posts = await res3.data

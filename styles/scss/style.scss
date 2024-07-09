@@ -423,6 +423,32 @@ body {
     position: relative;
     display: inline-block;
     z-index: 1;
+    &.big {
+      .mix-text-line {
+        display: none;
+      }
+      .roc-grotesk-wide {
+        @include fontvw(34);
+      }
+      .borax {
+        margin-left: vw(16);
+        @include fontvw(54);
+      }
+      .icon {
+        position: relative;
+        top: vw(-25);
+        padding-right: 0;
+        margin-left: vw(16);
+        box-sizing: content-box;
+        width: vw(16);
+        svg {
+          position: relative;
+          height: vw(16);
+          width: 100%;
+          transition: transform .25s $slide;
+        }
+      }
+    }
     &:active {
       .mix-text-line {
         width: 100%;
@@ -596,7 +622,7 @@ body {
         }
         .text-center {
           opacity: 1;
-          transform: translate3d(0, 0, 0);
+          transform: translate3d(-50%, 0, 0);
           transition: opacity .5s $slide .8s, transform .5s $slide .8s;
         }
       }
@@ -716,9 +742,10 @@ body {
           width: 180vh;
           transform: translate3d(-50%, 0, 0);
           border-radius: 40%;
-          background-color: rgba(200, 15, 46, .8);
+          background-color: $red;
+          // background-color: rgba(200, 15, 46, .8);
           // mix-blend-mode: overlay;
-          mix-blend-mode: multiply;
+          mix-blend-mode: hard-light;
           animation: loadAnim 3s linear infinite;
         }
       }
@@ -741,9 +768,9 @@ body {
         li {
           position: relative;
           // padding: vw(32) 0;
-          padding: vw(21.333333333333332) 0;
+          padding: vw(32) 0;
           // padding-left: vw(20);
-          padding-left: vw(13.333333333333332);
+          padding-left: vw(24);
           box-sizing: border-box;
           display: flex;
           align-items: center;
@@ -771,7 +798,7 @@ body {
                 left: 0;
                 height: 100%;
                 width: 100%;
-                @include fontvw(20);
+                @include fontvw(32);
                 // @include fontvw(30);
                 transition: transform 0.5s $zoom;
                 span {
@@ -783,7 +810,7 @@ body {
               }
               &:nth-child(2) {
                 position: relative;
-                @include fontvw(20);
+                @include fontvw(32);
                 // @include fontvw(30);
                 transition: transform 0.5s $easeInOutBack;
                 font-style: italic;
@@ -798,9 +825,9 @@ body {
             }
           }
           .ketchup {
-            margin-right: vw(6);
+            margin-right: vw(8);
             height: 100%;
-            width: vw(16);
+            width: vw(24);
             // width: vw(24);
             svg {
               position: relative;
@@ -817,9 +844,11 @@ body {
         }
       }
       .text-center {
-        margin-top: vw(64);
+        position: absolute;
+        left: 50%;
+        bottom: vw(-74);
         opacity: 0;
-        transform: translate3d(0, vw(10), 0);
+        transform: translate3d(-50%, vw(10), 0);
         will-change: opacity, transform;
         transition: opacity .5s $slide, transform .5s $slide;
       }
@@ -1415,6 +1444,58 @@ body {
       }
     }
     &#work {
+      .next-work {
+        position: relative;
+        margin-top: vw(70);
+        height: vw(491);
+        @include fitcenter();
+        overflow: hidden;
+        .mix-text {
+          z-index: 2;
+        }
+        &:active {
+          &::before {
+            opacity: 1;
+          }
+          .mix-text {
+            opacity: 1;
+            .icon svg {
+              // transform: translate3d(vw(16), 0, 0);
+            }
+          }
+          img {
+            transform: scale(1.05);
+          }
+        }
+        &::before {
+          @include center();
+          content: '';
+          height: 100%;
+          width: 100%;
+          background-color: $red;
+          // opacity: 0;
+          will-change: opacity;
+          z-index: 1;
+          mix-blend-mode: hard-light;
+          transition: opacity .5s $Power1easeOut;
+        }
+        .mix-text {
+          // opacity: 0;
+          will-change: opacity;
+          transition: opacity .5s $Power1easeOut;
+        }
+        .img, img {
+          height: 100%;
+          width: 100%;
+        }
+        .img {
+          @include center();
+        }
+        img {
+          object-fit: cover;
+          transition: transform .5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
       section {
         &#top {
           .index {
@@ -1764,6 +1845,30 @@ body {
         transform: translate3d(vwPc(16), 0, 0);
       }
     }
+    &.big {
+      .mix-text-line {
+        display: none;
+      }
+      .roc-grotesk-wide {
+        @include fontvwPc(80);
+      }
+      .borax {
+        margin-left: vwPc(20);
+        @include fontvwPc(136);
+      }
+      .icon {
+        position: relative;
+        top: vwPc(-60);
+        box-sizing: content-box;
+        width: vwPc(32);
+        svg {
+          position: relative;
+          height: vwPc(32);
+          width: 100%;
+          transition: transform .25s $slide;
+        }
+      }
+    }
     &__inner {
       position: relative;
       display: inline-flex;
@@ -1784,7 +1889,6 @@ body {
     }
     .roc-grotesk-wide {
       @include fontvwPc(16);
-      // @include fontvwPc(16);
     }
     .borax {
       margin-left: vwPc(8);
@@ -2583,6 +2687,59 @@ body {
       }
     }
     &#work {
+      .next-work {
+        position: relative;
+        margin-top: vwPc(136);
+        height: vwPc(700);
+        @include fitcenter();
+        cursor: pointer;
+        overflow: hidden;
+        .mix-text {
+          z-index: 2;
+        }
+        &:hover {
+          &::before {
+            opacity: 1;
+          }
+          .mix-text {
+            opacity: 1;
+            .icon svg {
+              transform: translate3d(vwPc(16), 0, 0);
+            }
+          }
+          img {
+            transform: scale(1.05);
+          }
+        }
+        &::before {
+          @include center();
+          content: '';
+          height: 100%;
+          width: 100%;
+          background-color: $red;
+          opacity: 0;
+          will-change: opacity;
+          z-index: 1;
+          mix-blend-mode: hard-light;
+          transition: opacity .5s $Power1easeOut;
+        }
+        .mix-text {
+          opacity: 0;
+          will-change: opacity;
+          transition: opacity .5s $Power1easeOut;
+        }
+        .img, img {
+          height: 100%;
+          width: 100%;
+        }
+        .img {
+          @include center();
+        }
+        img {
+          object-fit: cover;
+          transition: transform .5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
       section {
         &#top {
           .ruler {

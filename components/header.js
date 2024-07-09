@@ -48,7 +48,7 @@ export default function Header(props) {
         </h1>
         <nav>
           <div className="nav-cover"></div>
-          <div>
+          <div className="relative">
           <ul className="flex flex-end">
             <span className="section-line bottom bg-white sp absolute"></span>
             {props.routes.map(route => (
