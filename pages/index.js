@@ -185,7 +185,7 @@ function Home(props) {
                     <span className="roc-grotesk">EST.</span>
                     <span className="borax italic">2022</span>
                   </div>
-                  <h2 className="slogan borax red">
+                  <h2 className="slogan borax red absolute parallax" data-start="0%" data-end="20%" data-amount=".07">
                     <span className="pc">
                       <Slogan color="bg-red fill" />
                     </span>
