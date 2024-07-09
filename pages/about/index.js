@@ -26,7 +26,7 @@ export default function About() {
           start: `0`, 
           end: `20%`,
           scrub: 1,
-once:true,
+// once:true,
           invalidateOnRefresh: true
         }
       });
@@ -37,7 +37,7 @@ once:true,
           start: `10%`, 
           end: `35%`,
           scrub: 1,
-once:true,
+// once:true,
           invalidateOnRefresh: true
         }
       });
@@ -48,7 +48,7 @@ once:true,
           start: `25%`, 
           end: `30%`,
           scrub: 1,
-once:true,
+// once:true,
           invalidateOnRefresh: true
         }
       });
@@ -60,7 +60,7 @@ once:true,
           start: `30%`, 
           end: `35%`,
           scrub: 1,
-once:true,
+// once:true,
           invalidateOnRefresh: true
         }
       });
