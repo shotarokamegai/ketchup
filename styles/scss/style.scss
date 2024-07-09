@@ -253,6 +253,9 @@ body {
 @media screen and (max-width: 749px) {
 .dark-mode {
   background-color: $red;
+  main#home section#top .ruler .mix-text.vertical .triangle span {
+    border-top: vw(6) solid $white;
+  }
   main .slide-parent .slide-text .slide-cover-left:before, main .slide-parent .slide-text .slide-cover-right:before {
     background-color: $white;
   }
@@ -1606,6 +1609,9 @@ body {
   background-color: $red;
   main .slide-parent .slide-text .slide-cover-left:before, main .slide-parent .slide-text .slide-cover-right:before {
     background-color: $white;
+  }
+  main#home section#top .ruler .mix-text.vertical .triangle span {
+    border-top: rem(6) solid $white;
   }
   main .slide-parent:hover .red {
     color: $red;
