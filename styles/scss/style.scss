@@ -253,6 +253,12 @@ body {
 @media screen and (max-width: 749px) {
 .dark-mode {
   background-color: $red;
+  .privacy-screen {
+    background-color: $white;
+    &::before {
+      background-color: $white;
+    }
+  }
   main#home section#top .ruler .mix-text.vertical .triangle span {
     border-top: vw(6) solid $white;
   }
@@ -279,11 +285,6 @@ body {
   }
   #footer #switcher .switcher.bg-white {
     border-color: $white;
-  }
-  .privacy-screen {
-    &::before {
-      background-color: $white;
-    }
   }
   .red {
     color: $white;
