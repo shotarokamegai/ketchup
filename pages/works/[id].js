@@ -160,10 +160,15 @@ export default function Work(props) {
             <div className="ruler">
               <div className={`keyv-wrap ${load && 'active'}`}>
                 <div className="img">
-                  <picture className={`picture${props.post.id}`}>
-                    <source srcSet={props.post['acf']['pc_thumbnail']} media="(min-width: 750px)" />
-                    <img layout='fill' src={props.post['acf']['sp_thumbnail']} alt={props.post && props.post.title.rendered} />
-                  </picture>
+                  {props.post['acf']['sp_thumbnail'] &&
+                    <picture className={`picture${props.post.id}`}>
+                      <source srcSet={props.post['acf']['pc_thumbnail']} media="(min-width: 750px)" />
+                      <img layout='fill' src={props.post['acf']['sp_thumbnail']} alt={props.post && props.post.title.rendered} />
+                    </picture>
+                  }
+                  {!props.post['acf']['sp_thumbnail'] &&
+                    <img layout='fill' src={props.post['acf']['pc_thumbnail']} alt={props.post && props.post.title.rendered} />
+                  }
                 </div>
                 <div className="cover"></div>
               </div>
@@ -211,10 +216,15 @@ export default function Work(props) {
                 <Link href={`/works/${nextPost.id}`} scroll={false}>
                   <div className="next-work">
                     <div className="img">
-                      <picture>
+                    {nextPost['acf']['sp_thumbnail'] &&
+                      <picture className={`picture${nextPost.id}`}>
                         <source srcSet={nextPost['acf']['pc_thumbnail']} media="(min-width: 750px)" />
-                        <img layout='fill' src={nextPost['acf']['sp_thumbnail']} alt={nextPost.title.rendered} />
+                        <img layout='fill' src={nextPost['acf']['sp_thumbnail']} alt={nextPost && nextPost.title.rendered} />
                       </picture>
+                    }
+                    {!nextPost['acf']['sp_thumbnail'] &&
+                      <img layout='fill' src={nextPost['acf']['pc_thumbnail']} alt={nextPost && nextPost.title.rendered} />
+                    }
                     </div>
                     <div className='mix-text white big'>
                         <div className="mix-text__inner">
