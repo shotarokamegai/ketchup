@@ -26,7 +26,6 @@ export default function About() {
           start: `0`, 
           end: `20%`,
           scrub: 1,
-// once:true,
           invalidateOnRefresh: true
         }
       });
@@ -37,7 +36,6 @@ export default function About() {
           start: `10%`, 
           end: `35%`,
           scrub: 1,
-// once:true,
           invalidateOnRefresh: true
         }
       });
@@ -48,7 +46,6 @@ export default function About() {
           start: `25%`, 
           end: `30%`,
           scrub: 1,
-// once:true,
           invalidateOnRefresh: true
         }
       });
@@ -60,7 +57,6 @@ export default function About() {
           start: `30%`, 
           end: `35%`,
           scrub: 1,
-// once:true,
           invalidateOnRefresh: true
         }
       });
@@ -70,7 +66,6 @@ export default function About() {
           start: `0`, 
           end: `40%`,
           scrub: 1,
-// once:true,
           pin: true,
           invalidateOnRefresh: true
         }
@@ -80,15 +75,13 @@ export default function About() {
       setAnimation()
       ScrollTrigger.refresh(true)
       window.onresize = () => {
-        console.log('resize')
         if (window.innerWidth < 750) {
         } else {
           ScrollTrigger.refresh(true)
           setAnimation()
         }
       }
-      console.log('about loaded')
-  }, [])
+  })
   return (
     <>
     <Head>

@@ -193,18 +193,18 @@ body {
     #header .menu-trigger {
       opacity: 1;
     }
-    main#home section#top .ruler .vh::before, main#home section#top .ruler::before  {
-      opacity: 0;
-      visibility: hidden;
-    }
-    main#home section#top .ruler .logo svg {
-      opacity: 1;
-      filter: blur(0);
-      transform: scale(1);
-      * {
-        animation: loadedFill 1s $Power1easeOut 2s forwards;
-      }
-    }
+    // main#home section#top .ruler .vh::before, main#home section#top .ruler::before  {
+    //   opacity: 0;
+    //   visibility: hidden;
+    // }
+    // main#home section#top .ruler .logo svg {
+    //   opacity: 1;
+    //   filter: blur(0);
+    //   transform: scale(1);
+    //   * {
+    //     animation: loadedFill 1s $Power1easeOut 2s forwards;
+    //   }
+    // }
   }
 }
 
@@ -274,6 +274,38 @@ body {
 }
 
 @media screen and (max-width: 749px) {
+  .initial {
+    &.loaded {
+      main#home section#top .ruler::before  {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s $Power1easeOut 2s, visibility 0s 3s;
+      }
+      main#home section#top .ruler .logo svg {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+        transition: opacity 1s $slide .5s, transform 1s $slide .5s, filter 1s $slide .5s;
+        * {
+          animation: loadedFill 1s $Power1easeOut 2s forwards;
+        }
+      }
+    }
+    main#home section#top .ruler {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    main#home section#top .ruler .logo svg {
+      opacity: 0;
+      filter: blur(rem(10));
+      transform: scale(1.5);
+      * {
+        fill: $white;
+      }
+    }
+  }
 .dark-mode {
   background-color: $red;
   .privacy-screen {
@@ -1253,17 +1285,13 @@ body {
               content: '';
               height: 100%;
               width: 100vw;
+              opacity: 0;
               background-color: $red;
               z-index: 1;
               will-change: opacity;
-              transition: opacity 1s $Power1easeOut 2s, visibility 0s 3s;
             }
             .vh {
               position: relative;
-              // @include fitcenter();
-              // padding-top: vw(120);
-              // margin-bottom: vw(295);
-              // height: calc(var(--vh, 1vh) * 50);
               height: calc( vw(387) + vw(250) + vw(120));
               box-sizing: content-box;
             }
@@ -1277,15 +1305,8 @@ body {
               z-index: 2;
               svg {
                 position: relative;
-                opacity: 0;
-                filter: blur(rem(10));
-                transform: scale(1.5);
                 display: block;
                 will-change: opacity, transform, filter;
-                transition: opacity 1s $slide .5s, transform 1s $slide .5s, filter 1s $slide .5s;
-                * {
-                  fill: $white;
-                }
               }
             }
             .mix-text.vertical {
@@ -1724,6 +1745,38 @@ body {
 }
 
 @media screen and (min-width: 750px) {
+  .initial {
+    &.loaded {
+      main#home section#top .ruler::before  {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 1s $Power1easeOut 2s, visibility 0s 3s;
+      }
+      main#home section#top .ruler .logo svg {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+        transition: opacity 1s $slide .5s, transform 1s $slide .5s, filter 1s $slide .5s;
+        * {
+          animation: loadedFill 1s $Power1easeOut 2s forwards;
+        }
+      }
+    }
+    main#home section#top .ruler {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    main#home section#top .ruler .logo svg {
+      opacity: 0;
+      filter: blur(rem(10));
+      transform: scale(1.5);
+      * {
+        fill: $white;
+      }
+    }
+  }
 .dark-mode {
   background-color: $red;
   main .slide-parent .slide-text .slide-cover-left:before, main .slide-parent .slide-text .slide-cover-right:before {
@@ -2514,24 +2567,23 @@ body {
         &#top {
           box-sizing: border-box;
           .ruler {
+            position: relative;
             max-width: initial;
+            &::before {
+              @include center();
+              content: '';
+              height: 500%;
+              width: 100vw;
+              background-color: $red;
+              opacity: 0;
+              z-index: 1;
+              will-change: opacity;
+            }
             .vh {
               position: relative;
               height: 100vh;
               margin-bottom: vwPc(120);
               box-sizing: content-box;
-              &::before {
-                @include center();
-                content: '';
-                height: 500%;
-                width: 100vw;
-                background-color: $red;
-                opacity: 1;
-                visibility: visible;
-                z-index: 1;
-                will-change: opacity;
-                transition: opacity 1s $Power1easeOut 2s, visibility 0s 3s;
-              }
             }
             .logo {
               @include center();
@@ -2541,15 +2593,8 @@ body {
               z-index: 2;
               svg {
                 position: relative;
-                opacity: 0;
-                filter: blur(rem(10));
-                transform: scale(1.5);
                 display: block;
                 will-change: opacity, transform, filter;
-                transition: opacity 1s $slide .5s, transform 1s $slide .5s, filter 1s $slide .5s;
-                * {
-                  fill: $white;
-                }
               }
             }
             .mix-text.vertical {

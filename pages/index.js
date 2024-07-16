@@ -16,8 +16,6 @@ import axios from "axios"
 import Content from '../components/content'
 import styles from '../styles/Home.module.css'
 
-import Scroll from '../utils/Scroll';
-
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
@@ -29,8 +27,6 @@ function Home(props) {
   const [posts, setPosts] = useState(props.posts)
   const [maxPage, setMaxPage] = useState(0);
   const setList = () => {
-    console.log('setList');
-    console.log(posts);
     return posts.map((item, index) => {
         let datum = {
             thisCategories: ''
@@ -75,10 +71,7 @@ function Home(props) {
   const setAnimation = () => {
     const parallax = document.getElementsByClassName('parallax');
     gsap.to('#top-logo', {
-      // scale: () => `1.5`,
       y: () => `-50%`,
-      // alpha: () => `0`,
-      // ease: "power1.out",
       scrollTrigger: {
         trigger: '.container',
         start: `0`, 
@@ -94,7 +87,6 @@ function Home(props) {
       const amount = parseFloat(elm.getAttribute('data-amount'));
       gsap.to(elm, {
         y: () => `${-window.innerWidth*amount}`,
-        // ease: "power1.out",
         scrollTrigger: {
           trigger: '.container',
           start: `${start}`, 
@@ -107,8 +99,6 @@ function Home(props) {
   }
   let i = 0
 
-  console.log('here')
-
   const GetDataFromWp = async () => {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&page=${page+1}`);
     setPage((page) => page+1)
@@ -120,13 +110,14 @@ function Home(props) {
     console.log(`getPageNum ${num}`);
     setMaxPage(num)
   }
+  const loadFunc = () => {
+    ScrollTrigger.refresh(true)
+    setAnimation();
+  }
+
   useEffect(() => {
     //TOP用アニメーション
-    const loadFunc = () => {
-      ScrollTrigger.refresh(true)
-      setAnimation();
-    }
-
+    console.log(`props${props}`)
     loadFunc();
     GetPageNum();
   // }, []);
