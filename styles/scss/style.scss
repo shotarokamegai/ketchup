@@ -182,14 +182,37 @@ body {
   font-family: "平成角ゴシック", monospace;
 }
 
+body {
+  &.loaded {
+    opacity: 1;
+    &.dark-mode {
+      main#home section#top .ruler .logo svg * {
+        fill: $white !important;
+      }
+    }
+    #header .menu-trigger {
+      opacity: 1;
+    }
+    main#home section#top .ruler .vh::before, main#home section#top .ruler::before  {
+      opacity: 0;
+      visibility: hidden;
+    }
+    main#home section#top .ruler .logo svg {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1);
+      * {
+        animation: loadedFill 1s $Power1easeOut 2s forwards;
+      }
+    }
+  }
+}
+
 #container {
   width: 100%;
   overflow: hidden;
   opacity: 0;
   transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  &.loaded {
-    opacity: 1;
-  }
   .anim {
     &.normal {
       opacity: 0;
@@ -684,6 +707,9 @@ body {
       top: vw(16);
       right: 0;
       width: vw(40);
+      opacity: 0;
+      will-change: opacity;
+      transition: opacity 1s $Power1easeOut 2s;
       .text-wrapper {
         @include center();
         min-width: 100%;
@@ -1219,15 +1245,26 @@ body {
       section {
         &#top {
           box-sizing: border-box;
+          overflow: hidden;
           .ruler {
             max-width: initial;
+            &::before {
+              @include center();
+              content: '';
+              height: 100%;
+              width: 100vw;
+              background-color: $red;
+              z-index: 1;
+              will-change: opacity;
+              transition: opacity 1s $Power1easeOut 2s, visibility 0s 3s;
+            }
             .vh {
               position: relative;
               // @include fitcenter();
               // padding-top: vw(120);
               // margin-bottom: vw(295);
               // height: calc(var(--vh, 1vh) * 50);
-              height: calc( vw(387) + vw(250));
+              height: calc( vw(387) + vw(250) + vw(120));
               box-sizing: content-box;
             }
             .logo {
@@ -1237,17 +1274,18 @@ body {
               width: vw(350);
               // width: 100%;
               will-change: transform;
-              img {
-                @include center();
-                height: 100%;
-                width: 100%;
-                clip-path: url(#logo);
-                display: none;
-              }
+              z-index: 2;
               svg {
-                // opacity: 0;
+                position: relative;
+                opacity: 0;
+                filter: blur(rem(10));
+                transform: scale(1.5);
                 display: block;
-                // visibility: hidden;
+                will-change: opacity, transform, filter;
+                transition: opacity 1s $slide .5s, transform 1s $slide .5s, filter 1s $slide .5s;
+                * {
+                  fill: $white;
+                }
               }
             }
             .mix-text.vertical {
@@ -1328,7 +1366,6 @@ body {
           }
         }
         &#works {
-          padding-top: vw(120);
           .section {
             &-title {
               padding-bottom: vw(12);
@@ -2483,14 +2520,36 @@ body {
               height: 100vh;
               margin-bottom: vwPc(120);
               box-sizing: content-box;
+              &::before {
+                @include center();
+                content: '';
+                height: 500%;
+                width: 100vw;
+                background-color: $red;
+                opacity: 1;
+                visibility: visible;
+                z-index: 1;
+                will-change: opacity;
+                transition: opacity 1s $Power1easeOut 2s, visibility 0s 3s;
+              }
             }
             .logo {
               @include center();
               left: 49.5%;
               width: vwPc(1400);
               will-change: transform;
+              z-index: 2;
               svg {
+                position: relative;
+                opacity: 0;
+                filter: blur(rem(10));
+                transform: scale(1.5);
                 display: block;
+                will-change: opacity, transform, filter;
+                transition: opacity 1s $slide .5s, transform 1s $slide .5s, filter 1s $slide .5s;
+                * {
+                  fill: $white;
+                }
               }
             }
             .mix-text.vertical {

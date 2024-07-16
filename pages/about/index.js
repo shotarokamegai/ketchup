@@ -80,6 +80,7 @@ export default function About() {
       setAnimation()
       ScrollTrigger.refresh(true)
       window.onresize = () => {
+        console.log('resize')
         if (window.innerWidth < 750) {
         } else {
           ScrollTrigger.refresh(true)

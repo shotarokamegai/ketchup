@@ -329,3 +329,39 @@
     transform: translate3d(0, -50%, 0) rotate(360deg);
   }
 }
+
+@keyframes loadedFill {
+  0% {
+    fill: $white;
+  }
+  100% {
+    fill: $red;
+  }
+}
+
+@keyframes loadedBackground {
+  0% {
+    background-color: $red;
+  }
+  100% {
+    background-color: $white;
+  }
+}
+
+@keyframes loadedFillDark {
+  0% {
+    fill: $white;
+  }
+  100% {
+    fill: $white;
+  }
+}
+
+@keyframes loadedBackgroundDark {
+  0% {
+    background-color: $red;
+  }
+  100% {
+    background-color: $red;
+  }
+}

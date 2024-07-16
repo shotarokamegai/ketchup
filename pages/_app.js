@@ -34,8 +34,8 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const loadFunc = () => {
-      console.log('_app.js 更新')
-      console.log(Component)
+      // console.log('_app.js 更新')
+      // console.log(Component)
       adobeLoader(document)
       let vh = window.innerHeight * 0.01;
       // カスタム変数--vhの値をドキュメントのルートに設定
@@ -59,10 +59,6 @@ function MyApp({ Component, pageProps }) {
         mouse.y = e.y;  
       });
 
-      // window.onresize = () => {
-      //   ScrollTrigger.refresh();
-      // }
-      
       gsap.ticker.add((time, deltaTime) => {
         
         var delta = deltaTime * fpms;
@@ -81,7 +77,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <div id="cursor" ref={myRef}></div>
       <AnimatePresence
-        initial={false}
+        // initial={false}
         exitBeforeEnter
         onExitComplete={() => {
           ScrollTrigger.refresh()
