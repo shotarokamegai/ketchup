@@ -35,20 +35,20 @@ function MyApp({ Component, pageProps }) {
 
   const initialFunc = () => {
     adobeLoader(document)
+    // カスタム変数--vhの値をドキュメントのルートに設定
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     document.body.classList.add('initial');
+    initLenis();
     setTimeout(() => {
       document.body.classList.add('loaded');
-    }, 10)
-    initLenis();
+    }, 500)
   }
 
   const loadFunc = () => {
     console.log('_app.js 更新')
     console.log(router.pathname)
     // console.log(Component)
-    // カスタム変数--vhの値をドキュメントのルートに設定
     document.body.classList.remove('initial');
     // document.addEventListener("mousemove", moveCursor);
     // document.addEventListener('mousewheel', stickCursor);
