@@ -32,69 +32,6 @@ function MyApp({ Component, pageProps }) {
       requestAnimationFrame(raf)
     }
   }
-  
-  const returnY = () => {
-    let y;
-    if (window.innerWidth < 750) {
-        y = window.innerWidth * -.7;
-    } else {
-        y = window.innerWidth * -.297222;
-    }
-    return y
-  }
-  const aboutSetAnimation = () => {
-    gsap.to('#lamp', {
-        y: () => returnY(),
-        scrollTrigger: {
-          trigger: '.container',
-          start: `0`, 
-          end: `20%`,
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    gsap.to('#bg', {
-        alpha: () => `1`,
-        scrollTrigger: {
-          trigger: '.container',
-          start: `10%`, 
-          end: `35%`,
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    gsap.to('#light', {
-        alpha: () => `1`,
-        scrollTrigger: {
-          trigger: '.container',
-          start: `25%`, 
-          end: `30%`,
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    gsap.to('#team', {
-        y: () => `0`,
-        alpha: () => `1`,
-        scrollTrigger: {
-          trigger: '.container',
-          start: `30%`, 
-          end: `35%`,
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    gsap.to('#container', {
-        scrollTrigger: {
-          trigger: '.container',
-          start: `0`, 
-          end: `40%`,
-          scrub: 1,
-          pin: true,
-          invalidateOnRefresh: true
-        }
-      });
-  }
 
   const initialFunc = () => {
     adobeLoader(document)
@@ -110,7 +47,27 @@ function MyApp({ Component, pageProps }) {
   const loadFunc = () => {
     console.log('_app.js 更新')
     console.log(router.pathname)
+    // console.log(Component)
+    // カスタム変数--vhの値をドキュメントのルートに設定
     document.body.classList.remove('initial');
+    // document.addEventListener("mousemove", moveCursor);
+    // document.addEventListener('mousewheel', stickCursor);
+    // gsap.set("#cursor", {xPercent: -50, yPercent: -50});
+    // var ball = document.querySelector("#cursor");
+    // var pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    // var mouse = { x: pos.x, y: pos.y };
+    // var speed = 0.5;
+        
+    // var fpms = 60 / 1000;
+        
+    // var xSet = gsap.quickSetter(ball, "x", "px");
+    // var ySet = gsap.quickSetter(ball, "y", "px");
+        
+    // window.addEventListener("mousemove", e => {    
+    //   mouse.x = e.x;
+    //   mouse.y = e.y;  
+    // });
+
   }
 
   useEffect(() => {
@@ -121,9 +78,6 @@ function MyApp({ Component, pageProps }) {
     } else {
       loadFunc();
       console.log('hogehoge maikai')
-    }
-    if (router.pathname.match(/about/)) {
-      aboutSetAnimation()
     }
   }, [router.pathname])
   return(

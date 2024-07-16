@@ -117,7 +117,6 @@ function Home(props) {
 
   useEffect(() => {
     //TOP用アニメーション
-    console.log(`props${props}`)
     loadFunc();
     GetPageNum();
   // }, []);

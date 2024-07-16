@@ -55,82 +55,6 @@ function Works(props) {
         )
     })
   }
-  const setAnimation = () => {
-    let animation1 = gsap.timeline();
-    let slogan1 = gsap.timeline();
-    let slogan2 = gsap.timeline();
-    let slogan3 = gsap.timeline();
-    let slogan4 = gsap.timeline();
-    let sloganScrub = .5;
-    let opacity = .5;
-    let y = -100;
-
-    if (window.innerWidth < 750) {
-      opacity = opacity*.5
-      y = y*.5
-    }
-
-    ScrollTrigger.create({
-        animation: animation1,
-        trigger: ".container",
-        start: "0",
-        end: "8%",
-        scrub: .5,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    ScrollTrigger.create({
-        animation: slogan1,
-        trigger: ".container",
-        start: "0",
-        end: "5%",
-        scrub: sloganScrub,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    ScrollTrigger.create({
-        animation: slogan2,
-        trigger: ".container",
-        start: "1%",
-        end: "6%",
-        scrub: sloganScrub - .1,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    ScrollTrigger.create({
-        animation: slogan3,
-        trigger: ".container",
-        start: "2%",
-        end: "7%",
-        scrub: sloganScrub - .2,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    ScrollTrigger.create({
-        animation: slogan4,
-        trigger: ".container",
-        start: "3%",
-        end: "8%",
-        scrub: sloganScrub - .3,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    animation1.to("#top-logo", {
-      y: y,opacity: opacity
-    },0)
-    slogan1.to(".slogan1", {
-      y: y,opacity: opacity
-    },0)
-    slogan2.to(".slogan2", {
-      y: y,opacity: opacity
-    },0)
-    slogan3.to(".slogan3", {
-      y: y,opacity: opacity
-    },0)
-    slogan4.to(".slogan4", {
-      y: y,opacity: opacity
-    },0)
-  }
   let i = 0
 
   console.log('here')
@@ -148,13 +72,6 @@ function Works(props) {
   }
   useEffect(() => {
     //TOP用アニメーション
-    const loadFunc = () => {
-      ScrollTrigger.refresh()
-      // setAnimation();
-      // showList();
-    }
-
-    loadFunc();
     GetPageNum();
   // }, []);
   }, [posts]);
