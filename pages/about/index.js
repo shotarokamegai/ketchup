@@ -9,79 +9,6 @@ import Content from '../../components/content'
 import WorkTogether from '../../components/work-together'
 
 export default function About() {
-  const returnY = () => {
-    let y;
-    if (window.innerWidth < 750) {
-        y = window.innerWidth * -.7;
-    } else {
-        y = window.innerWidth * -.297222;
-    }
-    return y
-  }
-  const setAnimation = () => {
-    gsap.to('#lamp', {
-        y: () => returnY(),
-        scrollTrigger: {
-          trigger: '.container',
-          start: `0`, 
-          end: `20%`,
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    gsap.to('#bg', {
-        alpha: () => `1`,
-        scrollTrigger: {
-          trigger: '.container',
-          start: `10%`, 
-          end: `35%`,
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    gsap.to('#light', {
-        alpha: () => `1`,
-        scrollTrigger: {
-          trigger: '.container',
-          start: `25%`, 
-          end: `30%`,
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    gsap.to('#team', {
-        y: () => `0`,
-        alpha: () => `1`,
-        scrollTrigger: {
-          trigger: '.container',
-          start: `30%`, 
-          end: `35%`,
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    gsap.to('#container', {
-        scrollTrigger: {
-          trigger: '.container',
-          start: `0`, 
-          end: `40%`,
-          scrub: 1,
-          pin: true,
-          invalidateOnRefresh: true
-        }
-      });
-  }
-  useEffect(() => {
-      setAnimation()
-      ScrollTrigger.refresh(true)
-      window.onresize = () => {
-        if (window.innerWidth < 750) {
-        } else {
-          ScrollTrigger.refresh(true)
-          setAnimation()
-        }
-      }
-  })
   return (
     <>
     <Head>
@@ -93,7 +20,7 @@ export default function About() {
         <meta property="og:description" content="Ketchup Inc." />
         <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/ogp.jpg`} />
         <meta name="twitter:card" content="summary_large_image"/>
-<link rel="icon" href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`} />
+        <link rel="icon" href={`${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`} />
     </Head>
         <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
@@ -118,14 +45,14 @@ export default function About() {
                     </h2>
                     <div className="img">
                         <div className="bg" id="bg">
-    					   	<img width="" height="" src="/img/common/bg.png" alt="" />
+    			  		   	      <img width="" height="" src="/img/common/bg.png" alt="" />
                         </div>
                         <div className="lamp" id="lamp">
-    					   	<img width="" height="" src="/img/common/lamp.png" alt="" />
-    					   	<img id="light" width="" height="" src="/img/common/light.png" alt="" />
+            					   	<img width="" height="" src="/img/common/lamp.png" alt="" />
+            					   	<img id="light" width="" height="" src="/img/common/light.png" alt="" />
                         </div>
                         <div className="team" id="team">
-    					   	<img width="" height="" src="/img/common/team.png" alt="" />
+    				        	   	<img width="" height="" src="/img/common/team.png" alt="" />
                         </div>
                     </div>
                     <p className="section-text red">

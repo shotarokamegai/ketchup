@@ -1288,6 +1288,7 @@ body {
               opacity: 0;
               background-color: $red;
               z-index: 1;
+              pointer-events: none;
               will-change: opacity;
             }
             .vh {
@@ -2576,6 +2577,7 @@ body {
               width: 100vw;
               background-color: $red;
               opacity: 0;
+              pointer-events: none;
               z-index: 1;
               will-change: opacity;
             }
