@@ -1497,10 +1497,11 @@ body {
       .next-work {
         position: relative;
         margin-top: vw(70);
-        height: vw(491);
+        // height: vw(491);
         @include fitcenter();
         overflow: hidden;
         .mix-text {
+          @include center();
           z-index: 2;
         }
         &:active {
@@ -1534,13 +1535,13 @@ body {
           will-change: opacity;
           transition: opacity .5s $Power1easeOut;
         }
-        .img, img {
-          height: 100%;
-          width: 100%;
-        }
-        .img {
-          @include center();
-        }
+        // .img, img {
+        //   height: 100%;
+        //   width: 100%;
+        // }
+        // .img {
+        //   @include center();
+        // }
         img {
           object-fit: cover;
           transition: transform .5s cubic-bezier(0.4, 0, 0.2, 1);
