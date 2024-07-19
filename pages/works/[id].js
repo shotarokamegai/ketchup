@@ -218,7 +218,7 @@ export default function Work(props) {
                     <div className="img">
                     {nextPost['acf']['sp_thumbnail'] &&
                       <picture className={`picture${nextPost.id}`}>
-                        <source srcSet={nextPost['acf']['sp_thumbnail']} media="(min-width: 750px)" />
+                        <source srcSet={nextPost['acf']['pc_thumbnail']} media="(min-width: 750px)" />
                         <img layout='fill' src={nextPost['acf']['sp_thumbnail']} alt={nextPost && nextPost.title.rendered} />
                       </picture>
                     }
