@@ -189,6 +189,14 @@ body {
       main#home section#top .ruler .logo svg * {
         fill: $white !important;
       }
+      main#work .next-work {
+        .mix-text .icon svg * {
+          stroke: $white;
+        }
+        .mix-text__inner {
+          color: $white;
+        }
+      } 
     }
   }
 }
