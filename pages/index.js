@@ -2,163 +2,125 @@ import React, { useState, useEffect, useRef } from "react";
 import Head from 'next/head'
 import Script from 'next/script'
 import fetch from 'node-fetch'
-import { gsap } from "gsap";
+import Link from 'next/link'
+import { gsap,  Power3  } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import List from '../components/list'
+import WorkTogether from '../components/work-together'
 import Arrow from '../components/svg/arrow'
+import Slogan from '../components/svg/slogan'
+import SloganSp from '../components/svg/slogan_sp'
 import Logo from '../components/svg/logo'
 import axios from "axios"
 import Content from '../components/content'
 import styles from '../styles/Home.module.css'
-import { motion, useScroll, useSpring } from "framer-motion";
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-function returnClassName (i) {
-  let className = '';
-  switch(i) {
-      case 0:
-          className = ''
-          break
-      case 1:
-          className = 'medium'
-          break
-      case 2:
-          className = 'large'
-          break
-      case 3:
-          className = 'mn'
-          break
-      case 4:
-          className = 'medium'
-          break
-      case 5:
-          className = 'medium'
-          break
-      default:
-          className = ''
-          break
-  }
-  return className;
-}
-
 function Home(props) {
-    gsap.registerPlugin(ScrollTrigger)
-  const { scrollYProgress } = useScroll();
+  gsap.registerPlugin(ScrollTrigger)
   const logoRef = useRef();
+  const scrollRef = useRef();
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState(props.posts)
   const [maxPage, setMaxPage] = useState(0);
-  const scaleX = useSpring(scrollYProgress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001
-    });
-  const meta = {
-    title: '',
-    description: ''
+  const setList = () => {
+    return posts.map((item, index) => {
+        let datum = {
+            thisCategories: ''
+        };
+        datum.last = false;
+        datum.max = posts.length;
+        datum.type = 'list';
+        datum.index = index;
+        datum.item = item;
+        for (let i = 0; i < item.categories.length; i++) {
+            for (let j = 0; j < props.cats.length; j++) {
+                if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
+                    datum.thisCategories += ` ${props.cats[j].name} /` 
+                }
+            }
+        }
+        datum.className = ` hide`;
+        if (i === 3) {
+            i = 0;
+        } else {
+            i++;
+        }
+        console.log(posts.length);
+        if (index === posts.length-1) {
+          console.log(`index${index}`);
+          console.log('last');
+        }
+        return(
+          <List key={index} {...datum} />
+        )
+    })
+  }
+  const toScroll = () => {
+    console.log(scrollRef)
+    const target = document.getElementById(scrollRef.current.getAttribute('data-target'));
+    let elemRect = target.getBoundingClientRect();
+    let scrollY = window.scrollY || window.pageYOffset;
+    let top = elemRect.top + scrollY;
+
+    gsap.to([document.body, document.documentElement], 1, { scrollTop: top, ease: Power3.easeInOut });
   }
   const setAnimation = () => {
-    let animation1 = gsap.timeline();
-    let slogan1 = gsap.timeline();
-    let slogan2 = gsap.timeline();
-    let slogan3 = gsap.timeline();
-    let slogan4 = gsap.timeline();
-    let sloganScrub = .5;
-    let opacity = .5;
-    let y = -100;
-
-    if (window.innerWidth < 750) {
-      opacity = opacity*.5
-      y = y*.5
-    }
-
-    ScrollTrigger.create({
-        animation: animation1,
-        trigger: ".container",
-        start: "0",
-        end: "8%",
+    const parallax = document.getElementsByClassName('parallax');
+    gsap.to('#top-logo', {
+      y: () => `-50%`,
+      scrollTrigger: {
+        trigger: '.container',
+        start: `0`, 
+        end: `5%`,
         scrub: .5,
-        invalidateOnRefresh: true,
-        // markers: true
+        invalidateOnRefresh: true
+      }
     });
-    ScrollTrigger.create({
-        animation: slogan1,
-        trigger: ".container",
-        start: "0",
-        end: "5%",
-        scrub: sloganScrub,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    ScrollTrigger.create({
-        animation: slogan2,
-        trigger: ".container",
-        start: "1%",
-        end: "6%",
-        scrub: sloganScrub - .1,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    ScrollTrigger.create({
-        animation: slogan3,
-        trigger: ".container",
-        start: "2%",
-        end: "7%",
-        scrub: sloganScrub - .2,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    ScrollTrigger.create({
-        animation: slogan4,
-        trigger: ".container",
-        start: "3%",
-        end: "8%",
-        scrub: sloganScrub - .3,
-        invalidateOnRefresh: true,
-        // markers: true
-    });
-    animation1.to("#top-logo", {
-      y: y,opacity: opacity
-    },0)
-    slogan1.to(".slogan1", {
-      y: y,opacity: opacity
-    },0)
-    slogan2.to(".slogan2", {
-      y: y,opacity: opacity
-    },0)
-    slogan3.to(".slogan3", {
-      y: y,opacity: opacity
-    },0)
-    slogan4.to(".slogan4", {
-      y: y,opacity: opacity
-    },0)
+    for (let i = 0; i < parallax.length; i++) {
+      const elm = parallax[i];
+      const start = elm.getAttribute('data-start');
+      const end = elm.getAttribute('data-end');
+      const amount = parseFloat(elm.getAttribute('data-amount'));
+      gsap.to(elm, {
+        y: () => `${-window.innerWidth*amount}`,
+        scrollTrigger: {
+          trigger: '.container',
+          start: `${start}`, 
+          end: `${end}`,
+          scrub: .5,
+          invalidateOnRefresh: true
+        }
+      });
+    }
   }
   let i = 0
 
-  getPageNum()
-
-  async function getPageNum() {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts`);
-    const num = Number(res.headers['x-wp-totalpages']);
-    setMaxPage(num)
-  }
-
-  async function GetDataFromWp() {
+  const GetDataFromWp = async () => {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&page=${page+1}`);
     setPage((page) => page+1)
     setPosts((posts) => posts.concat(res.data))
   }
-  useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-    // カスタム変数--vhの値をドキュメントのルートに設定
-    document.getElementById('top').style.setProperty('--vh', `${vh}px`);
-    ScrollTrigger.refresh()
+  const GetPageNum = async () => {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts`);
+    const num = Number(res.headers['x-wp-totalpages']);
+    console.log(`getPageNum ${num}`);
+    setMaxPage(num)
+  }
+  const loadFunc = () => {
+    ScrollTrigger.refresh(true)
     setAnimation();
-  }, []);
+  }
 
+  useEffect(() => {
+    //TOP用アニメーション
+    loadFunc();
+    GetPageNum();
+  // }, []);
+  }, [posts]);
   return(
     <>
     <Head>
@@ -187,71 +149,82 @@ function Home(props) {
     </Script>
     <div className={styles.container}>
       <Content>
-      <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="home" className="main_">
           <section id="top">
-              <div className="ruler flex space-between">
-                  <div>
-                      <h1 id="top-logo" className="logo" ref={logoRef}>
-                        <Logo />
-                      </h1>
+              <div className="ruler">
+                <div className="vh">
+                  <div className="logo absolute">
+                  <h1 id="top-logo">
+                    <div className="parallax" data-start="0" data-end="10%" ref={logoRef} data-amount=".15">
+                      <Logo color="bg-red fill" />
+                    </div>
+                  </h1>
                   </div>
-                  <div>
-                      <h2 className="slogan roc">
-                        <span className="slogan1">
-                          Add a bit of flavoring 
-                        </span>
-                          <br/>
-                        <span className="slogan2">to those contents, </span><br/>
-                        <span className="slogan3">and deliver them </span>
-                        <br/>
-                        <span className="slogan4">in an even better thing.</span>
-                      </h2>
+                  <div className="mix-text red vertical absolute scroll-trigger parallax" data-start="0%" data-end="25%" data-amount=".1" data-target="works" ref={scrollRef} onClick={toScroll}>
+                    <div className="mix-text__inner">
+                      <span className="roc-grotesk-wide">SCROLL</span>
+                      <span className="borax italic">Down</span>
+                      <span className="triangle flex flex-sp">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                    </div>
                   </div>
+                  <div className="est absolute red flex flex-end parallax" data-start="0%" data-end="15%" data-amount=".11">
+                    <span className="roc-grotesk">EST.</span>
+                    <span className="borax italic">2022</span>
+                  </div>
+                  <h2 className="slogan borax red absolute parallax" data-start="0%" data-end="20%" data-amount=".07">
+                    <span className="pc">
+                      <Slogan color="bg-red fill" />
+                    </span>
+                    <span className="sp">
+                      <SloganSp color="bg-red fill" />
+                    </span>
+                  {/* Add a bit of flavoring to those contents,<br/>and deliver them in an even better thing. */}
+                  </h2>
+                </div>
               </div>
           </section>
-          <section className="works-wrapper">
-              <p className="vertical rocextrawideLight">
-                  WORKS
-              </p>
-              <div className="inner">
+          <section id="works" className="section">
+              <div className="ruler">
+                <h2 className="section-title red">
+                  <span className="roc-grotesk medium">Featured</span>
+                  <span className="borax italic">Works</span>
+                </h2>
+                <div className="section-line bg-red"></div>
+                <div className="works-wrapper">
                   <ul className="flex">
-                    {posts && 
-                      posts.map((item, index) => {
-                          let datum = {
-                              thisCategories: ''
-                          };
-                          datum.max = posts.length;
-                          datum.type = 'list';
-                          datum.index = index;
-                          datum.item = item;
-                          for (let i = 0; i < item.categories.length; i++) {
-                              for (let j = 0; j < props.cats.length; j++) {
-                                  if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
-                                      datum.thisCategories += ` ${props.cats[j].name} /` 
-                                  }
-                              }
-                          }
-                          datum.className = returnClassName(i);
-                          if (i === 5) {
-                              i = 0;
-                          } else {
-                              i++;
-                          }
-                          return(
-                            <List key={index} {...datum} />
-                          )
-                      })}
+                    { posts && setList() }
                   </ul>
-                  <div className={`btn flex flex-sp space-between align-center ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
-                    <span className="text rocextrawideLight">LOAD MORE</span>
-                    <Arrow className="white" />
-                  </div>
+                  <Link href="/works" scroll={false}>
+                    <div className={`btn btn-full slide-parent double ${(maxPage > page) ? '' : 'none'}`}>
+                      <div className="section-line top absolute bg-red"></div>
+                      <div className="section-line bottom absolute bg-red"></div>
+                      <div className="slide-text">
+                        <div className="slide-cover">
+                          <div className="slide-cover-left"></div>
+                          <div className="slide-cover-right"></div>
+                        </div>
+                        <div className="mix-text red">
+                          <div className="mix-text__inner">
+                            <span className="roc-grotesk-wide">MORE</span>
+                            <span className="borax italic">Works</span>
+                            <span className="icon arrow">
+                              <Arrow color="bg-red stroke" />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               </div>
           </section>
+          <WorkTogether />
         </main>
-        {/* <Footer /> */}
-      </Content>
+        </Content>
     </div>
     </>
   )

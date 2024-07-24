@@ -262,3 +262,106 @@
     transform: translate3d(-50%, -50%, 0) rotate(0deg);
   }
 }
+
+
+@keyframes scrollIcon {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIcon {
+  0% {
+    transform: scale(.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(.9);
+  }
+}
+
+@keyframes bottleAnim {
+  0% {
+    transform: translate3d(-50%, -50%, 0) scale(0);
+  }
+  25% {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  75% {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) scale(0);
+  }
+}
+
+@keyframes loadAnim {
+  0% {
+    transform: translate3d(-50%, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0) rotate(360deg);
+  }
+}
+
+@keyframes loadAnimCenter {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+
+@keyframes loadAnimSlide {
+  0% {
+    transform: translate3d(0, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0) rotate(360deg);
+  }
+}
+
+@keyframes loadedFill {
+  0% {
+    fill: $white;
+  }
+  100% {
+    fill: $red;
+  }
+}
+
+@keyframes loadedBackground {
+  0% {
+    background-color: $red;
+  }
+  100% {
+    background-color: $white;
+  }
+}
+
+@keyframes loadedFillDark {
+  0% {
+    fill: $white;
+  }
+  100% {
+    fill: $white;
+  }
+}
+
+@keyframes loadedBackgroundDark {
+  0% {
+    background-color: $red;
+  }
+  100% {
+    background-color: $red;
+  }
+}

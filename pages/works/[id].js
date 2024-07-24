@@ -4,30 +4,34 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Head from 'next/head'
 import Script from 'next/script'
 import axios from "axios"
-import Image from 'next/image'
-import List from '../../components/list'
+import Link from 'next/link'
 import { useRouter } from "next/router";
 import Arrow from '../../components/svg/arrow';
-import { motion, useScroll, useSpring } from "framer-motion";
+import WorkTogether from '../../components/work-together';
 import Content from '../../components/content'
 import styles from '../../styles/Home.module.css'
 
 export default function Work(props) {
     gsap.registerPlugin(ScrollTrigger)
     const [load, setOnload] = useState(false);
+    const [nextPost, setNextPost] = useState(false);
     const router = useRouter(); 
     const { id } = router.query;
-    // const { data, isLoading, isError } = GetDataFromWp(id)
+
+    const getNextPost = () => {
+      let nextPost_ = '';
+      for (let i = 0; i < props.posts.length; i++) {
+        let thisPost = props.posts[i];
+        if (thisPost.id === props.post.id && i > 0) {
+          nextPost_ = props.posts[i-1];
+        }
+      }
+      if (nextPost_ === '') {
+        nextPost_ = props.posts[props.posts.length-1];
+      }
+      setNextPost(nextPost_)
+    }
     
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001
-    });
-
-    let i = 0
-
     const getCategories = (cats) => {
       let thisCategories = '';
       for (let i = 0; i < props.post.categories.length; i++) {
@@ -38,32 +42,36 @@ export default function Work(props) {
           }
       }
       return(
-        <p className="categories futura">
+        <p className="roc-grotesk medium red">
             {thisCategories.slice( 0, -1 )}
         </p>
       )
     }
 
-    const setGallery = (imgs) => {
+    const setGallery = (images) => {
       let html = '';
-      if (imgs) {
-        for (let i = 0; i < imgs.length; i++) {
-          let html_ = `<div class="column ${imgs[i]['classname_']}">`;
-          let img_ = imgs[i]['img_']
-          if (img_['url'].match(/mov/) || img_['url'].match(/mp4/)) {
-            html_ += 
-                `<div class="img" key=${i}>
-                  <video src=${img_['url']} playsInline autoPlay muted loop />
-                </div>`;
-          } else {
-            html_ += 
-                `<div class="img" key=${i}>
-                  <img src=${img_['url']} alt="" />
-                </div>`;
+      if (images) {
+        for (let i = 0; i < images.length; i++) {
+          let imgs = images[i]['imgs']
+          let className = '';
+          if (imgs.length > 1) {
+            className += 'flex space-between double';
+          } else if (imgs.length > 2) {
+            className += 'flex space-between triple';
+          }
+          let html_ = `<div class="column ${className}">`;
+          for (let k = 0; k < imgs.length; k++) {
+            let img = imgs[k];
+              html_ += 
+                  `<div class="img addactive" key=${k}>
+                    <img src=${img['img']['url']} alt="" />
+                  </div>`;
+            // html += `${html_}</div>`;
           }
           html += `${html_}</div>`;
         }
       }
+      // setOnload(true);
       return(html)
     }
 
@@ -75,17 +83,44 @@ export default function Work(props) {
         }
       }
     }
+  const scrollAnimation = () => {
+    let addactive = document.getElementsByClassName('addactive');
+
+    for (let i = 0; i < addactive.length; i++) {
+      let elm = addactive[i];
+      let start = `top center+=${window.innerHeight/4}`;
+      elm.classList.remove('active');
+      if (elm.classList.contains('blur')) {
+        start = `top center`;
+      }
+      gsap.to(elm, {
+        ease: "power4.inOut",
+        scrollTrigger: {
+          trigger: elm,
+          start: start, 
+          onEnter: () => {
+            elm.classList.add('active');
+            if (elm.classList.contains('show')) {
+              setTimeout(() => {
+                elm.classList.add('nowillchange');
+              }, 3000)
+            }
+          }
+        }
+      });
+    }
+  }
 
     const onLoad = (e) => {
-      // if (e.target.srcset) {
-        e.target.dataset.load = "done";
-        ScrollTrigger.refresh();
+        getNextPost();
+        ScrollTrigger.refresh(true);
         setOnload(true)
-      // }
+        scrollAnimation();
     };
 
     useEffect(() => {
       playVideo()
+      onLoad();
     }, [id]);
     return (
       <>
@@ -115,88 +150,97 @@ export default function Work(props) {
     </Script>
       <div className={styles.container}>
       <Content>
-        <motion.div className="progress-bar" style={{ scaleX }} />
         <main id="work" className={`common main_`}>
           <section id="top">
             <div className="ruler">
-                <h3 className="section-title rocextrawide red">WORKS</h3>
+              <h2 className="section-title red fixed">
+                <span className="borax italic">Works</span>
+              </h2>
             </div>
-            <p className="vertical rocextrawideLight">
-              WORKS
-            </p>
             <div className="ruler">
-                <div className={`keyv-wrap ${load && 'active'}`}>
-                  <div className="img">
-                    <Image placeholder="blur" blurDataURL={props.post['_embedded']['wp:featuredmedia'][0].source_url} layout='fill' objectFit="contain" src={props.post['_embedded']['wp:featuredmedia'][0].source_url} alt={props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')} 
-                     onLoad={onLoad}
-                    />
-                  </div>
-                  <div className="cover"></div>
+              <div className={`keyv-wrap ${load && 'active'}`}>
+                <div className="img">
+                  {props.post['acf']['sp_thumbnail'] &&
+                    <picture className={`picture${props.post.id}`}>
+                      <source srcSet={props.post['acf']['pc_thumbnail']} media="(min-width: 750px)" />
+                      <img layout='fill' src={props.post['acf']['sp_thumbnail']} alt={props.post && props.post.title.rendered} />
+                    </picture>
+                  }
+                  {!props.post['acf']['sp_thumbnail'] &&
+                    <img layout='fill' src={props.post['acf']['pc_thumbnail']} alt={props.post && props.post.title.rendered} />
+                  }
                 </div>
-                <div className="detail flex space-between">
-                  <div>
-                    <h2 className="title futura bold" dangerouslySetInnerHTML={{__html: props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}}></h2>
-                    <p className="text" dangerouslySetInnerHTML={{__html: props.post.content.rendered}}></p>
+                <div className="cover"></div>
+              </div>
+              <div className="detail flex space-between">
+                <div className="left">
+                <p dangerouslySetInnerHTML={{__html: `(${props.post.id})`}} className="index roc-grotesk light red"></p>
+                  <div className="title">
+                    <h2 className="roc-grotesk red" dangerouslySetInnerHTML={{__html: props.post.title.rendered.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')}}></h2>
                   </div>
-                  <div>
-                    <a className="flex pc align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
-                      <span className="text rocextrawide red">VIEW SITE</span>
-                      <Arrow />
-                    </a>
+                  <div className={ props.post['acf']['url'] !== '' ? "categories flex align-center" : "categories flex align-center no-url" }>
                     { getCategories(props.cats) }
-                    <div className="client">
-                      <p className="futura bold">Client</p>
-                      <p className="futura">{props.post['acf']['client']}</p>
-                    </div>
-                    <a className="flex sp flex-sp align-center" href={props.post['acf']['url']} target="_blank" rel="noopener noreferrer">
-                      <span className="text rocextrawide red">VIEW SITE</span>
-                      <Arrow />
-                    </a>
                   </div>
                 </div>
-                {<div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images_'])}}>
-                </div>}
-            </div>
-          </section>
-          <section className="works-wrapper other-works-wrapper">
-            <div className="ruler">
-                <h3 className="section-title rocextrawide red">OTHER WORKS</h3>
-            </div>
-              <p className="vertical rocextrawideLight">
-                OTHER WORKS
-              </p>
-            <div className="ruler">
-              <div className="inner">
-                  <ul className="flex flex-sp">
-                      {props.posts.map((item, index) => {
-                          let datum = {
-                            thisCategories: ''
-                        };
-                        datum.max = props.posts.length;
-                        datum.type = 'others';
-                        datum.index = index;
-                        datum.item = item;
-                        for (let i = 0; i < item.categories.length; i++) {
-                            for (let j = 0; j < props.cats.length; j++) {
-                                if (item.categories[i] === props.cats[j].id && props.cats[j].name !== 'Works') {
-                                    datum.thisCategories += ` ${props.cats[j].name} /` 
-                                }
-                            }
-                        }
-                        datum.className = ''
-                        if (i === 5) {
-                            i = 0;
-                        } else {
-                            i++;
-                        }
-                        return(
-                          <List key={index} {...datum} />
-                        )
-                      })}
-                  </ul>
+                <div className="right">
+                  <div className="client">
+                    <p className="borax red italic">Client</p>
+                    <p className="roc-grotesk red medium">{props.post['acf']['client']}</p>
+                  </div>
+                  {props.post['acf']['url'] !== '' && 
+                    <a href={props.post['acf']['url']} rel="noopener noreferrer" target="_blank">
+                        <div className='mix-text red'>
+                            <div className="mix-text__inner">
+                                <span className='roc-grotesk-wide'>VISIT</span>
+                                <span className='borax italic no-m'>Site</span>
+                                <span className='icon instagram'>
+                                    <Arrow color="bg-red stroke" />
+                                </span>
+                                <span className='mix-text-line bg-red'></span>
+                            </div>
+                        </div>
+                    </a>
+                  }
                 </div>
-            </div>
+              </div>
+              {props.post['acf']['video'] &&
+                <div className="gallery video">
+                  <div className="img addactive">
+                    <video src={props.post['acf']['video']} playsInline autoPlay muted loop />
+                  </div>
+                </div>
+              }
+              <div className="gallery" dangerouslySetInnerHTML={{__html: setGallery(props.post['acf']['images'])}}></div>
+              </div>
+              {nextPost &&
+                <Link href={`/works/${nextPost.id}`} scroll={false}>
+                  <div className="next-work">
+                    <div className="img">
+                    {nextPost['acf']['sp_thumbnail'] &&
+                      <picture className={`picture${nextPost.id}`}>
+                        <source srcSet={nextPost['acf']['pc_thumbnail']} media="(min-width: 750px)" />
+                        <img layout='fill' src={nextPost['acf']['sp_thumbnail']} alt={nextPost && nextPost.title.rendered} />
+                      </picture>
+                    }
+                    {!nextPost['acf']['sp_thumbnail'] &&
+                      <img layout='fill' src={nextPost['acf']['pc_thumbnail']} alt={nextPost && nextPost.title.rendered} />
+                    }
+                    </div>
+                    <div className='mix-text white big'>
+                        <div className="mix-text__inner">
+                            <span className='roc-grotesk-wide'>NEXT</span>
+                            <span className='borax italic'>Work</span>
+                            <span className='icon instagram'>
+                                <Arrow color="bg-white stroke" />
+                            </span>
+                            <span className='mix-text-line bg-white'></span>
+                        </div>
+                    </div>
+                  </div>
+                </Link>
+              }
           </section>
+          <WorkTogether />
         </main>
         </Content>
       </div>
@@ -223,7 +267,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
   const res1 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts/${params.id}?_embed`)
   const res2 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/categories`)
-  const res3 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&exclude=${params.id}`)
+  const res3 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&per_page=100`)
+  // const res3 = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp-json/wp/v2/posts?_embed&exclude=${params.id}&per_page=100`)
   const post = await res1.data
   const cats = await res2.data
   const posts = await res3.data

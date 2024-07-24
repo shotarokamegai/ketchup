@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Arrow from './svg/arrow'
+import Ketchup from './svg/ketchup'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useEffect } from 'react';
@@ -8,6 +9,15 @@ import { useRouter } from "next/router";
 export default function Footer() {
   const router = useRouter();
   const pathname = router.asPath;
+  const changeMode = (e) => {
+    const elm = e.currentTarget;
+
+    if (!elm.classList.contains('light')) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
   useEffect(() => {
     let animation = gsap.timeline();
     gsap.registerPlugin(ScrollTrigger)
@@ -28,21 +38,26 @@ export default function Footer() {
     // }, 5000)
   },[])
   return(
-    <footer id="footer">
-      <div className="footer-inner">
-        <p className="vertical rocextrawideLight white">
-            CONTACT
+    <footer id="footer" className='section'>
+      <div className='ruler'>
+        <div className='section-line bg-red absolute top'></div>
+        <p className='address roc-grotesk medium red'>
+        Ketchup Inc.<br/>
+        152-0003<br/>
+        Dynacity Himonya #416, <br/>
+        5-15-6 Himonya Meguro, Tokyo
         </p>
-        <Link href="/contact" scroll={false}>
-          <a className="btn flex flex-sp space-between align-center white">
-            <span className="text rocextrawideLight">CONTACT US</span>
-            <Arrow />
-          </a>
-        </Link>
-        <div className="ruler flex flex-sp space-between">
-          <p className="copy futura">©Ketchup Inc.</p>
-          <p className="address futura">Dynacity Himonya #416, 5-15-6 Himonya Meguro, Tokyo 152-0003</p>
+        <div id="switcher" className='flex flex-sp'>
+          <div className='switcher light bg-white' onClick={changeMode}>
+            <Ketchup color="bg-red fill" />
+          </div>
+          <div className='switcher dark bg-red' onClick={changeMode}>
+            <Ketchup color="bg-white fill" />
+          </div>
         </div>
+        <p className='copy roc-grotesk medium red'>
+        © 2024 Ketchup Inc. All rights reserved.
+        </p>
       </div>
     </footer>
   )

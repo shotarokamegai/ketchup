@@ -16,6 +16,7 @@
     "emailjs-com": "^3.2.0",
     "framer-motion": "^7.0.0",
     "gsap": "^3.11.1",
+    "imagesloaded": "^5.0.0",
     "next": "^12.2.6-canary.0",
     "next-seo": "^5.5.0",
     "next-sitemap": "^3.1.55",
@@ -23,6 +24,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.54.3",
+    "splitting": "^1.1.0",
     "wpapi": "^1.2.2"
   },
   "devDependencies": {

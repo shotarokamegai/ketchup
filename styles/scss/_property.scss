@@ -3,8 +3,7 @@
 $Helvetica: Helvetica, Arial, sans-serif;
 $RocExtraWide: roc-grotesk-extrawide, sans-serif;
 $Roc: roc-grotesk, sans-serif;
-
-$Futura: futura-pt, heisei-kaku-gothic-std, sans-serif;
+$Fot: fot-cezanne-pron, sans-serif;
 
 $Mincho: dnp-shuei-nshogomincho-std, sans-serif;
 $HeiseiKakuGothic: heisei-kaku-gothic-std, sans-serif;
@@ -13,16 +12,18 @@ $HeiseiKakuGothic: heisei-kaku-gothic-std, sans-serif;
 // color
 
 $black: #000;
-$white: #fff;
-$red: #c8102e;
+$white: #FFFEFB;
+$red: rgb(200, 15, 46);
+$revert: #37f0d1;
 $lightGray: #eae6e2;
-$spWidth: 375;
+$spWidth: 393;
 
 ////////////////////////////////////////////////////////////
 // easing
 
+$zoom: cubic-bezier(0.65, 0.05, 0.36, 1);
+$ziwaziwa: cubic-bezier(0.45, 0.05, 0.55, 0.95);
 $slide: cubic-bezier(0.8, 0, 0.2, 1);
-$letter: cubic-bezier(0.68, -0.6, 0.32, 1.6);
 
 $easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
 $easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
