@@ -22,12 +22,12 @@ export default function Work(props) {
       let nextPost_ = '';
       for (let i = 0; i < props.posts.length; i++) {
         let thisPost = props.posts[i];
-        if (thisPost.id === props.post.id && i > 0) {
-          nextPost_ = props.posts[i-1];
+        if (thisPost.id === props.post.id && i < props.posts.length-1) {
+          nextPost_ = props.posts[i+1];
         }
       }
       if (nextPost_ === '') {
-        nextPost_ = props.posts[props.posts.length-1];
+        nextPost_ = props.posts[0];
       }
       setNextPost(nextPost_)
     }
