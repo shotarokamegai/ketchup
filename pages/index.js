@@ -198,8 +198,8 @@ function Home(props) {
                   <ul className="flex">
                     { posts && setList() }
                   </ul>
-                  <Link href="/works" scroll={false}>
-                    <div className={`btn btn-full slide-parent double ${(maxPage > page) ? '' : 'none'}`}>
+                  {/* <Link href="/works" scroll={false}> */}
+                  <div className={`btn btn-full slide-parent double ${(maxPage > page) ? '' : 'none'}`} onClick={GetDataFromWp} id="load-more">
                       <div className="section-line top absolute bg-red"></div>
                       <div className="section-line bottom absolute bg-red"></div>
                       <div className="slide-text">
@@ -218,7 +218,7 @@ function Home(props) {
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  {/* </Link> */}
                 </div>
               </div>
           </section>
